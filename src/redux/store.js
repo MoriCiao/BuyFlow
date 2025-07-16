@@ -4,6 +4,8 @@ import productsReducer from "../features/products/productsSlice";
 import userReducer from "../features/user/userSlice";
 import uiReducer from "../features/ui/uiSlice";
 
+// 對應的 Reducer 名稱可以自己取
+
 export const store = configureStore({
   reducer: {
     cart: cartReducer,

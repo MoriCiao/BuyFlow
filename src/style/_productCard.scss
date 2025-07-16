@@ -1,0 +1,76 @@
+.prodouct-card{
+    position: relative;
+    div.product-image {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        overflow:hidden ;
+        cursor: pointer;
+        img{
+            width: 100%;
+            transition: 0.5s;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    
+    div.product-text .itme-price{
+        font-size: 0.8rem;
+    }
+    div.product-text .itme-price .rating{
+        position: absolute;
+        top: 0rem;
+        left: 0.5rem;
+        span.fire_img{
+            position: absolute;
+            top: 0;
+            z-index: 9;
+            font-size: 2.5rem;
+            transform: rotate(-20deg);
+            animation: fire 3s linear infinite;
+        }
+        span.rating-text {
+            
+            position: absolute;
+            z-index: 10;
+            color: rgb(0, 0, 0);
+            top: 1.4rem;
+
+            text-shadow: 0 0 5px rgb(255, 255, 255);
+            animation: text 3s linear infinite;
+
+        }
+    }
+}   
+
+@keyframes fire {
+
+    0%,
+    100% {
+        
+        transform: rotate(-15deg);
+
+    }
+
+    50% {
+        
+        transform: rotate(0deg);
+
+
+    }
+}
+@keyframes text {
+    0%,
+    100% {
+        font-size: 1rem;
+        transform: rotate(-15deg);        
+    }
+
+    50% {
+        font-size: 1.3rem;
+        transform: rotate(0deg);
+        
+
+    }
+}

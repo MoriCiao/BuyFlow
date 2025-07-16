@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+// Page404
 const NotFoundPage = () => {
   const navigate = useNavigate();
 

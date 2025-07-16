@@ -24,7 +24,7 @@ function App() {
     <div className="App w-full relative">
       {isLoading && <Loading />}
       <Header />
-      <main className="main border border-red-200 w-full min-h-[60vh] flex justify-center">
+      <main className="main w-full min-h-[60vh] flex justify-center">
         <AppRoutes />
       </main>
       <Footer />

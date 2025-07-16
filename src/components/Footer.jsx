@@ -1,5 +1,5 @@
 import React from "react";
-
+// Footer
 const Footer = () => {
   return (
     <section className="footer flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">

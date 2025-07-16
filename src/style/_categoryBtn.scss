@@ -1,0 +1,68 @@
+.category_filter{
+    // border: 2px rgb(123, 255, 0) solid;
+    .nav_btn{
+        position: relative;
+        width: 150px;
+        height: 50px;
+        button{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            width: 100%;
+            height: 100%;
+            font-size: 1.2rem;
+            transition: background-color 0.5s ease, color 0.5s ease , font-size 0.5s ease; 
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.2);
+                opacity: 0.2;
+                transition: 1s;
+            }
+            
+            svg,svg rect{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                fill:transparent;
+    
+            }
+            rect{
+                stroke-width: 4;
+                stroke: #333533;
+                stroke-dasharray: 150,50;
+                transition: 1s ;
+            }
+            &:hover{
+                font-size: 1.5rem;
+                background-color: #333533;
+                color: #e8eddf;
+                text-shadow:0 0 10px #e8eddf;
+                
+                rect{
+                    opacity: 0;
+                    stroke-dasharray: 50,150;
+                    stroke-dashoffset: 250;
+
+                }
+            }
+            
+            &:hover::before {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+        
+    }
+
+
+
+}

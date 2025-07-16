@@ -170,12 +170,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 66%;
+  width: 50%;
   text-align: center;
   color: #333533;
   transition: 0.5s;
   transform: translate(-50%, -50%) scaleY(0);
-  font-size: 2.4rem;
+  font-size: 2rem;
   background-color: #333533;
   color: #e8eddf;
   padding-left: 0px;
@@ -223,6 +223,122 @@
   }
 }
 
+.category_filter .nav_btn {
+  position: relative;
+  width: 150px;
+  height: 50px;
+}
+.category_filter .nav_btn button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  transition: background-color 0.5s ease, color 0.5s ease, font-size 0.5s ease;
+}
+.category_filter .nav_btn button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.2;
+  transition: 1s;
+}
+.category_filter .nav_btn button svg, .category_filter .nav_btn button svg rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+}
+.category_filter .nav_btn button rect {
+  stroke-width: 4;
+  stroke: #333533;
+  stroke-dasharray: 150, 50;
+  transition: 1s;
+}
+.category_filter .nav_btn button:hover {
+  font-size: 1.5rem;
+  background-color: #333533;
+  color: #e8eddf;
+  text-shadow: 0 0 10px #e8eddf;
+}
+.category_filter .nav_btn button:hover rect {
+  opacity: 0;
+  stroke-dasharray: 50, 150;
+  stroke-dashoffset: 250;
+}
+.category_filter .nav_btn button:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+.prodouct-card {
+  position: relative;
+}
+.prodouct-card div.product-image {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.prodouct-card div.product-image img {
+  width: 100%;
+  transition: 0.5s;
+}
+.prodouct-card div.product-image img:hover {
+  transform: scale(1.1);
+}
+.prodouct-card div.product-text .itme-price {
+  font-size: 0.8rem;
+}
+.prodouct-card div.product-text .itme-price .rating {
+  position: absolute;
+  top: 0rem;
+  left: 0.5rem;
+}
+.prodouct-card div.product-text .itme-price .rating span.fire_img {
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  font-size: 2.5rem;
+  transform: rotate(-20deg);
+  animation: fire 3s linear infinite;
+}
+.prodouct-card div.product-text .itme-price .rating span.rating-text {
+  position: absolute;
+  z-index: 10;
+  color: rgb(0, 0, 0);
+  top: 1.4rem;
+  text-shadow: 0 0 5px rgb(255, 255, 255);
+  animation: text 3s linear infinite;
+}
+
+@keyframes fire {
+  0%, 100% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes text {
+  0%, 100% {
+    font-size: 1rem;
+    transform: rotate(-15deg);
+  }
+  50% {
+    font-size: 1.3rem;
+    transform: rotate(0deg);
+  }
+}
 :root {
   --text-color: #333533;
   --bg-color:#e8eddf;
@@ -233,6 +349,11 @@
   box-sizing: border-box;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
 body #root {
   display: flex;
   flex-direction: column;

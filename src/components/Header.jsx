@@ -2,15 +2,14 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginout } from "../features/user/userSlice";
 import { useNavigate, Link } from "react-router-dom";
-
+import SearchBar from "./SearchBar";
 const HeaderHr = () => {
   return <hr className="h-full border" />;
 };
 
 const Header = () => {
-  const navigate = useNavigate();
-
   const { user, isAuthenticated } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   return (
@@ -35,13 +34,20 @@ const Header = () => {
             {/* ----------登入邏輯---------- */}
             {!isAuthenticated ? (
               <li>
-                <Link to={"/login"}>Login / Sign up</Link>
+                <Link to={"/login"}>Login</Link>
               </li>
             ) : (
               <>
-                <span>Hi! {user.name || "旅客"}</span>
+                <span>Hi! {user.name}</span>
+                {user.role === "user" && <Link to={"/menber"}>Profile</Link>}
+                {user.role === "admin" && (
+                  <Link to={"/dashboard"}>Backstage</Link>
+                )}
+                {(user.role === "staff" || user.role === "admin") && (
+                  <Link to={"/staff"}>Staff</Link>
+                )}
                 <button
-                  className="cursor-pointer"
+                  className="cursor-pointer border px-2"
                   type="button"
                   onClick={() => dispatch(loginout())}
                 >
@@ -49,7 +55,22 @@ const Header = () => {
                 </button>
               </>
             )}
-
+            <HeaderHr />
+            <li>
+              <Link to={"/staff"}>Staff</Link>
+            </li>
+            <HeaderHr />
+            <li>
+              <Link to={"/menber"}>Profile</Link>
+            </li>
+            <HeaderHr />
+            <li>
+              <Link to={"/admin"}>admin</Link>
+            </li>
+            <HeaderHr />
+            <li>
+              <Link to={"/dashboard"}>DashBoard</Link>
+            </li>
             <HeaderHr />
             <li>
               <Link to="/profile">Member Center</Link>
@@ -66,34 +87,8 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className="header-left w-[80%] flex gap-8 justify-between py-2">
-        <img
-          src="./logo.svg"
-          alt="LOGO"
-          className="col-start-1 w-[300px] h-[100px] select-none "
-        />
-
-        <div className="serach max-w-[40rem] w-full h-full p-4">
-          <div className=" flex justify-center items-center rounded-full border overflow-hidden my-2">
-            <input
-              type="text"
-              placeholder="搜尋商品..."
-              className="search-input w-full h-[2rem] indent-[1rem] "
-            />
-            <button
-              type="button"
-              className="select-none cursor-pointer flex items-center h-[2rem] px-4 bg-[#333533] text-white"
-            >
-              <span>🔍</span>
-              Search
-            </button>
-          </div>
-        </div>
-        <img
-          src="./logo.svg"
-          alt="LOGO"
-          className="col-start-1 w-[300px] h-[100px] select-none "
-        />
+      <div className="header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center py-2">
+        <SearchBar />
       </div>
     </section>
   );

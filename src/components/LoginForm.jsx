@@ -2,32 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
-
-const mockUserAPI = ({ email, password }) => {
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (email === "admin@example.com" && password === "admin123") {
-        resolve({
-          name: "Admin",
-          email: email,
-          role: "admin",
-          token: "adminToken",
-        });
-      } else if (email === "user@example.com" && password === "user123") {
-        resolve({
-          name: "User",
-          email: email,
-          role: "user",
-          token: "userToken",
-        });
-      } else {
-        reject("帳號密碼錯誤...");
-      }
-    }, 500);
-  });
-};
-
+import { mockLoginAPI } from "../features/user/mockAuthAPI.js";
+// 登入表單
 const LoginForm = () => {
+  // console.log("mockLoginAPI", mockLoginAPI);
+  // input輸入的值存儲起來，供 userReducer使用
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -35,29 +14,16 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = ({ email, password }) => {
-      if (email === "admin@example.com" && password === "admin123") {
-        return {
-          name: "Admin",
-          email: email,
-          role: "admin",
-          token: "adminToken",
-        };
-      } else if (email === "user@example.com" && password === "user123") {
-        return {
-          name: "User",
-          email: email,
-          role: "user",
-          token: "userToken",
-        };
-      }
-    };
-
-    const loginUser = userData({ email, password });
-    console.log(loginUser);
-
-    dispatch(login(loginUser));
-    navigate("/");
+    try {
+      const userData = await mockLoginAPI({ email, password });
+      // 確認回傳資料沒有password
+      console.log("目前 userData :", userData);
+      dispatch(login(userData)); // 將資料存入 Redux
+      localStorage.setItem("buyflow_user", JSON.stringify(userData)); //
+      navigate("/");
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (

@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  // 存放登入後的使用者資訊
   user: null,
+  // 核對是否登入
   isAuthenticated: false,
 };
 
 const userSlice = createSlice({
-  name: "auth",
-  initialState,
+  name: "auth", // 這個slice的名稱
+  initialState, // 初始狀態
   reducers: {
+    // 函式(配對 state 做修改)
     // 登入成功，將state變成user資料
     login(state, action) {
       state.user = action.payload;
@@ -24,4 +27,5 @@ const userSlice = createSlice({
 });
 
 export const { login, loginout } = userSlice.actions;
+// 匯出 reducer（給 store 使用）
 export default userSlice.reducer;
