@@ -5,8 +5,8 @@ const Footer = () => {
     <section className="footer flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">
       <div className="w-[80%] grid grid-cols-6  border-x">
         <div className=""></div>
-        <div className="footer-item1 border-x h-auto py-4 col-span-2 col-start-2 px-4">
-          <img className="contrast-[0%]" src="./logo.svg" alt="" />
+        <div className="footer-item1 border-x h-auto col-span-2 col-start-2 px-4">
+          <img className="p-8" src="./logo_w.svg" alt="" />
           <h3 className="text-center mt-4 text-[24px]">用心追，隨心買。</h3>
         </div>
 

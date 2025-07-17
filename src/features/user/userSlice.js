@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { users } from "./mockusersDB";
 const initialState = {
   // 存放登入後的使用者資訊
   user: null,
   // 核對是否登入
   isAuthenticated: false,
+  profile_bg: "./user/user-bg.svg",
+  userList: users,
 };
 
 const userSlice = createSlice({

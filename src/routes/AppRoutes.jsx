@@ -14,11 +14,14 @@ import StaffProfile from "../pages/profile/StaffProfile.jsx";
 import MenberProfile from "../pages/profile/MenberProfile.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import CategoryFilter from "../components/CategoryFilter.jsx";
+import StaffList from "../pages/dashboard/StaffList.jsx";
+import ProductsList from "../pages/dashboard/Productslist.jsx";
+import MenberList from "../pages/dashboard/MenberList.jsx";
 const AppRoutes = () => {
   return (
-    <div className="AppRoutes w-[80%] h-auto  p-4">
+    <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center">
       <Routes>
-        <Route path="/" element={<CategoryFilter />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductDetailPage />} />
         <Route path="/cart" element={<CartPage />} />
@@ -35,27 +38,50 @@ const AppRoutes = () => {
           }
         />
 
-        <Route
-          path="/staff"
-          element={
-            // 使用 RequireRole 驗證，符合 role 為 ["staff", "admin"] 時才會顯示<<StaffProfile /> />
-            <RequireRole allowRoles={["staff", "admin"]}>
-              <StaffProfile />
-            </RequireRole>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            // 使用 RequireRole 驗證，符合 role 為 admin 時才會顯示<AdminProfile />
-            <RequireRole allowRoles={["admin"]}>
-              <AdminProfile />
-            </RequireRole>
-          }
-        />
-
-        <Route path="/dashboard" element={<DashBoard />} />
-
+        <Route path="/dashboard" element={<DashBoard />}>
+          <Route
+            path="staff"
+            element={
+              // 使用 RequireRole 驗證，符合 role 為 ["staff", "admin"] 時才會顯示<<StaffProfile /> />
+              <RequireRole allowRoles={["staff", "admin"]}>
+                <StaffProfile />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="menberlist"
+            element={
+              <RequireRole allowRoles={["staff", "admin"]}>
+                <MenberList />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="admin"
+            element={
+              // 使用 RequireRole 驗證，符合 role 為 admin 時才會顯示<AdminProfile />
+              <RequireRole allowRoles={["admin"]}>
+                <AdminProfile />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="stafflist"
+            element={
+              <RequireRole allowRoles={["admin"]}>
+                <StaffList />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="productslist"
+            element={
+              <RequireRole allowRoles={["staff", "admin"]}>
+                <ProductsList />
+              </RequireRole>
+            }
+          />
+        </Route>
         {/* 404 */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

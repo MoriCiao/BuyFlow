@@ -1,0 +1,124 @@
+.homepage{
+
+    .homepage_carousel{
+        span{
+            
+            svg{
+                width: 50%;
+                height: 50%;
+                opacity: 0.5;
+                path{
+                    
+                    fill: transparent;
+                    stroke: #333533;
+                    stroke-width: 4;
+                    stroke-dashoffset: 0;
+                    stroke-dasharray: 260;
+                    transition: .5s ;
+                    
+                }
+                &:hover path{
+                    animation: animation-path 1s linear forwards;
+                    transform:  scale(1.2);
+                }
+            }
+            
+        } 
+     }
+    .homepage-link{
+        box-shadow: 0 0.5rem 0.8rem rgba(0,0,0,0.5);
+        button{
+            position: relative;
+            cursor: pointer;
+            width: 240px;
+            height: 60px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: rgb(255, 255, 255);
+            background-color: #333533;
+            transition: 1s;
+            animation: animation_text 3s infinite linear;
+            &::before{
+                content: "";
+                width: 70%;
+                height: 100%;
+                background-color: #333533;
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                opacity: 0;
+                transition: 1s ;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            &:hover{
+                font-size: 0;
+                
+            }
+            &:hover::before{
+                content: "Go Shopping !";
+                font-size: 1.15rem;
+                color: goldenrod;
+                width: 100%;
+                opacity: 1;
+            }
+            svg,rect{
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                fill: transparent;
+                
+                rect{
+                    stroke-width: 4;
+                    stroke: goldenrod;
+                    stroke-dasharray: 150;
+                    filter:drop-shadow(0 0 5px goldenrod) drop-shadow(0 0 10px goldenrod);
+                    animation: animation_rect 4s infinite linear;
+
+                }
+            }
+        }
+    }
+}
+
+@keyframes animation-path {
+    0%{
+        stroke-dashoffset:  0;
+ 
+    }
+    40% {
+        stroke-dashoffset: 260;
+    }
+    
+    80% {
+        stroke-dashoffset: 520;
+        fill: transparent;
+    }
+    100% {
+        stroke-dashoffset: 520;
+        fill:#333533;
+    }
+}
+
+@keyframes animation_rect {
+    0%{ 
+        stroke-dashoffset: 300;
+
+    }
+    100%{
+        stroke-dashoffset: 0;
+
+    }
+}
+@keyframes animation_text{
+    0%,100%{
+        text-shadow: 0 0 5px rgba(218, 165, 32,0.5);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(218, 165, 32, 1);
+    }
+}

@@ -41,10 +41,7 @@ const Header = () => {
                 <span>Hi! {user.name}</span>
                 {user.role === "user" && <Link to={"/menber"}>Profile</Link>}
                 {user.role === "admin" && (
-                  <Link to={"/dashboard"}>Backstage</Link>
-                )}
-                {(user.role === "staff" || user.role === "admin") && (
-                  <Link to={"/staff"}>Staff</Link>
+                  <Link to={"/dashboard"}>DashBoard</Link>
                 )}
                 <button
                   className="cursor-pointer border px-2"
@@ -55,25 +52,10 @@ const Header = () => {
                 </button>
               </>
             )}
+
             <HeaderHr />
             <li>
-              <Link to={"/staff"}>Staff</Link>
-            </li>
-            <HeaderHr />
-            <li>
-              <Link to={"/menber"}>Profile</Link>
-            </li>
-            <HeaderHr />
-            <li>
-              <Link to={"/admin"}>admin</Link>
-            </li>
-            <HeaderHr />
-            <li>
-              <Link to={"/dashboard"}>DashBoard</Link>
-            </li>
-            <HeaderHr />
-            <li>
-              <Link to="/profile">Member Center</Link>
+              <Link to="/menber">Member Center</Link>
             </li>
             <HeaderHr />
             <li>
@@ -87,7 +69,7 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className="header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center py-2">
+      <div className="header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center py-2 mt-4">
         <SearchBar />
       </div>
     </section>

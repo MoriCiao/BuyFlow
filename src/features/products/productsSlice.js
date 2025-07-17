@@ -32,6 +32,20 @@ const productsSlice = createSlice({
     // 顯示分類商品
     active(state, action) {
       // 點及分類按鈕，顯示對應的商品
+      const active = action.payload.toLowerCase();
+      console.log(active);
+      if (active !== "所有商品" && active !== "熱銷商品") {
+        state.isFiltered = true;
+        state.filtered = state.products.filter(
+          (i) => i.category.toLowerCase() === active.toLowerCase()
+        );
+      } else if (active === "所有商品") {
+        state.isFiltered = false;
+        state.filtered = [];
+      } else if (active === "熱銷商品") {
+        state.isFiltered = true;
+        state.filtered = state.products.filter((i) => i.rating >= 4.5);
+      }
     },
   },
 });

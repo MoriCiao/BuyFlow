@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { search } from "../features/products/productsSlice";
+import { useNavigate } from "react-router-dom";
+
+const img = ["./logo.svg", "./undraw-cart.svg"];
+
 const SearchBar = () => {
-  const { products } = useSelector((state) => state.products);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [keyword, setKeyWord] = useState("");
 
   return (
     <>
       <img
-        src="./logo.svg"
+        src={img[0]}
         alt="LOGO"
         className="col-start-1 w-[300px] h-[100px] select-none "
       />
@@ -24,7 +28,9 @@ const SearchBar = () => {
             onChange={(e) => setKeyWord(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                dispatch(search(keyword)), setKeyWord("");
+                dispatch(search(keyword)),
+                  setKeyWord(""),
+                  navigate("/products");
               }
             }}
           />
@@ -32,7 +38,7 @@ const SearchBar = () => {
             type="button"
             className="select-none cursor-pointer flex items-center h-[2rem] px-4 bg-[#333533] text-white"
             onClick={() => {
-              dispatch(search(keyword)), setKeyWord("");
+              dispatch(search(keyword)), setKeyWord(""), navigate("/products");
             }}
           >
             <span>🔍</span>
@@ -41,8 +47,8 @@ const SearchBar = () => {
         </div>
       </div>
       <img
-        src="./logo.svg"
-        alt="LOGO"
+        src={img[1]}
+        alt="undraw-cart"
         className="col-start-1 w-[300px] h-[100px] select-none "
       />
     </>

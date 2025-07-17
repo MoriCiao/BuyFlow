@@ -13,7 +13,7 @@ const ProdouctCard = ({ name, price, image, rating }) => {
 
           <div
             className={`rating flex items-center justify-center ${
-              rating > 4.5 ? "" : "hidden"
+              rating >= 4.5 ? "" : "hidden"
             }`}
           >
             <span className="fire_img">🔥</span>
