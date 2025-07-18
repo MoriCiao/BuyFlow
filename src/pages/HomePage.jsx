@@ -17,16 +17,11 @@ const HomePage = () => {
   const prevSlide = () => {
     const prevIndex = current === 0 ? carouselImages.length - 1 : current - 1;
     setCurrentAndDirection([prevIndex, -1]);
-
-    // setDirection(-1);
-    // setCurrent((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
   };
   // 幻燈片往後翻轉
   const nextSlide = () => {
     const nextIndex = current === carouselImages.length - 1 ? 0 : current + 1;
     setCurrentAndDirection([nextIndex, 1]);
-    // setDirection(1);
-    // setCurrent((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -73,6 +68,25 @@ const HomePage = () => {
             </g>
           </svg>
         </span>
+
+        <div className="absolute bottom-4 left-1/2 flex gap-2 -translate-x-1/2">
+          {carouselImages.map((_, index) => {
+            return (
+              <button
+                key={index}
+                className={`border border-black/20 rounded-full w-2 h-2 transition duration-500 ${
+                  index === current
+                    ? "bg-[#e8eddf] scale-115"
+                    : "bg-[#e8eddf]/20"
+                }`}
+                onClick={() =>
+                  // 每個指示燈的 index = 目前圖片的index，在判定目前是往左還是往右
+                  setCurrentAndDirection([index, index > current ? 1 : -1])
+                }
+              ></button>
+            );
+          })}
+        </div>
       </div>
 
       <Link

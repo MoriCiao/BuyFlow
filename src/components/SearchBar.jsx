@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { search } from "../features/products/productsSlice";
 import { useNavigate } from "react-router-dom";
 
-const img = ["./logo.svg", "./undraw-cart.svg"];
+const img = ["/BuyFlow/public/logo.svg", "/BuyFlow/public/undraw-cart.svg"];
 
 const SearchBar = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/ProductCard";
@@ -28,19 +28,21 @@ const CategoryFilter = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0.3, y: 10 }}
         transition={{ duration: 1, ease: easeOut }}
-        className="products-list-page grid xl:grid-cols-5 md:grid-cols-3  sm:grid-cols-2 xl:gap-8 md:gap-12 sm:gap-8 p-4"
+        className="category_filter grid xl:grid-cols-5 md:grid-cols-3  sm:grid-cols-2 xl:gap-2 md:gap-12 sm:gap-8 p-4"
       >
         {currentData &&
           currentData.map((item, index) => {
             return (
-              <Link key={index}>
+              <Fragment key={index}>
                 <ProductCard
+                  // 提供 product 商品參數給對應的 useParams
+                  product={item}
                   name={item.name}
                   price={item.price}
                   image={item.image}
                   rating={item.rating}
                 />
-              </Link>
+              </Fragment>
             );
           })}
       </motion.section>

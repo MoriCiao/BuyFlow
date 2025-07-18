@@ -17,7 +17,7 @@ const btn_style =
 
 const DashBoard = () => {
   return (
-    <section className="dashboard w-full h-full grid grid-cols-4 gap-4 items-center justify-center">
+    <section className="dashboard relative w-full h-full grid grid-cols-4 gap-4 items-center justify-center">
       <div className="flex flex-col gap-4 col-start-1 col-span-1">
         <Link to="stafflist" className="">
           <motion.button {...motion_btn} className={btn_style}>
@@ -44,7 +44,7 @@ const DashBoard = () => {
           </motion.button>
         </Link>
       </div>
-      <div className="col-start-2 col-span-3 w-full h-full border flex p-4">
+      <div className="col-start-2 col-span-3 w-full h-full border flex p-4 overflow-auto">
         <Outlet />
       </div>
     </section>

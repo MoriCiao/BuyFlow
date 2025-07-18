@@ -13,8 +13,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <section className="header w-full min-h-[10vh] flex flex-col justify-center items-center ">
-      <div className="w-full flex justify-center bg-[#333533]">
+    <section className="header  w-full min-h-[10vh] flex flex-col justify-center items-center ">
+      <div className="w-full fixed z-100 top-0 left-0 flex justify-center bg-[#333533]">
         <nav className="nav flex justify-between w-[80%] h-full py-2  text-[#e8eddf] select-none">
           <div className="home-svg cursor-pointer">
             <svg>
@@ -69,7 +69,7 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className="header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center py-2 mt-4">
+      <div className="header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4">
         <SearchBar />
       </div>
     </section>

@@ -1,5 +1,7 @@
 .prodouct-card{
     position: relative;
+    
+    
     div.product-image {
         padding: 0.5rem;
         margin-bottom: 0.5rem;
@@ -8,9 +10,7 @@
         img{
             width: 100%;
             transition: 0.5s;
-            &:hover{
-                transform: scale(1.1);
-            }
+            
         }
     }
 
@@ -31,15 +31,21 @@
             animation: fire 3s linear infinite;
         }
         span.rating-text {
-            
             position: absolute;
             z-index: 10;
             color: rgb(0, 0, 0);
             top: 1.4rem;
-
             text-shadow: 0 0 5px rgb(255, 255, 255);
             animation: text 3s linear infinite;
 
+        }
+    }
+    &:hover{
+        background-color: rgba(0,0,0,0.2);
+        color: #e8eddf;
+        
+        img{
+            scale: 1.1;
         }
     }
 }   

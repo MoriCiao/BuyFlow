@@ -5,7 +5,7 @@ const initialState = {
   user: null,
   // 核對是否登入
   isAuthenticated: false,
-  profile_bg: "./user/user-bg.svg",
+  profile_bg: "/user/user-bg-2.svg",
   userList: users,
 };
 

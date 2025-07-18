@@ -24,7 +24,7 @@ const ProductListPage = () => {
   // //   }, 2000);
   // // }, [currentData]);
   return (
-    <section className="category_filter grid grid-cols-8 w-full h-full gap-16">
+    <section className="product-list grid grid-cols-8 w-full h-full gap-16">
       <nav className="category_filter_nav col-start-1 col-span-1 flex flex-col gap-4 items-center">
         <NavBtn />
       </nav>

@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { products } from "./productsDB";
-const initialState = { products: products, isFiltered: false, filtered: [] };
+const initialState = {
+  products: products,
+  isFiltered: false,
+  filtered: [],
+  isModify: false,
+  modify_list: {},
+};
 
 const productsSlice = createSlice({
   name: "products",
@@ -47,8 +53,15 @@ const productsSlice = createSlice({
         state.filtered = state.products.filter((i) => i.rating >= 4.5);
       }
     },
+
+    modify(state, action) {
+      const item = action.payload;
+      state.isModify = true;
+      state.modify_list = { ...item };
+      console.log(state.modify_list);
+    },
   },
 });
 
-export const { search, active } = productsSlice.actions;
+export const { search, active, modify } = productsSlice.actions;
 export default productsSlice.reducer;

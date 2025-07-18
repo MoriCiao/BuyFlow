@@ -1,22 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { modify } from "../../features/products/productsSlice";
+import Modify from "../../components/modify";
 const ProductsList = () => {
-  const { products } = useSelector((state) => state.products);
-
+  const { products, isModify } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
   return (
     <section className="products-list w-full h-full text-center ">
-      <div className="overflow-auto max-w-[1000px] max-h-[500px]">
+      <div className=" min-w-[1000px] max-h-[500px] ">
         <table className="w-full border border-collapse w-[100%] ">
           <thead>
             <tr className="border ">
-              <th className="border px-4">ID</th>
-              <th className="border px-4">Name</th>
-              <th className="border px-4">Rating</th>
-              <th className="border px-4">Category</th>
-              <th className="border px-4">Price</th>
-              <th className="border px-4">Stock</th>
-              <th className="border px-4">Description</th>
+              <th className="border px-8"></th>
+              <th className="border px-8">ID</th>
+              <th className="border px-8">Name</th>
+              <th className="border px-8">Rating</th>
+              <th className="border px-8">Category</th>
+              <th className="border px-8">Price</th>
+              <th className="border px-8">Stock</th>
+              <th className="border max-w-[300px]">Description</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +35,16 @@ const ProductsList = () => {
                     key={p.id}
                     className="h-[2rem] border"
                   >
+                    <td className="border ">
+                      <span
+                        className="select-none cursor-pointer"
+                        onClick={() => {
+                          dispatch(modify(p));
+                        }}
+                      >
+                        💾
+                      </span>
+                    </td>
                     <td className="border ">{p.id}</td>
                     <td className="border ">{p.name}</td>
                     <td className="border ">{p.rating}</td>
@@ -45,6 +58,7 @@ const ProductsList = () => {
           </tbody>
         </table>
       </div>
+      {isModify && <Modify />}
     </section>
   );
 };

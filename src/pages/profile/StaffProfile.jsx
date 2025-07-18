@@ -10,7 +10,7 @@ const StaffProfile = () => {
   return (
     <section className="profile relative grid grid-cols-2 gap-4 items-center justify-center ">
       <div className="w-full h-full flex items-center justify-center">
-        <img src={profile_bg} alt="user-bg" />
+        <img src={"./user/user-bg-2.svg"} alt="user-bg" />
       </div>
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-[1.5rem] w-[350px]">Staff Profile</h1>
