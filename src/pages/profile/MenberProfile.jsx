@@ -7,12 +7,16 @@ const MenberProfile = () => {
   const { user, profile_bg } = useSelector((state) => state.user);
 
   return (
-    <section className="profile relative grid grid-cols-2 gap-4 items-center justify-center">
-      <div className="w-full h-full flex items-center justify-center">
-        <img src={profile_bg} alt="user-bg" />
+    <section className="profile relative w-full grid grid-cols-2 gap-4 items-start justify-cneter">
+      <div className="col-start-1 col-span-1 w-full h-full flex items-center justify-center">
+        <img
+          src="/BuyFlow/user/user-bg-2.svg"
+          alt="user-bg"
+          className="w-[90%]"
+        />
       </div>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start">
         <h1 className="text-[1.5rem] w-[350px]">Menber Profile</h1>
 
         <div className="container flex flex-col items-center justify-center w-[350px] min-h-[200px]">

@@ -11,10 +11,16 @@ const LoginPage = () => {
       className="login-page grid grid-cols-2 items-center justify-center w-full h-auto p-4"
     >
       <div className="px-12 flex items-center justify-center">
-        <img src={img} alt="login" />
+        <img src={img} alt="login" draggable="false" />
       </div>
-      <div className="px-12 flex flex-col items-center justify-center">
-        <h1 className="text-[2rem]">Log in</h1>
+      <div className="px-12 flex flex-col items-center justify-center ">
+        <img
+          draggable="false"
+          className="login_profile select-none"
+          src="/BuyFlow/profile_photo.svg"
+          alt=""
+        />
+
         <LoginForm />
       </div>
     </motion.section>

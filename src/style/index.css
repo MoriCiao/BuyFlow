@@ -1,10 +1,22 @@
-.login-from {
+.login-page {
+  position: relative;
+}
+.login-page img.login_profile {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  top: 0;
+  z-index: 10;
+}
+.login-page .login-from {
   position: relative;
   padding: 20px;
-  width: 350px;
-  height: 350px;
+  width: 25rem;
+  height: 30rem;
+  padding-top: 7.5rem;
+  margin-top: 4rem;
 }
-.login-from button.login-svg {
+.login-page .login-from button.login-svg {
   position: relative;
   width: 70px;
   height: 30px;
@@ -12,8 +24,8 @@
   align-items: center;
   justify-content: center;
 }
-.login-from button.login-svg svg,
-.login-from button.login-svg svg rect {
+.login-page .login-from button.login-svg svg,
+.login-page .login-from button.login-svg svg rect {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,18 +33,30 @@
   height: 100%;
   fill: none;
 }
-.login-from button.login-svg svg rect {
+.login-page .login-from button.login-svg svg rect {
   stroke-width: 4;
   stroke: #000000;
   stroke-dasharray: 200, 200;
   stroke-dashoffset: 0;
   transition: 0.5s;
 }
-.login-from button.login-svg:hover svg rect {
+.login-page .login-from button.login-svg:hover svg rect {
   stroke-width: 2;
   scale: 0.9;
   stroke-dasharray: 50, 150;
   stroke-dashoffset: 95;
+}
+.login-page .login-from svg, .login-page .login-from svg rect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  top: 0;
+  left: 0;
+}
+.login-page .login-from svg rect.svg-border {
+  stroke-width: 3;
+  stroke: #333533;
 }
 
 .loading {
@@ -513,4 +537,16 @@ body .App .header .home-svg:hover button {
 body .App .header .home-svg:hover svg rect {
   stroke-dasharray: 100, 30;
   stroke-dashoffset: 130;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
 }/*# sourceMappingURL=index.css.map */

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/user/userSlice";
+import { setCartItem } from "../features/cart/cartSlice.js";
 import { useNavigate } from "react-router-dom";
 import { mockLoginAPI } from "../features/user/mockAuthAPI.js";
 // 登入表單
@@ -17,9 +18,15 @@ const LoginForm = () => {
     try {
       const userData = await mockLoginAPI({ email, password });
       // 確認回傳資料沒有password
-      console.log("目前 userData :", userData);
+
       dispatch(login(userData)); // 將資料存入 Redux
-      localStorage.setItem("buyflow_user", JSON.stringify(userData)); //
+      localStorage.setItem("buyflow_user", userData.email);
+
+      // 登入後獲取此帳戶的購物車
+      const savedCart = localStorage.getItem(`buyflow_cart-${userData.email}`);
+      if (savedCart) {
+        dispatch(setCartItem(JSON.parse(savedCart)));
+      }
       navigate("/");
     } catch (err) {
       alert(err);
@@ -29,12 +36,14 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="login-from flex flex-col gap-6 items-center p-8 mt-2 border"
+      className="login-from flex flex-col gap-6 items-center p-8 mt-2 "
     >
+      <svg>
+        <rect className="svg-border"></rect>
+      </svg>
       <div className="login-item">
         <label htmlFor="email" className="login-label relative  select-none">
           <input
-            // className="min-w-[300px] border indent-[0.5rem] h-[2rem] rounded-sm"
             className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm "
             id="email"
             name="email"
@@ -70,6 +79,7 @@ const LoginForm = () => {
         </svg>
         Log in
       </button>
+      <img src="./logo.svg" alt="logo.svg" className="w-60 py-6" />
     </form>
   );
 };

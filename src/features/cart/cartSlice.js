@@ -19,23 +19,52 @@ const cartSlice = createSlice({
     */
     // 新增商品
     addItem(state, action) {
-      const { product, amount } = action.payload;
-      const updateItem = { ...product, amount: amount };
-      const itemPrice = product.price * amount;
-      console.log(itemPrice);
+      const { product, quantity, deliveryMethod } = action.payload;
+      const updateItem = {
+        ...product,
+        quantity: quantity,
+        deliveryMethod: deliveryMethod,
+      };
+      const itemPrice = product.price * quantity;
+
       state.totalAmount += itemPrice;
-      state.totalQuatity += Number(amount);
-      console.log(state.totalQuatity);
+      state.totalQuatity += Number(quantity);
+
       state.items = [...state.items, updateItem];
     },
     // CartPage修正數量
     modifyAmount(state, action) {
-      const item = action.payload;
-      console.log(item);
+      const { id, type } = action.payload;
+      const item = state.items.find((i) => i.id === id);
+      if (!item) return;
+      if (type === "increment") {
+        if (item.quantity >= item.stock) {
+          alert("此商品選取數量已達目前庫存量...");
+          return;
+        }
+        item.quantity += 1;
+      } else if (type === "decrement") {
+        item.quantity = Math.max(item.quantity - 1, 1);
+      }
+
+      // 更新購物車裡的總件數及金額
+      let quantity = 0;
+      let amount = 0;
+      state.items.forEach((i) => {
+        quantity += item.quantity;
+        amount += item.quantity * item.price;
+      });
+      state.totalQuatity = quantity;
+      state.totalAmount = amount;
     },
     // 刪除商品
     removeItem(state, action) {
       const item = action.payload;
+      console.log(item);
+
+      state.totalQuatity -= item.quantity;
+      state.totalAmount -= item.quantity * item.price;
+
       const updateItems = state.items.filter((i) => i.id !== item.id);
       state.items = updateItems;
     },
@@ -45,9 +74,22 @@ const cartSlice = createSlice({
       state.totalAmount = 0;
       state.totalQuatity = 0;
     },
+
+    setCartItems(state, action) {
+      state.items = action.payload;
+
+      let quantity = 0;
+      let amount = 0;
+      state.items.forEach((i) => {
+        quantity += i.quantity;
+        amount = i.quantity * i.price;
+      });
+      state.totalQuatity = quantity;
+      state.totalAmount = amount;
+    },
   },
 });
 
-export const { addItem, removeItem, cleanCart, modifyAmount } =
+export const { addItem, removeItem, cleanCart, modifyAmount, setCartItem } =
   cartSlice.actions;
 export default cartSlice.reducer;

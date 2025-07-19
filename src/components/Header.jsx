@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <section className="header  w-full min-h-[10vh] flex flex-col justify-center items-center ">
-      <div className="w-full fixed z-100 top-0 left-0 flex justify-center bg-[#333533]">
+      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-[#333533]">
         <nav className="nav flex justify-between w-[80%] h-full py-2  text-[#e8eddf] select-none">
           <div className="home-svg cursor-pointer">
             <svg>
@@ -46,7 +46,7 @@ const Header = () => {
                 <button
                   className="cursor-pointer border px-2"
                   type="button"
-                  onClick={() => dispatch(loginout())}
+                  onClick={() => dispatch(loginout(), navigate("/"))}
                 >
                   Logout
                 </button>

@@ -6,15 +6,35 @@ import {
   removeItem,
   cleanCart,
 } from "../features/cart/cartSlice";
+import { useEffect } from "react";
 const CartPage = () => {
   const { items, totalAmount, totalQuatity } = useSelector(
     (state) => state.cart
   );
+
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log(items);
+  // 每次購物車變動時，將帳戶選取的商品儲存到localStorage
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(`cart-${user.email}`, JSON.stringify(items));
+    }
+    // 依賴對應 user 和 user的購物車
+  }, [items, user]);
+
   return (
-    <section className="cart-page w-full min-h-[60vh]">
+    <section className="cart-page w-full min-h-[60vh] text-center ">
+      <div className="grid grid-cols-12 border py-2 mb-4 text-black/50">
+        <div className=" col-start-4 col-span-2">Name</div>
+        <div className=" col-start-6 col-span-2">Price</div>
+        <div className=" col-start-8 col-span-2">Quantity </div>
+        <div className=" col-start-10 col-span-2">Delivery</div>
+        <div className=" col-start-12 col-span-1">Delete</div>
+      </div>
+
       {items.length === 0 ? (
         <div className="w-full text-center p-8 flex flex-col items-center justify-cneter">
           <h1 className="!text-[2rem] font-bold h-[200px] flex items-center">
@@ -33,64 +53,97 @@ const CartPage = () => {
         </div>
       ) : (
         <div className="cart">
-          {items.map((i) => {
-            const totalPrice = i.price * i.amount;
-
+          {items.map((i, index) => {
             return (
               <div
-                key={i.id}
-                className={`item-${i.id} w-full grid grid-cols-6 gap-4 px-4 py-4`}
+                key={index}
+                className={`item-${i.id} w-full grid grid-cols-12 items-center justify-center`}
               >
                 <img
                   src={i.image}
                   alt={`item-${i.id}`}
-                  className="col-start-1 col-span-1"
+                  className="col-start-2 col-span-2"
                 />
-                <div className="item-detail col-start-2 col-span-5">
+
+                <div className=" col-start-4 col-span-2">
                   <h3>{i.name}</h3>
-                  <div>
-                    <p>Price : {i.price} $</p>
-                    <p>Quantity : {i.amount} </p>
-                    <p>Total Price is : {totalPrice} $</p>
-                    <div>
-                      <motion.button
-                        initial={{
-                          backgroundColor: "#333533",
-                          color: "#e8eddf",
-                        }}
-                        whileHover={{
-                          backgroundColor: "rgba(255, 0, 0, 1)",
-                          color: "rgba(255, 255, 255, 1)",
-                        }}
-                        transition={{ duration: 0.5 }}
-                        className="border px-2 select-none cursor-pointer rounded-sm"
-                        onClick={() => {
-                          dispatch(removeItem(i));
-                        }}
-                      >
-                        Delete
-                      </motion.button>
-                    </div>
+                </div>
+                <div className=" col-start-6 col-span-2">
+                  <p>{i.price} $</p>
+                </div>
+                <div className=" col-start-8 col-span-2  flex gap-4 justify-center select-none">
+                  <div className="border border-black/50 flex gap-4 justify-center w-fit">
+                    <span
+                      className="px-1 cursor-pointer"
+                      onClick={() => {
+                        dispatch(modifyAmount({ id: i.id, type: "decrement" }));
+                      }}
+                    >
+                      ➖
+                    </span>
+                    <p>{i.quantity}</p>
+                    <span
+                      className="px-1 cursor-pointer"
+                      onClick={() => {
+                        dispatch(modifyAmount({ id: i.id, type: "increment" }));
+                      }}
+                    >
+                      ➕
+                    </span>
                   </div>
                 </div>
-                <hr className="col-start-1 col-span-6" />
+                <div className=" col-start-10 col-span-2">
+                  <p>{i.deliveryMethod}</p>
+                </div>
+                <div className=" col-start-12 col-span-1">
+                  <motion.button
+                    initial={{
+                      backgroundColor: "#333533",
+                      color: "#e8eddf",
+                    }}
+                    whileHover={{
+                      backgroundColor: "rgba(255, 0, 0, 1)",
+                      color: "rgba(255, 255, 255, 1)",
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="border px-2 select-none cursor-pointer rounded-sm"
+                    onClick={() => {
+                      dispatch(removeItem(i));
+                    }}
+                  >
+                    Delete
+                  </motion.button>
+                </div>
+
+                <hr className="col-start-1 col-span-12 my-4" />
               </div>
             );
           })}
 
-          <div className="checkout flex flex-col items-end px-4 py-4">
-            <div>
-              <div className="quantity flex flex-row items-center gap-2 ">
-                <p className="w-[150px] text-end">Total Quantity :</p>
-                <span className="text-black-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
-                  {totalQuatity ?? 0}
-                </span>
-              </div>
-              <div className="amount flex flex-row items-center gap-2">
-                <p className="w-[150px] text-end">Total Amount : </p>
-                <span className="text-red-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
-                  {totalAmount ?? 0} $
-                </span>
+          <div className="checkout flex flex-col px-4 py-4">
+            <div className="flex justify-between items-center">
+              <motion.button
+                initial={{}}
+                whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
+                transition={{ duration: 0.5 }}
+                className="px-2 py-2 border rounded-sm font-bold "
+                onClick={() => navigate("/products")}
+              >
+                ◀ Go Back Shpping
+              </motion.button>
+              <div>
+                <div className="quantity flex flex-row items-center gap-2 ">
+                  <p className="w-[150px] text-end">Total Quantity :</p>
+                  <span className="text-black-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
+                    {totalQuatity ?? 0}
+                  </span>
+                </div>
+                <div className="amount flex flex-row items-center gap-2">
+                  <p className="w-[150px] text-end">Total Amount : </p>
+                  <span className="text-red-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
+                    {totalAmount ?? 0} $
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -114,6 +167,7 @@ const CartPage = () => {
                 whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
                 transition={{ duration: 0.5 }}
                 className="px-2 border rounded-sm font-bold"
+                onClick={() => navigate("/checkout")}
               >
                 CheckOut
               </motion.button>

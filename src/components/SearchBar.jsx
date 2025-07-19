@@ -16,6 +16,7 @@ const SearchBar = () => {
         src={img[0]}
         alt="LOGO"
         className="col-start-1 w-[300px] h-[100px] select-none "
+        draggable="false"
       />
 
       <div className="serach max-w-[40rem] w-full h-full">
@@ -50,6 +51,7 @@ const SearchBar = () => {
         src={img[1]}
         alt="undraw-cart"
         className="col-start-1 w-[300px] h-[100px] select-none "
+        draggable="false"
       />
     </>
   );

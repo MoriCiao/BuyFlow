@@ -6,11 +6,18 @@ import { addItem } from "../features/cart/cartSlice";
 
 const Hr = () => <hr className="my-2 w-full opacity-25" />;
 
-const Radio = ({ name }) => {
+const Radio = ({ label, name, value, checked, onChange }) => {
   return (
     <div className="flex gap-1">
-      <input id={name} name={name} type="radio" />
-      <label htmlFor={name}>{name}</label>
+      <input
+        id={name}
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={onChange}
+        type="radio"
+      />
+      <label htmlFor={label}>{label}</label>
     </div>
   );
 };
@@ -32,13 +39,18 @@ const desImg = [
 
 // 商品被點擊後，會顯示action.payload商品資訊
 const ProductDetailPage = () => {
-  const { id } = useParams();
   const { products } = useSelector((state) => state.products);
-  const product = products.find((p) => String(p.id) === String(id));
-  const [amount, setAmount] = useState(1);
+  const { isAuthenticated } = useSelector((state) => state.user);
+  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const product = products.find((p) => String(p.id) === String(id));
   const descriptions = product.description.split("，");
+  const [deliveryMethod, setDeliveryMethod] = useState("廠商宅配");
+  const handleChange = (e) => {
+    setDeliveryMethod(e.target.value);
+  };
 
   if (!product) {
     return <p>The product you are looking for does not exist</p>;
@@ -54,44 +66,47 @@ const ProductDetailPage = () => {
             alt="product_img"
           />
           <div className="relative col-span-2 col-start-4 py-4">
+            {/* id */}
             <p className="absolute top-0 right-0 border border-black/20 px-4 text-black/50">
               商品編號：{product.id}
             </p>
-            <h3 className="text-[1.15rem] font-bold">
+            {/* product name */}
+            <h3 className="product_name !text-[1.5rem] font-bold">
               {product.category} - {product.name}
             </h3>
             <Hr />
-            <div className="desctipt flex flex-col gap-2">
+            {/* description */}
+            <div className="product_desctipt flex flex-col gap-2">
               {descriptions &&
                 descriptions.map((d, index) => {
                   return <p key={index}>{d}</p>;
                 })}
             </div>
             <Hr />
-            <div>
+            {/* Price */}
+            <div className="product_price flex gap-4 items-center">
               <p>Price : </p>
-              <span className="text-[1.1rem] font-bold text-red-500">
+              <span className="!text-[1.5rem] font-bold text-red-500">
                 {product.price} $
               </span>
             </div>
             <Hr />
-            <div>
+            <div className="product_stcok">
               {product.stock <= 0 ? (
                 <p>庫存為 0 缺貨中...</p>
               ) : (
                 <p>
-                  目前庫存有
+                  Stock :
                   <span className="text-[1.2rem] font-bold text-red-500 px-2 ">
                     {product.stock}
-                  </span>{" "}
-                  個
+                  </span>
                 </p>
               )}
             </div>
             <Hr />
-            <div>
-              <p className="mb-2">結帳方式 : </p>
-              <div className="how-to-pay grid grid-cols-4 gap-2 select-none ">
+            <div className="checkout_methods">
+              <p className="mb-2">Checkout Methods :</p>
+              <div className=" grid grid-cols-4 gap-1 select-none ">
                 {howToPay &&
                   howToPay.map((p, index) => {
                     return (
@@ -112,11 +127,23 @@ const ProductDetailPage = () => {
               </div>
             </div>
             <Hr />
-            <div>
-              <p>配送方式</p>
+            <div className="delivery">
+              <p>Delivery</p>
               <div className="radio-group flex gap-2">
-                <Radio name={"廠商宅配"} />
-                <Radio name={"超商配送"} />
+                <Radio
+                  label={"廠商宅配"}
+                  name={"廠商宅配"}
+                  value={"廠商宅配"}
+                  checked={deliveryMethod === "廠商宅配"}
+                  onChange={handleChange}
+                />
+                <Radio
+                  label={"超商配送"}
+                  name={"超商配送"}
+                  value={"超商配送"}
+                  checked={deliveryMethod === "超商配送"}
+                  onChange={handleChange}
+                />
               </div>
             </div>
             <Hr />
@@ -129,8 +156,8 @@ const ProductDetailPage = () => {
                 min={1}
                 max={product.stock}
                 className="border bg-black/20 text-white text-center"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
               />
               <motion.button
                 initial={{ backgroundColor: "rgba(0,0,0,0)" }}
@@ -141,7 +168,13 @@ const ProductDetailPage = () => {
                 transition={{ duration: 0.5 }}
                 className="border px-4 rounded-md select-none cursor-pointer"
                 onClick={() => {
-                  dispatch(addItem({ product, amount })), navigate("/cart");
+                  if (isAuthenticated) {
+                    dispatch(addItem({ product, quantity, deliveryMethod })),
+                      navigate("/cart");
+                  } else {
+                    alert("請先登入再繼續購物...");
+                    navigate("/login");
+                  }
                 }}
               >
                 Add

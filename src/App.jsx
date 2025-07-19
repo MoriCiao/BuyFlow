@@ -5,6 +5,7 @@ import Loading from "./components/loading";
 import Header from "./components/Header";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer";
+import CartIcon from "./components/CartIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "./features/ui/uiSlice";
 import { useEffect } from "react";
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div className="App w-full relative">
+      <CartIcon />
       {isLoading && <Loading />}
       <Header />
       <main className="main w-full min-h-[60vh] flex justify-center">

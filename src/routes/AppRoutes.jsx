@@ -13,10 +13,10 @@ import AdminProfile from "../pages/profile/AdminProfile.jsx";
 import StaffProfile from "../pages/profile/StaffProfile.jsx";
 import MenberProfile from "../pages/profile/MenberProfile.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
-import CategoryFilter from "../components/CategoryFilter.jsx";
 import StaffList from "../pages/dashboard/StaffList.jsx";
 import ProductsList from "../pages/dashboard/Productslist.jsx";
 import MenberList from "../pages/dashboard/MenberList.jsx";
+import CheckoutPage from "../pages/CheckoutPage.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center">
@@ -27,7 +27,7 @@ const AppRoutes = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
-
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route
           path="/menber"
           element={
