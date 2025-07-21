@@ -12,8 +12,6 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    // 所有顯示商品
-
     // 搜尋商品
     search(state, action) {
       const keyword = action.payload.toLowerCase();
@@ -60,8 +58,24 @@ const productsSlice = createSlice({
       state.modify_list = { ...item };
       console.log(state.modify_list);
     },
+
+    updateProduct(state, action) {
+      const { id, updatedData } = action.payload;
+      console.log(id, updatedData);
+      const index = state.products.findIndex((p) => p.id === id);
+      if (index !== -1) {
+        state.products[index] = { ...state.products[index], ...updatedData };
+      }
+
+      state.isModify = false;
+    },
+
+    closeView(state, action) {
+      state.isModify = false;
+    },
   },
 });
 
-export const { search, active, modify } = productsSlice.actions;
+export const { search, active, modify, updateProduct, closeView } =
+  productsSlice.actions;
 export default productsSlice.reducer;

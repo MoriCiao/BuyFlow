@@ -9,6 +9,7 @@ import CartIcon from "./components/CartIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "./features/ui/uiSlice";
 import { useEffect } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const isLoading = useSelector((state) => state.ui.isLoading);
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App w-full relative">
+      <ScrollToTop />
       <CartIcon />
       {isLoading && <Loading />}
       <Header />

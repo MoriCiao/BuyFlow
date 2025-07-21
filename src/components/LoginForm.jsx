@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/user/userSlice";
 import { setCartItem } from "../features/cart/cartSlice.js";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,13 @@ const LoginForm = () => {
       if (savedCart) {
         dispatch(setCartItem(JSON.parse(savedCart)));
       }
-      navigate("/");
+
+      // 根據取得的 userDate身分去做個別的導入頁面
+      if (userData.role === "menber") {
+        navigate("/");
+      } else if (userData.role === "staff" || userData.role === "admin") {
+        navigate("/dashboard");
+      }
     } catch (err) {
       alert(err);
     }

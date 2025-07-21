@@ -5,7 +5,7 @@ const initialState = {
   user: null,
   // 核對是否登入
   isAuthenticated: false,
-  profile_bg: "/user/user-bg-2.svg",
+  profile_bg: "/BuyFlow/user/user-bg-2.svg",
   userList: users,
 };
 
@@ -25,9 +25,13 @@ const userSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
     },
+    addmenber(state, action) {
+      const NewUser = action.payload;
+      console.log(NewUser);
+    },
   },
 });
 
-export const { login, loginout } = userSlice.actions;
+export const { login, loginout, addmenber } = userSlice.actions;
 // 匯出 reducer（給 store 使用）
 export default userSlice.reducer;

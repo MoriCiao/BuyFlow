@@ -478,6 +478,15 @@
     text-shadow: 0 0 10px rgb(218, 165, 32);
   }
 }
+.register-area svg, .register-area svg rect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  fill: transparent;
+}
+
 :root {
   --text-color: #333533;
   --bg-color:#e8eddf;

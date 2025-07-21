@@ -14,7 +14,8 @@ import StaffProfile from "../pages/profile/StaffProfile.jsx";
 import MenberProfile from "../pages/profile/MenberProfile.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import StaffList from "../pages/dashboard/StaffList.jsx";
-import ProductsList from "../pages/dashboard/Productslist.jsx";
+import ProductsList from "../pages/dashboard/ProductsList.jsx";
+import Register from "../pages/Register.jsx";
 import MenberList from "../pages/dashboard/MenberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 const AppRoutes = () => {
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductDetailPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
         <Route path="/checkout" element={<CheckoutPage />} />
@@ -37,7 +39,7 @@ const AppRoutes = () => {
             </RequireAuth>
           }
         />
-
+        {/* DashBoard */}
         <Route path="/dashboard" element={<DashBoard />}>
           <Route
             path="staff"
@@ -68,7 +70,7 @@ const AppRoutes = () => {
           <Route
             path="stafflist"
             element={
-              <RequireRole allowRoles={["admin"]}>
+              <RequireRole allowRoles={["staff", "admin"]}>
                 <StaffList />
               </RequireRole>
             }

@@ -16,7 +16,6 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(items);
   // 每次購物車變動時，將帳戶選取的商品儲存到localStorage
   useEffect(() => {
     if (user) {
@@ -36,20 +35,22 @@ const CartPage = () => {
       </div>
 
       {items.length === 0 ? (
-        <div className="w-full text-center p-8 flex flex-col items-center justify-cneter">
+        <div className="w-full text-center text-[#333533] p-8 flex flex-col items-center justify-cneter ">
           <h1 className="!text-[2rem] font-bold h-[200px] flex items-center">
             There are currently no items <br />
             in your shopping cart...
           </h1>
-          <button
+          <motion.button
+            whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
+            transition={{ duration: 0.5 }}
             type="button"
             className="text-[1.5rem] border select-none cursor-pointer px-2 rounded-md"
             onClick={() => {
               navigate("/products");
             }}
           >
-            GO Shopping
-          </button>
+            Go Shopping
+          </motion.button>
         </div>
       ) : (
         <div className="cart">
@@ -72,7 +73,7 @@ const CartPage = () => {
                   <p>{i.price} $</p>
                 </div>
                 <div className=" col-start-8 col-span-2  flex gap-4 justify-center select-none">
-                  <div className="border border-black/50 flex gap-4 justify-center w-fit">
+                  <div className="relative border border-black/50 flex gap-4 justify-center w-fit">
                     <span
                       className="px-1 cursor-pointer"
                       onClick={() => {
@@ -81,6 +82,16 @@ const CartPage = () => {
                     >
                       ➖
                     </span>
+                    <motion.strong
+                      initial={{ opacity: 0.5 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1 }}
+                      className={`absolute bg-white/50 text-red-500 -top-8 w-35 px-1 !text-[1rem] border ${
+                        i.quantity === i.stock ? "" : "hidden"
+                      }`}
+                    >
+                      已達最大數量！
+                    </motion.strong>
                     <p>{i.quantity}</p>
                     <span
                       className="px-1 cursor-pointer"

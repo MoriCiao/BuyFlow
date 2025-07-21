@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { addItem } from "../features/cart/cartSlice";
-
+import { Link } from "react-router-dom";
 const Hr = () => <hr className="my-2 w-full opacity-25" />;
 
 const Radio = ({ label, name, value, checked, onChange }) => {
@@ -44,6 +44,7 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [quantity, setQuantity] = useState(1);
   const product = products.find((p) => String(p.id) === String(id));
   const descriptions = product.description.split("，");
@@ -59,6 +60,16 @@ const ProductDetailPage = () => {
   return (
     <section className="product-detail">
       <div className="flex flex-col gap-4">
+        <div className="breadcrumb flex gap-2 text-black/70">
+          <span>/</span>
+          <Link to="/">BuyFlow</Link>
+          <span>/</span>
+          <Link to="/products">products</Link>
+          <span>/</span>
+          <span className="flex text-black/50">
+            {`${product.name}  ${product.category}  ${product.description}`}
+          </span>
+        </div>
         <div className="grid grid-cols-5 gap-4 justify-center px-4">
           <img
             className="w-full max-h-[500px] py-4 col-span-3 col-start-1 my-auto"
