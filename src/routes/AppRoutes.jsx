@@ -1,5 +1,4 @@
 import React from "react";
-
 import RequireAuth from "../components/RequireAuth.jsx";
 import RequireRole from "../components/RequireRole.jsx";
 import { Routes, Route } from "react-router-dom";
@@ -18,6 +17,7 @@ import ProductsList from "../pages/dashboard/ProductsList.jsx";
 import Register from "../pages/Register.jsx";
 import MenberList from "../pages/dashboard/MenberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
+import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center">
@@ -30,6 +30,8 @@ const AppRoutes = () => {
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/checkout/success" element={<CheckoutSuccess />} />
+
         <Route
           path="/menber"
           element={

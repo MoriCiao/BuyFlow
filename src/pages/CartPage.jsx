@@ -15,7 +15,13 @@ const CartPage = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const handleToCheckout = () => {
+    if (items.length === 0) {
+      alert("請選擇商品加入購物車內，再前往付款頁面...");
+    } else {
+      navigate("/checkout");
+    }
+  };
   // 每次購物車變動時，將帳戶選取的商品儲存到localStorage
   useEffect(() => {
     if (user) {
@@ -178,7 +184,7 @@ const CartPage = () => {
                 whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
                 transition={{ duration: 0.5 }}
                 className="px-2 border rounded-sm font-bold"
-                onClick={() => navigate("/checkout")}
+                onClick={handleToCheckout}
               >
                 CheckOut
               </motion.button>

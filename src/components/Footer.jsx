@@ -65,12 +65,13 @@ const ContactItem = ({ name, icon, link }) => {
 const Footer = () => {
   return (
     <section className="footer flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">
+      {/* Logo */}
       <div className="w-[80%] grid grid-cols-6 items-center justify-center">
         <div className="footer-img h-full col-span-3 col-start-1 grid grid-cols-2 items-center justify-center">
           <img className="pl-8 m-auto w-80" src={logo} alt="" />
           <img className="m-auto w-80" src={word} alt="word" />
         </div>
-
+        {/* About Us */}
         <div className="footer-item2 h-full py-4 col-start-4">
           <h3 className="text-center text-[1.15rem] mb-2">About Us</h3>
           <ol className="footer-ol flex flex-col gap-4 items-center ">
@@ -84,8 +85,9 @@ const Footer = () => {
               })}
           </ol>
         </div>
+        {/*  Contact Us */}
         <div className="Contact  h-full py-4 col-start-5 col-span-2 flex flex-col items-center w-[15rem]">
-          <h3 className="text-center text-[1.15rem] mb-2">Contact Us</h3>
+          <h3 className="text-center text-[1.15rem] mb-2 w-full">Contact us</h3>
           <ol className="footer-ol flex  flex-col gap-2 items-start  text-[1rem] ">
             {contact_items &&
               contact_items.map((i, index) => {

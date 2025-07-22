@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
-  isRegister: false,
+  isVisible: false,
   animate_I: {
     initial: { opacity: 0.5, y: -10 },
     animate: { opacity: 1, y: 0 },
@@ -18,10 +18,11 @@ const uiSlice = createSlice({
     setLoading(state, action) {
       state.isLoading = action.payload;
     },
-    toRegister(state, action) {
-      state.isRegister = action.payload;
+    isSearch(state, action) {
+      const status = action.payload;
+      state.isVisible = status;
     },
   },
 });
-export const { setLoading, toRegister } = uiSlice.actions;
+export const { setLoading, isSearch } = uiSlice.actions;
 export default uiSlice.reducer;

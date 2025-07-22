@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loginout } from "../features/user/userSlice";
-import { toRegister } from "../features/ui/uiSlice";
+import { isSearch } from "../features/ui/uiSlice";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
 const HeaderHr = () => {
@@ -10,21 +10,23 @@ const HeaderHr = () => {
 
 const Header = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
-  const { isRegister } = useSelector((state) => state.ui);
+  const { isVisible } = useSelector((state) => state.ui);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== "/register") {
-      dispatch(toRegister(false));
+    if (location.pathname === "/register" || location.pathname === "/login") {
+      dispatch(isSearch(false));
+    } else {
+      dispatch(isSearch(true));
     }
   }, [location.pathname]);
 
   return (
     <section
       className={`header w-full ${
-        isRegister ? "min-h-[5vh]" : "min-h-[10vh]"
+        isVisible ? "min-h-[5vh]" : "min-h-[10vh]"
       } flex flex-col justify-center items-center `}
     >
       <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-[#333533]">
@@ -79,12 +81,7 @@ const Header = () => {
                 <>
                   <HeaderHr />
                   <li>
-                    <Link
-                      to="/register"
-                      onClick={() => dispatch(toRegister(true))}
-                    >
-                      Register
-                    </Link>
+                    <Link to="/register">Register</Link>
                   </li>
                 </>
               )}
@@ -92,14 +89,20 @@ const Header = () => {
           </ol>
         </nav>
       </div>
-
-      <div
+      {isVisible && (
+        <div
+          className={` header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4`}
+        >
+          <SearchBar />
+        </div>
+      )}
+      {/* <div
         className={`${
           !isRegister ? "" : "hidden"
         } header-left w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4`}
       >
         <SearchBar />
-      </div>
+      </div> */}
     </section>
   );
 };

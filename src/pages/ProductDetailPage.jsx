@@ -6,22 +6,6 @@ import { addItem } from "../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 const Hr = () => <hr className="my-2 w-full opacity-25" />;
 
-const Radio = ({ label, name, value, checked, onChange }) => {
-  return (
-    <div className="flex gap-1">
-      <input
-        id={name}
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        type="radio"
-      />
-      <label htmlFor={label}>{label}</label>
-    </div>
-  );
-};
-
 const howToPay = [
   "信用卡",
   "無卡分期",
@@ -44,15 +28,10 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [quantity, setQuantity] = useState(1);
   const product = products.find((p) => String(p.id) === String(id));
   const descriptions = product.description.split("，");
-  const [deliveryMethod, setDeliveryMethod] = useState("廠商宅配");
-  const handleChange = (e) => {
-    setDeliveryMethod(e.target.value);
-  };
-
   if (!product) {
     return <p>The product you are looking for does not exist</p>;
   }
@@ -138,26 +117,7 @@ const ProductDetailPage = () => {
               </div>
             </div>
             <Hr />
-            <div className="delivery">
-              <p>Delivery</p>
-              <div className="radio-group flex gap-2">
-                <Radio
-                  label={"廠商宅配"}
-                  name={"廠商宅配"}
-                  value={"廠商宅配"}
-                  checked={deliveryMethod === "廠商宅配"}
-                  onChange={handleChange}
-                />
-                <Radio
-                  label={"超商配送"}
-                  name={"超商配送"}
-                  value={"超商配送"}
-                  checked={deliveryMethod === "超商配送"}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <Hr />
+
             {/* 最大不可以超過此商品的庫存 */}
             <div className="add-cart flex gap-2 justify-end pr-4">
               <p>請輸入您要購買數量 : </p>
@@ -180,8 +140,7 @@ const ProductDetailPage = () => {
                 className="border px-4 rounded-md select-none cursor-pointer"
                 onClick={() => {
                   if (isAuthenticated) {
-                    dispatch(addItem({ product, quantity, deliveryMethod })),
-                      navigate("/cart");
+                    dispatch(addItem({ product, quantity })), navigate("/cart");
                   } else {
                     alert("請先登入再繼續購物...");
                     navigate("/login");

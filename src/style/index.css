@@ -174,8 +174,7 @@
   transition: 0.5s;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-          clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
 }
 .Page404 .word_I span:nth-child(2) {
   position: absolute;
@@ -187,8 +186,7 @@
   transition: 0.5s;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
-          clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
+  clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
 }
 .Page404 .word_I span:nth-child(3) {
   position: absolute;
@@ -390,10 +388,11 @@
   animation: animation-path 1s linear forwards;
   transform: scale(1.2);
 }
-.homepage .homepage-link {
+
+.homepage-link {
   box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5);
 }
-.homepage .homepage-link button {
+.homepage-link button {
   position: relative;
   cursor: pointer;
   width: 240px;
@@ -406,7 +405,7 @@
   transition: 1s;
   animation: animation_text 3s infinite linear;
 }
-.homepage .homepage-link button::before {
+.homepage-link button::before {
   content: "";
   width: 70%;
   height: 100%;
@@ -420,17 +419,18 @@
   align-items: center;
   justify-content: center;
 }
-.homepage .homepage-link button:hover {
+.homepage-link button:hover {
   font-size: 0;
 }
-.homepage .homepage-link button:hover::before {
+.homepage-link button:hover::before {
   content: "Go Shopping !";
   font-size: 1.15rem;
   color: goldenrod;
   width: 100%;
   opacity: 1;
 }
-.homepage .homepage-link button svg, .homepage .homepage-link button rect {
+.homepage-link button svg,
+.homepage-link button rect {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -438,7 +438,8 @@
   height: 100%;
   fill: transparent;
 }
-.homepage .homepage-link button svg rect, .homepage .homepage-link button rect rect {
+.homepage-link button svg rect,
+.homepage-link button rect rect {
   stroke-width: 4;
   stroke: goldenrod;
   stroke-dasharray: 150;
@@ -485,6 +486,26 @@
   top: 0%;
   left: 0%;
   fill: transparent;
+}
+
+.delivery-method .delivery_btn {
+  border-radius: 1rem;
+  background-color: #e8eddf;
+  border: 2px rgb(51, 53, 51) solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+  scale: 0.95;
+  margin: 1rem;
+  cursor: pointer;
+}
+.delivery-method .delivery_btn.active {
+  background-color: rgba(51, 53, 51, 0.5);
+  color: #e8eddf;
+  transform: translate(0px, -5px) scale(1);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
 :root {

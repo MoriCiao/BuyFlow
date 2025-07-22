@@ -10,6 +10,8 @@ const initialState = {
   items: [], // <<< 每個商品的細項 {id, name... }
   totalAmount: 0, // <<< 所有商品總金額
   totalQuatity: 0, // <<< 所有商品總件數
+  deliveryMethod: "",
+  order: {},
 };
 
 const cartSlice = createSlice({
@@ -85,9 +87,26 @@ const cartSlice = createSlice({
       state.totalQuatity = quantity;
       state.totalAmount = amount;
     },
+
+    setDelivery(state, action) {
+      const { deliveryMethod } = action.payload;
+      state.deliveryMethod = deliveryMethod;
+      console.log(state.deliveryMethod);
+    },
+    createOrder(state, action) {
+      const order = action.payload;
+      console.log(order);
+    },
   },
 });
 
-export const { addItem, removeItem, cleanCart, modifyAmount, setCartItem } =
-  cartSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  cleanCart,
+  modifyAmount,
+  setCartItem,
+  setDelivery,
+  createOrder,
+} = cartSlice.actions;
 export default cartSlice.reducer;
