@@ -1,11 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import PaymentMethod from "./PaymentMethod";
-import { createOrder } from "../features/cart/cartSlice";
-import { useNavigate } from "react-router-dom";
-import { hr } from "framer-motion/client";
 
+import { useNavigate } from "react-router-dom";
+import { newDate } from "../features/cart/cartUtils.js";
+import { cleanCart } from "../features/cart/cartSlice.js";
+import {
+  createOrder,
+  savedOrderToLocalStorage,
+} from "../features/user/userSlice";
 const payment = [
   "信用卡",
   "無卡分期",
@@ -20,14 +24,14 @@ const Hr = () => {
 };
 
 const OrderSection = () => {
-  const { items, totalAmount, totalQuatity, deliveryMethod, order } =
-    useSelector((state) => state.cart);
+  const { items, totalAmount, totalQuatity, deliveryMethod } = useSelector(
+    (state) => state.cart
+  );
+  const { user, allOrders } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
   const [pay, setPay] = useState("");
   const handlePay = (name, e) => {
-    console.log();
     setPay(e.target.value);
   };
 
@@ -38,30 +42,33 @@ const OrderSection = () => {
     } else if (!pay) {
       alert("請選擇付款方式...");
     } else {
-      dispatch(
-        createOrder({
-          user,
-          items,
-          deliveryMethod,
-          totalAmount,
-          totalQuatity,
-        })
-      );
+      const order = {
+        user,
+        items,
+        deliveryMethod,
+        totalAmount,
+        totalQuatity,
+        pay,
+        date: newDate(),
+      };
+
+      // 將訂單加入進slice裡
+      dispatch(createOrder(order));
+      dispatch(cleanCart());
+
       navigate("/checkout/success");
     }
   };
-
-  // const user = {
-  //   name: "Mori",
-  //   email: "user@example.com",
-  //   password: "user123",
-  //   role: "menber",
-  //   phone: "0932766444",
-  //   address: "台南市245號中正路",
-  //   image: "/BuyFlow/user/user-menber.svg",
-  // };
-
   const { name, email, phone, address } = user;
+  // useEffect(() => {
+  //   console.log(allOrders);
+  // }, [allOrders]);
+  // useEffect(() => {
+  //   // 每個使用者唯獨的key
+  //   const key = `Order_${email}`;
+  //   console.log(key);
+  //   dispatch(savedOrderToLocalStorage({ key, allOrders }));
+  // }, [user, allOrders]);
   return (
     <section className="order-section col-span-2 grid grid-cols-2 gap-2 items-center">
       <img
@@ -79,7 +86,7 @@ const OrderSection = () => {
           <strong>請您在核對下方訂單資訊：</strong>
         </h3>
         <p>
-          配送方式：<span>{deliveryMethod}</span>
+          配送方式：<strong>{deliveryMethod}</strong>
         </p>
         <Hr />
         <p>付款方式：</p>
@@ -144,7 +151,7 @@ const OrderSection = () => {
         <motion.button
           whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
           transition={{ duration: 0.5 }}
-          className="border rounded-full  w-40 m-auto cursor-pointer select-none"
+          className="border rounded-full w-40 h-10 font-bold m-auto cursor-pointer select-none"
           onClick={handleSubmit}
         >
           Submit Oreder

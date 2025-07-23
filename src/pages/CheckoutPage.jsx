@@ -10,12 +10,6 @@ import OrderSection from "../components/OrderSection";
 // 配送選項、配送地址
 // 付款方式
 
-//  CheckoutPage
-// ├── 🧍 購買人資訊區（Billing Info）
-// ├── 🚚 配送方式區（Delivery Method）
-// ├── 📦 訂單明細（Cart Summary）
-// └── ✅ 確認與付款區（Place Order）
-
 const CheckoutPage = () => {
   return (
     <section className="checkout-page grid grid-cols-2  gap-4 p-4 w-full">

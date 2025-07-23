@@ -11,19 +11,13 @@ const initialState = {
   totalAmount: 0, // <<< 所有商品總金額
   totalQuatity: 0, // <<< 所有商品總件數
   deliveryMethod: "",
-  order: {},
+  orders: [],
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    /*
-        這邊會定義 reducer 
-          addItem 新增商品
-          removeItem 移除商品
-          cleanCart 清理購物車的函式
-    */
     // 新增商品
     addItem(state, action) {
       const { product, quantity, deliveryMethod } = action.payload;
@@ -51,10 +45,6 @@ const cartSlice = createSlice({
           ? Math.min(item.quantity + 1, item.stock)
           : Math.max(item.quantity - 1, 1);
 
-      // 更新購物車裡的總件數及金額
-      // let quantity = ;
-      // let amount = ;
-
       state.totalQuatity = calculateTotalQuantity(state.items);
       state.totalAmount = calculateTotalAmount(state.items);
     },
@@ -65,7 +55,7 @@ const cartSlice = createSlice({
       state.totalQuatity -= item.quantity;
       state.totalAmount -= item.quantity * item.price;
 
-      const updateItems = deleteItem(state.items);
+      const updateItems = deleteItem(state.items, item);
       state.items = updateItems;
     },
     // 清理購物車
@@ -74,7 +64,7 @@ const cartSlice = createSlice({
       state.totalAmount = 0;
       state.totalQuatity = 0;
     },
-
+    // 將選取的商品導入購物車
     setCartItems(state, action) {
       state.items = action.payload;
 
@@ -87,15 +77,20 @@ const cartSlice = createSlice({
       state.totalQuatity = quantity;
       state.totalAmount = amount;
     },
-
+    // 設定配送方式
     setDelivery(state, action) {
       const { deliveryMethod } = action.payload;
       state.deliveryMethod = deliveryMethod;
       console.log(state.deliveryMethod);
     },
-    createOrder(state, action) {
-      const order = action.payload;
-      console.log(order);
+
+    getOrder(state, action) {
+      // savedToLocalStorage;
+      // loadDataLocalStorage;
+    },
+    saveOrder(state, action) {
+      const { key, orders } = action.payload;
+      savedToLocalStorage(key, orders);
     },
   },
 });
@@ -108,5 +103,7 @@ export const {
   setCartItem,
   setDelivery,
   createOrder,
+  cancelOrder_cart,
+  saveOrder,
 } = cartSlice.actions;
 export default cartSlice.reducer;

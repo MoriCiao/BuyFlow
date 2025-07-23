@@ -28,6 +28,7 @@ const MenberList = () => {
           <tbody>
             {menberFiltered &&
               menberFiltered.map((m, index) => {
+                console.log(m);
                 return (
                   <motion.tr
                     whileHover={{

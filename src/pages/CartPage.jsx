@@ -25,7 +25,7 @@ const CartPage = () => {
   // 每次購物車變動時，將帳戶選取的商品儲存到localStorage
   useEffect(() => {
     if (user) {
-      localStorage.setItem(`cart-${user.email}`, JSON.stringify(items));
+      localStorage.setItem(`Cart_${user.email}`, JSON.stringify(items));
     }
     // 依賴對應 user 和 user的購物車
   }, [items, user]);

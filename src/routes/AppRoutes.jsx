@@ -18,6 +18,8 @@ import Register from "../pages/Register.jsx";
 import MenberList from "../pages/dashboard/MenberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
+import OrderTracking from "../components/OrderTracking.jsx";
+import OrderList from "../pages/dashboard/OrderList.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center">
@@ -38,6 +40,14 @@ const AppRoutes = () => {
             // 使用 RequireAuth 驗證，符合 isAuthenticated 時才會顯示<MenberProfile />
             <RequireAuth>
               <MenberProfile />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/menber/ordertracking"
+          element={
+            <RequireAuth>
+              <OrderTracking />
             </RequireAuth>
           }
         />
@@ -82,6 +92,14 @@ const AppRoutes = () => {
             element={
               <RequireRole allowRoles={["staff", "admin"]}>
                 <ProductsList />
+              </RequireRole>
+            }
+          />
+          <Route
+            path="orderlist"
+            element={
+              <RequireRole allowRoles={["staff", "admin"]}>
+                <OrderList />
               </RequireRole>
             }
           />

@@ -56,6 +56,11 @@ const DashBoard = () => {
             Menber
           </motion.button>
         </Link>
+        <Link to="orderlist" className="">
+          <motion.button {...motion_btn} className={btn_style}>
+            Order List
+          </motion.button>
+        </Link>
       </nav>
       {/* Dashboard Container */}
 

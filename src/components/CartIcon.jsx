@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 const CartIcon = () => {
   const navigate = useNavigate();
+
   const [isOpen, setOpen] = useState(false);
   const { items, totalAmount, totalQuatity } = useSelector(
     (state) => state.cart
@@ -20,6 +21,7 @@ const CartIcon = () => {
 
   const headnleToCheckout = () => {
     if (items.length === 0) return;
+
     navigate("/checkout");
   };
 
@@ -101,7 +103,7 @@ const CartIcon = () => {
               type="button"
               className="border px-2 rounded-full cursor-pointer"
               onClick={() => {
-                headnleToCheckout;
+                headnleToCheckout(), handleOpen();
               }}
             >
               CheckOut

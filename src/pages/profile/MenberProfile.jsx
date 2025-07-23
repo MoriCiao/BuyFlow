@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import ProfileSVG from "../../components/ProfileSVG";
 
 // 會員資料瀏覽
@@ -18,7 +19,6 @@ const MenberProfile = () => {
 
       <div className="col-start-2 col-span-1 flex flex-col items-center justify-start">
         <h1 className="text-[1.5rem] w-[350px]">Menber Profile</h1>
-
         <div className="container flex flex-col items-center justify-center w-[350px] min-h-[200px]">
           <ProfileSVG />
 
@@ -49,6 +49,13 @@ const MenberProfile = () => {
             </table>
           </div>
         </div>
+
+        <Link
+          to="/menber/ordertracking"
+          className="p-2 my-2 font-bold underline "
+        >
+          🚚 Order Tracking
+        </Link>
       </div>
     </section>
   );
