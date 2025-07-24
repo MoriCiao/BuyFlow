@@ -27,7 +27,6 @@ const productsSlice = createSlice({
             itemCate.includes(keyword)
           );
         });
-        console.log(state.filtered);
       } else {
         state.isFiltered = false;
       }
@@ -37,7 +36,7 @@ const productsSlice = createSlice({
     active(state, action) {
       // 點及分類按鈕，顯示對應的商品
       const active = action.payload.toLowerCase();
-      console.log(active);
+
       if (active !== "所有商品" && active !== "熱銷商品") {
         state.isFiltered = true;
         state.filtered = state.products.filter(
@@ -56,12 +55,11 @@ const productsSlice = createSlice({
       const item = action.payload;
       state.isModify = true;
       state.modify_list = { ...item };
-      console.log(state.modify_list);
     },
 
     updateProduct(state, action) {
       const { id, updatedData } = action.payload;
-      console.log(id, updatedData);
+
       const index = state.products.findIndex((p) => p.id === id);
       if (index !== -1) {
         state.products[index] = { ...state.products[index], ...updatedData };

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { mockLoginAPI } from "../features/user/mockAuthAPI.js";
 // 登入表單
 const LoginForm = () => {
-  // console.log("mockLoginAPI", mockLoginAPI);
   // input輸入的值存儲起來，供 userReducer使用
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,13 +43,19 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       className="login-from flex flex-col gap-6 items-center p-8 mt-2 "
     >
+      <img
+        draggable="false"
+        className="login_profile select-none absolute top-[-5rem]"
+        src="/BuyFlow/profile_photo.svg"
+        alt=""
+      />
       <svg>
         <rect className="svg-border"></rect>
       </svg>
       <div className="login-item">
         <label htmlFor="email" className="login-label relative  select-none">
           <input
-            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm "
+            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#e8eddf]"
             id="email"
             name="email"
             type="email"
@@ -66,7 +71,7 @@ const LoginForm = () => {
       <div className="login-item">
         <label htmlFor="password" className="login-label relative select-none">
           <input
-            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm"
+            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#e8eddf]"
             id="password"
             name="password"
             type="password"

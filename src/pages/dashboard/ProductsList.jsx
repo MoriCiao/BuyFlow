@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { modify } from "../../features/products/productsSlice";
@@ -7,13 +7,31 @@ const ProductsList = () => {
   const { products, isModify } = useSelector((state) => state.products);
   const { animate_I } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
+  const [keyword, setKeyWord] = useState("");
+  const handleSearch = (e) => {};
   return (
     <AnimatePresence mode="wait">
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="products-list w-full h-full text-center "
+        className="products-list w-full h-full text-center flex flex-col gap-4 "
       >
+        <div className="flex justify-center items-center rounded-full border overflow-hidden m-auto min-w-150">
+          <input
+            type="text"
+            placeholder="搜尋訂單..."
+            className="search-input w-full rounded-l-full h-[2rem] indent-[1rem] border-0"
+            value={keyword}
+            onChange={(e) => setKeyWord(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                dispatch(search(keyword)),
+                  setKeyWord(""),
+                  navigate("/products");
+              }
+            }}
+          />
+        </div>
         <div className=" min-w-[1000px] max-h-[500px] ">
           <table className="w-full border border-collapse w-[100%] ">
             <thead>

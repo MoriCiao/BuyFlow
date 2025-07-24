@@ -9,7 +9,7 @@ const CheckoutSuccess = () => {
       <img
         src="/BuyFlow/get-order.svg"
         alt="get-order"
-        className="max-w-[20%]"
+        className="xl:max-w-[20%] sm:max-w-[50%]"
       />
       <Link className="homepage-link" to={"/products"}>
         <button type="button">

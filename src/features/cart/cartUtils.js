@@ -25,21 +25,11 @@ export const newDate = () => {
   const now = new Date();
 
   const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-  const date = ` ${year} / ${month}/ ${day} - ${hours}: ${minutes}: ${seconds}`;
+  const month = (now.getMonth() + 1).toString().padStart(2, "0");
+  const day = now.getDate().toString().padStart(2, "0");
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+  const date = ` ${year} / ${month}/ ${day}  ${hours}: ${minutes}: ${seconds}`;
   return date;
 };
-// // 將登入者之前儲存資料，登入時抓取
-// export const loadCartFromStorage = (key) => {
-//   const saved_order = localStorage.getItem(key);
-//   console.log(JSON.parse(saved_order, null, 2));
-//   return JSON.parse(saved_order);
-// };
-
-// export const savedToLocalStorage = (key, data) => {
-//   localStorage.setItem(key, JSON.stringify(data));
-// };

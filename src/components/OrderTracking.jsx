@@ -1,57 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import {
-  cancelOrder,
-  loadingOrderFromLocalStorage,
-} from "../features/user/userSlice";
 import { motion } from "framer-motion";
+import { cancelOrderFormDashBoard } from "../features/order/orderSlice";
 
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
   const [savedOrder, setSavedOrder] = useState([]);
 
-  const { user, allOrders } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const orderData = allOrders;
-  console.log(orderData.length);
+  // 訂單刪除
+  const handleCancel = (order) => {
+    // localStorage 刪除
+    const UserKey = `order-${user.email}`;
+    const saved = localStorage.getItem(UserKey);
+    const savedData = JSON.parse(saved);
+    const updatedOrderData = savedData.filter((s) => s.id !== order.id);
+    localStorage.setItem(UserKey, JSON.stringify(updatedOrderData));
+    setSavedOrder(updatedOrderData);
+    // dashboard 刪除(刪除後會將資料上傳至 Storage)
+    dispatch(cancelOrderFormDashBoard(order));
+  };
 
-  // useEffect(() => {
-  //   if (!user) return;
-  //   // 要抓取之前已儲存至 localStorage的對應資料
-  //   const key = `Order_${user.email}`;
+  useEffect(() => {
+    if (!user) return;
+    // 要抓取之前已儲存至 localStorage的對應資料
+    const userKey = `order-${user.email}`;
+    const saved = localStorage.getItem(userKey);
+    const savedData = JSON.parse(saved);
 
-  //   const saved = dispatch(loadingOrderFromLocalStorage(key));
-  //   console.log(saved);
-  //   if (saved) {
-  //     setSavedOrder(saved);
-  //   } else {
-  //     setSavedOrder([]);
-  //   }
-  // }, [user]);
+    if (savedData) {
+      setSavedOrder(savedData);
+    } else {
+      setSavedOrder([]);
+    }
+  }, [user]);
 
   return (
     <section className="order-tracking relative col-span-2 flex flex-col gap-4 items-start justify-start w-full h-full">
-      {orderData.length === 0 ? (
+      {savedOrder.length === 0 ? (
         <div className="w-full h-full flex items-center justify-center">
           <h1 className="font-bold text-[2rem]">您目前沒有訂單...</h1>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4">
-          {orderData &&
-            orderData.map((o, index) => {
+          {savedOrder &&
+            savedOrder.map((o, index) => {
               return (
                 <div
                   key={index}
                   className="order-detail border border-black/50 w-full max-h-[15rem] p-4 grid grid-cols-4 gap-8"
                 >
                   <div className="flex flex-col gap-1">
-                    <h3 className="text-[1.15rem] font-bold">
-                      單號 No.{o.orderNo}
-                    </h3>
+                    <h3 className="text-[1.15rem] font-bold">訂單：{o.id}</h3>
                     <p>訂購時間：{o.date}</p>
                     <p>配送方式：{o.deliveryMethod}</p>
                     <p>總消費金額：{o.totalAmount} $</p>
@@ -96,12 +100,15 @@ const OrderTracking = () => {
                       whileHover={{
                         backgroundColor: "rgb(255,255,255) ",
                         color: "rgb(255,0,0)",
-                        border: "rgb(255,0,0) 3px solid",
+                        border: "rgb(255,0,0) 2px solid",
+                        scale: 1.1,
+                        x: -5,
+                        y: -5,
                       }}
                       transition={{ duration: 0.5 }}
                       onClick={() => {
                         if (confirm("確定要取消這筆訂單嗎？")) {
-                          dispatch(cancelOrder(o));
+                          handleCancel(o);
                         }
                       }}
                       type="button"
@@ -116,12 +123,19 @@ const OrderTracking = () => {
         </div>
       )}
 
-      <button
-        className="border px-2 text-[1.1rem] tracking-widest  rounded-full select-none cursor-pointer"
+      <motion.button
+        initial={{ scale: 1 }}
+        whileHover={{
+          backgroundColor: "#333533",
+          color: "#e8eddf",
+          scale: 1.1,
+        }}
+        transition={{ duration: 0.5 }}
+        className="border px-4 py-1 text-[1.5rem] tracking-widest  select-none cursor-pointer"
         onClick={() => navigate("/menber")}
       >
         🔙會員資料
-      </button>
+      </motion.button>
     </section>
   );
 };

@@ -5,7 +5,6 @@ import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 import { setLoading } from "../features/ui/uiSlice";
 const CategoryFilter = () => {
-  // console.log(products);
   const { products, isFiltered, filtered } = useSelector(
     (state) => state.products
   );

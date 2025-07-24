@@ -35,8 +35,8 @@ const CartPage = () => {
       <div className="grid grid-cols-12 border py-2 mb-4 text-black/50">
         <div className=" col-start-4 col-span-2">Name</div>
         <div className=" col-start-6 col-span-2">Price</div>
-        <div className=" col-start-8 col-span-2">Quantity </div>
-        <div className=" col-start-10 col-span-2">Delivery</div>
+        <div className=" col-start-8 col-span-4">Quantity </div>
+
         <div className=" col-start-12 col-span-1">Delete</div>
       </div>
 
@@ -78,7 +78,7 @@ const CartPage = () => {
                 <div className=" col-start-6 col-span-2">
                   <p>{i.price} $</p>
                 </div>
-                <div className=" col-start-8 col-span-2  flex gap-4 justify-center select-none">
+                <div className=" col-start-8 col-span-4  flex gap-4 justify-center select-none">
                   <div className="relative border border-black/50 flex gap-4 justify-center w-fit">
                     <span
                       className="px-1 cursor-pointer"
@@ -109,10 +109,8 @@ const CartPage = () => {
                     </span>
                   </div>
                 </div>
-                <div className=" col-start-10 col-span-2">
-                  <p>{i.deliveryMethod}</p>
-                </div>
-                <div className=" col-start-12 col-span-1">
+
+                <div className=" col-start-12 col-span-1 w-full h-full flex items-center justify-center">
                   <motion.button
                     initial={{
                       backgroundColor: "#333533",
@@ -189,8 +187,8 @@ const CartPage = () => {
                 CheckOut
               </motion.button>
             </div>
-            <hr className="w-full" />
           </div>
+          <hr className="w-full" />
         </div>
       )}
     </section>

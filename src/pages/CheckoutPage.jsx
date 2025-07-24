@@ -12,7 +12,7 @@ import OrderSection from "../components/OrderSection";
 
 const CheckoutPage = () => {
   return (
-    <section className="checkout-page grid grid-cols-2  gap-4 p-4 w-full">
+    <section className="checkout-page xl:grid xl:grid-cols-2 sm:grid-cols-1 gap-4 p-4 w-full">
       <div>
         {/* 購買人資訊 */}
         <BillingInfo />

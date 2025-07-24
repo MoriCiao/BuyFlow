@@ -13,7 +13,6 @@ const NavBtn = () => {
 
   // 按鈕點擊後，會依照 category 篩選
   const categoryList = ["所有商品", "熱銷商品", ...Object.keys(sort)];
-  //   console.log(categoryList); // ['服飾', '3C', '配件', '生活用品', '文具']
 
   const [activeBtn, setActiveBtn] = useState("");
   // 點擊按鈕後，會持續發亮，直到點擊其他按鈕

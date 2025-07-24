@@ -41,21 +41,24 @@ const StaffList = () => {
         <motion.div
           key={selectedRole}
           {...animate_I}
-          className="staffs grid grid-cols-3 gap-4"
+          className="staffs flex flex-wrap gap-8 w-full items-start justify-start"
         >
           {staffFiltered &&
             staffFiltered.map((user, index) => {
               return (
-                <div key={index} className="user-card border max-h-[250px] p-4">
-                  <div className="w-[150px] h-[150px] p-4">
+                <div
+                  key={index}
+                  className="user-card border max-h-[250px] w-[200px] p-4"
+                >
+                  <div className="w-full h-[150px] p-4">
                     <img
                       src={user.role === "staff" ? img.staff : img.admin}
                       alt="userImg"
-                      className="w-full h-full"
+                      className="w-full "
                     />
                   </div>
                   <div className="user-data text-center">
-                    <p>{user.role}</p>
+                    <p className="font-bold">{user.role.toUpperCase()}</p>
                     <p>{user.name}</p>
                     <p>{user.email}</p>
                   </div>

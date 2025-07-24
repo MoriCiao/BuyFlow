@@ -1,14 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { users } from "./mockusersDB";
-const loadFromStorage = (key) => {
-  const saved_order = localStorage.getItem(key);
-  console.log(JSON.parse(saved_order, null, 2));
-  return JSON.parse(saved_order);
-};
-
-const savedToLocalStorage = (key, data) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
 
 const initialState = {
   // 存放登入後的使用者資訊
@@ -28,7 +19,7 @@ const userSlice = createSlice({
     // 登入成功，將state變成user資料
     login(state, action) {
       state.user = action.payload;
-      console.log(action.payload);
+
       state.isAuthenticated = true;
     },
     // 登出
@@ -38,7 +29,6 @@ const userSlice = createSlice({
     },
     addmenber(state, action) {
       const NewUser = action.payload;
-      console.log(NewUser);
     },
     // 創建訂單
     createOrder(state, action) {
@@ -62,17 +52,6 @@ const userSlice = createSlice({
       );
       state.allOrders = updateOrderList;
     },
-    // 將 訂單依照不同的 user.email 傳至 localStorage
-    savedOrderToLocalStorage(state, action) {
-      const { key, order } = action.payload;
-
-      savedToLocalStorage(key, order);
-    },
-    // loading Storage
-    loadingOrderFromLocalStorage(state, action) {
-      const key = action.payload;
-      return loadFromStorage(key);
-    },
   },
 });
 
@@ -83,8 +62,6 @@ export const {
   createOrder,
   cancelOrder,
   addAllOrder,
-  loadingOrderFromLocalStorage,
-  savedOrderToLocalStorage,
 } = userSlice.actions;
 // 匯出 reducer（給 store 使用）
 export default userSlice.reducer;

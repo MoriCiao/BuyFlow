@@ -1,15 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import PaymentMethod from "./PaymentMethod";
 
 import { useNavigate } from "react-router-dom";
 import { newDate } from "../features/cart/cartUtils.js";
+import { addOrderToDashBoard } from "../features/order/orderSlice.js";
 import { cleanCart } from "../features/cart/cartSlice.js";
-import {
-  createOrder,
-  savedOrderToLocalStorage,
-} from "../features/user/userSlice";
+
 const payment = [
   "信用卡",
   "無卡分期",
@@ -43,6 +42,7 @@ const OrderSection = () => {
       alert("請選擇付款方式...");
     } else {
       const order = {
+        id: nanoid(),
         user,
         items,
         deliveryMethod,
@@ -52,34 +52,39 @@ const OrderSection = () => {
         date: newDate(),
       };
 
-      // 將訂單加入進slice裡
-      dispatch(createOrder(order));
+      // // 將訂單加入進slice裡
+      // dispatch(createOrder(order));
+
+      // 使用者訂單傳至 localStorage
+      const userKey = `order-${user.email}`; // 用每個使用者的eamil 當key
+      const savedOrder = localStorage.getItem(userKey); // 抓取之前資料，
+      const userOrders = savedOrder ? JSON.parse(savedOrder) : [];
+      const updatedUserOrders = [...userOrders, order]; // 將新訂單加入
+      localStorage.setItem(userKey, JSON.stringify(updatedUserOrders));
+
+      // 將訂單傳至dashboard
+      dispatch(addOrderToDashBoard(order));
+
+      // 訂單送出後需要清空購物車
       dispatch(cleanCart());
 
       navigate("/checkout/success");
     }
   };
   const { name, email, phone, address } = user;
-  // useEffect(() => {
-  //   console.log(allOrders);
-  // }, [allOrders]);
-  // useEffect(() => {
-  //   // 每個使用者唯獨的key
-  //   const key = `Order_${email}`;
-  //   console.log(key);
-  //   dispatch(savedOrderToLocalStorage({ key, allOrders }));
-  // }, [user, allOrders]);
+
   return (
-    <section className="order-section col-span-2 grid grid-cols-2 gap-2 items-center">
+    <section className="order-section relative sm:z-2 col-span-2 xl:grid xl:grid-cols-2 md:grid-cols-1 gap-2 items-center">
       <img
         src="/BuyFlow/order-confirmed.svg"
         alt="order"
-        className="w-[100%] select-none"
+        draggable="false"
+        className="w-[100%] select-none xl:relative xl:z-0 xl:opacity-100 md:absolute md:-z-1 md:opacity-20"
       />
       <form
         action=""
         method="get"
-        className="flex flex-col gap-2 border-2 border-black/20 p-4 "
+        className="flex flex-col gap-2 border-2 border-black/20 p-4 sm:w-full"
         onSubmit={handleSubmit}
       >
         <h3 className="text-[1.5rem] ">

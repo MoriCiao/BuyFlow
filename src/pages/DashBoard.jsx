@@ -20,9 +20,9 @@ const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
 
   return (
-    <section className="dashboard relative w-full h-full grid grid-cols-4 gap-4 items-center justify-center">
+    <section className="dashboard relative w-full h-full xl:grid xl:grid-cols-4 sm: flex sm:flex-col gap-4 items-center justify-center">
       {/* Dashboard Nav */}
-      <nav className="dashboard-nav flex flex-col gap-4 col-start-1 col-span-1">
+      <nav className="dashboard-nav xl:flex xl:flex-col sm:flex sm:flex-col sm:w-full gap-6 xl:col-start-1 xl:col-span-1">
         <Link to="stafflist" className="">
           <motion.button {...motion_btn} className={btn_style}>
             Staff List
@@ -42,16 +42,12 @@ const DashBoard = () => {
           </Link>
         )}
 
-        <Link
-          to="productslist"
-          className=""
-          onClick={() => console.log("Click")}
-        >
+        <Link to="productslist" className="">
           <motion.button {...motion_btn} className={btn_style}>
             Products List
           </motion.button>
         </Link>
-        <Link to="menberlist" className="" onClick={() => console.log("Click")}>
+        <Link to="menberlist" className="">
           <motion.button {...motion_btn} className={btn_style}>
             Menber
           </motion.button>
@@ -64,7 +60,7 @@ const DashBoard = () => {
       </nav>
       {/* Dashboard Container */}
 
-      <div className="dashboard-container col-start-2 col-span-3 w-full h-full flex p-4 overflow-auto">
+      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full h-full flex p-4 overflow-auto">
         <Outlet />
       </div>
     </section>

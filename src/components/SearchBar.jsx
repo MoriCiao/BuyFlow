@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const img = ["/BuyFlow/public/logo.svg", "/BuyFlow/public/undraw-cart.svg"];
 
+const img_style = "md:block sm:hidden md:w-[200px] md:h-[50px]";
+
 const SearchBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const SearchBar = () => {
       <img
         src={img[0]}
         alt="LOGO"
-        className="col-start-1 w-[300px] h-[100px] select-none "
+        className={`col-start-1 xl:w-[300px] xl:h-[100px] select-none ${img_style}`}
         draggable="false"
       />
 
@@ -50,7 +52,7 @@ const SearchBar = () => {
       <img
         src={img[1]}
         alt="undraw-cart"
-        className="col-start-1 w-[300px] h-[100px] select-none "
+        className={`col-start-1 xl:w-[300px] xl:h-[100px] select-none ${img_style}`}
         draggable="false"
       />
     </>

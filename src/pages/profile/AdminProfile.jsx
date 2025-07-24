@@ -12,7 +12,7 @@ const AdminProfile = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="profile relative grid grid-cols-2 gap-4 items-center justify-center "
+        className="profile relative z-5 md:grid md:grid-cols-2 sm:flex w-full gap-4 items-center justify-center "
       >
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-[1.5rem] w-[350px] indent-[1rem]">
@@ -52,7 +52,7 @@ const AdminProfile = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center md:relative md:opacity-100 sm:absolute sm:-z-1 sm:opacity-20">
           <img src={"/BuyFlow/user/user-bg-2.svg"} alt="user-bg" />
         </div>
       </motion.section>

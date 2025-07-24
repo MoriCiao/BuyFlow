@@ -11,7 +11,6 @@ const initialState = {
   totalAmount: 0, // <<< 所有商品總金額
   totalQuatity: 0, // <<< 所有商品總件數
   deliveryMethod: "",
-  orders: [],
 };
 
 const cartSlice = createSlice({
@@ -81,16 +80,6 @@ const cartSlice = createSlice({
     setDelivery(state, action) {
       const { deliveryMethod } = action.payload;
       state.deliveryMethod = deliveryMethod;
-      console.log(state.deliveryMethod);
-    },
-
-    getOrder(state, action) {
-      // savedToLocalStorage;
-      // loadDataLocalStorage;
-    },
-    saveOrder(state, action) {
-      const { key, orders } = action.payload;
-      savedToLocalStorage(key, orders);
     },
   },
 });
@@ -102,8 +91,5 @@ export const {
   modifyAmount,
   setCartItem,
   setDelivery,
-  createOrder,
-  cancelOrder_cart,
-  saveOrder,
 } = cartSlice.actions;
 export default cartSlice.reducer;

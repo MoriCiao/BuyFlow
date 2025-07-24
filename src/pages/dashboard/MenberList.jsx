@@ -7,7 +7,6 @@ const MenberList = () => {
   const { animate_I } = useSelector((state) => state.ui);
   const location = useLocation();
   const menberFiltered = userList.filter((p) => p.role === "menber");
-  console.log(menberFiltered);
 
   return (
     <AnimatePresence mode="wait">
@@ -28,9 +27,9 @@ const MenberList = () => {
           <tbody>
             {menberFiltered &&
               menberFiltered.map((m, index) => {
-                console.log(m);
                 return (
                   <motion.tr
+                    key={index}
                     whileHover={{
                       backgroundColor: "#333533",
                       color: "#e8eddf",
