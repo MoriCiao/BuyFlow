@@ -6,7 +6,14 @@ const OrderList = () => {
   const dispatch = useDispatch();
   // 搜尋關鍵字
   const [keyword, setKeyWord] = useState("");
-  const handleSearch = (e) => {};
+  console.log(order);
+  const filtered = order.filter((o) => {
+    const orderID = o.id.toLowerCase();
+    const orderUser = o.user.name.toLowerCase();
+    return orderID.includes(keyword) || orderUser.includes(keyword);
+  });
+
+  const curretData = filtered.length === 0 ? order : filtered;
   useEffect(() => {
     // 載入Storage資料
     const storeKey = "dashboard-store";
@@ -32,16 +39,9 @@ const OrderList = () => {
               className="search-input w-full rounded-l-full h-[2rem] indent-[1rem] border-0"
               value={keyword}
               onChange={(e) => setKeyWord(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  dispatch(search(keyword)),
-                    setKeyWord(""),
-                    navigate("/products");
-                }
-              }}
             />
           </div>
-          {order.map((o, index) => {
+          {curretData.map((o, index) => {
             return (
               <details
                 key={index}

@@ -1,14 +1,35 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
-import { modify } from "../../features/products/productsSlice";
+import { modify, search } from "../../features/products/productsSlice";
 import Modify from "../../components/Modify";
+
 const ProductsList = () => {
   const { products, isModify } = useSelector((state) => state.products);
   const { animate_I } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const [keyword, setKeyWord] = useState("");
-  const handleSearch = (e) => {};
+  console.log(products);
+  const filtered = products.filter((p) => {
+    const itemID = String(p.id).toLowerCase();
+    const itemName = String(p.name).toLowerCase();
+    const itemRating = String(p.rating).toLowerCase();
+    const itemCate = String(p.category).toLowerCase();
+    const itemPrice = String(p.price).toLowerCase();
+    const itemStock = String(p.stock).toLowerCase();
+    const itemDes = String(p.description).toLowerCase();
+    return (
+      itemID.includes(keyword) ||
+      itemName.includes(keyword) ||
+      itemRating >= keyword ||
+      itemPrice >= keyword ||
+      itemCate.includes(keyword) ||
+      itemStock >= keyword ||
+      itemDes.includes(keyword)
+    );
+  });
+
+  const currentData = filtered.length === 0 ? products : filtered;
   return (
     <AnimatePresence mode="wait">
       <motion.section
@@ -23,16 +44,16 @@ const ProductsList = () => {
             className="search-input w-full rounded-l-full h-[2rem] indent-[1rem] border-0"
             value={keyword}
             onChange={(e) => setKeyWord(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                dispatch(search(keyword)),
-                  setKeyWord(""),
-                  navigate("/products");
-              }
-            }}
+            // onKeyDown={(e) => {
+            //   if (e.key === "Enter") {
+            //     dispatch(search(keyword)),
+            //       setKeyWord(""),
+            //       navigate("/products");
+            //   }
+            // }}
           />
         </div>
-        <div className=" min-w-[1000px] max-h-[500px] ">
+        <div className=" min-w-[1000px] min-h-[500px] ">
           <table className="w-full border border-collapse w-[100%] ">
             <thead>
               <tr className="border ">
@@ -47,8 +68,8 @@ const ProductsList = () => {
               </tr>
             </thead>
             <tbody>
-              {products &&
-                products.map((p) => {
+              {currentData &&
+                currentData.map((p) => {
                   return (
                     <motion.tr
                       whileHover={{
