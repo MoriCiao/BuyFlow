@@ -9,7 +9,7 @@ const ProductsList = () => {
   const { animate_I } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const [keyword, setKeyWord] = useState("");
-  console.log(products);
+
   const filtered = products.filter((p) => {
     const itemID = String(p.id).toLowerCase();
     const itemName = String(p.name).toLowerCase();

@@ -15,8 +15,7 @@ const NavBtn = () => {
   const categoryList = ["所有商品", "熱銷商品", ...Object.keys(sort)];
 
   const [activeBtn, setActiveBtn] = useState("");
-  // 點擊按鈕後，會持續發亮，直到點擊其他按鈕
-  const handleActive = () => {};
+
   return (
     <>
       {categoryList &&
@@ -24,7 +23,7 @@ const NavBtn = () => {
           return (
             <div
               key={cate}
-              className={`nav_btn select-none ${
+              className={`nav_btn select-none  ${
                 activeBtn === cate ? "active" : ""
               }`}
             >

@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
-import ProfileSVG from "../../components/ProfileSVG";
+
+import Profile from "../../components/Profile";
 // 後台行政單位 Profile
 
 const AdminProfile = () => {
@@ -14,7 +15,8 @@ const AdminProfile = () => {
         {...animate_I}
         className="profile relative z-5 md:grid md:grid-cols-2 sm:flex w-full gap-4 items-center justify-center "
       >
-        <div className="flex flex-col items-center justify-center">
+        <Profile title="Admin Profile" userRole={"admin"} />
+        {/* <div className="flex flex-col items-center justify-center">
           <h1 className="text-[1.5rem] w-[350px] indent-[1rem]">
             Admin Profile
           </h1>
@@ -51,7 +53,7 @@ const AdminProfile = () => {
               </table>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="w-full h-full flex items-center justify-center md:relative md:opacity-100 sm:absolute sm:-z-1 sm:opacity-20">
           <img src={"/BuyFlow/user/user-bg-2.svg"} alt="user-bg" />
         </div>

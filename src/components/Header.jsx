@@ -1,14 +1,48 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 import { loginout } from "../features/user/userSlice";
 import { isSearch } from "../features/ui/uiSlice";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
+
 const HeaderHr = () => {
   return <hr className="h-[30px] border" />;
 };
+const HeaderBtn = ({ text, variant = "homepage", onClick, className }) => {
+  return (
+    <div
+      className={`${text}btn ${
+        variant === "homepage" ? "home-svg" : ""
+      } cursor-pointer`}
+    >
+      {variant === "homepage" ? (
+        <svg>
+          <rect></rect>
+        </svg>
+      ) : null}
 
-const btn_style = "h-[30px]  block text-center px-2 py-1";
+      <button
+        className={`${className} cursor-pointer`}
+        type="button"
+        onClick={onClick}
+      >
+        {text}
+      </button>
+    </div>
+  );
+};
+
+const HeaderLink = ({ text, link }) => {
+  const linksStyle =
+    "hover:font-bold hover:text-yellow-500 transition duration-300 h-[30px] block text-center px-2 py-1";
+
+  return (
+    <Link to={link} className={linksStyle}>
+      {text}
+    </Link>
+  );
+};
 
 const Header = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -26,74 +60,59 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <section
+    <motion.section
+      // whileHover={{ fontSize: "1.1rem" }}
       className={`header w-full ${
         isVisible ? "min-h-[5vh]" : "min-h-[10vh]"
       } flex flex-col justify-center items-center `}
     >
       <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-[#333533]">
         <nav className="nav xl:flex xl:flex-row md:flex md:flex-row  justify-between sm:flex-col w-[80%] h-full py-2  text-[#e8eddf] select-none">
-          <div className="home-svg cursor-pointer">
-            <svg>
-              <rect></rect>
-            </svg>
-            <button
-              className="cursor-pointer"
-              type="button"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              HomePage
-            </button>
-          </div>
+          <HeaderBtn
+            text="HomePage"
+            variant="homepage"
+            onClick={() => navigate("/")}
+            className={null}
+          />
+
           <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4">
             {/* ----------登入邏輯---------- */}
             {!isAuthenticated ? (
               <li>
-                <Link to={"/login"} className={btn_style}>
-                  Login
-                </Link>
+                <HeaderLink text="Login" link="/login" />
               </li>
             ) : (
               <>
                 <span>Hi! {user.name}</span>
-                {user.role === "user" && <Link to={"/menber"}>Profile</Link>}
                 {(user.role === "admin" || user.role === "staff") && (
-                  <Link to={"/dashboard"} className={btn_style}>
-                    DashBoard
-                  </Link>
+                  <HeaderLink text="DashBoard" link="/dashboard" />
                 )}
-                <button
-                  className="cursor-pointer  px-2"
-                  type="button"
-                  onClick={() => dispatch(loginout(), navigate("/"))}
-                >
-                  Logout
-                </button>
+                <HeaderBtn
+                  text="Logout"
+                  variant="Logout"
+                  className={"px-2"}
+                  onClick={() => {
+                    dispatch(loginout());
+                    navigate("/");
+                  }}
+                />
               </>
             )}
             <>
               <HeaderHr />
               <li>
-                <Link to="/menber" className={btn_style}>
-                  Member Center
-                </Link>
+                <HeaderLink text="Member Center" link="/menber" />
               </li>
               <HeaderHr />
               <li>
-                <Link to="/cart" className={btn_style}>
-                  Cart
-                </Link>
+                <HeaderLink text="Cart" link="/cart" />
               </li>
 
               {!isAuthenticated && (
                 <>
                   <HeaderHr />
                   <li>
-                    <Link to="/register" className={btn_style}>
-                      Register
-                    </Link>
+                    <HeaderLink text="Register" link="/register" />
                   </li>
                 </>
               )}
@@ -108,7 +127,7 @@ const Header = () => {
           <SearchBar />
         </div>
       )}
-    </section>
+    </motion.section>
   );
 };
 

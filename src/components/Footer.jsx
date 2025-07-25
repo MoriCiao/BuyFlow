@@ -78,7 +78,7 @@ const Footer = () => {
             {about_items &&
               about_items.map((i, index) => {
                 return (
-                  <Fragment key={index} className="flex">
+                  <Fragment key={index}>
                     <ContactItem name={i.name} icon={i.icon} link={i.link} />
                   </Fragment>
                 );
@@ -92,7 +92,7 @@ const Footer = () => {
             {contact_items &&
               contact_items.map((i, index) => {
                 return (
-                  <Fragment key={index} className="flex">
+                  <Fragment key={index}>
                     <ContactItem name={i.name} icon={i.icon} link={i.link} />
                   </Fragment>
                 );

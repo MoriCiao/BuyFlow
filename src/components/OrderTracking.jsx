@@ -4,6 +4,59 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cancelOrderFormDashBoard } from "../features/order/orderSlice";
 
+const TrackingBtn = ({ text, onClick, style, variant }) => {
+  const animation =
+    variant === "cancel"
+      ? {
+          // 取消訂單按鈕UI
+          whileHover: {
+            backgroundColor: "rgb(255,255,255) ",
+            color: "rgb(255,0,0)",
+            border: "rgb(255,0,0) 2px solid",
+            scale: 1.1,
+            x: -5,
+            y: -5,
+          },
+          transition: { duration: 0.5 },
+        }
+      : {
+          // 回會員資料按鈕UI
+          initial: { scale: 1 },
+          whileHover: {
+            backgroundColor: "#333533",
+            color: "#e8eddf",
+            scale: 1.1,
+          },
+          transition: { duration: 0.5 },
+        };
+
+  return (
+    <motion.button
+      {...animation}
+      onClick={onClick}
+      type="button"
+      className={style}
+      // "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
+    >
+      {text}
+    </motion.button>
+  );
+};
+
+const TrackingDetail = ({ title, p1, p2, p3, p4 }) => {
+  return (
+    <div className="flex flex-col gap-1">
+      <h3 className="text-[1.15rem] font-bold">{title}</h3>
+      <hr />
+
+      <p>{p1}</p>
+      <p>{p2}</p>
+      <p>{p3}</p>
+      <p>{p4}</p>
+    </div>
+  );
+};
+
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
   const [savedOrder, setSavedOrder] = useState([]);
@@ -54,15 +107,16 @@ const OrderTracking = () => {
                   key={index}
                   className="order-detail border border-black/50 w-full max-h-[15rem] p-4 grid grid-cols-4 gap-8"
                 >
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-[1.15rem] font-bold">訂單：{o.id}</h3>
-                    <p>訂購時間：{o.date}</p>
-                    <p>配送方式：{o.deliveryMethod}</p>
-                    <p>總消費金額：{o.totalAmount} $</p>
-                    <p>付款方式：{o.pay}</p>
-                  </div>
-                  <div className="max-h-[10rem]  p-2 flex flex-col gap-1">
-                    <p className="">訂單內容：</p>
+                  <TrackingDetail
+                    title={`訂單：${o.id}`}
+                    p1={`訂購時間：${o.date}`}
+                    p2={`配送方式：${o.deliveryMethod}`}
+                    p3={`總消費金額：${o.totalAmount} $`}
+                    p4={`付款方式：${o.pay}`}
+                  />
+
+                  <div className="max-h-[10rem]  flex flex-col gap-1">
+                    <h3 className="text-[1.15rem] font-bold">訂單內容：</h3>
                     <hr />
                     <div className="overflow-y-auto ">
                       {o.items &&
@@ -76,66 +130,42 @@ const OrderTracking = () => {
                         })}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2">
-                    <p>收件人：</p>
-                    <p>
-                      <strong>{o.user.name}</strong>
-                    </p>
-                    <p>電話：</p>
-                    <p>
-                      <strong>{o.user.phone}</strong>
-                    </p>
-                    <p>信箱：</p>
-                    <p>
-                      <strong>{o.user.email}</strong>
-                    </p>
-                    <p>收件地址：</p>
-                    <p>
-                      <strong>{o.user.address}</strong>
-                    </p>
-                  </div>
+                  <TrackingDetail
+                    title={`收件人資料：`}
+                    p1={`收件人姓名：${o.user.name}`}
+                    p2={`電話：${o.user.phone}`}
+                    p3={`信箱：${o.user.email}`}
+                    p4={`收件地址：${o.user.address}`}
+                  />
+
                   <div className="relative flex items-end justify-end">
                     <img src="/BuyFlow/handling.svg" alt="handling" />
-                    <motion.button
-                      whileHover={{
-                        backgroundColor: "rgb(255,255,255) ",
-                        color: "rgb(255,0,0)",
-                        border: "rgb(255,0,0) 2px solid",
-                        scale: 1.1,
-                        x: -5,
-                        y: -5,
-                      }}
-                      transition={{ duration: 0.5 }}
+                    <TrackingBtn
+                      text="取消訂單"
+                      variant="cancel"
                       onClick={() => {
                         if (confirm("確定要取消這筆訂單嗎？")) {
                           handleCancel(o);
                         }
                       }}
-                      type="button"
-                      className="absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
-                    >
-                      取消訂單
-                    </motion.button>
+                      style={
+                        "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
+                      }
+                    />
                   </div>
                 </div>
               );
             })}
         </div>
       )}
-
-      <motion.button
-        initial={{ scale: 1 }}
-        whileHover={{
-          backgroundColor: "#333533",
-          color: "#e8eddf",
-          scale: 1.1,
-        }}
-        transition={{ duration: 0.5 }}
-        className="border px-4 py-1 text-[1.5rem] tracking-widest  select-none cursor-pointer"
+      <TrackingBtn
+        text="🔙會員資料"
+        variant="menber"
         onClick={() => navigate("/menber")}
-      >
-        🔙會員資料
-      </motion.button>
+        style={
+          "border px-4 py-1 text-[1.5rem] tracking-widest  select-none cursor-pointer"
+        }
+      />
     </section>
   );
 };

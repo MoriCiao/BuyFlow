@@ -22,13 +22,13 @@ const DashBoard = () => {
   return (
     <section className="dashboard relative w-full h-full xl:grid xl:grid-cols-4 sm: flex sm:flex-col gap-4 items-center justify-center">
       {/* Dashboard Nav */}
-      <nav className="dashboard-nav xl:flex xl:flex-col sm:flex sm:flex-col sm:w-full gap-6 xl:col-start-1 xl:col-span-1">
+      <nav className="dashboard-nav xl:flex xl:flex-col sm:flex sm:flex-col sm:w-full gap-6 xl:col-start-1 xl:col-span-1 justify-start h-full">
         <Link to="stafflist" className="">
           <motion.button {...motion_btn} className={btn_style}>
             Staff List
           </motion.button>
         </Link>
-        {user.role === "admin" ? (
+        {user?.role === "admin" ? (
           <Link to="admin" className="">
             <motion.button {...motion_btn} className={btn_style}>
               Admin Profile
@@ -60,7 +60,7 @@ const DashBoard = () => {
       </nav>
       {/* Dashboard Container */}
 
-      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full h-full flex p-4 overflow-auto">
+      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full h-full flex px-4 overflow-auto">
         <Outlet />
       </div>
     </section>

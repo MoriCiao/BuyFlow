@@ -65,8 +65,10 @@ const OrderSection = () => {
       // 將訂單傳至dashboard
       dispatch(addOrderToDashBoard(order));
 
-      // 訂單送出後需要清空購物車
+      // 訂單送出後需要清空購物車 & localStorage
       dispatch(cleanCart());
+      const cartKey = `Cart_${user.email}`;
+      localStorage.setItem(cartKey, JSON.stringify([]));
 
       navigate("/checkout/success");
     }
