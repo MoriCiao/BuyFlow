@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 const MenberList = () => {
   const { userList } = useSelector((state) => state.user);
@@ -8,13 +8,31 @@ const MenberList = () => {
   const location = useLocation();
   const menberFiltered = userList.filter((p) => p.role === "menber");
 
+  const [keyword, setKeyWord] = useState("");
+
+  const filtered = menberFiltered.filter((p) => {
+    const userName = String(p.name).toLowerCase();
+
+    return userName.includes(keyword.toLowerCase());
+  });
+  const currentUser = filtered.length === 0 ? menberFiltered : filtered;
+  console.log(currentUser);
   return (
     <AnimatePresence mode="wait">
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="menber-list w-full h-full text-center"
+        className="menber-list w-full h-full text-center flex flex-col gap-4"
       >
+        <div className="w-full sm:mt-8">
+          <input
+            type="text"
+            className="border rounded-full w-[60%] h-[2rem] indent-[0.5rem]"
+            placeholder="搜尋會員姓名..."
+            value={keyword}
+            onChange={(e) => setKeyWord(e.target.value)}
+          />
+        </div>
         <table className="w-full border border-collapse">
           <thead>
             <tr className="border ">
@@ -25,8 +43,8 @@ const MenberList = () => {
             </tr>
           </thead>
           <tbody>
-            {menberFiltered &&
-              menberFiltered.map((m, index) => {
+            {currentUser &&
+              currentUser.map((m, index) => {
                 return (
                   <motion.tr
                     key={index}

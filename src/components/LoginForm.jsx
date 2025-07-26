@@ -45,7 +45,7 @@ const LoginForm = () => {
     >
       <img
         draggable="false"
-        className="login_profile select-none absolute top-[-5rem] rounded-full shadow-lg  shadow-[#e8eddf]/20"
+        className="login_profile select-none absolute top-[-5rem] rounded-full"
         src="/BuyFlow/profile_photo.svg"
         alt=""
       />
@@ -96,7 +96,7 @@ const LoginForm = () => {
       <img
         src="/BuyFlow/logo_w.svg"
         alt="logo.svg"
-        className="w-60 py-6 relative z-10"
+        className="w-60 py-6 relative xl:z-11 sm:z-10"
       />
     </form>
   );

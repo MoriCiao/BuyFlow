@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
-import { motion, AnimatePresence, easeIn } from "framer-motion";
+import { motion, easeIn } from "framer-motion";
 const img = "/BuyFlow/login.svg";
 const LoginPage = () => {
   return (

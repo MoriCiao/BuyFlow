@@ -39,7 +39,16 @@ const ProductDetailPage = () => {
   return (
     <section className="product-detail">
       <div className="flex flex-col gap-4">
+        {/* breadcrumb */}
         <div className="breadcrumb flex gap-2 text-black/70">
+          <span
+            className="text-[2rem] cursor-pointer select-none"
+            onClick={() => {
+              navigate("/products");
+            }}
+          >
+            🔙
+          </span>
           <span>/</span>
           <Link to="/">BuyFlow</Link>
           <span>/</span>
@@ -49,13 +58,17 @@ const ProductDetailPage = () => {
             {`${product.name}  ${product.category}  ${product.description}`}
           </span>
         </div>
-        <div className="grid grid-cols-5 gap-4 justify-center px-4">
-          <img
-            className="w-full max-h-[500px] py-4 col-span-3 col-start-1 my-auto"
-            src={product.image}
-            alt="product_img"
-          />
-          <div className="relative col-span-2 col-start-4 py-4">
+
+        <div className="xl:grid xl:grid-cols-5 md:flex md:flex-col gap-4 justify-center px-4">
+          <div className="w-full h-full  py-4 xl:col-span-3 md: col-start-1 my-auto">
+            <img
+              className="w-full xl:max-h-[500px] md:max-h-[300px]"
+              src={product.image}
+              alt="product_img"
+            />
+          </div>
+
+          <div className="relative xl:col-span-2 md: xl:col-start-4 md: py-4">
             {/* id */}
             <p className="absolute top-0 right-0 border border-black/20 px-4 text-black/50">
               商品編號：{product.id}
@@ -117,7 +130,6 @@ const ProductDetailPage = () => {
               </div>
             </div>
             <Hr />
-
             {/* 最大不可以超過此商品的庫存 */}
             <div className="add-cart flex gap-2 justify-end pr-4">
               <p>請輸入您要購買數量 : </p>

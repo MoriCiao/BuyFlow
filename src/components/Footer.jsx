@@ -99,7 +99,7 @@ const Footer = () => {
               })}
           </ol>
         </div>
-        <p className="md:col-span-6 sm:col-span-2 text-center border-t">
+        <p className="md:col-span-6 sm:col-span-2 text-center border-t py-2">
           © 2025 BuyFlow. All rights reserved.
         </p>
       </div>

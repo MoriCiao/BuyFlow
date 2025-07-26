@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { newDate } from "../cart/cartUtils";
 // 此 Slice 為dashboard 的資料
 const initialState = {
   order: [],
@@ -34,6 +35,29 @@ const orderSlice = createSlice({
       const storageData = savedData ? JSON.parse(savedData) : [];
       state.order = [...storageData];
     },
+    sendOrder(state, action) {
+      // 將確認出貨的訂單通知客人
+      const target = action.payload;
+      // 為此訂單添加新的屬性，標示已出貨
+      const updatedOrder = {
+        ...target,
+        sendDate: newDate(),
+        isSend: true,
+      };
+      const index = state.order.findIndex((o) => o.id === target.id);
+      //更新對應INDEX的訂單
+      if (index !== -1) {
+        // 更新廠商的訂單
+        state.order[index] = updatedOrder;
+        // 更新客戶端的訂單
+        const userKey = `order-${target.user.email}`;
+        const prevOrder = localStorage.getItem(userKey);
+        const data = JSON.parse(prevOrder);
+        const dataIndex = data.findIndex((d) => d.id === target.id);
+        data[dataIndex] = updatedOrder;
+        localStorage.setItem(userKey, JSON.stringify(data));
+      }
+    },
   },
 });
 
@@ -41,5 +65,6 @@ export const {
   addOrderToDashBoard,
   cancelOrderFormDashBoard,
   reloadOrderFromStorage,
+  sendOrder,
 } = orderSlice.actions;
 export default orderSlice.reducer;

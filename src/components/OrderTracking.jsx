@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cancelOrderFormDashBoard } from "../features/order/orderSlice";
-
-const TrackingBtn = ({ text, onClick, style, variant }) => {
+import { sentOut } from "../features/user/userSlice";
+const TrackingBtn = ({ text, onClick, style, variant, disabled }) => {
   const animation =
     variant === "cancel"
       ? {
@@ -17,6 +17,13 @@ const TrackingBtn = ({ text, onClick, style, variant }) => {
             x: -5,
             y: -5,
           },
+          transition: { duration: 0.5 },
+        }
+      : variant === "send"
+      ? {
+          // 已寄貨
+          initial: { scale: 1 },
+
           transition: { duration: 0.5 },
         }
       : {
@@ -36,7 +43,7 @@ const TrackingBtn = ({ text, onClick, style, variant }) => {
       onClick={onClick}
       type="button"
       className={style}
-      // "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
+      disabled={disabled}
     >
       {text}
     </motion.button>
@@ -60,7 +67,7 @@ const TrackingDetail = ({ title, p1, p2, p3, p4 }) => {
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
   const [savedOrder, setSavedOrder] = useState([]);
-
+  const { order } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -76,6 +83,7 @@ const OrderTracking = () => {
     setSavedOrder(updatedOrderData);
     // dashboard 刪除(刪除後會將資料上傳至 Storage)
     dispatch(cancelOrderFormDashBoard(order));
+    navigate("/menber/ordertracking");
   };
 
   useEffect(() => {
@@ -140,18 +148,29 @@ const OrderTracking = () => {
 
                   <div className="relative flex items-end justify-end">
                     <img src="/BuyFlow/handling.svg" alt="handling" />
-                    <TrackingBtn
-                      text="取消訂單"
-                      variant="cancel"
-                      onClick={() => {
-                        if (confirm("確定要取消這筆訂單嗎？")) {
-                          handleCancel(o);
+                    {o?.isSend ? (
+                      <TrackingBtn
+                        text="🚚 已出貨"
+                        variant="send"
+                        style={
+                          "absolute bottom-4 right-4 bg-[#333533] text-[#e8eddf]/50 font-bold text-[1.2rem] border-2 border-white rounded-full px-4 select-none cursor-pointer"
                         }
-                      }}
-                      style={
-                        "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
-                      }
-                    />
+                        disabled={true}
+                      />
+                    ) : (
+                      <TrackingBtn
+                        text="取消訂單"
+                        variant="cancel"
+                        onClick={() => {
+                          if (confirm("確定要取消這筆訂單嗎？")) {
+                            handleCancel(o);
+                          }
+                        }}
+                        style={
+                          "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
+                        }
+                      />
+                    )}
                   </div>
                 </div>
               );

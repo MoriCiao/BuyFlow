@@ -15,9 +15,10 @@ const CategoryFilter = () => {
   // 每一次資料轉換時要 Loading
   useEffect(() => {
     dispatch(setLoading(true));
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       dispatch(setLoading(false));
-    }, 2000);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [currentData]);
   return (
     <AnimatePresence mode="wait">

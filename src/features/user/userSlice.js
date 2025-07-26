@@ -62,6 +62,7 @@ export const {
   createOrder,
   cancelOrder,
   addAllOrder,
+  sentOut,
 } = userSlice.actions;
 // 匯出 reducer（給 store 使用）
 export default userSlice.reducer;

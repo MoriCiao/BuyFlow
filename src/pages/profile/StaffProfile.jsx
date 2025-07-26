@@ -13,10 +13,14 @@ const StaffProfile = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="profile relative grid grid-cols-2 gap-4 items-center justify-center "
+        className="profile relative md:grid md:grid-cols-2 sm:flex gap-4 items-center justify-center w-full"
       >
-        <div className="w-full h-full flex items-center justify-center">
-          <img src={"/BuyFlow/user/user-bg-2.svg"} alt="user-bg" />
+        <div className="w-full h-full flex items-center justify-center md:relative sm:absolute sm:z-0 sm:opacity-50">
+          <img
+            src={"/BuyFlow/user/user-bg-2.svg"}
+            alt="user-bg"
+            className="sm:w-[80%] md:w-[100%]"
+          />
         </div>
         <Profile title="Staff Profile" userRole={"staff"} />
       </motion.section>

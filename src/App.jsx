@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "./features/ui/uiSlice";
 import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop";
+import BgImg from "./components/BgImg";
 
 function App() {
   const isLoading = useSelector((state) => state.ui.isLoading);
@@ -28,7 +29,8 @@ function App() {
       <CartIcon />
       {isLoading && <Loading />}
       <Header />
-      <main className="main w-full min-h-[60vh] flex justify-center">
+      <main className="main w-full min-h-[60vh] flex justify-center relative">
+        <BgImg />
         <AppRoutes />
       </main>
       <Footer />

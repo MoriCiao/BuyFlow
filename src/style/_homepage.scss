@@ -6,15 +6,16 @@
             svg{
                 width: 50%;
                 height: 50%;
-                opacity: 0.5;
+                opacity: 0.8;
                 path{
                     
                     fill: transparent;
-                    stroke: #333533;
+                    stroke: #e8eddf;
                     stroke-width: 4;
                     stroke-dashoffset: 0;
                     stroke-dasharray: 260;
                     transition: .5s ;
+                    filter: drop-shadow(0 0 0.5rem #e8eddf)
                     
                 }
                 &:hover path{
@@ -90,6 +91,7 @@
 
     button {
         position: relative;
+        z-index: 100;
         cursor: pointer;
         width: 240px;
         height: 60px;
@@ -165,7 +167,9 @@
     }
     100% {
         stroke-dashoffset: 520;
-        fill:#333533;
+        fill:#e8eddf;
+        box-shadow: #e8eddf 0 0 0.5rem;
+        filter: blur( 1);
     }
 }
 

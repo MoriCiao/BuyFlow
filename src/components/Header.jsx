@@ -5,44 +5,8 @@ import { loginout } from "../features/user/userSlice";
 import { isSearch } from "../features/ui/uiSlice";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
-
-const HeaderHr = () => {
-  return <hr className="h-[30px] border" />;
-};
-const HeaderBtn = ({ text, variant = "homepage", onClick, className }) => {
-  return (
-    <div
-      className={`${text}btn ${
-        variant === "homepage" ? "home-svg" : ""
-      } cursor-pointer`}
-    >
-      {variant === "homepage" ? (
-        <svg>
-          <rect></rect>
-        </svg>
-      ) : null}
-
-      <button
-        className={`${className} cursor-pointer`}
-        type="button"
-        onClick={onClick}
-      >
-        {text}
-      </button>
-    </div>
-  );
-};
-
-const HeaderLink = ({ text, link }) => {
-  const linksStyle =
-    "hover:font-bold hover:text-yellow-500 transition duration-300 h-[30px] block text-center px-2 py-1";
-
-  return (
-    <Link to={link} className={linksStyle}>
-      {text}
-    </Link>
-  );
-};
+import { HeaderHr, HeaderBtn, HeaderLink } from "./HeaderItem";
+import HeaderIcon from "./HeaderIcon";
 
 const Header = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -67,15 +31,15 @@ const Header = () => {
       } flex flex-col justify-center items-center `}
     >
       <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-[#333533]">
-        <nav className="nav xl:flex xl:flex-row md:flex md:flex-row  justify-between sm:flex-col w-[80%] h-full py-2  text-[#e8eddf] select-none">
+        <nav className="nav xl:flex xl:flex-row md:flex md:flex-row xl:justify-between md:justify-center sm:flex-col w-[80%] h-full py-2  text-[#e8eddf] select-none">
           <HeaderBtn
             text="HomePage"
             variant="homepage"
             onClick={() => navigate("/")}
-            className={null}
+            className={""}
           />
 
-          <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4">
+          <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4 xl:flex sm:hidden ">
             {/* ----------登入邏輯---------- */}
             {!isAuthenticated ? (
               <li>
@@ -120,6 +84,7 @@ const Header = () => {
           </ol>
         </nav>
       </div>
+      <HeaderIcon />
       {isVisible && (
         <div
           className={` header w-[80%] min-h-[100px] flex gap-8 justify-between items-center md:pt-12 sm:pt-30 pb-8 mt-4`}

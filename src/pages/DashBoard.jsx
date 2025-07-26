@@ -18,41 +18,41 @@ const btn_style =
 
 const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
-
+  const location = useLocation();
   return (
-    <section className="dashboard relative w-full h-full xl:grid xl:grid-cols-4 sm: flex sm:flex-col gap-4 items-center justify-center">
+    <section className="dashboard relative w-full h-full xl:grid xl:grid-cols-4 sm:flex sm:flex-col gap-4 items-start justify-start ">
       {/* Dashboard Nav */}
-      <nav className="dashboard-nav xl:flex xl:flex-col sm:flex sm:flex-col sm:w-full gap-6 xl:col-start-1 xl:col-span-1 justify-start h-full">
-        <Link to="stafflist" className="">
+      <nav className="dashboard-nav xl:flex xl:flex-col xl:pt-12 sm:flex sm:flex-col sm:w-full gap-6 xl:col-start-1 xl:col-span-1 justify-start  ">
+        <Link to="stafflist" className="text-[1.25rem] bg-[#e8eddf]/70">
           <motion.button {...motion_btn} className={btn_style}>
             Staff List
           </motion.button>
         </Link>
         {user?.role === "admin" ? (
-          <Link to="admin" className="">
+          <Link to="admin" className="text-[1.25rem] bg-[#e8eddf]/70">
             <motion.button {...motion_btn} className={btn_style}>
               Admin Profile
             </motion.button>
           </Link>
         ) : (
-          <Link to="staff" className="">
+          <Link to="staff" className="text-[1.25rem] bg-[#e8eddf]/70">
             <motion.button {...motion_btn} className={btn_style}>
               Staff Profile
             </motion.button>
           </Link>
         )}
 
-        <Link to="productslist" className="">
+        <Link to="productslist" className="text-[1.25rem] bg-[#e8eddf]/70">
           <motion.button {...motion_btn} className={btn_style}>
             Products List
           </motion.button>
         </Link>
-        <Link to="menberlist" className="">
+        <Link to="menberlist" className="text-[1.25rem] bg-[#e8eddf]/70">
           <motion.button {...motion_btn} className={btn_style}>
             Menber
           </motion.button>
         </Link>
-        <Link to="orderlist" className="">
+        <Link to="orderlist" className="text-[1.25rem] bg-[#e8eddf]/70">
           <motion.button {...motion_btn} className={btn_style}>
             Order List
           </motion.button>
@@ -60,7 +60,24 @@ const DashBoard = () => {
       </nav>
       {/* Dashboard Container */}
 
-      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full h-full flex px-4 overflow-auto">
+      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full flex px-4 overflow-auto pb-8">
+        {location.pathname === "/dashboard" ? (
+          <div className="dashboard-bg relative w-full h-full ">
+            <img
+              draggable="false"
+              src="/BuyFlow/dashboard-text.svg"
+              alt="dashboard-text"
+              className="select-none objcet-cover opacity-80 absolute z-10 w-180  xl:top-50 md:top-45 sm:top-25 left-1/2 -translate-x-1/2 rotate-[-20deg]"
+            />
+            <img
+              draggable="false"
+              src="/BuyFlow/dashboard-bg.svg"
+              alt="dashboard-bg"
+              className="select-none objcet-cover opacity-30 m-auto"
+            />
+          </div>
+        ) : null}
+
         <Outlet />
       </div>
     </section>

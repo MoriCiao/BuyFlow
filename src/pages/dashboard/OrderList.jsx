@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { reloadOrderFromStorage } from "../../features/order/orderSlice";
+import {
+  reloadOrderFromStorage,
+  sendOrder,
+} from "../../features/order/orderSlice";
 const OrderList = () => {
   const { order } = useSelector((state) => state.order);
   const dispatch = useDispatch();
@@ -25,29 +28,30 @@ const OrderList = () => {
   useEffect(() => {
     const storeKey = "dashboard-store";
     localStorage.setItem(storeKey, JSON.stringify(order));
+    console.log(order);
   }, [order]);
 
   return (
-    <section className="order-list w-full flex flex-col justify-start items-start">
-      <div className="flex justify-center items-center rounded-full border overflow-hidden xl:h-[2rem] md:h-[4rem] sm:h-[4rem] mx-auto my-4 min-w-150">
+    <section className="order-list w-full flex flex-col gap-4 justify-start items-start">
+      <div className="flex justify-center items-center rounded-full border overflow-hidden h-[2rem] mx-auto my-4 min-w-150">
         <input
           type="text"
           placeholder="搜尋訂單..."
-          className="search-input w-full h-full rounded-full indent-[1rem] border-0"
+          className="search-input w-full h-[2rem] rounded-full indent-[1rem] border-0"
           value={keyword}
           onChange={(e) => setKeyWord(e.target.value)}
         />
       </div>
       {order.length === 0 ? (
-        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px]">
+        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px] bg-[#e8eddf]">
           <p>目前總訂單為{order.length} ,無任何訂單....</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px]">
+        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px] bg-[#e8eddf]">
           <p>無任何與查詢相符訂單....</p>
         </div>
       ) : (
-        <div className="w-full flex flex-col gap-4">
+        <div className="w-full flex flex-col gap-4 bg-[#e8eddf]">
           {curretData.map((o, index) => {
             return (
               <details
@@ -55,12 +59,26 @@ const OrderList = () => {
                 className=" relative border border-black/50 px-4 py-2 w-full"
               >
                 <summary className="md:text-[1.5rem] sm:text-[1.1rem]">
-                  訂單編號：{o.id}
+                  訂單編號：{o.id}{" "}
+                  {o?.isSend ? null : <span className="">‼️</span>}
                   <button
-                    className="absolute right-4 md:top-4 sm:top-2 border px-4 rounded-full !text-[1rem] font-bold"
-                    onClick={() => dispatch()}
+                    type="button"
+                    className={`absolute w-25 right-4 md:top-4 sm:top-2 border px-4 rounded-full !text-[1rem] font-bold cursor-pointer ${
+                      o?.isSend
+                        ? "bg-red-500 border-2 border-white"
+                        : "bg-white border-2 border-red-500"
+                    }`}
+                    onClick={() => {
+                      if (confirm("請確認商品是否已出貨?")) {
+                        dispatch(sendOrder(o));
+                      }
+                    }}
                   >
-                    尚未出貨
+                    {o?.isSend ? (
+                      <span className="text-white">出貨</span>
+                    ) : (
+                      <span className="text-red-500">尚未出貨</span>
+                    )}
                   </button>
                 </summary>
 

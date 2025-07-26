@@ -24,8 +24,8 @@ const Profile = ({ title, userRole, children }) => {
     <div
       className={
         userRole !== "menber"
-          ? "flex flex-col items-center justify-center"
-          : "col-start-2 col-span-1 flex flex-col items-center justify-start w-full h-full "
+          ? "flex flex-col items-center justify-center sm:mx-auto sm:relative sm:z-5 sm:bg-[#e8eddf]/70"
+          : "col-start-2 col-span-1 flex flex-col items-center justify-start w-full h-full"
       }
     >
       <h1 className="text-[1.5rem] w-[350px] indent-[1rem]">{title} </h1>

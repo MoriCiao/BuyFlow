@@ -22,7 +22,7 @@ import OrderTracking from "../components/OrderTracking.jsx";
 import OrderList from "../pages/dashboard/OrderList.jsx";
 const AppRoutes = () => {
   return (
-    <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center">
+    <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center relative z-10">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListPage />} />
