@@ -20,6 +20,7 @@ import CheckoutPage from "../pages/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 import OrderTracking from "../components/OrderTracking.jsx";
 import OrderList from "../pages/dashboard/OrderList.jsx";
+import About from "../pages/About.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes w-[80%] h-auto p-4 flex items-center justity-center relative z-10">
@@ -33,7 +34,7 @@ const AppRoutes = () => {
         {/* login 才能進入頁面 */}
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/checkout/success" element={<CheckoutSuccess />} />
-
+        <Route path="/about" element={<About />} />
         <Route
           path="/menber"
           element={

@@ -7,7 +7,7 @@ const about_items = [
   {
     name: "關於我們",
     icon: "/BuyFlow/icon/information.png",
-    link: "#",
+    link: "/BuyFlow/about",
   },
   {
     name: "購物資訊",
@@ -22,7 +22,7 @@ const about_items = [
   {
     name: "會員資料",
     icon: "/BuyFlow/icon/user.png",
-    link: "#",
+    link: "/BuyFlow/menber",
   },
 ];
 const contact_items = [
@@ -64,7 +64,7 @@ const ContactItem = ({ name, icon, link }) => {
 
 const Footer = () => {
   return (
-    <section className="footer flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">
+    <section className="footer relative z-20 flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">
       <div className="w-[80%] md:grid md:grid-cols-6 sm:grid sm:grid-cols-2 items-center justify-center">
         {/* Logo */}
         <div className="footer-img h-full md:col-span-3 sm:col-span-2 col-start-1 grid grid-cols-2 items-center justify-center">

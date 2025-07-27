@@ -15,7 +15,7 @@ const MenberProfile = () => {
           className="xl:w-[80%] m-auto "
         />
       </div>
-      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start h-full w-[350px] relative sm:z-1  bg-[#e8eddf]/70">
+      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start m-auto h-full w-[350px] relative sm:z-1  bg-[#e8eddf]/70">
         <Profile title="Menber Profile" userRole="menber">
           {/* 導向訂單追蹤 */}
           <MoionLink

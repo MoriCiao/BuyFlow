@@ -28,7 +28,6 @@ const OrderList = () => {
   useEffect(() => {
     const storeKey = "dashboard-store";
     localStorage.setItem(storeKey, JSON.stringify(order));
-    console.log(order);
   }, [order]);
 
   return (
@@ -75,7 +74,7 @@ const OrderList = () => {
                     }}
                   >
                     {o?.isSend ? (
-                      <span className="text-white">出貨</span>
+                      <span className="text-white">已出貨</span>
                     ) : (
                       <span className="text-red-500">尚未出貨</span>
                     )}

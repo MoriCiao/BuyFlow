@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="login-from flex flex-col gap-6 items-center p-8 mt-2 bg-[#333533]"
+      className="login-from flex flex-col gap-6 items-center p-8 mt-2 bg-gradient-to-br from-[#333533]/100 via-[#333533]/100 to-black border-white border"
     >
       <img
         draggable="false"
@@ -52,7 +52,7 @@ const LoginForm = () => {
       <svg>
         <rect className="svg-border"></rect>
       </svg>
-      <div className="login-item">
+      <div className="login-item scale-110">
         <label htmlFor="email" className="login-label relative select-none">
           <input
             className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
@@ -68,10 +68,10 @@ const LoginForm = () => {
           </span>
         </label>
       </div>
-      <div className="login-item">
+      <div className="login-item scale-110">
         <label htmlFor="password" className="login-label relative select-none">
           <input
-            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
+            className="peer min-w-[300px]  border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
             id="password"
             name="password"
             type="password"

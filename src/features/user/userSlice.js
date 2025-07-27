@@ -27,8 +27,16 @@ const userSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
     },
-    addmenber(state, action) {
-      const NewUser = action.payload;
+    // 新會員資料新增
+    addNewMenber(state, action) {
+      const newUser = action.payload;
+      console.log(newUser);
+      state.userList.push({
+        ...newUser,
+        image: "/BuyFlow/user/user-menber.svg",
+      });
+
+      console.log(state.userList);
     },
     // 創建訂單
     createOrder(state, action) {
@@ -58,7 +66,7 @@ const userSlice = createSlice({
 export const {
   login,
   loginout,
-  addmenber,
+  addNewMenber,
   createOrder,
   cancelOrder,
   addAllOrder,

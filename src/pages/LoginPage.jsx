@@ -13,7 +13,7 @@ const LoginPage = () => {
       <div className="px-0 flex items-center justify-center w-full xl:relative xl:opacity-100 sm:absolute sm:top-20 sm:left-0 sm:opacity-50">
         <img src={img} alt="login" draggable="false" className="w-full" />
       </div>
-      <div className="md:px-12 sm:px-6 flex flex-col xl:col-span-1  md:col-span-2 items-center justify-center md:pt-0 sm:pt-20">
+      <div className="md:px-12 sm:px-6 flex flex-col xl:col-span-1  md:col-span-2 xl:items-end sm:items-center justify-center md:pt-0 sm:pt-20">
         <LoginForm />
       </div>
     </motion.section>

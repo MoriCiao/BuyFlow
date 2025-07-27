@@ -46,17 +46,15 @@ const CartPage = () => {
             There are currently no items <br />
             in your shopping cart...
           </h1>
-          <motion.button
-            whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
-            transition={{ duration: 0.5 }}
+          <button
             type="button"
-            className="text-[1.5rem] border select-none cursor-pointer px-2 rounded-md"
+            className="text-[2rem] text-white font-bold border-2 border-white select-none cursor-pointer px-8 py-2 rounded-md  bg-gradient-to-br from-black/20 via-black/50 to-black/20  shadow-xl tracking-wide hover:text-black hover:from-yellow-200/50 hover:via-white/50 hover:to-yellow-200/50 transition duration-500"
             onClick={() => {
               navigate("/products");
             }}
           >
             Go Shopping
-          </motion.button>
+          </button>
         </div>
       ) : (
         <div className="cart">

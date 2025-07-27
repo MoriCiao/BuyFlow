@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { addmenber } from "../features/user/userSlice";
+import { addNewMenber } from "../features/user/userSlice";
+import UserList from "../components/UserList";
 // tel email name  password
 // role
 const RegisterItem = ({
@@ -17,12 +18,12 @@ const RegisterItem = ({
   ref,
 }) => {
   return (
-    <div className="flex gap-4 justify-end">
-      <label htmlFor="" className="font-bold">
+    <div className="flex gap-4 justify-end text-[1.5rem]">
+      <label htmlFor="" className="font-bold select-none">
         {label} :
       </label>
       <input
-        className="w-[50%] indent-[1rem] bg-[#333533] text-[#e8eddf] border rounded-sm"
+        className="w-[50%] indent-[1rem] bg-[#333533] text-[#e8eddf] border rounded-sm "
         type={type}
         placeholder={name}
         step={type === "number" ? "1" : undefined}
@@ -54,6 +55,8 @@ const Register = () => {
     role: "menber",
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -68,6 +71,7 @@ const Register = () => {
       alert("您輸入的密碼與二次確認密碼不一致，請重新輸入。");
       return;
     }
+    dispatch(addNewMenber(addMenber));
   };
   useEffect(() => {
     inputRef.current.focus();
@@ -77,21 +81,28 @@ const Register = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="register-page w-full h-full p-4 relative"
+        className="register-page w-full h-full xl:p-4 md:py-20 sm:py-16 sm:my-16 relative"
       >
+        <button
+          className="px-4 border border-white absolute -top-10 left-0 rounded-md text-[1.5rem] bg-gradient-to-br from-yellow-500/50 via-white/50 to-yellow-500/50 tracking-widest font-bold"
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          List Code
+        </button>
+        {isOpen && <UserList />}
+
         <img
+          draggable="false"
           className="w-[60%]"
           src="/BuyFlow/register.svg"
           alt="register.svg"
         />
-        <div className="register-area absolute top-1/2 right-20  min-w-[400px] min-h-[500px] -translate-y-1/2 p-4 bg-[#333533]/70 text-[#e8eddf]">
-          <svg>
-            <rect></rect>
-          </svg>
+        <div className="register-area absolute top-1/2 xl:right-20 xl:-translate-x-0 md:left-1/2 md:-translate-x-1/2 min-w-[500px] min-h-[500px] -translate-y-1/2 p-4 rounded-xl shadow-xl bg-gradient-to-br from-[#333533]/50 via-[#333533]/80 to-[#333533]/100 text-[#e8eddf] border-2 border-white">
           <img
+            draggable="false"
             src="/BuyFlow/logo_w.svg"
             alt="logo_w.svg"
-            className="p-8 pt-2"
+            className="px-20 py-10 m-auto w-100"
           />
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
             <RegisterItem
@@ -160,8 +171,8 @@ const Register = () => {
 
             <button
               type="submit"
-              className="border rounded-full px-2 w-20 m-auto cursor-pointer"
-              onClick={() => dispatch(addmenber(addMenber))}
+              className="border rounded-sm px-2 w-50 text-[1.5rem] mx-auto my-4 tracking-widest cursor-pointer bg-gradient-to-br from-[#e8eddf]/50 via-[#333533]/80 to-[#e8eddf]/100 text-[#e8eddf] font-bold border2 border-[#e8eddf] hover:from-[#e8eddf] hover:via-yellow-200 hover:to-[#e8eddf] hover:text-[#333533] hover:scale-110 transition duration-500"
+              onClick={() => dispatch(addNewMenber(addMenber))}
             >
               Submit
             </button>

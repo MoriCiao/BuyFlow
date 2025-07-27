@@ -4,8 +4,8 @@ import CategoryFilter from "../components/CategoryFilter.jsx";
 // 所有商品的 List, 會使用 <ProductCard/>
 const ProductListPage = () => {
   return (
-    <section className="product-list md:grid xl:grid-cols-8 md:grid-cols-4 w-full h-full md:gap-8 sm:flex sm:flex-col">
-      <nav className="category_filter_nav col-start-1 col-span-1 md:flex md:flex-col md:gap-4 items-center sm:w-full sm:grid sm:grid-cols-3 sm:gap-4 ">
+    <section className="product-list xl:grid xl:grid-cols-8 md:flex  w-full h-full md:gap-8 sm:flex sm:flex-col">
+      <nav className="category_filter_nav col-start-1 col-span-1 xl:flex xl:flex-col sm:w-full md:grid md:grid-cols-3 md:gap-4 items-center sm:w-full sm:grid sm:grid-cols-3 sm:gap-4 ">
         <NavBtn />
       </nav>
       <hr className="md:hidden sm:block sm:my-4 text-black/20" />

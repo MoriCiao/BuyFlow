@@ -30,8 +30,8 @@ const Header = () => {
         isVisible ? "min-h-[5vh]" : "min-h-[10vh]"
       } flex flex-col justify-center items-center `}
     >
-      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-[#333533]">
-        <nav className="nav xl:flex xl:flex-row md:flex md:flex-row xl:justify-between md:justify-center sm:flex-col w-[80%] h-full py-2  text-[#e8eddf] select-none">
+      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-gradient-to-b from-[#333533] via-[#333533] to-[#333533]/80 shadow-xl">
+        <nav className="nav xl:flex xl:flex-row md:flex md:flex-row xl:justify-between sm:justify-center sm:flex-col w-[80%] h-full py-2 text-[#e8eddf] select-none ">
           <HeaderBtn
             text="HomePage"
             variant="homepage"

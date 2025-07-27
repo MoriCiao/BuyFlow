@@ -37,7 +37,7 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <section className="product-detail">
+    <section className="product-detail ">
       <div className="flex flex-col gap-4">
         {/* breadcrumb */}
         <div className="breadcrumb flex gap-2 text-black/70">
@@ -59,7 +59,7 @@ const ProductDetailPage = () => {
           </span>
         </div>
 
-        <div className="xl:grid xl:grid-cols-5 md:flex md:flex-col gap-4 justify-center px-4">
+        <div className="xl:grid xl:grid-cols-5 md:flex md:flex-col gap-4 justify-center px-4 select-none">
           <div className="w-full h-full  py-4 xl:col-span-3 md: col-start-1 my-auto">
             <img
               className="w-full xl:max-h-[500px] md:max-h-[300px]"
@@ -88,7 +88,7 @@ const ProductDetailPage = () => {
             <Hr />
             {/* Price */}
             <div className="product_price flex gap-4 items-center">
-              <p>Price : </p>
+              <p>單價 : </p>
               <span className="!text-[1.5rem] font-bold text-red-500">
                 {product.price} $
               </span>
@@ -99,7 +99,7 @@ const ProductDetailPage = () => {
                 <p>庫存為 0 缺貨中...</p>
               ) : (
                 <p>
-                  Stock :
+                  庫存 :
                   <span className="text-[1.2rem] font-bold text-red-500 px-2 ">
                     {product.stock}
                   </span>
@@ -108,7 +108,7 @@ const ProductDetailPage = () => {
             </div>
             <Hr />
             <div className="checkout_methods">
-              <p className="mb-2">Checkout Methods :</p>
+              <p className="mb-2">結帳方式 :</p>
               <div className=" grid grid-cols-4 gap-1 select-none ">
                 {howToPay &&
                   howToPay.map((p, index) => {

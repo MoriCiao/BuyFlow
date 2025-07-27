@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cancelOrderFormDashBoard } from "../features/order/orderSlice";
-import { sentOut } from "../features/user/userSlice";
+import { setLoading } from "../features/ui/uiSlice";
 const TrackingBtn = ({ text, onClick, style, variant, disabled }) => {
   const animation =
     variant === "cancel"
@@ -28,7 +28,7 @@ const TrackingBtn = ({ text, onClick, style, variant, disabled }) => {
         }
       : {
           // 回會員資料按鈕UI
-          initial: { scale: 1 },
+          initial: { scale: 1, backgroundColor: "#e8eddf" },
           whileHover: {
             backgroundColor: "#333533",
             color: "#e8eddf",
@@ -76,14 +76,24 @@ const OrderTracking = () => {
   const handleCancel = (order) => {
     // localStorage 刪除
     const UserKey = `order-${user.email}`;
+    // 尋找對應的 Storage
     const saved = localStorage.getItem(UserKey);
+    // 轉換
     const savedData = JSON.parse(saved);
+    // 篩選未刪除的訂單
     const updatedOrderData = savedData.filter((s) => s.id !== order.id);
+    // 將訂單再上傳 Storage
     localStorage.setItem(UserKey, JSON.stringify(updatedOrderData));
     setSavedOrder(updatedOrderData);
+
     // dashboard 刪除(刪除後會將資料上傳至 Storage)
     dispatch(cancelOrderFormDashBoard(order));
-    navigate("/menber/ordertracking");
+
+    dispatch(setLoading(true));
+    const timer = setTimeout(() => {
+      dispatch(setLoading(false));
+    }, 1000);
+    return () => clearTimeout(timer);
   };
 
   useEffect(() => {
@@ -95,9 +105,16 @@ const OrderTracking = () => {
 
     if (savedData) {
       setSavedOrder(savedData);
+      console.log(savedOrder);
     } else {
       setSavedOrder([]);
     }
+
+    dispatch(setLoading(true));
+    const timer = setTimeout(() => {
+      dispatch(setLoading(false));
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [user]);
 
   return (
@@ -148,7 +165,26 @@ const OrderTracking = () => {
 
                   <div className="relative flex items-end justify-end">
                     <img src="/BuyFlow/handling.svg" alt="handling" />
-                    {o?.isSend ? (
+                    <TrackingBtn
+                      key={o?.isSend}
+                      text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
+                      variant={o?.isSend ? "send" : "cancel"}
+                      onClick={
+                        o?.isSend
+                          ? null
+                          : () => {
+                              if (confirm("確定要取消這筆訂單嗎？")) {
+                                handleCancel(o);
+                              }
+                            }
+                      }
+                      style={`${
+                        o?.isSend
+                          ? "bg-[#333533] text-[#e8eddf]/50"
+                          : "bg-red-500 text-white"
+                      } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer`}
+                    />
+                    {/* {o?.isSend ? (
                       <TrackingBtn
                         text="🚚 已出貨"
                         variant="send"
@@ -159,18 +195,24 @@ const OrderTracking = () => {
                       />
                     ) : (
                       <TrackingBtn
-                        text="取消訂單"
-                        variant="cancel"
-                        onClick={() => {
-                          if (confirm("確定要取消這筆訂單嗎？")) {
-                            handleCancel(o);
-                          }
-                        }}
-                        style={
-                          "absolute bottom-4 right-4 bg-red-500 text-white font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer"
+                        text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
+                        variant={o?.isSend ? "send" : "cancel"}
+                        onClick={
+                          o?.isSend
+                            ? null
+                            : () => {
+                                if (confirm("確定要取消這筆訂單嗎？")) {
+                                  handleCancel(o);
+                                }
+                              }
                         }
+                        style={`${
+                          o?.isSend
+                            ? "bg-[#333533] text-[#e8eddf]/50"
+                            : "bg-red-500 text-white"
+                        } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer`}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               );
@@ -182,7 +224,7 @@ const OrderTracking = () => {
         variant="menber"
         onClick={() => navigate("/menber")}
         style={
-          "border px-4 py-1 text-[1.5rem] tracking-widest  select-none cursor-pointer"
+          "border px-4 py-1 bg-[#e8eddf] text-[1.5rem] tracking-widest select-none cursor-pointer "
         }
       />
     </section>

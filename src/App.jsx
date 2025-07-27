@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App w-full relative">
+    <div className="App w-full relative bg-gradient-to-br from-yellow-200/50 via-[#e8eddf]  to-yellow-300/50">
       <ScrollToTop />
       <CartIcon />
       {isLoading && <Loading />}

@@ -1,5 +1,6 @@
 .login-page {
   position: relative;
+  perspective: 500px;
 }
 .login-page img.login_profile {
   position: absolute;
@@ -11,11 +12,19 @@
 .login-page .login-from {
   position: relative;
   padding: 20px;
-  width: 25rem;
-  height: 30rem;
+  width: 30rem;
+  height: 35rem;
   padding-top: 7.5rem;
   margin-top: 4rem;
-  box-shadow: 0 0 1rem black;
+  box-shadow: -1rem -1rem 1rem rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition: 0.6s;
+}
+.login-page .login-from:hover {
+  transform: rotateY(20deg) rotateX(15deg);
+  box-shadow: -1rem 1.5rem 1rem rgba(0, 0, 0, 0.8);
 }
 .login-page .login-from button.login-svg {
   position: relative;
@@ -69,7 +78,7 @@
   stroke-width: 4;
   stroke: #e8eddf;
   stroke-linecap: round;
-  stroke-dasharray: 30rem, 25rem;
+  stroke-dasharray: 30rem, 35rem;
   filter: drop-shadow(0 0 1rem #e8eddf) drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8)) drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
   animation: animation_border 6s linear infinite;
 }
@@ -88,7 +97,7 @@
 
 @keyframes animation_border {
   0% {
-    stroke-dashoffset: 110rem;
+    stroke-dashoffset: 130rem;
   }
   100% {
     stroke-dashoffset: 0;
@@ -338,13 +347,18 @@
   opacity: 1;
 }
 .category_filter_nav .active {
-  background-color: #333533;
-  color: white;
+  background: linear-gradient(to bottom right, rgb(252, 252, 193), #e8eddf, rgb(252, 252, 193));
+  color: #333533;
   font-weight: 900;
 }
 
 .prodouct-card {
   position: relative;
+  transition: 0.6s;
+}
+.prodouct-card:hover {
+  box-shadow: -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
+  transform: rotateY(15deg) rotateX(15deg);
 }
 .prodouct-card div.product-image {
   padding: 0.5rem;
@@ -381,8 +395,9 @@
   animation: text 3s linear infinite;
 }
 .prodouct-card:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #e8eddf;
+  background-color: rgba(255, 255, 160, 0.5);
+  color: #333533;
+  font-weight: bold;
 }
 .prodouct-card:hover img {
   scale: 1.1;
@@ -518,8 +533,13 @@
     text-shadow: 0 0 10px rgb(218, 165, 32);
   }
 }
+.register-area form {
+  position: relative;
+  z-index: 5;
+}
 .register-area svg, .register-area svg rect {
   position: absolute;
+  z-index: 1;
   width: 100%;
   height: 100%;
   top: 0%;
@@ -570,7 +590,7 @@ body #root {
 }
 body .App {
   background-color: var(--bg-color);
-  color: black;
+  color: #333533;
 }
 body .App .header .home-svg {
   position: relative;
