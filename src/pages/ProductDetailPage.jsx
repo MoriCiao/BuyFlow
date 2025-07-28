@@ -183,7 +183,7 @@ const ProductDetailPage = () => {
 
             <img
               className="w-[40%] "
-              src="/BuyFlow/public/products_image/description-0.svg"
+              src="/BuyFlow/products_image/description-0.svg"
               alt="des-img"
             />
           </div>
