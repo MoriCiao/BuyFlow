@@ -1,4 +1,3 @@
-import { section } from "framer-motion/client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, closeView } from "../features/products/productsSlice";

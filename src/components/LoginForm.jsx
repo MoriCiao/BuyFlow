@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="login-from flex flex-col gap-6 items-center p-8 mt-2 bg-gradient-to-br from-[#333533]/100 via-[#333533]/100 to-black border-white border"
+      className="login-from flex flex-col gap-6 items-center p-8 mt-2 backdrop-blur-md bg-gradient-to-br from-[#333533]/100 via-[#333533]/80 to-[#333533]/50"
     >
       <img
         draggable="false"

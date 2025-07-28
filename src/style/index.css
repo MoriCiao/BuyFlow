@@ -1,6 +1,5 @@
 .login-page {
   position: relative;
-  perspective: 500px;
 }
 .login-page img.login_profile {
   position: absolute;
@@ -11,20 +10,15 @@
 }
 .login-page .login-from {
   position: relative;
+  z-index: 10;
   padding: 20px;
   width: 30rem;
   height: 35rem;
   padding-top: 7.5rem;
   margin-top: 4rem;
-  box-shadow: -1rem -1rem 1rem rgba(0, 0, 0, 0.5);
-  transform-style: preserve-3d;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  border-radius: 0rem;
   transition: 0.6s;
-}
-.login-page .login-from:hover {
-  transform: rotateY(20deg) rotateX(15deg);
-  box-shadow: -1rem 1.5rem 1rem rgba(0, 0, 0, 0.8);
 }
 .login-page .login-from button.login-svg {
   position: relative;
@@ -34,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.5s linear, background-color 0.5s ease-in-out 1s, color 0.5s ease-in-out 0.5s, box-shadow 0.5s ease-in-out 0.5s;
+  transition: 0.5s linear, box-shadow 0.5s ease-in-out 0.5s;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 }
@@ -55,8 +49,8 @@
   transition: 1s linear;
 }
 .login-page .login-from button.login-svg:hover {
-  scale: 1.2;
-  background-color: #e8eddf;
+  scale: 1.1;
+  background: linear-gradient(to bottom right, #e8eddf, #fde56e);
   color: #333533;
   font-weight: bolder;
   box-shadow: 0 0 0.5rem #e8eddf;
@@ -357,8 +351,8 @@
   transition: 0.6s;
 }
 .prodouct-card:hover {
-  box-shadow: -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
-  transform: rotateY(15deg) rotateX(15deg);
+  box-shadow: -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
+  transform: rotateY(10deg) rotateX(10deg);
 }
 .prodouct-card div.product-image {
   padding: 0.5rem;

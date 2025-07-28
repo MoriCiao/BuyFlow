@@ -124,13 +124,13 @@ const OrderTracking = () => {
           <h1 className="font-bold text-[2rem]">您目前沒有訂單...</h1>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4 w-full">
           {savedOrder &&
             savedOrder.map((o, index) => {
               return (
                 <div
                   key={index}
-                  className="order-detail border border-black/50 w-full max-h-[15rem] p-4 grid grid-cols-4 gap-8"
+                  className="order-detail border border-black/50 w-full min-h-[15rem] p-4 grid xl:grid-cols-4 md:grid-cols-2 gap-8"
                 >
                   <TrackingDetail
                     title={`訂單：${o.id}`}
@@ -164,7 +164,11 @@ const OrderTracking = () => {
                   />
 
                   <div className="relative flex items-end justify-end">
-                    <img src="/BuyFlow/handling.svg" alt="handling" />
+                    <img
+                      src="/BuyFlow/handling.svg"
+                      alt="handling"
+                      className="sm:w-80 sm:absolute sm:bottom-0"
+                    />
                     <TrackingBtn
                       key={o?.isSend}
                       text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
@@ -184,35 +188,6 @@ const OrderTracking = () => {
                           : "bg-red-500 text-white"
                       } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer`}
                     />
-                    {/* {o?.isSend ? (
-                      <TrackingBtn
-                        text="🚚 已出貨"
-                        variant="send"
-                        style={
-                          "absolute bottom-4 right-4 bg-[#333533] text-[#e8eddf]/50 font-bold text-[1.2rem] border-2 border-white rounded-full px-4 select-none cursor-pointer"
-                        }
-                        disabled={true}
-                      />
-                    ) : (
-                      <TrackingBtn
-                        text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
-                        variant={o?.isSend ? "send" : "cancel"}
-                        onClick={
-                          o?.isSend
-                            ? null
-                            : () => {
-                                if (confirm("確定要取消這筆訂單嗎？")) {
-                                  handleCancel(o);
-                                }
-                              }
-                        }
-                        style={`${
-                          o?.isSend
-                            ? "bg-[#333533] text-[#e8eddf]/50"
-                            : "bg-red-500 text-white"
-                        } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer`}
-                      />
-                    )} */}
                   </div>
                 </div>
               );

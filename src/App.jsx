@@ -17,10 +17,11 @@ function App() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(setLoading(true));
-    // setTimeout(() => {
-    //   dispatch(setLoading(false));
-    // }, 2000);
+    dispatch(setLoading(true));
+    const timer = setTimeout(() => {
+      dispatch(setLoading(false));
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
