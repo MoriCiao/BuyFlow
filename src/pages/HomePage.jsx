@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence, easeInOut, easeIn } from "framer-motion";
 
 const carouselImages = [
-  "/BuyFlow/public/homepage/undraw-1.svg",
-  "/BuyFlow/public/homepage/undraw-2.svg",
-  "/BuyFlow/public/homepage/undraw-3.svg",
+  "/BuyFlow/homepage/undraw-1.svg",
+  "/BuyFlow/homepage/undraw-2.svg",
+  "/BuyFlow/homepage/undraw-3.svg",
 ];
 
 const HomePage = () => {

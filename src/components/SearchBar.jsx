@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { search } from "../features/products/productsSlice";
 import { useNavigate } from "react-router-dom";
 
-const img = ["/BuyFlow/public/logo.svg", "/BuyFlow/public/undraw-cart.svg"];
+const img = ["/BuyFlow/logo.svg", "/BuyFlow/undraw-cart.svg"];
 
 const img_style = "md:block sm:hidden md:w-[200px] md:h-[50px]";
 
