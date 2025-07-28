@@ -16,9 +16,9 @@ const howToPay = [
 ];
 
 const desImg = [
-  "/BuyFlow/public/products_image/description-1.svg",
-  "/BuyFlow/public/products_image/description-2.svg",
-  "/BuyFlow/public/products_image/description-3.svg",
+  "/BuyFlow/products_image/description-1.svg",
+  "/BuyFlow/products_image/description-2.svg",
+  "/BuyFlow/products_image/description-3.svg",
 ];
 
 // 商品被點擊後，會顯示action.payload商品資訊
