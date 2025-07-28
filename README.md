@@ -10,19 +10,19 @@ BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux T
 - 商品詳情支援圖片切換、加入購物車
 - 使用者可登入、檢視訂單並結帳
 
-| 頁面功能    | 畫面截圖                                    |
-| ----------- | ------------------------------------------- |
-| 首頁        | ![首頁](./readme/HomePage.png)              |
-| 登入頁面    | ![登入](/readme/LoginPage.png)              |
-| 會員中心    | ![會員](./readme/MenberProfile.png)         |
-| 商城商品頁  | ![商城](./readme/ProductsPage.png)          |
-| 商品詳情頁  | ![商品細節](./readme/ProductDetailPage.png) |
-| 結帳流程 -1 | ![結帳1](./readme/CheckoutPage-1.png)       |
-| 結帳流程 -2 | ![結帳2](./readme/CheckoutPage-2.png)       |
-| 訂單追蹤    | ![訂單](./readme/OrderTrackingPage.png)     |
-| 後台頁面-1  | ![後台1](./readme/Dashboard-1.png)          |
-| 後台頁面-2  | ![後台2](./readme/Dashboard-2.png)          |
-| 後台頁面-3  | ![後台3](./readme/Dashboard-3.png)          |
+| 頁面功能    | 畫面截圖                                       |
+| ----------- | ---------------------------------------------- |
+| 首頁        | ![首頁](./readme/HomePage.png)                 |
+| 登入頁面    | ![登入](/readme/LoginPage.png)                 |
+| 會員中心    | ![會員](./readme/MenberProfile.png)            |
+| 商城商品頁  | ![商城](./readme/ProductsPage.png)             |
+| 商品詳情頁  | ![商品細節](./readme/ProductDetailPage.png)    |
+| 結帳流程 -1 | ![結帳1](./readme/CheckoutPage-1.png)          |
+| 結帳流程 -2 | ![結帳2](./readme/CheckoutPage-2.png)          |
+| 訂單追蹤    | ![訂單](./readme/OrderTrackingPage.png)        |
+| 後台頁面-1  | ![後台1](./readme/Dashboard-1.png)             |
+| 後台頁面-2  | ![後台2](./readme/Dashboard-2_productList.png) |
+| 後台頁面-3  | ![後台3](./readme/Dashboard-3_OrderList.png)   |
 
 ---
 
