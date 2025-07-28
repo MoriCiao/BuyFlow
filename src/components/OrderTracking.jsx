@@ -105,7 +105,6 @@ const OrderTracking = () => {
 
     if (savedData) {
       setSavedOrder(savedData);
-      console.log(savedOrder);
     } else {
       setSavedOrder([]);
     }

@@ -25,8 +25,6 @@ const orderSlice = createSlice({
       );
       state.order = updatedOrderList;
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));
-
-      console.log("DashBoard資料已更新");
     },
     // 將資料載入至 dashboard
     reloadOrderFromStorage(state, action) {

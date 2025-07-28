@@ -16,7 +16,7 @@ const MenberList = () => {
     return userName.includes(keyword.toLowerCase());
   });
   const currentUser = filtered.length === 0 ? menberFiltered : filtered;
-  console.log(currentUser);
+
   return (
     <AnimatePresence mode="wait">
       <motion.section
