@@ -13,7 +13,7 @@ BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux T
 | 頁面功能    | 畫面截圖                                    |
 | ----------- | ------------------------------------------- |
 | 首頁        | ![首頁](./readme/HomePage.png)              |
-| 登入頁面    | ![登入](./readme/LoginPage.png)             |
+| 登入頁面    | ![登入](/readme/LoginPage.png)              |
 | 會員中心    | ![會員](./readme/MenberProfile.png)         |
 | 商城商品頁  | ![商城](./readme/ProductsPage.png)          |
 | 商品詳情頁  | ![商品細節](./readme/ProductDetailPage.png) |
