@@ -7,8 +7,8 @@ import { mockLoginAPI } from "../features/user/mockAuthAPI.js";
 // 登入表單
 const LoginForm = () => {
   // input輸入的值存儲起來，供 userReducer使用
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin@example.com");
+  const [password, setPassword] = useState("admin123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

@@ -172,6 +172,7 @@ const OrderTracking = () => {
                       key={o?.isSend}
                       text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
                       variant={o?.isSend ? "send" : "cancel"}
+                      disabled={o?.isSend ? true : false}
                       onClick={
                         o?.isSend
                           ? null
@@ -183,9 +184,9 @@ const OrderTracking = () => {
                       }
                       style={`${
                         o?.isSend
-                          ? "bg-[#333533] text-[#e8eddf]/50"
-                          : "bg-red-500 text-white"
-                      } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none cursor-pointer`}
+                          ? "bg-[#333533] text-[#e8eddf]/50 cursor-not-allowed"
+                          : "bg-red-500 text-white cursor-pointer"
+                      } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none `}
                     />
                   </div>
                 </div>

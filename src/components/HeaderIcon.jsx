@@ -1,15 +1,9 @@
 import { useState } from "react";
 import { loginout } from "../features/user/userSlice";
-import { HeaderBtn, HeaderLink, HeaderHr_sm } from "./HeaderItem";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-const HeaderIcon = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-  const { user, isAuthenticated } = useSelector((state) => state.user);
-
+const HeaderIcon = ({ isOpen, handleToggle }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -48,80 +42,6 @@ const HeaderIcon = () => {
           />
         </div>
       </button>
-
-      <ol
-        className={`${
-          isOpen
-            ? "translate-x-0 opacity-100 pointer-events-auto"
-            : "-translate-x-60 opacity-0 pointer-events-none"
-        } flex flex-col gap-2 justify-start text-[1.5rem] py-5 items-center cursor-pointer bg-[#333533]/50 min-w-50 min-h-[15rem] -translate-y-2 h-full mt-5 transition duration-500`}
-      >
-        {!isAuthenticated ? (
-          <>
-            <li
-              className="hover:text-yellow-500 transtion duration-500"
-              onClick={handleToggle}
-            >
-              <HeaderLink text="Login" link="/login" />
-            </li>
-            <HeaderHr_sm />
-          </>
-        ) : (
-          <>
-            <span className="hover:text-yellow-500 hover:font-bold transtion duration-500">
-              Hi! {user.name}
-            </span>
-            <HeaderHr_sm />
-            {(user.role === "admin" || user.role === "staff") && (
-              <>
-                <HeaderLink text="DashBoard" link="/dashboard" />
-                <HeaderHr_sm />
-              </>
-            )}
-            <HeaderBtn
-              text="Logout"
-              variant="Logout"
-              className={
-                "px-2 hover:text-yellow-500 hover:font-bold transtion duration-500"
-              }
-              onClick={() => {
-                dispatch(loginout());
-                navigate("/");
-              }}
-            />
-            <HeaderHr_sm />
-          </>
-        )}
-        <>
-          <li
-            className="hover:text-yellow-500 transtion duration-500"
-            onClick={handleToggle}
-          >
-            <HeaderLink text="Member Center" link="/menber" />
-          </li>
-          <HeaderHr_sm />
-
-          <li
-            className="hover:text-yellow-500 transtion duration-500"
-            onClick={handleToggle}
-          >
-            <HeaderLink text="Cart" link="/cart" />
-          </li>
-          <HeaderHr_sm />
-
-          {!isAuthenticated && (
-            <>
-              <li
-                className="hover:text-yellow-500 transtion duration-500"
-                onClick={handleToggle}
-              >
-                <HeaderLink text="Register" link="/register" />
-              </li>
-              <HeaderHr_sm />
-            </>
-          )}
-        </>
-      </ol>
     </section>
   );
 };
