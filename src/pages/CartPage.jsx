@@ -7,6 +7,7 @@ import {
   cleanCart,
 } from "../features/cart/cartSlice";
 import { useEffect } from "react";
+import { div } from "framer-motion/client";
 const CartPage = () => {
   const { items, totalAmount, totalQuatity } = useSelector(
     (state) => state.cart
@@ -31,24 +32,16 @@ const CartPage = () => {
   }, [items, user]);
 
   return (
-    <section className="cart-page w-full min-h-[60vh] text-center ">
-      <div className="grid md:grid-cols-12 border py-2 mb-4 text-black/50">
-        <div className=" col-start-4 col-span-2">Name</div>
-        <div className=" col-start-6 col-span-2">Price</div>
-        <div className=" col-start-8 col-span-4">Quantity </div>
-
-        <div className=" col-start-12 col-span-1">Delete</div>
-      </div>
-
+    <section className="cart-page md:w-[80%] w-full min-h-[60vh] text-center m-auto ">
       {items.length === 0 ? (
         <div className="w-full text-center text-[#333533] p-8 flex flex-col items-center justify-cneter ">
-          <h1 className="!text-[2rem] font-bold h-[200px] flex items-center">
-            There are currently no items <br />
+          <h1 className="sm:!text-[2rem] text-[1.25rem] font-bold h-[200px] flex items-center">
+            There are currently no items <br className="sm:block hidden" />
             in your shopping cart...
           </h1>
           <button
             type="button"
-            className="text-[2rem] text-white font-bold border-2 border-white select-none cursor-pointer px-8 py-2 rounded-md  bg-gradient-to-br from-black/20 via-black/50 to-black/20  shadow-xl tracking-wide hover:text-black hover:from-yellow-200/50 hover:via-white/50 hover:to-yellow-200/50 transition duration-500"
+            className="sm:text-[2rem] text-white font-bold border-2 border-white select-none cursor-pointer px-8 py-2 rounded-md  bg-gradient-to-br from-black/20 via-black/50 to-black/20  shadow-xl tracking-wide hover:text-black hover:from-yellow-200/50 hover:via-white/50 hover:to-yellow-200/50 transition duration-500"
             onClick={() => {
               navigate("/products");
             }}
@@ -57,101 +50,98 @@ const CartPage = () => {
           </button>
         </div>
       ) : (
-        <div className="cart">
+        <div className="cart flex flex-col gap-2">
           {items.map((i, index) => {
             return (
               <div
+                className={`item-${i.id} relative h-full flex place-items-center py-4 gap-4 border border-black/20 bg-gradient-to-br from-white/20 via-white/50 to-white/20 backdrop-blur-sm`}
                 key={index}
-                className={`item-${i.id} w-full grid grid-cols-12 items-center justify-center`}
               >
-                <img
-                  src={i.image}
-                  alt={`item-${i.id}`}
-                  className="col-start-2 col-span-2"
-                />
-
-                <div className=" col-start-4 col-span-2">
-                  <h3>{i.name}</h3>
+                <div className="w-full flex-1">
+                  <img
+                    src={i.image}
+                    alt={`item-${i.id}`}
+                    className="w-20 m-auto"
+                  />
                 </div>
-                <div className=" col-start-6 col-span-2">
-                  <p>{i.price} $</p>
-                </div>
-                <div className=" col-start-8 col-span-4  flex gap-4 justify-center select-none">
-                  <div className="relative border border-black/50 flex gap-4 justify-center w-fit">
-                    <span
-                      className="px-1 cursor-pointer"
-                      onClick={() => {
-                        dispatch(modifyAmount({ id: i.id, type: "decrement" }));
-                      }}
-                    >
-                      ➖
-                    </span>
-                    <motion.strong
-                      initial={{ opacity: 0.5 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 1 }}
-                      className={`absolute bg-white/50 text-red-500 -top-8 w-35 px-1 !text-[1rem] border ${
-                        i.quantity === i.stock ? "" : "hidden"
-                      }`}
-                    >
-                      已達最大數量！
-                    </motion.strong>
-                    <p>{i.quantity}</p>
-                    <span
-                      className="px-1 cursor-pointer"
-                      onClick={() => {
-                        dispatch(modifyAmount({ id: i.id, type: "increment" }));
-                      }}
-                    >
-                      ➕
-                    </span>
+                <div className="flex-2 sm:grid sm:grid-cols-3 sm:items-center flex flex-col items-start  gap-2">
+                  <h3>
+                    <strong>{i.name}</strong>
+                  </h3>
+                  <p>
+                    <strong>{i.price} $</strong>
+                  </p>
+                  <div className="relative flex items-center justify-between  w-full pr-2">
+                    <div className="flex gap-4 border border-black/20">
+                      <span
+                        className="px-1 cursor-pointer bg-gray-200"
+                        onClick={() => {
+                          dispatch(
+                            modifyAmount({ id: i.id, type: "decrement" })
+                          );
+                        }}
+                      >
+                        ➖
+                      </span>
+                      <motion.strong
+                        initial={{ opacity: 0.5 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className={`absolute bg-white/50 text-red-500 -top-8 px-1 !text-[0.75rem] border ${
+                          i.quantity === i.stock ? "" : "hidden"
+                        }`}
+                      >
+                        已達最大數量！
+                      </motion.strong>
+                      <strong>{i.quantity}</strong>
+                      <span
+                        className="px-1 cursor-pointer bg-gray-200"
+                        onClick={() => {
+                          dispatch(
+                            modifyAmount({ id: i.id, type: "increment" })
+                          );
+                        }}
+                      >
+                        ➕
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <motion.button
+                  className="absolute right-2 top-2 select-none cursor-pointer rounded-sm"
+                  onClick={() => {
+                    dispatch(removeItem(i));
+                  }}
+                >
+                  ❌
+                </motion.button>
 
-                <div className=" col-start-12 col-span-1 w-full h-full flex items-center justify-center">
-                  <motion.button
-                    initial={{
-                      backgroundColor: "#333533",
-                      color: "#e8eddf",
-                    }}
-                    whileHover={{
-                      backgroundColor: "rgba(255, 0, 0, 1)",
-                      color: "rgba(255, 255, 255, 1)",
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className="border px-2 select-none cursor-pointer rounded-sm"
-                    onClick={() => {
-                      dispatch(removeItem(i));
-                    }}
-                  >
-                    Delete
-                  </motion.button>
-                </div>
-
-                <hr className="col-start-1 col-span-12 my-4" />
+                <strong className="absolute right-2 bottom-2 select-none cursor-pointer rounded-sm">
+                  {i.quantity * i.price} $
+                </strong>
               </div>
             );
           })}
 
-          <div className="checkout flex flex-col px-4 py-4 border">
+          <div className="checkout flex flex-col sm:px-4 py-4 ">
             <div className="flex justify-between items-center">
               <motion.button
                 initial={{}}
                 whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
                 transition={{ duration: 0.5 }}
-                className="px-2 py-1 border rounded-sm font-bold "
+                className="px-2 border rounded-sm font-bold "
                 onClick={() => navigate("/products")}
               >
-                ◀ Go Shpping
+                ◀Shopping
               </motion.button>
               <div>
-                <div className="quantity flex flex-row items-center gap-2 ">
+                <div className="quantity flex sm:flex-row flex-col sm:items-center items-end gap-2 ">
                   <p className="w-[150px] text-end">Total Quantity :</p>
                   <span className="text-black-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
                     {totalQuatity ?? 0}
                   </span>
                 </div>
-                <div className="amount flex flex-row items-center gap-2">
+                <div className="amount flex sm:flex-row flex-col sm:items-center items-end gap-2">
                   <p className="w-[150px] text-end">Total Amount : </p>
                   <span className="text-red-500 font-bold text-[1.15rem] text-end px-2 w-[100px]">
                     {totalAmount ?? 0} $
@@ -186,7 +176,7 @@ const CartPage = () => {
               </motion.button>
             </div>
           </div>
-          <hr className="w-full" />
+          {/* <hr className="w-full" /> */}
         </div>
       )}
     </section>

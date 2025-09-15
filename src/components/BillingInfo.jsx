@@ -36,16 +36,6 @@ const BillingInput = ({ label, name, type, pattern, title }) => {
 const BillingInfo = () => {
   const { user } = useSelector((state) => state.user);
 
-  // const user = {
-  //   name: "Mori",
-  //   email: "user@example.com",
-  //   password: "user123",
-  //   role: "menber",
-  //   phone: "0932766444",
-  //   address: "台南市245號中正路",
-  //   image: "/BuyFlow/user/user-menber.svg",
-  // };
-
   const { name, email, image, phone, address } = user;
   return (
     <section className="billing-Info flex flex-col">
@@ -57,7 +47,7 @@ const BillingInfo = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex gap-1 m-auto items-center justify-center p-4"
+        className="flex md:flex-row flex-col sm:gap-1 gap-4 m-auto items-center justify-center p-4"
       >
         <img src={image} className="w-30" alt="" />
         <div className="flex flex-col gap-2">

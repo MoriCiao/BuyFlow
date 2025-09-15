@@ -129,7 +129,7 @@ const OrderTracking = () => {
               return (
                 <div
                   key={index}
-                  className="order-detail border border-black/50 w-full min-h-[15rem] p-4 grid xl:grid-cols-4 md:grid-cols-2 gap-8"
+                  className="order-detail border border-black/50 w-full min-h-[15rem] sm:py-4 px-4 py-2 grid xl:grid-cols-4 md:grid-cols-2 gap-8"
                 >
                   <TrackingDetail
                     title={`訂單：${o.id}`}
@@ -166,7 +166,7 @@ const OrderTracking = () => {
                     <img
                       src="/BuyFlow/handling.svg"
                       alt="handling"
-                      className="sm:w-80 sm:absolute sm:bottom-0"
+                      className="w-80 absolute bottom-0 sm:block hidden"
                     />
                     <TrackingBtn
                       key={o?.isSend}
@@ -186,7 +186,7 @@ const OrderTracking = () => {
                         o?.isSend
                           ? "bg-[#333533] text-[#e8eddf]/50 cursor-not-allowed"
                           : "bg-red-500 text-white cursor-pointer"
-                      } absolute bottom-4 right-4 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none `}
+                      } absolute sm:bottom-4 sm:right-4 bottom-0 right-0 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none `}
                     />
                   </div>
                 </div>

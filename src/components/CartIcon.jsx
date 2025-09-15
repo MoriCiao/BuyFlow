@@ -42,7 +42,7 @@ const CartIcon = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } bg-black/70 w-[300px] h-[600px] text-white p-4 relative`}
+        } bg-black/70 w-[300px] sm:h-[600px] min-h-[500px] text-white p-4 relative`}
       >
         <div>
           <p>Cart : 🛒</p>

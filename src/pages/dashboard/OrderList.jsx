@@ -57,12 +57,13 @@ const OrderList = () => {
                 key={index}
                 className=" relative border border-black/50 px-4 py-2 w-full"
               >
-                <summary className="md:text-[1.5rem] sm:text-[1.1rem]">
-                  訂單編號：{o.id}{" "}
+                <summary className="md:text-[1.5rem] sm:text-[1.1rem] md:py-0 py-4 overflow-hidden">
+                  訂單編號：
+                  <br /> <span className="break-all">{o.id}</span>{" "}
                   {o?.isSend ? null : <span className="">‼️</span>}
                   <button
                     type="button"
-                    className={`absolute w-25 right-4 md:top-4 sm:top-2 border px-4 rounded-full !text-[1rem] font-bold cursor-pointer ${
+                    className={`absolute w-25 right-4 right-0 md:top-4 top-2 border px-2 rounded-full sm:!text-[1rem] font-bold cursor-pointer ${
                       o?.isSend
                         ? "bg-red-500 border-2 border-white"
                         : "bg-white border-2 border-red-500"
