@@ -40,7 +40,7 @@ const ProductDetailPage = () => {
     <section className="product-detail ">
       <div className="flex flex-col gap-4">
         {/* breadcrumb */}
-        <div className="breadcrumb flex gap-2 text-black/70">
+        <div className="breadcrumb flex items-center  gap-2 text-black/70">
           <span
             className="text-[2rem] cursor-pointer select-none"
             onClick={() => {
@@ -49,26 +49,28 @@ const ProductDetailPage = () => {
           >
             🔙
           </span>
-          <span>/</span>
-          <Link to="/">BuyFlow</Link>
-          <span>/</span>
-          <Link to="/products">products</Link>
-          <span>/</span>
-          <span className="flex text-black/50">
-            {`${product.name}  ${product.category}  ${product.description}`}
-          </span>
+          <div>
+            <span> / </span>
+            <Link to="/">BuyFlow</Link>
+            <span> / </span>
+            <Link to="/products">products</Link>
+            <span> / </span>
+            <span className="flex text-black/50">
+              {`${product.name}  ${product.category}  ${product.description}`}
+            </span>
+          </div>
         </div>
 
         <div className="xl:grid xl:grid-cols-5 md:flex md:flex-col gap-4 justify-center px-4 select-none">
           <div className="w-full h-full  py-4 xl:col-span-3 md: col-start-1 my-auto">
             <img
-              className="w-full xl:max-h-[500px] md:max-h-[300px]"
+              className="w-full xl:max-h-[500px] md:max-h-[300px] max-h-[150px]"
               src={product.image}
               alt="product_img"
             />
           </div>
 
-          <div className="relative xl:col-span-2 md: xl:col-start-4 md: py-4">
+          <div className="relative xl:col-span-2 md: xl:col-start-4 ">
             {/* id */}
             <p className="absolute top-0 right-0 border border-black/20 px-4 text-black/50">
               商品編號：{product.id}
@@ -165,9 +167,11 @@ const ProductDetailPage = () => {
           </div>
         </div>
         <Hr />
-        <div className="detail">
-          <h3 className="text-[1.5rem] font-bold">Details</h3>
-          <div className="flex gap-4 mb-4">
+        <div className="detail flex flex-col items-center justify-center">
+          <h3 className="text-[1.5rem] text-start w-full font-bold pb-4">
+            Details
+          </h3>
+          <div className="flex sm:flex-row flex-col items-center gap-4 mb-4">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Doloribus deserunt magnam minima, cum obcaecati praesentium
@@ -191,7 +195,10 @@ const ProductDetailPage = () => {
           {desImg &&
             desImg.map((i, index) => {
               return (
-                <div className="w-full py-8" key={index}>
+                <div
+                  className="w-[80%] flex flex-col items-center justify-center py-8"
+                  key={index}
+                >
                   <img className="w-full " src={i} alt={`des-${index}`} />
                   <Hr />
                 </div>

@@ -199,7 +199,7 @@ const OrderTracking = () => {
         variant="menber"
         onClick={() => navigate("/menber")}
         style={
-          "border px-4 py-1 bg-[#e8eddf] text-[1.5rem] tracking-widest select-none cursor-pointer "
+          "border px-4 py-1 bg-[#e8eddf] sm:text-[1.5rem] text-md tracking-widest select-none cursor-pointer "
         }
       />
     </section>

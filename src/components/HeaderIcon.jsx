@@ -8,7 +8,7 @@ const HeaderIcon = ({ isOpen, handleToggle }) => {
   const dispatch = useDispatch();
 
   return (
-    <section className="header-icon sm:fixed -translate-x-5 sm:top-0 sm:left-5 text-white z-99 xl:hidden w-auto">
+    <section className="header-icon fixed -translate-x-5 top-0 left-5 text-white z-99 xl:hidden w-auto">
       {/* Menu Icon */}
       <button
         onClick={handleToggle}

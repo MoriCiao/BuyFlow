@@ -26,9 +26,9 @@ const StaffList = () => {
   };
 
   return (
-    <section className="staff-list">
+    <section className="staff-list w-full">
       <select
-        className="bg-[#333533] text-[#e8eddf] px-2 py-1 mb-2 rounded-sm"
+        className="bg-[#333533] text-[#e8eddf] px-2 py-1 mb-2 rounded-sm sm:w-auto w-full"
         name=""
         id=""
         onChange={handleChange}
@@ -41,16 +41,16 @@ const StaffList = () => {
         <motion.div
           key={selectedRole}
           {...animate_I}
-          className="staffs flex flex-wrap gap-8 w-full items-start justify-start"
+          className="staffs sm:flex flex-wrap grid grid-cols-2 sm:gap-8 gap-2 w-full sm:items-start sm:justify-start items-center justify-center "
         >
           {staffFiltered &&
             staffFiltered.map((user, index) => {
               return (
                 <div
                   key={index}
-                  className="user-card border max-h-[250px] w-[200px] p-4"
+                  className="user-card border sm:max-h-[250px] sm:w-[200px] min-w-[100px] p-4 bg-gradient-to-br from-white/20 via-white/20 to-black/10 backdrop-blur-sm sm:hover:-translate-x-2 sm:hover:-translate-y-2 transition duration-500 shadow-xl"
                 >
-                  <div className="w-full h-[150px] p-4">
+                  <div className="w-full sm:h-[150px] p-4 flex">
                     <img
                       src={user.role === "staff" ? img.staff : img.admin}
                       alt="userImg"
@@ -60,7 +60,7 @@ const StaffList = () => {
                   <div className="user-data text-center">
                     <p className="font-bold">{user.role.toUpperCase()}</p>
                     <p>{user.name}</p>
-                    <p>{user.email}</p>
+                    <p className="w-full break-all">{user.email}</p>
                   </div>
                 </div>
               );

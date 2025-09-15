@@ -49,9 +49,9 @@ const ProductsList = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="products-list w-full h-full text-center flex flex-col gap-4 mt-2 sm:mt-8 relative"
+        className="products-list w-full h-full text-center flex flex-col gap-4 mt-2 sm:mt-8 relative overflow-x-auto"
       >
-        <div className="flex justify-center items-center rounded-full border m-auto min-w-100 sm:absolute sm:top-0 sm:left-0">
+        <div className="flex justify-center items-center rounded-full border m-auto w-full sm:absolute sm:top-0 sm:left-0">
           <select
             name=""
             id=""
@@ -79,7 +79,7 @@ const ProductsList = () => {
             onChange={(e) => setKeyWord(e.target.value)}
           />
         </div>
-        <div className=" min-w-[1000px] xl:max-h-[450px] py-4 mb-8 overflow-auto sm:mt-12">
+        <div className=" min-w-[1000px] xl:max-h-[450px]  overflow-x-auto sm:mt-12 backdrop-blur-sm">
           <table className="w-full border border-collapse w-[100%] ">
             <thead>
               <tr className="border ">

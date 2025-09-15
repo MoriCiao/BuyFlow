@@ -8,10 +8,16 @@
   top: -5rem;
   z-index: 10;
 }
+@media (max-width: 640px) {
+  .login-page img.login_profile {
+    width: 7.5rem;
+    height: 7.5rem;
+    top: -2.5rem;
+  }
+}
 .login-page .login-from {
   position: relative;
   z-index: 10;
-  padding: 20px;
   width: 30rem;
   height: 35rem;
   padding-top: 7.5rem;
@@ -19,6 +25,12 @@
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   border-radius: 0rem;
   transition: 0.6s;
+}
+@media (max-width: 640px) {
+  .login-page .login-from {
+    width: 95%;
+    height: 25rem;
+  }
 }
 .login-page .login-from button.login-svg {
   position: relative;
@@ -31,6 +43,13 @@
   transition: 0.5s linear, box-shadow 0.5s ease-in-out 0.5s;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+}
+@media (max-width: 640px) {
+  .login-page .login-from button.login-svg {
+    width: 100px;
+    height: 30px;
+    letter-spacing: 0rem;
+  }
 }
 .login-page .login-from button.login-svg svg,
 .login-page .login-from button.login-svg svg rect {
@@ -48,8 +67,13 @@
   stroke-dashoffset: 0;
   transition: 1s linear;
 }
+@media (max-width: 640px) {
+  .login-page .login-from button.login-svg svg rect {
+    stroke-width: 2;
+  }
+}
 .login-page .login-from button.login-svg:hover {
-  scale: 1.1;
+  scale: 1.05;
   background: linear-gradient(to bottom right, #e8eddf, #fde56e);
   color: #333533;
   font-weight: bolder;
@@ -75,6 +99,15 @@
   stroke-dasharray: 30rem, 35rem;
   filter: drop-shadow(0 0 1rem #e8eddf) drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8)) drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
   animation: animation_border 6s linear infinite;
+}
+@media (max-width: 640px) {
+  .login-page .login-from svg rect.svg-border {
+    stroke-width: 4;
+    stroke: rgba(232, 237, 223, 0.4235294118);
+    stroke-linecap: round;
+    stroke-dasharray: 0;
+    animation: none;
+  }
 }
 
 .login_profile {
@@ -289,6 +322,12 @@
   width: 150px;
   height: 50px;
 }
+@media (max-width: 640px) {
+  .category_filter_nav .nav_btn {
+    width: 100%;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+  }
+}
 .category_filter_nav .nav_btn button {
   position: absolute;
   top: 0;
@@ -318,6 +357,11 @@
   width: 100%;
   height: 100%;
   fill: transparent;
+}
+@media (max-width: 640px) {
+  .category_filter_nav .nav_btn button svg, .category_filter_nav .nav_btn button svg rect {
+    display: none;
+  }
 }
 .category_filter_nav .nav_btn button rect {
   stroke-width: 4;

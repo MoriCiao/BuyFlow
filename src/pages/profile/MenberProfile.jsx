@@ -12,10 +12,10 @@ const MenberProfile = () => {
         <img
           src="/BuyFlow/user/user-bg-2.svg"
           alt="user-bg"
-          className="xl:w-[80%] m-auto "
+          className="xl:w-[80%] m-auto md:block hidden"
         />
       </div>
-      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start m-auto h-full w-[350px] relative sm:z-1  bg-[#e8eddf]/70">
+      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start m-auto h-full sm:w-[350px]  min-w-[300px] relative sm:z-1">
         <Profile title="Menber Profile" userRole="menber">
           {/* 導向訂單追蹤 */}
           <MoionLink
@@ -27,7 +27,7 @@ const MenberProfile = () => {
             }}
             transition={{ duration: 0.5 }}
             to="/menber/ordertracking"
-            className="p-2 mt-2 font-bold text-center underline border w-[350px]"
+            className="p-2 mt-2 font-bold text-center underline border w-full bg-gradient-to-br from-white/20 via-white/50 to-whtie/20"
           >
             🚚 Order Tracking
           </MoionLink>

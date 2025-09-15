@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="login-from flex flex-col gap-6 items-center p-8 mt-2 backdrop-blur-md bg-gradient-to-br from-[#333533]/100 via-[#333533]/80 to-[#333533]/50"
+      className="login-from flex flex-col gap-6 items-center pt-8 mt-2 backdrop-blur-md bg-[#333533]"
     >
       <img
         draggable="false"
@@ -52,10 +52,13 @@ const LoginForm = () => {
       <svg>
         <rect className="svg-border"></rect>
       </svg>
-      <div className="login-item scale-110">
-        <label htmlFor="email" className="login-label relative select-none">
+      <div className="login-item w-full flex flex-col items-center justify-center">
+        <label
+          htmlFor="email"
+          className="login-label relative w-[80%] flex items-center justify-center"
+        >
           <input
-            className="peer min-w-[300px] border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
+            className="peer w-full  border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
             id="email"
             name="email"
             type="email"
@@ -63,15 +66,18 @@ const LoginForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="absolute left-3 -top-7 font-bold transition-all duration-500 text-[#e8eddf]  px-1 bg-[#333533] peer-placeholder-shown:text-base peer-placeholder-shown:top-[-0.1rem] peer-placeholder-shown:text-[#e8eddf] ">
+          <span className="absolute left-3 -top-3 font-bold transition-all duration-500 text-[#e8eddf]  px-1 bg-[#333533] peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:text-[#e8eddf] ">
             Email
           </span>
         </label>
       </div>
-      <div className="login-item scale-110">
-        <label htmlFor="password" className="login-label relative select-none">
+      <div className="login-item w-full flex flex-col items-center justify-center">
+        <label
+          htmlFor="password"
+          className="login-label relative w-[80%] flex items-center justify-center"
+        >
           <input
-            className="peer min-w-[300px]  border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
+            className="peer w-full  border-2 indent-[0.5rem] h-[2.5rem] rounded-sm bg-[#333533] text-[#e8eddf]"
             id="password"
             name="password"
             type="password"
@@ -79,14 +85,14 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="absolute left-3 -top-7 font-bold transition-all duration-500 text-[#e8eddf]  px-1 bg-[#333533] peer-placeholder-shown:text-base peer-placeholder-shown:top-[-0.1rem] peer-placeholder-shown:text-[#e8eddf]">
+          <span className="absolute left-3 -top-3 font-bold transition-all duration-500 text-[#e8eddf]  px-1 bg-[#333533] peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:text-[#e8eddf] ">
             Password
           </span>
         </label>
       </div>
       <button
         type="submit"
-        className="login-svg px-2 cursor-pointer text-[#e8eddf] text-[1.5rem]"
+        className="login-svg px-2 cursor-pointer text-[#e8eddf] sm:text-[1.5rem] text-md"
       >
         <svg>
           <rect></rect>
@@ -96,7 +102,7 @@ const LoginForm = () => {
       <img
         src="/BuyFlow/logo_w.svg"
         alt="logo.svg"
-        className="w-60 py-6 relative xl:z-11 sm:z-10"
+        className="sm:w-60 w-25 py-6 relative xl:z-11 sm:z-10"
       />
     </form>
   );

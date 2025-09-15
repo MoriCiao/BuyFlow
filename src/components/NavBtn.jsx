@@ -23,7 +23,7 @@ const NavBtn = () => {
           return (
             <div
               key={cate}
-              className={`nav_btn select-none bg-gradient-to-b ${
+              className={`nav_btn select-none bg-gradient-to-b w-full ${
                 activeBtn === cate ? "active" : ""
               }`}
             >

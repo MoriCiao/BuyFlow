@@ -11,7 +11,7 @@ const Profile = ({ title, userRole, children }) => {
     };
 
     return (
-      <div className="user-photo relative flex items-center justify-center border w-full h-[200px]">
+      <div className="user-photo relative flex items-center justify-center border w-full sm:h-[200px] py-4">
         <img
           className="w-[150px]"
           src={imgData[userRole]}
@@ -24,12 +24,12 @@ const Profile = ({ title, userRole, children }) => {
     <div
       className={
         userRole !== "menber"
-          ? "flex flex-col items-center justify-center sm:mx-auto sm:relative sm:z-5 sm:bg-[#e8eddf]/70"
+          ? "flex flex-col items-center justify-center mx-auto relative z-5 "
           : "col-start-2 col-span-1 flex flex-col items-center justify-start w-full h-full"
       }
     >
       <h1 className="text-[1.5rem] w-[350px] indent-[1rem]">{title} </h1>
-      <div className="container flex flex-col items-center justify-center w-[350px] min-h-[200px]">
+      <div className="container flex flex-col items-center justify-center w-full min-h-[200px] bg-gradient-to-br from-white/20 via-white/50 to-whtie/20">
         <ProfileSVG />
         <div className="user-detail w-full">
           <table className="w-full">

@@ -32,7 +32,7 @@ const OrderList = () => {
 
   return (
     <section className="order-list w-full flex flex-col gap-4 justify-start items-start">
-      <div className="flex justify-center items-center rounded-full border overflow-hidden h-[2rem] mx-auto my-4 min-w-150">
+      <div className="flex justify-center items-center rounded-full border overflow-hidden py-2 mx-auto my-4 w-full">
         <input
           type="text"
           placeholder="搜尋訂單..."

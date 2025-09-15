@@ -36,7 +36,7 @@ const Header = () => {
       } flex flex-col justify-center items-center `}
     >
       <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-gradient-to-b from-[#333533] via-[#333533] to-[#333533]/80 shadow-xl">
-        <nav className="nav xl:flex xl:flex-row md:flex md:flex-row xl:justify-between sm:justify-center sm:flex-col w-[80%] h-full py-2 text-[#e8eddf] select-none ">
+        <nav className="nav flex md:flex-row xl:justify-between items-center justify-center flex-col w-[80%] h-full py-2 text-[#e8eddf] select-none">
           <HeaderBtn
             text="HomePage"
             variant="homepage"
@@ -44,7 +44,7 @@ const Header = () => {
             className={""}
           />
 
-          <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4 xl:flex sm:hidden ">
+          <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4 xl:flex xl:block hidden ">
             {/* ----------登入邏輯---------- */}
             {!isAuthenticated ? (
               <li>
@@ -169,7 +169,7 @@ const Header = () => {
       </div>
       {isVisible && (
         <div
-          className={` header w-[80%] min-h-[100px] flex gap-8 justify-between items-center md:pt-12 sm:pt-30 pb-8 mt-4`}
+          className={` header w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4`}
         >
           <SearchBar />
         </div>

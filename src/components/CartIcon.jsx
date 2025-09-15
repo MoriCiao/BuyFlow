@@ -26,13 +26,13 @@ const CartIcon = () => {
   };
 
   return (
-    <section className="cartIcon fixed top-30 right-5 z-100 sm:hidden md:block select-none">
+    <section className="cartIcon fixed sm:top-30 top-0 right-5 z-100 block select-none">
       <div className="select-none flex justify-end">
         <motion.button
           initial={{ fontSize: "1.5rem" }}
           animate={{ rotate: ["0deg", "20deg", "0deg"] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className=" text-[1.5rem] bg-white/50 rounded-full p-2 select-none cursor-pointer my-4"
+          className=" text-[1.5rem] bg-white/75 rounded-full p-2 select-none cursor-pointer my-4"
           onClick={handleOpen}
         >
           🛒

@@ -90,7 +90,7 @@ const HomePage = () => {
       </div>
 
       <Link
-        className="homepage-link absolute bottom-[5%] left-[50%] -translate-[50%] z-100"
+        className="homepage-link absolute bottom-[5%] left-1/2 -translate-1/2 z-100"
         to={"/products"}
       >
         <button type="button">

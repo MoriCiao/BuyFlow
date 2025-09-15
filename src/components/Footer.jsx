@@ -65,7 +65,7 @@ const ContactItem = ({ name, icon, link }) => {
 const Footer = () => {
   return (
     <section className="footer relative z-20 flex items-center justify-center w-full h-auto bg-[#333533] text-[#e8eddf]">
-      <div className="w-[80%] md:grid md:grid-cols-6 sm:grid sm:grid-cols-2 items-center justify-center">
+      <div className="sm:w-[80%] w-full md:grid md:grid-cols-6 sm:grid sm:grid-cols-2 flex flex-col items-center justify-center">
         {/* Logo */}
         <div className="footer-img h-full md:col-span-3 sm:col-span-2 col-start-1 grid grid-cols-2 items-center justify-center">
           <img className="pl-8 m-auto w-80" src={logo} alt="" />
@@ -74,7 +74,7 @@ const Footer = () => {
         {/* About Us */}
         <div className="footer-item2 h-full py-4 md:col-start-4">
           <h3 className="text-center text-[1.15rem] mb-2">About Us</h3>
-          <ol className="footer-ol flex flex-col gap-4 items-center ">
+          <ol className="footer-ol grid sm:grid-cols-1 grid-cols-2 place-items-center sm:gap-4 gap-8 items-center ">
             {about_items &&
               about_items.map((i, index) => {
                 return (
@@ -86,9 +86,9 @@ const Footer = () => {
           </ol>
         </div>
         {/*  Contact Us */}
-        <div className="Contact  h-full py-4 md:col-start-5 md:col-span-2 flex flex-col items-center w-[15rem]">
+        <div className="Contact  h-full py-4 md:col-start-5 md:col-span-2 flex flex-col items-center  justify-center w-[15rem]">
           <h3 className="text-center text-[1.15rem] mb-2 w-full">Contact us</h3>
-          <ol className="footer-ol flex  flex-col gap-2 items-start  text-[1rem] ">
+          <ol className="footer-ol flex  flex-col sm:gap-2 gap-4 items-start  text-[1rem] ">
             {contact_items &&
               contact_items.map((i, index) => {
                 return (
@@ -99,7 +99,7 @@ const Footer = () => {
               })}
           </ol>
         </div>
-        <p className="md:col-span-6 sm:col-span-2 text-center border-t py-2">
+        <p className="md:col-span-6 sm:col-span-2 text-center border-t w-full py-2">
           © 2025 BuyFlow. All rights reserved.
         </p>
       </div>

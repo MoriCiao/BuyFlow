@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const img = ["/BuyFlow/logo.svg", "/BuyFlow/undraw-cart.svg"];
 
-const img_style = "md:block sm:hidden md:w-[200px] md:h-[50px]";
+const img_style = "md:block hidden md:w-[200px] md:h-[50px]";
 
 const SearchBar = () => {
   const navigate = useNavigate();

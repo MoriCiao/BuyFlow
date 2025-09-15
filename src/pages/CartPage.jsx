@@ -32,7 +32,7 @@ const CartPage = () => {
 
   return (
     <section className="cart-page w-full min-h-[60vh] text-center ">
-      <div className="grid grid-cols-12 border py-2 mb-4 text-black/50">
+      <div className="grid md:grid-cols-12 border py-2 mb-4 text-black/50">
         <div className=" col-start-4 col-span-2">Name</div>
         <div className=" col-start-6 col-span-2">Price</div>
         <div className=" col-start-8 col-span-4">Quantity </div>
@@ -133,16 +133,16 @@ const CartPage = () => {
             );
           })}
 
-          <div className="checkout flex flex-col px-4 py-4">
+          <div className="checkout flex flex-col px-4 py-4 border">
             <div className="flex justify-between items-center">
               <motion.button
                 initial={{}}
                 whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
                 transition={{ duration: 0.5 }}
-                className="px-2 py-2 border rounded-sm font-bold "
+                className="px-2 py-1 border rounded-sm font-bold "
                 onClick={() => navigate("/products")}
               >
-                ◀ Go Back Shpping
+                ◀ Go Shpping
               </motion.button>
               <div>
                 <div className="quantity flex flex-row items-center gap-2 ">
