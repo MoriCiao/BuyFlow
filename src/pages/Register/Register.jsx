@@ -107,7 +107,7 @@ const Register = () => {
             draggable="false"
             src="/BuyFlow/logo_w.svg"
             alt="logo_w.svg"
-            className="px-20 py-10 m-auto w-100"
+            loading="lazy"
           />
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
             <RegisterItem
