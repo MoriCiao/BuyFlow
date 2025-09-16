@@ -5,8 +5,9 @@ import { loginout } from "../features/user/userSlice";
 import { isSearch } from "../features/ui/uiSlice";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import { HeaderHr, HeaderBtn, HeaderLink, HeaderHr_sm } from "./HeaderItem";
-import HeaderIcon from "./HeaderIcon";
+import { HeaderHr, HeaderBtn, HeaderLink } from "./HeaderItem";
+import HeaderIcon from "./headerIcon/HeaderIcon";
+import HeaderSlide from "./headerSlide/HeaderSlide";
 
 const Header = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -30,12 +31,11 @@ const Header = () => {
 
   return (
     <motion.section
-      // whileHover={{ fontSize: "1.1rem" }}
       className={`header w-full ${
         isVisible ? "min-h-[5vh]" : "min-h-[10vh]"
       } flex flex-col justify-center items-center `}
     >
-      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-gradient-to-b from-[#333533] via-[#333533] to-[#333533]/80 shadow-xl">
+      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-gradient-to-b from-[#333533] via-[#474747] to-[#333533] shadow-xl">
         <nav className="nav flex md:flex-row xl:justify-between items-center justify-center flex-col w-[80%] h-full py-2 text-[#e8eddf] select-none">
           <HeaderBtn
             text="HomePage"
@@ -70,7 +70,7 @@ const Header = () => {
             <>
               <HeaderHr />
               <li>
-                <HeaderLink text="Member Center" link="/menber" />
+                <HeaderLink text="Member" link="/menber" />
               </li>
               <HeaderHr />
               <li>
@@ -89,84 +89,15 @@ const Header = () => {
           </ol>
         </nav>
       </div>
+      {/* 1024px 以下顯示 */}
       <HeaderIcon isOpen={isOpen} handleToggle={handleToggle} />
-      <div
-        className={`text-white absolute z-99 left-0 transition duration-500 top-8 ${
-          isOpen
-            ? "translate-x-0 opacity-100 pointer-events-auto"
-            : "-translate-x-60 opacity-0 pointer-events-none"
-        }`}
-      >
-        <ol
-          className={` flex flex-col gap-2 justify-start text-[1.5rem] py-5 items-center cursor-pointer bg-[#333533]/50 min-w-50 min-h-[15rem] -translate-y-2 h-full mt-5 `}
-        >
-          {!isAuthenticated ? (
-            <>
-              <li
-                className="hover:text-yellow-500 transtion duration-500"
-                onClick={handleToggle}
-              >
-                <HeaderLink text="Login" link="/login" />
-              </li>
-              <HeaderHr_sm />
-            </>
-          ) : (
-            <>
-              <span className="hover:text-yellow-500 hover:font-bold transtion duration-500">
-                Hi! {user.name}
-              </span>
-              <HeaderHr_sm />
-              {(user.role === "admin" || user.role === "staff") && (
-                <>
-                  <HeaderLink text="DashBoard" link="/dashboard" />
-                  <HeaderHr_sm />
-                </>
-              )}
-              <HeaderBtn
-                text="Logout"
-                variant="Logout"
-                className={
-                  "px-2 hover:text-yellow-500 hover:font-bold transtion duration-500"
-                }
-                onClick={() => {
-                  dispatch(loginout());
-                  navigate("/");
-                }}
-              />
-              <HeaderHr_sm />
-            </>
-          )}
-          <>
-            <li
-              className="hover:text-yellow-500 transtion duration-500"
-              onClick={handleToggle}
-            >
-              <HeaderLink text="Member Center" link="/menber" />
-            </li>
-            <HeaderHr_sm />
+      <HeaderSlide
+        isOpen={isOpen}
+        isAuthenticated={isAuthenticated}
+        user={user}
+        handleToggle={handleToggle}
+      />
 
-            <li
-              className="hover:text-yellow-500 transtion duration-500"
-              onClick={handleToggle}
-            >
-              <HeaderLink text="Cart" link="/cart" />
-            </li>
-            <HeaderHr_sm />
-
-            {!isAuthenticated && (
-              <>
-                <li
-                  className="hover:text-yellow-500 transtion duration-500"
-                  onClick={handleToggle}
-                >
-                  <HeaderLink text="Register" link="/register" />
-                </li>
-                <HeaderHr_sm />
-              </>
-            )}
-          </>
-        </ol>
-      </div>
       {isVisible && (
         <div
           className={` header w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4`}

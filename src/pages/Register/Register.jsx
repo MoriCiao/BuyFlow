@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { addNewMenber } from "../features/user/userSlice";
-import UserList from "../components/UserList";
+import { addNewMenber } from "../../features/user/userSlice";
+import UserList from "../../components/UserList";
+import "./_Register.scss";
 // tel email name  password
 // role
 const RegisterItem = ({
@@ -18,12 +19,12 @@ const RegisterItem = ({
   ref,
 }) => {
   return (
-    <div className="flex gap-4 justify-end text-[1.5rem]">
-      <label htmlFor="" className="font-bold select-none">
+    <div className="register-form-item">
+      <label htmlFor="" className="register-label">
         {label} :
       </label>
       <input
-        className="w-[50%] indent-[1rem] bg-[#333533] text-[#e8eddf] border rounded-sm "
+        className="register-input"
         type={type}
         placeholder={name}
         step={type === "number" ? "1" : undefined}
@@ -81,23 +82,27 @@ const Register = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="register-page w-full h-full xl:p-4 md:py-20 sm:py-16 sm:my-16 relative"
+        className="register-page "
       >
         <button
-          className="px-4 border border-white absolute -top-10 left-0 rounded-md text-[1.5rem] bg-gradient-to-br from-yellow-500/50 via-white/50 to-yellow-500/50 tracking-widest font-bold xl  xl:block sm:hidden"
+          className="member-list"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           Code
         </button>
         {isOpen && <UserList />}
 
-        <img
-          draggable="false"
-          className="w-[60%]"
-          src="/BuyFlow/register.svg"
-          alt="register.svg"
-        />
-        <div className="register-area absolute top-1/2 xl:right-20 xl:-translate-x-0 md:left-1/2 md:-translate-x-1/2 min-w-[500px] min-h-[500px] -translate-y-1/2 p-4 rounded-xl shadow-xl backdrop-blur-sm bg-gradient-to-br from-[#333533]/50 via-[#333533]/80 to-[#333533]/100 text-[#e8eddf] border-2 border-white">
+        {/* 背景圖片 */}
+        <div className="register-img">
+          <img
+            draggable="false"
+            className="w-[100%] 2xl:block hidden"
+            src="/BuyFlow/register.svg"
+            alt="register.svg"
+          />
+        </div>
+
+        <div className="register-form shadow-xl backdrop-blur-sm border-2 border-white">
           <img
             draggable="false"
             src="/BuyFlow/logo_w.svg"

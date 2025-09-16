@@ -14,7 +14,7 @@ import MenberProfile from "../pages/profile/MenberProfile.jsx";
 import DashBoard from "../pages/DashBoard.jsx";
 import StaffList from "../pages/dashboard/StaffList.jsx";
 import ProductsList from "../pages/dashboard/ProductsList.jsx";
-import Register from "../pages/Register.jsx";
+import Register from "../pages/Register/Register.jsx";
 import MenberList from "../pages/dashboard/MenberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";

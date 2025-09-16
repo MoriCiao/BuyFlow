@@ -1,11 +1,15 @@
 .category-btn{
     user-select: none;
     position: relative;
+    background: #333533;
+    color: #e8eddf;
     width: 150px;
     height: 50px;
+    border-radius: 0.75rem;
+    overflow: hidden;
     @media (max-width:640px) {
         width: 80px;
-        height: 30px;
+        height: 40px;
         border: 1px rgba(0, 0, 0, 0.5) solid;
         
     }
@@ -18,7 +22,7 @@
         height: 100%;
         width: 100%;
         height: 100%;
-        font-size: 1.2rem;
+        font-size: 1rem;
         transition: background-color 0.5s ease, color 0.5s ease , font-size 0.5s ease; 
         &::before {
             content: "";
@@ -35,36 +39,14 @@
             font-size: 0.8rem;
 
         }
-        
-        svg,svg rect{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            fill:transparent;
-            @media (max-width:640px) {
-                display: none;
-            }
-
-        }
-        rect{
-            stroke-width: 4;
-            stroke: #333533;
-            stroke-dasharray: 150,50;
-            transition: 1s ;
-        }
+    
         &:hover{
-            font-size: 1rem;
+            font-size: 1.2rem;
             background-color: #333533;
             color: #e8eddf;
             text-shadow:0 0 10px #e8eddf;
-            
-            rect{
-                opacity: 0;
-                stroke-dasharray: 50,150;
-                stroke-dashoffset: 250;
-
+            @media (max-width:640px) {
+                font-size: 1rem;
             }
         }
         
@@ -76,8 +58,9 @@
     
 }
 .active{
-    background: linear-gradient(to bottom right, rgb(252, 252, 193), #e8eddf, rgb(252, 252, 193));
+    background: linear-gradient(to bottom right, gold, #e8eddf, gold);
     color: #333533;
     font-weight: 900;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
 }
 

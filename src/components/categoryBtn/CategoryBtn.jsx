@@ -31,9 +31,6 @@ const CategoryBtn = () => {
                   dispatch(active(cate)), setActiveBtn(cate);
                 }}
               >
-                <svg>
-                  <rect></rect>
-                </svg>
                 {cate}
               </button>
             </div>
