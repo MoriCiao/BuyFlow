@@ -1,0 +1,15 @@
+.category_filter{
+    display: grid;
+    transition: all 0.5;
+    padding: 2rem;
+    gap: 1rem;
+    @media (min-width:769px) {
+        grid-template-columns: repeat(3 ,minmax(0,1fr));
+    }
+    @media (min-width:1280px) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    @media (max-width:768px) {
+        grid-template-columns: repeat(2 ,minmax(0,1fr));
+    }
+}
