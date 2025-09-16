@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "./features/ui/uiSlice";
 import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop";
-import BgImg from "./components/BgImg";
+import BgImg from "./components/BgImg/BgImg";
 
 function App() {
   const isLoading = useSelector((state) => state.ui.isLoading);
@@ -25,12 +25,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App w-full relative bg-gradient-to-br from-yellow-200/50 via-[#e8eddf]  to-yellow-300/50 overflow-hidden">
+    <div className="App">
       <ScrollToTop />
       <CartIcon />
       {isLoading && <Loading />}
       <Header />
-      <main className="main w-full min-h-[60vh] flex justify-center relative">
+      <main className="main">
         <BgImg />
         <AppRoutes />
       </main>

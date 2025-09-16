@@ -29,13 +29,11 @@ const HomePage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: easeIn }}
-      className="homepage relative w-full max-h-[60vh] overflow-hidden"
+      className="homepage"
     >
-      <div className="homepage_carousel select-none w-full h-[60vh] overflow-hidden">
-        <span
-          className="absolute z-11 top-[0] left-0 h-full flex items-center justify-center w-[10rem] cursor-pointer "
-          onClick={prevSlide}
-        >
+      <div className="homepage_carousel">
+        {/* 上一圖片 */}
+        <span className="prev-slide left-0 " onClick={prevSlide}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 200 89.68">
             <g id="圖層_2" data-name="圖層 2">
               <g id="圖層_1-2" data-name="圖層 1">
@@ -44,6 +42,7 @@ const HomePage = () => {
             </g>
           </svg>
         </span>
+        {/* 圖片跑馬燈 */}
         <AnimatePresence mode="wait">
           <motion.img
             key={current}
@@ -56,10 +55,8 @@ const HomePage = () => {
             className="carousel_img w-full h-full bg-[#333533]/50 p-4 relative z-10"
           />
         </AnimatePresence>
-        <span
-          className="absolute z-11 top-[0] right-0 h-full flex items-center justify-center w-[10rem] cursor-pointer"
-          onClick={nextSlide}
-        >
+        {/* 下一圖片 */}
+        <span className="next-slide right-0" onClick={nextSlide}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 200 89.68">
             <g id="圖層_2" data-name="圖層 2">
               <g id="圖層_1-2" data-name="圖層 1">
@@ -69,12 +66,12 @@ const HomePage = () => {
           </svg>
         </span>
         {/* 指示燈區塊 */}
-        <div className="absolute z-10 bottom-4 left-1/2 flex gap-2 -translate-x-1/2">
+        <div className="homepage-dot">
           {carouselImages.map((_, index) => {
             return (
               <button
                 key={index}
-                className={`border border-black/20 rounded-full w-4 h-4 transition duration-500 ${
+                className={`${
                   index === current
                     ? "bg-[#e8eddf] scale-115"
                     : "bg-[#e8eddf]/20"
@@ -89,10 +86,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <Link
-        className="homepage-link absolute bottom-[5%] left-1/2 -translate-1/2 z-100"
-        to={"/products"}
-      >
+      <Link className="homepage-link" to={"/products"}>
         <button type="button">
           {/* SVG 動畫 */}
           <svg>

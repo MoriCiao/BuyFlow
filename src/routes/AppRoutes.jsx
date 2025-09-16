@@ -3,7 +3,7 @@ import RequireAuth from "../components/RequireAuth.jsx";
 import RequireRole from "../components/RequireRole.jsx";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage.jsx";
-import ProductListPage from "../pages/ProductListPage.jsx";
+import ProductListPage from "../pages/productListPage/ProductListPage.jsx";
 import ProductDetailPage from "../pages/ProductDetailPage.jsx";
 import CartPage from "../pages/CartPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
@@ -23,7 +23,7 @@ import OrderList from "../pages/dashboard/OrderList.jsx";
 import About from "../pages/About.jsx";
 const AppRoutes = () => {
   return (
-    <div className="AppRoutes sm:w-[80%] w-[100%] h-auto p-4 flex items-center justity-center relative z-10">
+    <div className="AppRoutes sm:w-[80%] w-[100%] h-auto p-4 flex items-start justity-center relative z-10">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListPage />} />

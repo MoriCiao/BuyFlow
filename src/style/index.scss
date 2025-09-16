@@ -1,8 +1,6 @@
 @import "login.scss";
 @import "loading.scss";
 @import "_page404.scss";
-@import "_categoryBtn.scss";
-@import "_productCard.scss";
 @import "_homepage.scss";
 @import "_register.scss";
 @import "_delivery.scss";
@@ -31,8 +29,11 @@ body{
            
     }
     .App{
-        background-color: var(--bg-color);
-        color: #333533;       
+        position: relative;
+        background: linear-gradient(to right ,#ffecb4  ,#e8eddf, #ffecb4);
+        overflow:hidden;
+        color: #333533;   
+        width: 100%;    
         
         .header{
             
@@ -78,7 +79,16 @@ body{
                 
             }
         }
-
+        .main{
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            @media (max-width:640px) {
+                min-height: auto;
+            }
+        }
         
 
     }
