@@ -54,7 +54,7 @@ const userSlice = createSlice({
     cancelOrder(state, action) {
       const select_order = action.payload;
       const updateOrderList = state.allOrders.filter(
-        (o) => o.No !== select_order.No
+        (o) => o.No !== select_order.No,
       );
       state.allOrders = updateOrderList;
     },

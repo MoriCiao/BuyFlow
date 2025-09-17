@@ -33,7 +33,7 @@ const HomePage = () => {
     >
       <div className="homepage_carousel">
         {/* 上一圖片 */}
-        <span className="prev-slide left-0 " onClick={prevSlide}>
+        <span className="prev-slide left-0" onClick={prevSlide}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 200 89.68">
             <g id="圖層_2" data-name="圖層 2">
               <g id="圖層_1-2" data-name="圖層 1">
@@ -52,7 +52,7 @@ const HomePage = () => {
             exit={{ opacity: 0 }}
             src={carouselImages[current]}
             alt={`carousel-${current}`}
-            className="carousel_img w-full h-full bg-[#333533]/50 p-4 relative z-10"
+            className="carousel_img relative z-10 h-full w-full bg-[#333533]/50 p-4"
           />
         </AnimatePresence>
         {/* 下一圖片 */}
@@ -73,7 +73,7 @@ const HomePage = () => {
                 key={index}
                 className={`${
                   index === current
-                    ? "bg-[#e8eddf] scale-115"
+                    ? "scale-115 bg-[#e8eddf]"
                     : "bg-[#e8eddf]/20"
                 }`}
                 onClick={() =>

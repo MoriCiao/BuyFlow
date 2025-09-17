@@ -5,8 +5,8 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
     <div
       className={`headerSlide ${
         isOpen
-          ? "translate-x-0 opacity-100 pointer-events-auto"
-          : "-translate-x-60 opacity-0 pointer-events-none"
+          ? "pointer-events-auto translate-x-0 opacity-100"
+          : "pointer-events-none -translate-x-60 opacity-0"
       }`}
     >
       <ol>
@@ -34,7 +34,7 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
                 text="Logout"
                 variant="Logout"
                 className={
-                  "px-2 hover:text-yellow-500 hover:font-bold transtion duration-500"
+                  "transtion px-2 duration-500 hover:font-bold hover:text-yellow-500"
                 }
                 onClick={() => {
                   dispatch(loginout());
@@ -47,7 +47,7 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
         )}
         <>
           <li
-            className="hover:text-yellow-500 transtion duration-500"
+            className="transtion duration-500 hover:text-yellow-500"
             onClick={handleToggle}
           >
             <HeaderLink text="Member Center" link="/menber" />
@@ -55,7 +55,7 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
           </li>
 
           <li
-            className="hover:text-yellow-500 transtion duration-500"
+            className="transtion duration-500 hover:text-yellow-500"
             onClick={handleToggle}
           >
             <HeaderLink text="Cart" link="/cart" />
@@ -65,7 +65,7 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
           {!isAuthenticated && (
             <>
               <li
-                className="hover:text-yellow-500 transtion duration-500"
+                className="transtion duration-500 hover:text-yellow-500"
                 onClick={handleToggle}
               >
                 <HeaderLink text="Register" link="/register" />

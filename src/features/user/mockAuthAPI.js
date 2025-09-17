@@ -4,7 +4,7 @@ export const mockLoginAPI = ({ email, password }) => {
   return new Promise((res, rej) => {
     setTimeout(() => {
       const found = users.find(
-        (u) => u.email === email && u.password === password
+        (u) => u.email === email && u.password === password,
       );
       if (found) {
         const { password, ...userData } = found; // 不回傳用戶端的password

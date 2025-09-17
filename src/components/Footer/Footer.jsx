@@ -57,7 +57,7 @@ const contact_items = [
 const ContactItem = ({ name, icon, link }) => {
   return (
     <li className="">
-      <img className="w-5 h-5" src={icon} alt={`${name}_img`} />
+      <img className="h-5 w-5" src={icon} alt={`${name}_img`} />
       <a href={link}>{name}</a>
     </li>
   );
@@ -65,11 +65,11 @@ const ContactItem = ({ name, icon, link }) => {
 
 const Footer = () => {
   return (
-    <section className="footer ">
+    <section className="footer">
       <div className="footer-container">
         {/* Logo */}
         <div className="footer-img">
-          <img className="pl-8 m-auto w-80" src={logo} alt="" />
+          <img className="m-auto w-80 pl-8" src={logo} alt="" />
         </div>
         <div className="footer-content">
           {/* About Us */}
@@ -89,7 +89,7 @@ const Footer = () => {
           {/*  Contact Us */}
           <div className="contact">
             <h3 className="">Contact us</h3>
-            <ol className="footer-ol ">
+            <ol className="footer-ol">
               {contact_items &&
                 contact_items.map((i, index) => {
                   return (
@@ -102,7 +102,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="md:col-span-6 sm:col-span-2 text-center border-t w-full py-2">
+      <p className="w-full border-t py-2 text-center sm:col-span-2 md:col-span-6">
         © 2025 BuyFlow. All rights reserved.
       </p>
     </section>

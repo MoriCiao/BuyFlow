@@ -21,7 +21,7 @@ const orderSlice = createSlice({
       const cancelOrder = action.payload;
       // 篩選出不是該訂單的新list
       const updatedOrderList = state.order.filter(
-        (o) => o.id !== cancelOrder.id
+        (o) => o.id !== cancelOrder.id,
       );
       state.order = updatedOrderList;
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));

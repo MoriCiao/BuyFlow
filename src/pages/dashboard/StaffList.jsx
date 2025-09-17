@@ -28,7 +28,7 @@ const StaffList = () => {
   return (
     <section className="staff-list w-full">
       <select
-        className="bg-[#333533] text-[#e8eddf] px-2 py-1 mb-2 rounded-sm sm:w-auto w-full"
+        className="mb-2 w-full rounded-sm bg-[#333533] px-2 py-1 text-[#e8eddf] sm:w-auto"
         name=""
         id=""
         onChange={handleChange}
@@ -41,20 +41,20 @@ const StaffList = () => {
         <motion.div
           key={selectedRole}
           {...animate_I}
-          className="staffs sm:flex flex-wrap grid grid-cols-2 sm:gap-8 gap-2 w-full sm:items-start sm:justify-start items-center justify-center "
+          className="staffs grid w-full grid-cols-2 flex-wrap items-center justify-center gap-2 sm:flex sm:items-start sm:justify-start sm:gap-8"
         >
           {staffFiltered &&
             staffFiltered.map((user, index) => {
               return (
                 <div
                   key={index}
-                  className="user-card border sm:max-h-[250px] sm:w-[200px] min-w-[100px] p-4 bg-gradient-to-br from-white/20 via-white/20 to-black/10 backdrop-blur-sm sm:hover:-translate-x-2 sm:hover:-translate-y-2 transition duration-500 shadow-xl"
+                  className="user-card min-w-[100px] border bg-gradient-to-br from-white/20 via-white/20 to-black/10 p-4 shadow-xl backdrop-blur-sm transition duration-500 sm:max-h-[250px] sm:w-[200px] sm:hover:-translate-x-2 sm:hover:-translate-y-2"
                 >
-                  <div className="w-full sm:h-[150px] p-4 flex">
+                  <div className="flex w-full p-4 sm:h-[150px]">
                     <img
                       src={user.role === "staff" ? img.staff : img.admin}
                       alt="userImg"
-                      className="w-full "
+                      className="w-full"
                     />
                   </div>
                   <div className="user-data text-center">

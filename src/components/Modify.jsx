@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, closeView } from "../features/products/productsSlice";
 const ModifySection = ({ label, type, name, value, onChange }) => {
   return (
-    <section className="grid grid-cols-4 items-center ">
-      <label htmlFor="" className="text-end px-4">
+    <section className="grid grid-cols-4 items-center">
+      <label htmlFor="" className="px-4 text-end">
         {label} :
       </label>
       <p>{name}</p>
@@ -15,9 +15,9 @@ const ModifySection = ({ label, type, name, value, onChange }) => {
         placeholder="請輸入修改值..."
         value={value}
         onChange={onChange}
-        className="col-span-2 bg-white text-black h-auto indent-[1rem]"
+        className="col-span-2 h-auto bg-white indent-[1rem] text-black"
       />
-      <hr className="col-span-4 text-white/50 mt-2" />
+      <hr className="col-span-4 mt-2 text-white/50" />
     </section>
   );
 };
@@ -50,16 +50,16 @@ const Modify = () => {
   }, [modify_list]);
 
   return (
-    <section className="modify absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[600px] min-h-[500px] p-4 bg-black/70">
-      <div className="min-w-[600px] text-end mb-2">
+    <section className="modify absolute top-1/2 left-1/2 min-h-[500px] min-w-[600px] -translate-x-1/2 -translate-y-1/2 bg-black/70 p-4">
+      <div className="mb-2 min-w-[600px] text-end">
         <span
-          className="select-none cursor-pointer"
+          className="cursor-pointer select-none"
           onClick={() => dispatch(closeView())}
         >
           ❌
         </span>
       </div>
-      <div className="flex flex-col gap-4 text-white text-start border p-2">
+      <div className="flex flex-col gap-4 border p-2 text-start text-white">
         <label htmlFor="">目前正在修正商品 ID : {modify_list.id}</label>
         <ModifySection
           label="Name"
@@ -109,10 +109,10 @@ const Modify = () => {
       </div>
       <button
         type="button"
-        className="border px-2 rounded-full bg-white mt-2"
+        className="mt-2 rounded-full border bg-white px-2"
         onClick={() =>
           dispatch(
-            updateProduct({ id: modify_list.id, updatedData: modifyItem })
+            updateProduct({ id: modify_list.id, updatedData: modifyItem }),
           )
         }
       >

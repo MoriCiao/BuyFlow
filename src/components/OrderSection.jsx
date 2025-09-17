@@ -24,7 +24,7 @@ const Hr = () => {
 
 const OrderSection = () => {
   const { items, totalAmount, totalQuatity, deliveryMethod } = useSelector(
-    (state) => state.cart
+    (state) => state.cart,
   );
   const { user, allOrders } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -76,12 +76,12 @@ const OrderSection = () => {
   const { name, email, phone, address } = user;
 
   return (
-    <section className="order-section relative sm:z-2 col-span-2 xl:grid xl:grid-cols-2 md:grid-cols-1 gap-2 items-center">
+    <section className="order-section relative col-span-2 items-center gap-2 sm:z-2 md:grid-cols-1 xl:grid xl:grid-cols-2">
       <img
         src="/BuyFlow/order-confirmed.svg"
         alt="order"
         draggable="false"
-        className="w-[100%] select-none xl:relative xl:z-0 xl:opacity-100 md:absolute md:-z-1 md:opacity-20"
+        className="w-[100%] select-none md:absolute md:-z-1 md:opacity-20 xl:relative xl:z-0 xl:opacity-100"
       />
       <form
         action=""
@@ -89,7 +89,7 @@ const OrderSection = () => {
         className="flex flex-col gap-2 border-2 border-black/20 p-4 sm:w-full"
         onSubmit={handleSubmit}
       >
-        <h3 className="text-[1.5rem] ">
+        <h3 className="text-[1.5rem]">
           <strong>請您在核對下方訂單資訊：</strong>
         </h3>
         <p>
@@ -114,7 +114,7 @@ const OrderSection = () => {
         <Hr />
         <div className="flex w-full py-2">
           <p className="w-[5rem]">收件人：</p>
-          <div className="px-8  flex flex-col gap-2  w-full">
+          <div className="flex w-full flex-col gap-2 px-8">
             <p>
               <strong className="tracking-widest">{name}</strong> 先生/小姐
             </p>
@@ -137,7 +137,7 @@ const OrderSection = () => {
               return (
                 <div
                   key={index}
-                  className="items-center px-8 py-2 max-w-[30rem]"
+                  className="max-w-[30rem] items-center px-8 py-2"
                 >
                   <p className="col-span-2 flex justify-end px-4">
                     <span>{i.name}</span>
@@ -151,14 +151,14 @@ const OrderSection = () => {
               );
             })}
         </div>
-        <p className=" pr-8 text-[1.1rem]">
+        <p className="pr-8 text-[1.1rem]">
           一共 <strong className="text-red-500">{totalQuatity}</strong> 件商品{" "}
           <strong className="text-red-500">{totalAmount} $</strong>
         </p>
         <motion.button
           whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
           transition={{ duration: 0.5 }}
-          className="border rounded-full w-40 h-10 font-bold m-auto cursor-pointer select-none"
+          className="m-auto h-10 w-40 cursor-pointer rounded-full border font-bold select-none"
           onClick={handleSubmit}
         >
           Submit Oreder

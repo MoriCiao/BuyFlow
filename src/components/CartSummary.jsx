@@ -4,17 +4,17 @@ const CartSummary = () => {
   const { items } = useSelector((state) => state.cart);
 
   return (
-    <section className="cart-summary ">
-      <h3 className="text-[1.15rem] col-span-2">
+    <section className="cart-summary">
+      <h3 className="col-span-2 text-[1.15rem]">
         <strong>您訂購商品有：</strong>
       </h3>
-      <div className="overflow-y-auto max-h-[30rem] border border-black/20 py-4">
+      <div className="max-h-[30rem] overflow-y-auto border border-black/20 py-4">
         {items &&
           items.map((i, index) => {
             return (
               <div
                 key={index}
-                className="grid grid-cols-4 gap-4 items-center px-8 py-2 m-auto w-full text-center"
+                className="m-auto grid w-full grid-cols-4 items-center gap-4 px-8 py-2 text-center"
               >
                 <img src={i.image} alt="items-image" className="w-25" />
                 <p className="col-span-2 flex justify-between px-4">

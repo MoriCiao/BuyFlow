@@ -10,10 +10,10 @@ const DeliveryBtn = ({ id, value, label, image, isActive, onClick }) => {
     >
       <img
         src={image}
-        className="w-50 sm:h-50 object-over mt-2"
+        className="object-over mt-2 w-50 sm:h-50"
         alt={`delivery-${id}`}
       />
-      <p className="text-center text-[1.1rem] mt-2">{label}</p>
+      <p className="mt-2 text-center text-[1.1rem]">{label}</p>
     </button>
   );
 };

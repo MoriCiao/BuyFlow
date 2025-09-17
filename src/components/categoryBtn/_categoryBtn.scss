@@ -1,66 +1,65 @@
-.category-btn{
-    user-select: none;
-    position: relative;
-    background: #333533;
-    color: #e8eddf;
-    width: 150px;
-    height: 50px;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    @media (max-width:640px) {
-        width: 80px;
-        height: 40px;
-        border: 1px rgba(0, 0, 0, 0.5) solid;
-        
+.category-btn {
+  user-select: none;
+  position: relative;
+  background: #333533;
+  color: #e8eddf;
+  width: 150px;
+  height: 50px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  @media (max-width: 640px) {
+    width: 80px;
+    height: 40px;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+  }
+  button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    transition:
+      background-color 0.5s ease,
+      color 0.5s ease,
+      font-size 0.5s ease;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      opacity: 0.2;
+      transition: 1s;
     }
-    button{
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        width: 100%;
-        height: 100%;
+    @media (max-width: 640px) {
+      font-size: 0.8rem;
+    }
+
+    &:hover {
+      font-size: 1.2rem;
+      background-color: #333533;
+      color: #e8eddf;
+      text-shadow: 0 0 10px #e8eddf;
+      @media (max-width: 640px) {
         font-size: 1rem;
-        transition: background-color 0.5s ease, color 0.5s ease , font-size 0.5s ease; 
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.2);
-            opacity: 0.2;
-            transition: 1s;
-        }
-        @media (max-width:640px) {
-            font-size: 0.8rem;
-
-        }
-    
-        &:hover{
-            font-size: 1.2rem;
-            background-color: #333533;
-            color: #e8eddf;
-            text-shadow:0 0 10px #e8eddf;
-            @media (max-width:640px) {
-                font-size: 1rem;
-            }
-        }
-        
-        &:hover::before {
-            width: 100%;
-            opacity: 1;
-        }
+      }
     }
-    
-}
-.active{
-    background: linear-gradient(to bottom right, gold, #e8eddf, gold);
-    color: #333533;
-    font-weight: 900;
-    border: 1px rgba(0, 0, 0, 0.2) solid;
-}
 
+    &:hover::before {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+.active {
+  background: linear-gradient(to bottom right, gold, #e8eddf, gold);
+  color: #333533;
+  font-weight: 900;
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+}

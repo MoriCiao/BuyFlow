@@ -18,7 +18,7 @@ const DeliveryMethod = () => {
   };
   return (
     <section className="delivery-method grid grid-cols-2">
-      <h3 className="text-[1.15rem] col-span-2 pt-4">
+      <h3 className="col-span-2 pt-4 text-[1.15rem]">
         <strong>請選擇配送方式：</strong>
       </h3>
       <DeliveryBtn

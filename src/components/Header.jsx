@@ -33,10 +33,10 @@ const Header = () => {
     <motion.section
       className={`header w-full ${
         isVisible ? "min-h-[5vh]" : "min-h-[10vh]"
-      } flex flex-col justify-center items-center `}
+      } flex flex-col items-center justify-center`}
     >
-      <div className="w-full fixed z-99 top-0 left-0 flex justify-center bg-gradient-to-b from-[#333533] via-[#474747] to-[#333533] shadow-xl">
-        <nav className="nav flex md:flex-row xl:justify-between items-center justify-center flex-col w-[80%] h-full py-2 text-[#e8eddf] select-none">
+      <div className="fixed top-0 left-0 z-99 flex w-full justify-center bg-gradient-to-b from-[#333533] via-[#474747] to-[#333533] shadow-xl">
+        <nav className="nav flex h-full w-[80%] flex-col items-center justify-center py-2 text-[#e8eddf] select-none md:flex-row xl:justify-between">
           <HeaderBtn
             text="HomePage"
             variant="homepage"
@@ -44,7 +44,7 @@ const Header = () => {
             className={""}
           />
 
-          <ol className="flex gap-4 justify-end items-center cursor-pointer xl:pt-0 md:pt-0 sm:pt-4 xl:flex xl:block hidden ">
+          <ol className="flex hidden cursor-pointer items-center justify-end gap-4 sm:pt-4 md:pt-0 xl:block xl:flex xl:pt-0">
             {/* ----------登入邏輯---------- */}
             {!isAuthenticated ? (
               <li>
@@ -100,7 +100,7 @@ const Header = () => {
 
       {isVisible && (
         <div
-          className={` header w-[80%] min-h-[100px] flex gap-8 justify-between items-center pt-12 pb-8 mt-4`}
+          className={`header mt-4 flex min-h-[100px] w-[80%] items-center justify-between gap-8 pt-12 pb-8`}
         >
           <SearchBar />
         </div>

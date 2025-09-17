@@ -7,7 +7,7 @@ import ProductCard from "../productCard/ProductCard";
 import { setLoading } from "../../features/ui/uiSlice";
 const CategoryFilter = () => {
   const { products, isFiltered, filtered } = useSelector(
-    (state) => state.products
+    (state) => state.products,
   );
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const CategoryFilter = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0.3, y: 10 }}
         transition={{ duration: 1, ease: easeOut }}
-        className="category_filter "
+        className="category_filter"
       >
         {currentData &&
           currentData.map((item, index) => {

@@ -28,7 +28,7 @@ const CategoryBtn = () => {
               <button
                 className=""
                 onClick={() => {
-                  dispatch(active(cate)), setActiveBtn(cate);
+                  (dispatch(active(cate)), setActiveBtn(cate));
                 }}
               >
                 {cate}

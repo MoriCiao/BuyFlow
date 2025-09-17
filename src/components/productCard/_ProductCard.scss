@@ -1,105 +1,104 @@
 .prodouct-card {
-    padding: 0 0.5rem;
-    border: 1px rgba(255,255,255,0.5);
-    border-radius: 5%;
-    position: relative;
-    transition: 0.6s;
-    backdrop-filter: blur(2px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
+  padding: 0 0.5rem;
+  border: 1px rgba(255, 255, 255, 0.5);
+  border-radius: 5%;
+  position: relative;
+  transition: 0.6s;
+  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
 
-    &:hover {
-        box-shadow: -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
-        transform: rotateY(10deg) rotateX(10deg);
-    }
+  &:hover {
+    box-shadow: -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
+    transform: rotateY(10deg) rotateX(10deg);
+  }
 
-    div.product-image {
-        user-select: none;
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
-        overflow: hidden;
-        
-        cursor: pointer;
-        img {
-            padding-top: 0.75rem;
-            width: 150px;
-            transition: 0.5s;
-            margin: auto;
-        }
-        @media (max-width:768px) {
-            margin: auto;
-            width: 100px;
-        }
-    }
-    div.product-text{
-        user-select: none;
-        text-align: center;
-        .item-name{
-            font-size: 1rem;
-        }
-        .itme-price {
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-align: end;
-            padding-right: 0.5rem;
-            @media (max-width:768px) {
-                font-size: 0.5rem;        
-            }
-            div.rating{
-                position: absolute;
-                top: 0rem;
-                left: 0.5rem;
-                span.fire_img {
-                    position: absolute;
-                    top: 0;
-                    z-index: 9;
-                    font-size: 2.5rem;
-                    transform: rotate(-20deg);
-                    animation: fire 3s linear infinite;
-                }
-            
-                span.rating-text {
-                    position: absolute;
-                    z-index: 10;
-                    color: rgb(0, 0, 0);
-                    top: 1.4rem;
-                    text-shadow: 0 0 5px rgb(255, 255, 255);
-                    animation: text 3s linear infinite;
-            
-                }
-            }
-        }
-    }
+  div.product-image {
+    user-select: none;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
 
-    &:hover {
-        background-color: rgba(255, 255, 160, 0.5);
-        color: #333533;
-        font-weight: bold;
-
-        img {
-            scale: 1.1;
-        }
+    cursor: pointer;
+    img {
+      padding-top: 0.75rem;
+      width: 150px;
+      transition: 0.5s;
+      margin: auto;
     }
+    @media (max-width: 768px) {
+      margin: auto;
+      width: 100px;
+    }
+  }
+  div.product-text {
+    user-select: none;
+    text-align: center;
+    .item-name {
+      font-size: 1rem;
+    }
+    .itme-price {
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-align: end;
+      padding-right: 0.5rem;
+      @media (max-width: 768px) {
+        font-size: 0.5rem;
+      }
+      div.rating {
+        position: absolute;
+        top: 0rem;
+        left: 0.5rem;
+        span.fire_img {
+          position: absolute;
+          top: 0;
+          z-index: 9;
+          font-size: 2.5rem;
+          transform: rotate(-20deg);
+          animation: fire 3s linear infinite;
+        }
+
+        span.rating-text {
+          position: absolute;
+          z-index: 10;
+          color: rgb(0, 0, 0);
+          top: 1.4rem;
+          text-shadow: 0 0 5px rgb(255, 255, 255);
+          animation: text 3s linear infinite;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 160, 0.5);
+    color: #333533;
+    font-weight: bold;
+
+    img {
+      scale: 1.1;
+    }
+  }
 }
 
 @keyframes fire {
-    0%,
-    100% {
-        transform: rotate(-15deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes text {
-    0%,
-    100% {
-        font-size: 1rem;
-        transform: rotate(-15deg);
-    }
-    50% {
-        font-size: 1.3rem;
-        transform: rotate(0deg);
-    }
+  0%,
+  100% {
+    font-size: 1rem;
+    transform: rotate(-15deg);
+  }
+  50% {
+    font-size: 1.3rem;
+    transform: rotate(0deg);
+  }
 }

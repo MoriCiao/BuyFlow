@@ -34,12 +34,12 @@ export const HeaderBtn = ({
 
 export const HeaderLink = ({ text, link }) => {
   return (
-    <Link to={link} className="headerLink ">
+    <Link to={link} className="headerLink">
       {text}
     </Link>
   );
 };
 
 export const HeaderHr_sm = () => (
-  <hr className="w-[80%] opacity-50 border-1 rounded-full my-1" />
+  <hr className="my-1 w-[80%] rounded-full border-1 opacity-50" />
 );

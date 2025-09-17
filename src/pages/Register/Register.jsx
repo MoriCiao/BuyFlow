@@ -82,7 +82,7 @@ const Register = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="register-page "
+        className="register-page"
       >
         <button
           className="member-list"
@@ -96,20 +96,20 @@ const Register = () => {
         <div className="register-img">
           <img
             draggable="false"
-            className="w-[100%] 2xl:block hidden"
+            className="hidden w-[100%] 2xl:block"
             src="/BuyFlow/register.svg"
             alt="register.svg"
           />
         </div>
 
-        <div className="register-form shadow-xl backdrop-blur-sm border-2 border-white">
+        <div className="register-form border-2 border-white shadow-xl backdrop-blur-sm">
           <img
             draggable="false"
             src="/BuyFlow/logo_w.svg"
             alt="logo_w.svg"
             loading="lazy"
           />
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <RegisterItem
               label="Name"
               name="Name..."
@@ -176,7 +176,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="border rounded-sm px-2 w-50 text-[1.5rem] mx-auto my-4 tracking-widest cursor-pointer bg-gradient-to-br from-[#e8eddf]/50 via-[#333533]/80 to-[#e8eddf]/100 text-[#e8eddf] font-bold border2 border-[#e8eddf] hover:from-[#e8eddf] hover:via-yellow-200 hover:to-[#e8eddf] hover:text-[#333533] hover:scale-110 transition duration-500"
+              className="border2 mx-auto my-4 w-50 cursor-pointer rounded-sm border border-[#e8eddf] bg-gradient-to-br from-[#e8eddf]/50 via-[#333533]/80 to-[#e8eddf]/100 px-2 text-[1.5rem] font-bold tracking-widest text-[#e8eddf] transition duration-500 hover:scale-110 hover:from-[#e8eddf] hover:via-yellow-200 hover:to-[#e8eddf] hover:text-[#333533]"
               onClick={() => dispatch(addNewMenber(addMenber))}
             >
               Submit

@@ -40,7 +40,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.5s linear, box-shadow 0.5s ease-in-out 0.5s;
+  transition:
+    0.5s linear,
+    box-shadow 0.5s ease-in-out 0.5s;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 }
@@ -83,7 +85,8 @@
   stroke-dashoffset: 840;
   stroke: #333533;
 }
-.login-page .login-from svg, .login-page .login-from svg rect {
+.login-page .login-from svg,
+.login-page .login-from svg rect {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -97,7 +100,9 @@
   stroke: #e8eddf;
   stroke-linecap: round;
   stroke-dasharray: 30rem, 35rem;
-  filter: drop-shadow(0 0 1rem #e8eddf) drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8)) drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
+  filter: drop-shadow(0 0 1rem #e8eddf)
+    drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8))
+    drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
   animation: animation_border 6s linear infinite;
 }
 @media (max-width: 640px) {
@@ -114,11 +119,14 @@
   animation: lighting 4s linear infinite;
 }
 @keyframes lighting {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: #e8eddf 0 0 2rem;
   }
   50% {
-    box-shadow: #e8eddf 0 0 0.3rem, inset 0 0 5rem #333533;
+    box-shadow:
+      #e8eddf 0 0 0.3rem,
+      inset 0 0 5rem #333533;
   }
 }
 
@@ -181,7 +189,8 @@
   }
 }
 @keyframes rotate_loading_circle {
-  0%, 100% {
+  0%,
+  100% {
     stroke-dashoffset: 440;
   }
   50% {
@@ -294,7 +303,8 @@
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   font-size: 1.5rem;
 }
-.Page404 .Page404-btn svg, .Page404 .Page404-btn svg rect {
+.Page404 .Page404-btn svg,
+.Page404 .Page404-btn svg rect {
   position: absolute;
   top: 0;
   width: 100%;
@@ -325,13 +335,14 @@
 }
 .homepage .homepage_carousel {
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   width: 100%;
   height: 60vh;
   overflow: hidden;
 }
-.homepage .homepage_carousel .prev-slide, .homepage .homepage_carousel .next-slide {
+.homepage .homepage_carousel .prev-slide,
+.homepage .homepage_carousel .next-slide {
   position: absolute;
   z-index: 11;
   top: 0;
@@ -343,16 +354,19 @@
   cursor: pointer;
 }
 @media (max-width: 640px) {
-  .homepage .homepage_carousel .prev-slide, .homepage .homepage_carousel .next-slide {
+  .homepage .homepage_carousel .prev-slide,
+  .homepage .homepage_carousel .next-slide {
     width: 4rem;
   }
 }
-.homepage .homepage_carousel .prev-slide svg, .homepage .homepage_carousel .next-slide svg {
+.homepage .homepage_carousel .prev-slide svg,
+.homepage .homepage_carousel .next-slide svg {
   width: 50%;
   height: 50%;
   opacity: 0.8;
 }
-.homepage .homepage_carousel .prev-slide svg path, .homepage .homepage_carousel .next-slide svg path {
+.homepage .homepage_carousel .prev-slide svg path,
+.homepage .homepage_carousel .next-slide svg path {
   fill: transparent;
   stroke: #e8eddf;
   stroke-width: 4;
@@ -361,7 +375,8 @@
   transition: 0.5s;
   filter: drop-shadow(0 0 0.5rem #e8eddf);
 }
-.homepage .homepage_carousel .prev-slide svg:hover path, .homepage .homepage_carousel .next-slide svg:hover path {
+.homepage .homepage_carousel .prev-slide svg:hover path,
+.homepage .homepage_carousel .next-slide svg:hover path {
   animation: animation-path 1s linear forwards;
   transform: scale(1.2);
 }
@@ -500,7 +515,8 @@
   }
 }
 @keyframes animation_text {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
   }
   50% {
@@ -511,7 +527,8 @@
   position: relative;
   z-index: 5;
 }
-.register-area svg, .register-area svg rect {
+.register-area svg,
+.register-area svg rect {
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -543,7 +560,7 @@
 
 :root {
   --text-color: #333533;
-  --bg-color:#e8eddf;
+  --bg-color: #e8eddf;
 }
 
 * {
@@ -583,7 +600,8 @@ body .App .header .home-svg button {
   text-align: center;
   transition: 1s;
 }
-body .App .header .home-svg svg, body .App .header .home-svg svg rect {
+body .App .header .home-svg svg,
+body .App .header .home-svg svg rect {
   position: absolute;
   top: 0;
   left: 0;
@@ -627,4 +645,4 @@ body .App .main {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari */
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */

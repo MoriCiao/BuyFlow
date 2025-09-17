@@ -20,22 +20,22 @@ const TrackingBtn = ({ text, onClick, style, variant, disabled }) => {
           transition: { duration: 0.5 },
         }
       : variant === "send"
-      ? {
-          // 已寄貨
-          initial: { scale: 1 },
+        ? {
+            // 已寄貨
+            initial: { scale: 1 },
 
-          transition: { duration: 0.5 },
-        }
-      : {
-          // 回會員資料按鈕UI
-          initial: { scale: 1, backgroundColor: "#e8eddf" },
-          whileHover: {
-            backgroundColor: "#333533",
-            color: "#e8eddf",
-            scale: 1.1,
-          },
-          transition: { duration: 0.5 },
-        };
+            transition: { duration: 0.5 },
+          }
+        : {
+            // 回會員資料按鈕UI
+            initial: { scale: 1, backgroundColor: "#e8eddf" },
+            whileHover: {
+              backgroundColor: "#333533",
+              color: "#e8eddf",
+              scale: 1.1,
+            },
+            transition: { duration: 0.5 },
+          };
 
   return (
     <motion.button
@@ -117,19 +117,19 @@ const OrderTracking = () => {
   }, [user]);
 
   return (
-    <section className="order-tracking relative col-span-2 flex flex-col gap-4 items-start justify-start w-full h-full">
+    <section className="order-tracking relative col-span-2 flex h-full w-full flex-col items-start justify-start gap-4">
       {savedOrder.length === 0 ? (
-        <div className="w-full h-full flex items-center justify-center">
-          <h1 className="font-bold text-[2rem]">您目前沒有訂單...</h1>
+        <div className="flex h-full w-full items-center justify-center">
+          <h1 className="text-[2rem] font-bold">您目前沒有訂單...</h1>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 w-full">
+        <div className="grid w-full grid-cols-1 gap-4">
           {savedOrder &&
             savedOrder.map((o, index) => {
               return (
                 <div
                   key={index}
-                  className="order-detail border border-black/50 w-full min-h-[15rem] sm:py-4 px-4 py-2 grid xl:grid-cols-4 md:grid-cols-2 gap-8"
+                  className="order-detail grid min-h-[15rem] w-full gap-8 border border-black/50 px-4 py-2 sm:py-4 md:grid-cols-2 xl:grid-cols-4"
                 >
                   <TrackingDetail
                     title={`訂單：${o.id}`}
@@ -139,10 +139,10 @@ const OrderTracking = () => {
                     p4={`付款方式：${o.pay}`}
                   />
 
-                  <div className="max-h-[10rem]  flex flex-col gap-1">
+                  <div className="flex max-h-[10rem] flex-col gap-1">
                     <h3 className="text-[1.15rem] font-bold">訂單內容：</h3>
                     <hr />
-                    <div className="overflow-y-auto ">
+                    <div className="overflow-y-auto">
                       {o.items &&
                         o.items.map((i, index) => {
                           return (
@@ -166,7 +166,7 @@ const OrderTracking = () => {
                     <img
                       src="/BuyFlow/handling.svg"
                       alt="handling"
-                      className="w-80 absolute bottom-0 sm:block hidden"
+                      className="absolute bottom-0 hidden w-80 sm:block"
                     />
                     <TrackingBtn
                       key={o?.isSend}

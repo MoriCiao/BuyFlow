@@ -17,31 +17,33 @@ const SearchBar = () => {
       <img
         src={img[0]}
         alt="LOGO"
-        className={`col-start-1 xl:w-[300px] xl:h-[100px] select-none ${img_style}`}
+        className={`col-start-1 select-none xl:h-[100px] xl:w-[300px] ${img_style}`}
         draggable="false"
       />
 
-      <div className="serach max-w-[40rem] w-full h-full">
-        <div className="flex justify-center items-center rounded-full border overflow-hidden m-auto">
+      <div className="serach h-full w-full max-w-[40rem]">
+        <div className="m-auto flex items-center justify-center overflow-hidden rounded-full border">
           <input
             type="text"
             placeholder="搜尋商品..."
-            className="search-input w-full rounded-l-full h-[2rem] indent-[1rem] border-0"
+            className="search-input h-[2rem] w-full rounded-l-full border-0 indent-[1rem]"
             value={keyword}
             onChange={(e) => setKeyWord(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                dispatch(search(keyword)),
+                (dispatch(search(keyword)),
                   setKeyWord(""),
-                  navigate("/products");
+                  navigate("/products"));
               }
             }}
           />
           <button
             type="button"
-            className="select-none cursor-pointer flex items-center h-[2rem] px-4 bg-[#333533] text-white"
+            className="flex h-[2rem] cursor-pointer items-center bg-[#333533] px-4 text-white select-none"
             onClick={() => {
-              dispatch(search(keyword)), setKeyWord(""), navigate("/products");
+              (dispatch(search(keyword)),
+                setKeyWord(""),
+                navigate("/products"));
             }}
           >
             <span>🔍</span>
@@ -52,7 +54,7 @@ const SearchBar = () => {
       <img
         src={img[1]}
         alt="undraw-cart"
-        className={`col-start-1 xl:w-[300px] xl:h-[100px] select-none ${img_style}`}
+        className={`col-start-1 select-none xl:h-[100px] xl:w-[300px] ${img_style}`}
         draggable="false"
       />
     </>

@@ -31,42 +31,42 @@ const OrderList = () => {
   }, [order]);
 
   return (
-    <section className="order-list w-full flex flex-col gap-4 justify-start items-start">
-      <div className="flex justify-center items-center rounded-full border overflow-hidden py-2 mx-auto my-4 w-full">
+    <section className="order-list flex w-full flex-col items-start justify-start gap-4">
+      <div className="mx-auto my-4 flex w-full items-center justify-center overflow-hidden rounded-full border py-2">
         <input
           type="text"
           placeholder="搜尋訂單..."
-          className="search-input w-full h-[2rem] rounded-full indent-[1rem] border-0"
+          className="search-input h-[2rem] w-full rounded-full border-0 indent-[1rem]"
           value={keyword}
           onChange={(e) => setKeyWord(e.target.value)}
         />
       </div>
       {order.length === 0 ? (
-        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px] bg-[#e8eddf]">
+        <div className="flex h-full min-h-[200px] w-full justify-center bg-[#e8eddf] pt-20 text-center text-[1.5rem] font-bold">
           <p>目前總訂單為{order.length} ,無任何訂單....</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="text-center text-[1.5rem] font-bold w-full h-full flex justify-center pt-20 min-h-[200px] bg-[#e8eddf]">
+        <div className="flex h-full min-h-[200px] w-full justify-center bg-[#e8eddf] pt-20 text-center text-[1.5rem] font-bold">
           <p>無任何與查詢相符訂單....</p>
         </div>
       ) : (
-        <div className="w-full flex flex-col gap-4 bg-[#e8eddf]">
+        <div className="flex w-full flex-col gap-4 bg-[#e8eddf]">
           {curretData.map((o, index) => {
             return (
               <details
                 key={index}
-                className=" relative border border-black/50 px-4 py-2 w-full"
+                className="relative w-full border border-black/50 px-4 py-2"
               >
-                <summary className="md:text-[1.5rem] sm:text-[1.1rem] md:py-0 py-4 overflow-hidden">
+                <summary className="overflow-hidden py-4 sm:text-[1.1rem] md:py-0 md:text-[1.5rem]">
                   訂單編號：
                   <br /> <span className="break-all">{o.id}</span>{" "}
                   {o?.isSend ? null : <span className="">‼️</span>}
                   <button
                     type="button"
-                    className={`absolute w-25 right-4 right-0 md:top-4 top-2 border px-2 rounded-full sm:!text-[1rem] font-bold cursor-pointer ${
+                    className={`absolute top-2 right-0 right-4 w-25 cursor-pointer rounded-full border px-2 font-bold sm:!text-[1rem] md:top-4 ${
                       o?.isSend
-                        ? "bg-red-500 border-2 border-white"
-                        : "bg-white border-2 border-red-500"
+                        ? "border-2 border-white bg-red-500"
+                        : "border-2 border-red-500 bg-white"
                     }`}
                     onClick={() => {
                       if (confirm("請確認商品是否已出貨?")) {
@@ -82,8 +82,8 @@ const OrderList = () => {
                   </button>
                 </summary>
 
-                <div className="p-4 grid xl:grid-cols-3 md:grid-cols-1 gap-4">
-                  <div className="xl:border-r-2 xl:border-b-0 md:border-b-2 border-black/20 xl:pr-4 md:pb-4">
+                <div className="grid gap-4 p-4 md:grid-cols-1 xl:grid-cols-3">
+                  <div className="border-black/20 md:border-b-2 md:pb-4 xl:border-r-2 xl:border-b-0 xl:pr-4">
                     <p>Date: {o.date}</p>
                     <p>Delivery Method: {o.deliveryMethod}</p>
                     <p>Pay Method: {o.pay}</p>
@@ -91,7 +91,7 @@ const OrderList = () => {
                     <p>Total Quatity: {o.totalQuatity}</p>
                   </div>
 
-                  <div className="xl:border-r-2 xl:border-b-0 md:border-b-2 border-black/20 pr-4">
+                  <div className="border-black/20 pr-4 md:border-b-2 xl:border-r-2 xl:border-b-0">
                     <p>Name: {o.user.name}</p>
                     <p>Phone: {o.user.phone}</p>
                     <p>Email: {o.user.email}</p>

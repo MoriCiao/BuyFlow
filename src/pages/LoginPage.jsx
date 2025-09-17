@@ -11,17 +11,17 @@ const LoginPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: easeIn }}
-      className="login-page md:grid md:grid-cols-2 sm:grid-cols-1  gap-4 items-center justify-center w-full h-auto p-4 xl:pb-20 overflow-hidden "
+      className="login-page h-auto w-full items-center justify-center gap-4 overflow-hidden p-4 sm:grid-cols-1 md:grid md:grid-cols-2 xl:pb-20"
     >
-      <div className="px-0 flex items-center justify-center w-full xl:relative xl:opacity-100 absolute top-20 left-0 opacity-50">
+      <div className="absolute top-20 left-0 flex w-full items-center justify-center px-0 opacity-50 xl:relative xl:opacity-100">
         <img src={img} alt="login" draggable="false" className="w-full" />
       </div>
-      <div className="relative md:px-12 sm:px-6 flex flex-col xl:col-span-1  md:col-span-2 xl:items-end items-center justify-center md:pt-0 sm:pt-20">
+      <div className="relative flex flex-col items-center justify-center sm:px-6 sm:pt-20 md:col-span-2 md:px-12 md:pt-0 xl:col-span-1 xl:items-end">
         <LoginForm />
       </div>
 
       <button
-        className="absolute z-100 top-0 xl:left-1/2 left-0 xl:-translate-x-1/2 font-bold border rounded-full px-4 bg-red-500/20 hover:bg-red-500 hover:text-white cursor-pointer text-red-500"
+        className="absolute top-0 left-0 z-100 cursor-pointer rounded-full border bg-red-500/20 px-4 font-bold text-red-500 hover:bg-red-500 hover:text-white xl:left-1/2 xl:-translate-x-1/2"
         onClick={() => setAccount((prev) => !prev)}
       >
         Test Account

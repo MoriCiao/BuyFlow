@@ -7,15 +7,15 @@ const MoionLink = motion.create(Link);
 
 const MenberProfile = () => {
   return (
-    <section className="profile relative w-[100%] md:grid md:grid-cols-2 sm:flex sm:flex-col sm:py-8 gap-4 md:items-center sm:items-center justify-center">
-      <div className="col-start-1 col-span-1 w-full h-full flex items-center justify-center md:flex md:opacity-100 sm:absolute sm:z-0 sm:opacity-50">
+    <section className="profile relative w-[100%] justify-center gap-4 sm:flex sm:flex-col sm:items-center sm:py-8 md:grid md:grid-cols-2 md:items-center">
+      <div className="col-span-1 col-start-1 flex h-full w-full items-center justify-center sm:absolute sm:z-0 sm:opacity-50 md:flex md:opacity-100">
         <img
           src="/BuyFlow/user/user-bg-2.svg"
           alt="user-bg"
-          className="xl:w-[80%] m-auto md:block hidden"
+          className="m-auto hidden md:block xl:w-[80%]"
         />
       </div>
-      <div className="col-start-2 col-span-1 flex flex-col items-center justify-start m-auto h-full sm:w-[350px]  min-w-[300px] relative sm:z-1">
+      <div className="relative col-span-1 col-start-2 m-auto flex h-full min-w-[300px] flex-col items-center justify-start sm:z-1 sm:w-[350px]">
         <Profile title="Menber Profile" userRole="menber">
           {/* 導向訂單追蹤 */}
           <MoionLink
@@ -27,7 +27,7 @@ const MenberProfile = () => {
             }}
             transition={{ duration: 0.5 }}
             to="/menber/ordertracking"
-            className="p-2 mt-2 font-bold text-center underline border w-full bg-gradient-to-br from-white/20 via-white/50 to-whtie/20"
+            className="to-whtie/20 mt-2 w-full border bg-gradient-to-br from-white/20 via-white/50 p-2 text-center font-bold underline"
           >
             🚚 Order Tracking
           </MoionLink>

@@ -13,9 +13,9 @@ const StaffProfile = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="profile relative md:grid md:grid-cols-2 sm:flex gap-4 items-center justify-center w-full"
+        className="profile relative w-full items-center justify-center gap-4 sm:flex md:grid md:grid-cols-2"
       >
-        <div className="w-full h-full flex items-center justify-center md:relative sm:absolute sm:z-0 sm:opacity-50">
+        <div className="flex h-full w-full items-center justify-center sm:absolute sm:z-0 sm:opacity-50 md:relative">
           <img
             src={"/BuyFlow/user/user-bg-2.svg"}
             alt="user-bg"

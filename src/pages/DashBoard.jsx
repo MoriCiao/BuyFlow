@@ -22,9 +22,9 @@ const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   return (
-    <section className="dashboard relative w-full h-full xl:grid xl:grid-cols-4 flex flex-col gap-4 sm:items-start items-center justify-start ">
+    <section className="dashboard relative flex h-full w-full flex-col items-center justify-start gap-4 sm:items-start xl:grid xl:grid-cols-4">
       {/* Dashboard Nav */}
-      <nav className="dashboard-nav xl:pt-12 flex flex-col sm:w-full w-[90%] gap-6 xl:col-start-1 xl:col-span-1 items-center justify-center  ">
+      <nav className="dashboard-nav flex w-[90%] flex-col items-center justify-center gap-6 sm:w-full xl:col-span-1 xl:col-start-1 xl:pt-12">
         <Link to="stafflist" className={link_style}>
           <motion.button {...motion_btn} className={btn_style}>
             Staff List
@@ -62,20 +62,20 @@ const DashBoard = () => {
       </nav>
       {/* Dashboard Container */}
 
-      <div className="dashboard-container xl:col-start-2 xl:col-span-3 w-full flex px-4 overflow-auto pb-8">
+      <div className="dashboard-container flex w-full overflow-auto px-4 pb-8 xl:col-span-3 xl:col-start-2">
         {location.pathname === "/dashboard" ? (
-          <div className="dashboard-bg relative w-full h-full ">
+          <div className="dashboard-bg relative h-full w-full">
             <img
               draggable="false"
               src="/BuyFlow/dashboard-text.svg"
               alt="dashboard-text"
-              className="select-none objcet-cover opacity-80 absolute z-10 w-180  xl:top-50 md:top-45 sm:top-25 left-1/2 -translate-x-1/2 rotate-[-20deg]"
+              className="objcet-cover absolute left-1/2 z-10 w-180 -translate-x-1/2 rotate-[-20deg] opacity-80 select-none sm:top-25 md:top-45 xl:top-50"
             />
             <img
               draggable="false"
               src="/BuyFlow/dashboard-bg.svg"
               alt="dashboard-bg"
-              className="select-none objcet-cover opacity-30 m-auto"
+              className="objcet-cover m-auto opacity-30 select-none"
             />
           </div>
         ) : null}

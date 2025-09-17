@@ -37,12 +37,12 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <section className="product-detail ">
+    <section className="product-detail">
       <div className="flex flex-col gap-4">
         {/* breadcrumb */}
-        <div className="breadcrumb flex items-center  gap-2 text-black/70">
+        <div className="breadcrumb flex items-center gap-2 text-black/70">
           <span
-            className="text-[2rem] cursor-pointer select-none"
+            className="cursor-pointer text-[2rem] select-none"
             onClick={() => {
               navigate("/products");
             }}
@@ -61,16 +61,16 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
-        <div className="xl:grid xl:grid-cols-5 md:flex md:flex-col gap-4 justify-center px-4 select-none">
-          <div className="w-full h-full  py-4 xl:col-span-3 md: col-start-1 my-auto">
+        <div className="justify-center gap-4 px-4 select-none md:flex md:flex-col xl:grid xl:grid-cols-5">
+          <div className="md: col-start-1 my-auto h-full w-full py-4 xl:col-span-3">
             <img
-              className="w-full xl:max-h-[500px] md:max-h-[300px] max-h-[150px]"
+              className="max-h-[150px] w-full md:max-h-[300px] xl:max-h-[500px]"
               src={product.image}
               alt="product_img"
             />
           </div>
 
-          <div className="relative xl:col-span-2 md: xl:col-start-4 ">
+          <div className="md: relative xl:col-span-2 xl:col-start-4">
             {/* id */}
             <p className="absolute top-0 right-0 border border-black/20 px-4 text-black/50">
               商品編號：{product.id}
@@ -89,7 +89,7 @@ const ProductDetailPage = () => {
             </div>
             <Hr />
             {/* Price */}
-            <div className="product_price flex gap-4 items-center">
+            <div className="product_price flex items-center gap-4">
               <p>單價 : </p>
               <span className="!text-[1.5rem] font-bold text-red-500">
                 {product.price} $
@@ -102,7 +102,7 @@ const ProductDetailPage = () => {
               ) : (
                 <p>
                   庫存 :
-                  <span className="text-[1.2rem] font-bold text-red-500 px-2 ">
+                  <span className="px-2 text-[1.2rem] font-bold text-red-500">
                     {product.stock}
                   </span>
                 </p>
@@ -111,7 +111,7 @@ const ProductDetailPage = () => {
             <Hr />
             <div className="checkout_methods">
               <p className="mb-2">結帳方式 :</p>
-              <div className=" grid grid-cols-4 gap-1 select-none ">
+              <div className="grid grid-cols-4 gap-1 select-none">
                 {howToPay &&
                   howToPay.map((p, index) => {
                     return (
@@ -123,7 +123,7 @@ const ProductDetailPage = () => {
                         }}
                         transition={{ duration: 0.5 }}
                         key={index}
-                        className="py-2 text-center rounded-md"
+                        className="rounded-md py-2 text-center"
                       >
                         <span className="">{p}</span>
                       </motion.div>
@@ -133,14 +133,14 @@ const ProductDetailPage = () => {
             </div>
             <Hr />
             {/* 最大不可以超過此商品的庫存 */}
-            <div className="add-cart flex gap-2 justify-end pr-4">
+            <div className="add-cart flex justify-end gap-2 pr-4">
               <p>請輸入您要購買數量 : </p>
               <input
                 type="number"
                 step={"1"}
                 min={1}
                 max={product.stock}
-                className="border bg-black/20 text-white text-center"
+                className="border bg-black/20 text-center text-white"
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
               />
@@ -151,10 +151,11 @@ const ProductDetailPage = () => {
                   color: "#e8eddf",
                 }}
                 transition={{ duration: 0.5 }}
-                className="border px-4 rounded-md select-none cursor-pointer"
+                className="cursor-pointer rounded-md border px-4 select-none"
                 onClick={() => {
                   if (isAuthenticated) {
-                    dispatch(addItem({ product, quantity })), navigate("/cart");
+                    (dispatch(addItem({ product, quantity })),
+                      navigate("/cart"));
                   } else {
                     alert("請先登入再繼續購物...");
                     navigate("/login");
@@ -168,10 +169,10 @@ const ProductDetailPage = () => {
         </div>
         <Hr />
         <div className="detail flex flex-col items-center justify-center">
-          <h3 className="text-[1.5rem] text-start w-full font-bold pb-4">
+          <h3 className="w-full pb-4 text-start text-[1.5rem] font-bold">
             Details
           </h3>
-          <div className="flex sm:flex-row flex-col items-center gap-4 mb-4">
+          <div className="mb-4 flex flex-col items-center gap-4 sm:flex-row">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Doloribus deserunt magnam minima, cum obcaecati praesentium
@@ -186,7 +187,7 @@ const ProductDetailPage = () => {
             </p>
 
             <img
-              className="w-[40%] "
+              className="w-[40%]"
               src="/BuyFlow/products_image/description-0.svg"
               alt="des-img"
             />
@@ -196,10 +197,10 @@ const ProductDetailPage = () => {
             desImg.map((i, index) => {
               return (
                 <div
-                  className="w-[80%] flex flex-col items-center justify-center py-8"
+                  className="flex w-[80%] flex-col items-center justify-center py-8"
                   key={index}
                 >
-                  <img className="w-full " src={i} alt={`des-${index}`} />
+                  <img className="w-full" src={i} alt={`des-${index}`} />
                   <Hr />
                 </div>
               );

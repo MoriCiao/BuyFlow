@@ -39,7 +39,7 @@ const BillingInfo = () => {
   const { name, email, image, phone, address } = user;
   return (
     <section className="billing-Info flex flex-col">
-      <h3 className="text-[1.15rem] col-span-2">
+      <h3 className="col-span-2 text-[1.15rem]">
         <strong>訂購人資訊：</strong>
       </h3>
       <form
@@ -47,7 +47,7 @@ const BillingInfo = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex md:flex-row flex-col sm:gap-1 gap-4 m-auto items-center justify-center p-4"
+        className="m-auto flex flex-col items-center justify-center gap-4 p-4 sm:gap-1 md:flex-row"
       >
         <img src={image} className="w-30" alt="" />
         <div className="flex flex-col gap-2">

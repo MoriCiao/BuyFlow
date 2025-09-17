@@ -7,7 +7,7 @@ const CartIcon = () => {
 
   const [isOpen, setOpen] = useState(false);
   const { items, totalAmount, totalQuatity } = useSelector(
-    (state) => state.cart
+    (state) => state.cart,
   );
   const { isAuthenticated } = useSelector((state) => state.user);
 
@@ -26,13 +26,13 @@ const CartIcon = () => {
   };
 
   return (
-    <section className="cartIcon fixed sm:top-30 top-0 right-5 z-100 block select-none">
-      <div className="select-none flex justify-end">
+    <section className="cartIcon fixed top-0 right-5 z-100 block select-none sm:top-30">
+      <div className="flex justify-end select-none">
         <motion.button
           initial={{ fontSize: "1.5rem" }}
           animate={{ rotate: ["0deg", "20deg", "0deg"] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className=" text-[1.5rem] bg-white/75 rounded-full p-2 select-none cursor-pointer my-4"
+          className="my-4 cursor-pointer rounded-full bg-white/75 p-2 text-[1.5rem] select-none"
           onClick={handleOpen}
         >
           🛒
@@ -42,18 +42,18 @@ const CartIcon = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } bg-black/70 w-[300px] sm:h-[600px] min-h-[500px] text-white p-4 relative`}
+        } relative min-h-[500px] w-[300px] bg-black/70 p-4 text-white sm:h-[600px]`}
       >
         <div>
           <p>Cart : 🛒</p>
           <hr className="py-1" />
-          <div className="grid grid-cols-3  px-4  border-white/50">
+          <div className="grid grid-cols-3 border-white/50 px-4">
             <p>Name</p>
             <p>Quantity</p>
             <p>Price</p>
           </div>
         </div>
-        <div className="flex flex-col gap-2 h-[400px] overflow-y-auto">
+        <div className="flex h-[400px] flex-col gap-2 overflow-y-auto">
           {items &&
             items.map((i, index) => {
               return (
@@ -61,14 +61,14 @@ const CartIcon = () => {
                   whileHover={{ backgroundColor: "rgba(255,255,255,0.2)" }}
                   transition={{ duration: 0.3 }}
                   key={index}
-                  className="py-4 grid grid-cols-3 gap-2 items-center justity-center border border-white/50 rounded-sm p-4 cursor-pointer"
+                  className="justity-center grid cursor-pointer grid-cols-3 items-center gap-2 rounded-sm border border-white/50 p-4 py-4"
                 >
-                  <p className=" col-span-1">{i.name}</p>
-                  <p className=" col-span-1">{i.quantity}</p>
-                  <p className=" col-span-1">{i.price} $</p>
+                  <p className="col-span-1">{i.name}</p>
+                  <p className="col-span-1">{i.quantity}</p>
+                  <p className="col-span-1">{i.price} $</p>
 
                   <hr className="col-span-3" />
-                  <div className="col-span-3 text-end ">
+                  <div className="col-span-3 text-end">
                     <strong className="text-red-500">
                       {i.price * i.quantity} $
                     </strong>
@@ -78,17 +78,17 @@ const CartIcon = () => {
             })}
         </div>
 
-        <div className="absolute bottom-5 right-0 w-full px-4">
+        <div className="absolute right-0 bottom-5 w-full px-4">
           <hr className="pb-1" />
           <p className="flex justify-end pb-1">
             Total Quatity :{" "}
-            <strong className="text-center text-[1.05rem] block w-[5rem] px-2 text-red-500">
+            <strong className="block w-[5rem] px-2 text-center text-[1.05rem] text-red-500">
               {totalQuatity}
             </strong>
           </p>
           <p className="flex justify-end pb-1">
             Total Amount :{" "}
-            <strong className="text-center text-[1.05rem] block w-[5rem] px-2 text-red-500">
+            <strong className="block w-[5rem] px-2 text-center text-[1.05rem] text-red-500">
               {totalAmount} $
             </strong>
           </p>
@@ -101,9 +101,9 @@ const CartIcon = () => {
                 boxShadow: "0 0 10px #e8eddf",
               }}
               type="button"
-              className="border px-2 rounded-full cursor-pointer"
+              className="cursor-pointer rounded-full border px-2"
               onClick={() => {
-                headnleToCheckout(), handleOpen();
+                (headnleToCheckout(), handleOpen());
               }}
             >
               CheckOut

@@ -7,28 +7,28 @@ const HeaderIcon = ({ isOpen, handleToggle }) => {
       <button onClick={handleToggle}>
         <div
           className={`border border-[#e8eddf] ${
-            isOpen ? " border-2 border-yellow-500/50" : ""
+            isOpen ? "border-2 border-yellow-500/50" : ""
           }`}
         >
           <hr
             className={`border ${
               isOpen
-                ? "text-yellow-500/50 bg-yellow-500/50 border-yellow-500/50 "
-                : "text-[#e8eddf] bg-[#e8eddf] border-[#e8eddf]"
+                ? "border-yellow-500/50 bg-yellow-500/50 text-yellow-500/50"
+                : "border-[#e8eddf] bg-[#e8eddf] text-[#e8eddf]"
             } `}
           />
           <hr
             className={`border ${
               isOpen
-                ? "text-yellow-500/50 bg-yellow-500/50 border-yellow-500/50 "
-                : "text-[#e8eddf] bg-[#e8eddf] border-[#e8eddf]"
+                ? "border-yellow-500/50 bg-yellow-500/50 text-yellow-500/50"
+                : "border-[#e8eddf] bg-[#e8eddf] text-[#e8eddf]"
             } `}
           />
           <hr
             className={`border ${
               isOpen
-                ? "text-yellow-500/50 bg-yellow-500/50 border-yellow-500/50 "
-                : "text-[#e8eddf] bg-[#e8eddf] border-[#e8eddf]"
+                ? "border-yellow-500/50 bg-yellow-500/50 text-yellow-500/50"
+                : "border-[#e8eddf] bg-[#e8eddf] text-[#e8eddf]"
             } `}
           />
         </div>

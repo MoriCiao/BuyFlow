@@ -49,13 +49,13 @@ const ProductsList = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="products-list w-full h-full text-center flex flex-col gap-4 mt-2 sm:mt-8 relative overflow-x-auto"
+        className="products-list relative mt-2 flex h-full w-full flex-col gap-4 overflow-x-auto text-center sm:mt-8"
       >
-        <div className="flex justify-center items-center rounded-full border m-auto w-full sm:absolute sm:top-0 sm:left-0">
+        <div className="m-auto flex w-full items-center justify-center rounded-full border sm:absolute sm:top-0 sm:left-0">
           <select
             name=""
             id=""
-            className="rounded-l-full h-[2rem] min-w-30 px-2 tracking-widest font-bold text-[#333533] text-center "
+            className="h-[2rem] min-w-30 rounded-l-full px-2 text-center font-bold tracking-widest text-[#333533]"
             onChange={handleChange}
           >
             {opt &&
@@ -74,15 +74,15 @@ const ProductsList = () => {
           <input
             type="text"
             placeholder="商品搜尋..."
-            className="search-input w-full rounded-r-full h-[2rem] indent-[1rem] border-0"
+            className="search-input h-[2rem] w-full rounded-r-full border-0 indent-[1rem]"
             value={keyword}
             onChange={(e) => setKeyWord(e.target.value)}
           />
         </div>
-        <div className=" min-w-[1000px] xl:max-h-[450px]  overflow-x-auto sm:mt-12 backdrop-blur-sm">
-          <table className="w-full border border-collapse w-[100%] ">
+        <div className="min-w-[1000px] overflow-x-auto backdrop-blur-sm sm:mt-12 xl:max-h-[450px]">
+          <table className="w-[100%] w-full border-collapse border">
             <thead>
-              <tr className="border ">
+              <tr className="border">
                 <th className="border px-8"></th>
                 <th className="border px-8">ID</th>
                 <th className="border px-8">Name</th>
@@ -90,7 +90,7 @@ const ProductsList = () => {
                 <th className="border px-8">Category</th>
                 <th className="border px-8">Price</th>
                 <th className="border px-8">Stock</th>
-                <th className="border max-w-[300px]">Description</th>
+                <th className="max-w-[300px] border">Description</th>
               </tr>
             </thead>
             <tbody>
@@ -106,9 +106,9 @@ const ProductsList = () => {
                       key={p.id}
                       className="h-[2rem] border"
                     >
-                      <td className="border ">
+                      <td className="border">
                         <span
-                          className="select-none cursor-pointer"
+                          className="cursor-pointer select-none"
                           onClick={() => {
                             dispatch(modify(p));
                           }}
@@ -116,13 +116,13 @@ const ProductsList = () => {
                           💾
                         </span>
                       </td>
-                      <td className="border ">{p.id}</td>
-                      <td className="border ">{p.name}</td>
-                      <td className="border ">{p.rating}</td>
-                      <td className="border ">{p.category}</td>
-                      <td className="border ">{p.price}</td>
-                      <td className="border ">{p.stock}</td>
-                      <td className="border ">{p.description}</td>
+                      <td className="border">{p.id}</td>
+                      <td className="border">{p.name}</td>
+                      <td className="border">{p.rating}</td>
+                      <td className="border">{p.category}</td>
+                      <td className="border">{p.price}</td>
+                      <td className="border">{p.stock}</td>
+                      <td className="border">{p.description}</td>
                     </motion.tr>
                   );
                 })}

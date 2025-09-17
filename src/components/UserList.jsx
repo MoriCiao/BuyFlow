@@ -9,7 +9,7 @@ const UserList = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1] }}
       transition={{ duration: 0.5 }}
-      className="user-list shadow-xl "
+      className="user-list shadow-xl"
     >
       <pre>{JSON.stringify(userList, null, 2)}</pre>
     </motion.div>

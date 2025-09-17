@@ -23,7 +23,7 @@ import OrderList from "../pages/dashboard/OrderList.jsx";
 import About from "../pages/About.jsx";
 const AppRoutes = () => {
   return (
-    <div className="AppRoutes sm:w-[80%] w-[100%] h-auto p-4 flex items-start justity-center relative z-10">
+    <div className="AppRoutes justity-center relative z-10 flex h-auto w-[100%] items-start p-4 sm:w-[80%]">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListPage />} />

@@ -13,15 +13,15 @@ const AdminProfile = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="profile relative z-5 md:grid md:grid-cols-2 sm:flex w-full gap-4 items-center justify-center"
+        className="profile relative z-5 w-full items-center justify-center gap-4 sm:flex md:grid md:grid-cols-2"
       >
         <Profile title="Admin Profile" userRole={"admin"} />
 
-        <div className="w-full h-full flex items-center justify-center md:relative md:block hidden opacity-50">
+        <div className="flex hidden h-full w-full items-center justify-center opacity-50 md:relative md:block">
           <img
             src={"/BuyFlow/user/user-bg-2.svg"}
             alt="user-bg"
-            className="w-full md:abosolute -buttom-10"
+            className="md:abosolute -buttom-10 w-full"
           />
         </div>
       </motion.section>

@@ -1,29 +1,27 @@
-.delivery-method{
-    .delivery_btn{
-        border-radius: 1rem;
-        background-color: #e8eddf;
-        border:  2px rgba(51, 53, 51, 1) solid;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: 0.5s ease;
-        scale: 0.95;
-        margin: 1rem;
-        cursor: pointer;
-        // &:hover{
-        //     background-color: rgba(51, 53, 51,0.3);
-        //     color: #e8eddf;
-        //     transform: translate(-5px ,-5px);
-        // }
-        &.active {
-            background-color: rgba(51, 53, 51,0.5);
-            color: #e8eddf;
-      
-            transform: translate(0px, -5px) scale(1);
-            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
-        }
-    
-    }
-}
+.delivery-method {
+  .delivery_btn {
+    border-radius: 1rem;
+    background-color: #e8eddf;
+    border: 2px rgba(51, 53, 51, 1) solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    scale: 0.95;
+    margin: 1rem;
+    cursor: pointer;
+    // &:hover{
+    //     background-color: rgba(51, 53, 51,0.3);
+    //     color: #e8eddf;
+    //     transform: translate(-5px ,-5px);
+    // }
+    &.active {
+      background-color: rgba(51, 53, 51, 0.5);
+      color: #e8eddf;
 
+      transform: translate(0px, -5px) scale(1);
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+    }
+  }
+}

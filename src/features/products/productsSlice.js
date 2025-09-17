@@ -40,7 +40,7 @@ const productsSlice = createSlice({
       if (active !== "所有商品" && active !== "熱銷商品") {
         state.isFiltered = true;
         state.filtered = state.products.filter(
-          (i) => i.category.toLowerCase() === active.toLowerCase()
+          (i) => i.category.toLowerCase() === active.toLowerCase(),
         );
       } else if (active === "所有商品") {
         state.isFiltered = false;
