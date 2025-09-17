@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { setDelivery } from "../features/cart/cartSlice";
+import { setDelivery } from "../../features/cart/cartSlice";
 import DeliveryBtn from "./DeliveryBtn";
 const deliveryImg = {
   location: "/BuyFlow/delivery-location.svg",

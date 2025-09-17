@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cancelOrderFormDashBoard } from "../features/order/orderSlice";
 import { setLoading } from "../features/ui/uiSlice";
+import Button from "./Button/Button";
 const TrackingBtn = ({ text, onClick, style, variant, disabled }) => {
   const animation =
     variant === "cancel"
@@ -168,40 +169,30 @@ const OrderTracking = () => {
                       alt="handling"
                       className="absolute bottom-0 hidden w-80 sm:block"
                     />
-                    <TrackingBtn
-                      key={o?.isSend}
-                      text={o?.isSend ? "🚚 已出貨" : "取消訂單"}
-                      variant={o?.isSend ? "send" : "cancel"}
-                      disabled={o?.isSend ? true : false}
-                      onClick={
-                        o?.isSend
-                          ? null
-                          : () => {
-                              if (confirm("確定要取消這筆訂單嗎？")) {
-                                handleCancel(o);
+                    <div className="absolute sm:right-4 sm:bottom-4">
+                      <Button
+                        label={o?.isSend ? "🚚 已出貨" : "取消訂單"}
+                        variant={o?.isSend ? "danger" : "danger_ghost"}
+                        onClick={
+                          o?.isSend
+                            ? null
+                            : () => {
+                                if (confirm("確定要取消這筆訂單嗎？")) {
+                                  handleCancel(o);
+                                }
                               }
-                            }
-                      }
-                      style={`${
-                        o?.isSend
-                          ? "bg-[#333533] text-[#e8eddf]/50 cursor-not-allowed"
-                          : "bg-red-500 text-white cursor-pointer"
-                      } absolute sm:bottom-4 sm:right-4 bottom-0 right-0 font-bold text-[1.2rem] border-2 border-black rounded-full px-4 select-none `}
-                    />
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               );
             })}
         </div>
       )}
-      <TrackingBtn
-        text="🔙會員資料"
-        variant="menber"
-        onClick={() => navigate("/menber")}
-        style={
-          "border px-4 py-1 bg-[#e8eddf] sm:text-[1.5rem] text-md tracking-widest select-none cursor-pointer "
-        }
-      />
+      <div>
+        <Button label="會員資料" onClick={() => navigate("/menber")} />
+      </div>
     </section>
   );
 };

@@ -1,7 +1,7 @@
 .category_filter {
   display: grid;
   transition: all 0.5;
-  padding: 2rem;
+  padding:0 2rem;
   gap: 1rem;
   @media (min-width: 769px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));

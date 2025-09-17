@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button/Button";
 // Page404
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -12,16 +13,9 @@ const NotFoundPage = () => {
         <span>Page is Not Found</span>
         <span>Please Go Back To HomePage</span>
       </div>
-
-      <button
-        className="Page404-btn cursor-pointer select-none"
-        onClick={() => navigate("/")}
-      >
-        <svg>
-          <rect></rect>
-        </svg>
-        HomePage
-      </button>
+      <div className="Page404-btn cursor-pointer">
+        <Button label="HomePage" onClick={() => navigate("/")} />
+      </div>
     </section>
   );
 };

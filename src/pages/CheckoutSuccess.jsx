@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/Button/Button";
 const CheckoutSuccess = () => {
+  const navigate = useNavigate();
   return (
     <section className="checkout-success flex w-full flex-col items-center justify-center gap-8 py-6">
       <strong className="text-[1rem] sm:text-[1.5rem]">
@@ -11,15 +13,13 @@ const CheckoutSuccess = () => {
         alt="get-order"
         className="max-w-[50%] sm:max-w-[50%] xl:max-w-[20%]"
       />
-      <Link className="homepage-link" to={"/products"}>
-        <button type="button">
-          {/* SVG 動畫 */}
-          <svg>
-            <rect></rect>
-          </svg>
-          Back to the mall
-        </button>
-      </Link>
+      <div>
+        <Button
+          label="Back to the mall"
+          size="lg"
+          onClick={() => navigate("/products")}
+        />
+      </div>
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
+import Button from "../../components/Button/Button";
 
 const motion_btn = {
   initial: { backgroundColor: "rgba(51, 53, 51, 0)", color: "#333533" },
@@ -20,17 +21,70 @@ const link_style = "block text-[1.25rem] bg-[#e8eddf] h-full w-full";
 
 const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const location = useLocation();
   return (
     <section className="dashboard relative flex h-full w-full flex-col items-center justify-start gap-4 sm:items-start xl:grid xl:grid-cols-4">
       {/* Dashboard Nav */}
       <nav className="dashboard-nav flex w-[90%] flex-col items-center justify-center gap-6 sm:w-full xl:col-span-1 xl:col-start-1 xl:pt-12">
-        <Link to="stafflist" className={link_style}>
+        <ul className="flex flex-col gap-4">
+          <li>
+            <Button
+              label="Staff List"
+              variant="primary"
+              size="lg"
+              onClick={() => navigate("stafflist")}
+            />
+          </li>
+          <li>
+            {user?.role === "admin" ? (
+              <Button
+                label="Admin Profile"
+                variant="primary"
+                size="lg"
+                onClick={() => navigate("admin")}
+              />
+            ) : (
+              <Button
+                label="Staff Profile"
+                variant="primary"
+                size="lg"
+                onClick={() => navigate("staff")}
+              />
+            )}
+          </li>
+          <li>
+            <Button
+              label="Products List"
+              variant="primary"
+              size="lg"
+              onClick={() => navigate("productslist")}
+            />
+          </li>
+          <li>
+            <Button
+              label="Menber List"
+              variant="primary"
+              size="lg"
+              onClick={() => navigate("menberlist")}
+            />
+          </li>
+          <li>
+            <Button
+              label="Order List"
+              variant="primary"
+              size="lg"
+              onClick={() => navigate("orderlist")}
+            />
+          </li>
+        </ul>
+
+        {/* <Link to="stafflist" className={link_style}>
           <motion.button {...motion_btn} className={btn_style}>
             Staff List
           </motion.button>
-        </Link>
-        {user?.role === "admin" ? (
+        </Link> */}
+        {/* {user?.role === "admin" ? (
           <Link to="admin" className={link_style}>
             <motion.button {...motion_btn} className={btn_style}>
               Admin Profile
@@ -42,9 +96,9 @@ const DashBoard = () => {
               Staff Profile
             </motion.button>
           </Link>
-        )}
+        )} */}
 
-        <Link to="productslist" className={link_style}>
+        {/* <Link to="productslist" className={link_style}>
           <motion.button {...motion_btn} className={btn_style}>
             Products List
           </motion.button>
@@ -58,7 +112,7 @@ const DashBoard = () => {
           <motion.button {...motion_btn} className={btn_style}>
             Order List
           </motion.button>
-        </Link>
+        </Link> */}
       </nav>
       {/* Dashboard Container */}
 

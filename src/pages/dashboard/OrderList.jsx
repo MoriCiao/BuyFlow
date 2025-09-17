@@ -4,6 +4,7 @@ import {
   reloadOrderFromStorage,
   sendOrder,
 } from "../../features/order/orderSlice";
+import Button from "../../components/Button/Button";
 const OrderList = () => {
   const { order } = useSelector((state) => state.order);
   const dispatch = useDispatch();
@@ -61,25 +62,21 @@ const OrderList = () => {
                   訂單編號：
                   <br /> <span className="break-all">{o.id}</span>{" "}
                   {o?.isSend ? null : <span className="">‼️</span>}
-                  <button
-                    type="button"
-                    className={`absolute top-2 right-0 right-4 w-25 cursor-pointer rounded-full border px-2 font-bold sm:!text-[1rem] md:top-4 ${
-                      o?.isSend
-                        ? "border-2 border-white bg-red-500"
-                        : "border-2 border-red-500 bg-white"
-                    }`}
-                    onClick={() => {
-                      if (confirm("請確認商品是否已出貨?")) {
-                        dispatch(sendOrder(o));
-                      }
-                    }}
-                  >
-                    {o?.isSend ? (
-                      <span className="text-white">已出貨</span>
-                    ) : (
-                      <span className="text-red-500">尚未出貨</span>
-                    )}
-                  </button>
+                  <div className="absolute top-2 right-2">
+                    <Button
+                      label={o?.isSend ? "已出貨" : "尚未出貨"}
+                      variant={o?.isSend ? "danger" : "danger_ghost"}
+                      size="sm"
+                      onClick={() => {
+                        if (!o?.isSend) {
+                          if (confirm("請確認商品是否已出貨?")) {
+                            dispatch(sendOrder(o));
+                          } else return;
+                        }
+                      }}
+                      disable={o?.isSend}
+                    />
+                  </div>
                 </summary>
 
                 <div className="grid gap-4 p-4 md:grid-cols-1 xl:grid-cols-3">

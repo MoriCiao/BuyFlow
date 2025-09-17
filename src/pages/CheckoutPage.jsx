@@ -1,14 +1,9 @@
 import React from "react";
 
 import BillingInfo from "../components/BillingInfo";
-import DeliveryMethod from "../components/DeliveryMethod";
+import DeliveryMethod from "../components/DeliveryMethod/DeliveryMethod";
 import CartSummary from "../components/CartSummary";
-import OrderSection from "../components/OrderSection";
-// 將購物車確認的商品導入CheckoutPage結帳頁面
-// 商品、總件數、總金額
-// 使否有優惠券
-// 配送選項、配送地址
-// 付款方式
+import OrderSection from "../components/OrderSection/OrderSection";
 
 const CheckoutPage = () => {
   return (

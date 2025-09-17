@@ -74,7 +74,7 @@ const ProductsList = () => {
           <input
             type="text"
             placeholder="商品搜尋..."
-            className="search-input h-[2rem] w-full rounded-r-full border-0 indent-[1rem]"
+            className="h-[2rem] w-full rounded-r-full border-0 indent-[1rem]"
             value={keyword}
             onChange={(e) => setKeyWord(e.target.value)}
           />

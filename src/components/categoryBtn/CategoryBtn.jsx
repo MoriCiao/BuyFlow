@@ -1,7 +1,8 @@
-import "./_categoryBtn.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { active } from "../../features/products/productsSlice";
+import Button from "../Button/Button";
+import { li } from "framer-motion/client";
 const CategoryBtn = () => {
   const { products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -17,26 +18,23 @@ const CategoryBtn = () => {
   const [activeBtn, setActiveBtn] = useState("");
 
   return (
-    <>
+    <ul className="flex w-full flex-wrap gap-4 lg:flex-col">
       {categoryList &&
         categoryList.map((cate) => {
           return (
-            <div
-              key={cate}
-              className={`category-btn ${activeBtn === cate ? "active" : ""}`}
-            >
-              <button
-                className=""
+            <li className="min-w-[150px] flex-1">
+              <Button
+                label={cate}
+                size="lg"
+                className="flex items-center"
                 onClick={() => {
                   (dispatch(active(cate)), setActiveBtn(cate));
                 }}
-              >
-                {cate}
-              </button>
-            </div>
+              />
+            </li>
           );
         })}
-    </>
+    </ul>
   );
 };
 

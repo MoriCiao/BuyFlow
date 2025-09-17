@@ -1,27 +1,11 @@
 .login-page {
   position: relative;
 }
-.login-page img.login_profile {
-  position: absolute;
-  width: 10rem;
-  height: 10rem;
-  top: -5rem;
-  z-index: 10;
-}
-@media (max-width: 640px) {
-  .login-page img.login_profile {
-    width: 7.5rem;
-    height: 7.5rem;
-    top: -2.5rem;
-  }
-}
 .login-page .login-from {
   position: relative;
   z-index: 10;
   width: 30rem;
   height: 35rem;
-  padding-top: 7.5rem;
-  margin-top: 4rem;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   border-radius: 0rem;
   transition: 0.6s;
@@ -40,9 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition:
-    0.5s linear,
-    box-shadow 0.5s ease-in-out 0.5s;
+  transition: 0.5s linear, box-shadow 0.5s ease-in-out 0.5s;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
 }
@@ -100,9 +82,7 @@
   stroke: #e8eddf;
   stroke-linecap: round;
   stroke-dasharray: 30rem, 35rem;
-  filter: drop-shadow(0 0 1rem #e8eddf)
-    drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8))
-    drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
+  filter: drop-shadow(0 0 1rem #e8eddf) drop-shadow(0 0 1.5rem rgba(232, 237, 223, 0.8)) drop-shadow(0 0 2rem rgba(232, 237, 223, 0.3));
   animation: animation_border 6s linear infinite;
 }
 @media (max-width: 640px) {
@@ -119,14 +99,11 @@
   animation: lighting 4s linear infinite;
 }
 @keyframes lighting {
-  0%,
-  100% {
+  0%, 100% {
     box-shadow: #e8eddf 0 0 2rem;
   }
   50% {
-    box-shadow:
-      #e8eddf 0 0 0.3rem,
-      inset 0 0 5rem #333533;
+    box-shadow: #e8eddf 0 0 0.3rem, inset 0 0 5rem #333533;
   }
 }
 
@@ -189,8 +166,7 @@
   }
 }
 @keyframes rotate_loading_circle {
-  0%,
-  100% {
+  0%, 100% {
     stroke-dashoffset: 440;
   }
   50% {
@@ -335,8 +311,8 @@
 }
 .homepage .homepage_carousel {
   -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   width: 100%;
   height: 60vh;
   overflow: hidden;
@@ -515,8 +491,7 @@
   }
 }
 @keyframes animation_text {
-  0%,
-  100% {
+  0%, 100% {
     text-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
   }
   50% {
@@ -581,46 +556,10 @@ body #root {
 }
 body .App {
   position: relative;
-  background: linear-gradient(to right, #ffecb4, #e8eddf, #ffecb4);
+  background: #333533;
   overflow: hidden;
   color: #333533;
   width: 100%;
-}
-body .App .header .home-svg {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  width: 100px;
-  height: 30px;
-}
-body .App .header .home-svg button {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  transition: 1s;
-}
-body .App .header .home-svg svg,
-body .App .header .home-svg svg rect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-}
-body .App .header .home-svg svg rect {
-  stroke-width: 2;
-  stroke: #e8eddf;
-  stroke-dasharray: 100, 30;
-  transition: 1s;
-}
-body .App .header .home-svg:hover button {
-  font-size: 1.15rem;
-}
-body .App .header .home-svg:hover svg rect {
-  stroke-dasharray: 100, 30;
-  stroke-dashoffset: 130;
 }
 body .App .main {
   position: relative;
@@ -645,4 +584,4 @@ body .App .main {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari */
-} /*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

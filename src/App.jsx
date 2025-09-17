@@ -1,8 +1,7 @@
-import {} from "module";
 import "./style/tailwindcss.css";
 import "./style/index.css";
 import Loading from "./components/loading";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer/Footer";
 import CartIcon from "./components/CartIcon";

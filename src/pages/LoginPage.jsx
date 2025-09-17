@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/LoginForm/LoginForm";
 import { motion, easeIn } from "framer-motion";
 import TestAccount from "../components/TestAccount";
 const img = "/BuyFlow/login.svg";

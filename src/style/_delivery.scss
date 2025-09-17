@@ -11,11 +11,6 @@
     scale: 0.95;
     margin: 1rem;
     cursor: pointer;
-    // &:hover{
-    //     background-color: rgba(51, 53, 51,0.3);
-    //     color: #e8eddf;
-    //     transform: translate(-5px ,-5px);
-    // }
     &.active {
       background-color: rgba(51, 53, 51, 0.5);
       color: #e8eddf;

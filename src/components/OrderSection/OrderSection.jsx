@@ -2,12 +2,13 @@ import React, { Fragment, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import PaymentMethod from "./PaymentMethod";
+import PaymentMethod from "../PaymentMethod.jsx";
 
 import { useNavigate } from "react-router-dom";
-import { newDate } from "../features/cart/cartUtils.js";
-import { addOrderToDashBoard } from "../features/order/orderSlice.js";
-import { cleanCart } from "../features/cart/cartSlice.js";
+import { newDate } from "../../features/cart/cartUtils.js";
+import { addOrderToDashBoard } from "../../features/order/orderSlice.js";
+import { cleanCart } from "../../features/cart/cartSlice.js";
+import Button from "../Button/Button.jsx";
 
 const payment = [
   "信用卡",
@@ -52,10 +53,6 @@ const OrderSection = () => {
         date: newDate(),
       };
 
-      // // 將訂單加入進slice裡
-      // dispatch(createOrder(order));
-
-      // 使用者訂單傳至 localStorage
       const userKey = `order-${user.email}`; // 用每個使用者的eamil 當key
       const savedOrder = localStorage.getItem(userKey); // 抓取之前資料，
       const userOrders = savedOrder ? JSON.parse(savedOrder) : [];
@@ -155,14 +152,13 @@ const OrderSection = () => {
           一共 <strong className="text-red-500">{totalQuatity}</strong> 件商品{" "}
           <strong className="text-red-500">{totalAmount} $</strong>
         </p>
-        <motion.button
-          whileHover={{ backgroundColor: "#333533", color: "#e8eddf" }}
-          transition={{ duration: 0.5 }}
-          className="m-auto h-10 w-40 cursor-pointer rounded-full border font-bold select-none"
-          onClick={handleSubmit}
-        >
-          Submit Oreder
-        </motion.button>
+        <div>
+          <Button
+            label="Submit Oreder"
+            variant="success"
+            onClick={handleSubmit}
+          />
+        </div>
       </form>
     </section>
   );
