@@ -1,18 +1,11 @@
-import React from "react";
-
-const PaymentMethod = ({ label, name, value, checked, onChange }) => {
+const PaymentMethod = ({ emoji, label, onClick, activePayment }) => {
   return (
-    <div className="payment">
-      <input
-        name={name}
-        value={value}
-        type="radio"
-        checked={checked}
-        onChange={(e) => onChange(name, e)}
-      />
-      <label htmlFor="" className="pl-1">
-        {label}
-      </label>
+    <div
+      className={`payment flex aspect-square w-full flex-col items-center justify-center rounded transition duration-300 ${activePayment === label ? "bg-green-600" : "bg-zinc-600"}`}
+      onClick={onClick}
+    >
+      <span>{emoji}</span>
+      <p>{label}</p>
     </div>
   );
 };

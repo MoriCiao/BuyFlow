@@ -18,7 +18,7 @@ const CategoryBtn = () => {
   const [activeBtn, setActiveBtn] = useState("");
 
   return (
-    <ul className="flex w-full flex-wrap gap-4 lg:flex-col">
+    <ul className="flex w-full flex-wrap gap-4 px-8 lg:flex-col">
       {categoryList &&
         categoryList.map((cate) => {
           return (

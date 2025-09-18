@@ -11,57 +11,58 @@ const ShoppingCart = ({ i }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`item-${i.id} flex w-[80%] items-center justify-around gap-10`}
+      className={`item-${i.id} flex w-full items-center justify-around px-4 lg:px-0`}
     >
-      <div className="flex w-full items-center justify-around bg-white/20 py-4">
+      <div className="relative flex w-full items-center justify-around bg-white/20 py-4">
         <div className="flex flex-1 items-center overflow-hidden">
           <img
             src={i.image}
             alt={`item-${i.id}`}
-            className="object-fit m-auto h-25 w-25 rounded-full border bg-white"
+            className="m-auto h-25 w-25 rounded-full border bg-white object-contain"
           />
         </div>
-
-        <h3 className="flex-1">
-          <strong>{i.name}</strong>
-        </h3>
-        <div className="relative flex-1">
-          <div className="flex justify-center">
-            <span
-              className="cursor-pointer bg-gray-200 px-1"
-              onClick={() => {
-                dispatch(modifyAmount({ id: i.id, type: "decrement" }));
-              }}
-            >
-              ➖
-            </span>
-            <motion.strong
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-              className={`absolute -top-8 border bg-white/50 px-1 !text-[0.75rem] text-red-500 ${
-                i.quantity === i.stock ? "" : "hidden"
-              }`}
-            >
-              已達最大數量！
-            </motion.strong>
-            <strong className="w-15 border">{i.quantity}</strong>
-            <span
-              className="cursor-pointer bg-gray-200 px-1"
-              onClick={() => {
-                dispatch(modifyAmount({ id: i.id, type: "increment" }));
-              }}
-            >
-              ➕
-            </span>
+        <div className="flex flex-1 flex-col items-center justify-between gap-4 xl:flex-3 xl:flex-row">
+          <h3 className="flex-1">
+            <strong>{i.name}</strong>
+          </h3>
+          <div className="relative flex-1">
+            <div className="flex justify-center">
+              <span
+                className="cursor-pointer bg-gray-200 px-1"
+                onClick={() => {
+                  dispatch(modifyAmount({ id: i.id, type: "decrement" }));
+                }}
+              >
+                ➖
+              </span>
+              <motion.strong
+                initial={{ opacity: 0.5 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className={`absolute -top-8 border bg-white/50 px-1 !text-[0.75rem] text-red-500 ${
+                  i.quantity === i.stock ? "" : "hidden"
+                }`}
+              >
+                已達最大數量！
+              </motion.strong>
+              <strong className="w-15 border">{i.quantity}</strong>
+              <span
+                className="cursor-pointer bg-gray-200 px-1"
+                onClick={() => {
+                  dispatch(modifyAmount({ id: i.id, type: "increment" }));
+                }}
+              >
+                ➕
+              </span>
+            </div>
           </div>
+          <p className="flex-1">
+            <strong className="">{i.quantity * i.price} $</strong>
+          </p>
         </div>
-        <p className="flex-1">
-          <strong className="">{i.quantity * i.price} $</strong>
-        </p>
       </div>
       <motion.button
-        className=""
+        className="px-5 lg:pl-10"
         onClick={() => {
           dispatch(removeItem(i));
         }}

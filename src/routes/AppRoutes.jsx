@@ -3,7 +3,7 @@ import RequireAuth from "../components/RequireAuth.jsx";
 import RequireRole from "../components/RequireRole.jsx";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/Homepage/HomePage.jsx";
-import ProductListPage from "../pages/productListPage/ProductListPage.jsx";
+import ProductListPage from "../pages/ProductListPage/ProductListPage.jsx";
 import ProductDetilPage from "../pages/ProductDetilPage/ProductDetilPage.jsx";
 import CartPage from "../pages/CartPage/CartPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
@@ -16,14 +16,14 @@ import StaffList from "../pages/Dashboard/StaffList.jsx";
 import ProductsList from "../pages/Dashboard/ProductsList.jsx";
 import Register from "../pages/Register/Register.jsx";
 import MenberList from "../pages/Dashboard/MenberList.jsx";
-import CheckoutPage from "../pages/CheckoutPage.jsx";
+import CheckoutPage from "../pages/CheckoutPage/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 import OrderTracking from "../components/OrderTracking.jsx";
 import OrderList from "../pages/Dashboard/OrderList.jsx";
 import About from "../pages/About.jsx";
 const AppRoutes = () => {
   return (
-    <div className="AppRoutes justity-center relative z-10 mt-10 flex h-auto w-[100%] items-start sm:w-[80%]">
+    <div className="AppRoutes justity-center relative z-10 mt-[10vh] flex w-[100%] items-start sm:w-[80%]">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListPage />} />

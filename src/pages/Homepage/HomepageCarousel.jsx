@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, easeInOut, easeIn } from "framer-motion";
 import HomepageDot from "./HomepageDot";
 import HomepageSlide from "./HomepageSlide";
-
 const carouselImages = [
   "/BuyFlow/homepage/undraw-1.svg",
   "/BuyFlow/homepage/undraw-2.svg",
   "/BuyFlow/homepage/undraw-3.svg",
 ];
 
-const HomepageCarousel = () => {
+const HomepageCarousel = ({ children }) => {
   const [[current, direction], setCurrentAndDirection] = useState([0, 0]);
   //
   // 幻燈片往前翻轉
@@ -49,6 +48,9 @@ const HomepageCarousel = () => {
         current={current}
         setCurrentAndDirection={setCurrentAndDirection}
       />
+      <div className="absolute bottom-10 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 md:bottom-20">
+        {children}
+      </div>
     </div>
   );
 };

@@ -7,14 +7,17 @@ function buttonClass(variant, size) {
 
   const variants = {
     variant: {
-      primary: "bg-blue-600 hover:bg-blue-700 text-white",
-      secondary: "bg-gray-600 hover:bg-gray-700 text-white",
-      danger: "bg-red-600 hover:bg-red-700 text-white",
+      primary: "bg-blue-300 text-white hover:bg-blue-400",
+      secondary: "bg-gray-600 text-white hover:bg-gray-700",
+      danger: "bg-red-600 text-white hover:bg-red-700",
       danger_ghost:
-        "bg-gray-700 hover:bg-white text-white hover:text-red-600 hover:ring-1 hover:ring-red-600",
-      success: "bg-green-600 hover:bg-green-700 text-white",
+        "bg-gray-700 text-white hover:bg-white hover:text-red-600 hover:ring-1 hover:ring-red-600",
+      success: "bg-green-600 text-white hover:bg-green-700",
+      success_ghost:
+        "bg-gray-600/50 font-bold text-green-600 ring-1 hover:text-green-300",
+      info: "bg-slate-600 text-white hover:bg-slate-700e",
       ghost:
-        "bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500",
+        "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500",
     },
     size: {
       sm: "px-3 py-2 text-sm",

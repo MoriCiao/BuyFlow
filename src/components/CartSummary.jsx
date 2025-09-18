@@ -6,7 +6,7 @@ const CartSummary = () => {
   return (
     <section className="cart-summary">
       <h3 className="col-span-2 text-[1.15rem]">
-        <strong>您訂購商品有：</strong>
+        <strong>您的商品有</strong>
       </h3>
       <div className="max-h-[30rem] overflow-y-auto border border-black/20 py-4">
         {items &&

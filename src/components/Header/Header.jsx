@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <motion.section
-      className={`header relative flex min-h-[10vh] w-full flex-col items-center justify-center`}
+      className={`header relative flex w-full flex-col items-center justify-center`}
     >
       <HeaderPin
         isOpen={isOpen}

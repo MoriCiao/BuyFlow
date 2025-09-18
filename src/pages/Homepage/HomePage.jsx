@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, easeInOut, easeIn } from "framer-motion";
-import Button from "../../components/Button/Button";
+
 import HomepageCarousel from "./HomepageCarousel";
+import Featured from "../../components/Featured/Featured";
+import SortProduct from "../../components/SortProduct/SortProduct";
+import Button from "../../components/Button/Button";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -14,15 +17,15 @@ const HomePage = () => {
       transition={{ duration: 0.8, ease: easeIn }}
       className="homepage"
     >
-      <HomepageCarousel />
-
-      <div className="absolute bottom-5 left-1/2 z-100 -translate-x-1/2 -translate-y-1/2 md:bottom-10">
+      <HomepageCarousel>
         <Button
           label="Enter the mall"
           size="lg"
           onClick={() => navigate("/products")}
         />
-      </div>
+      </HomepageCarousel>
+      <Featured />
+      <SortProduct />
     </motion.section>
   );
 };
