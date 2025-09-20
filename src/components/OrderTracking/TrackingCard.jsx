@@ -58,7 +58,11 @@ const TrackingCard = ({ order, handleCancel }) => {
         </TrackingContent>
       </div>
       {trackingStatus && (
-        <TrackingStatus isSend={isSend} isArrival={isArrival} />
+        <TrackingStatus
+          isSend={isSend}
+          isArrival={isArrival}
+          setTrackingStatus={setTrackingStatus}
+        />
       )}
     </div>
   );
