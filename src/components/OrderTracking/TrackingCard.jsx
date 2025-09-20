@@ -22,7 +22,7 @@ const TrackingCard = ({ order, handleCancel }) => {
   } = order;
 
   return (
-    <div className="tracking-card relative flex flex-col rounded-md border border-white/50 bg-zinc-800 text-white shadow-xl transition duration-300 hover:-translate-y-2 hover:bg-zinc-900">
+    <div className="tracking-card relative flex flex-col rounded-md border border-white/50 bg-zinc-800 text-white shadow-xl transition duration-300 hover:-translate-y-2">
       <div className="flex flex-col items-center justify-between gap-4 p-4 sm:flex-row">
         <p className="w-full text-[1.25rem] lg:w-auto">📋 {orderID}</p>
 

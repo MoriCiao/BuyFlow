@@ -4,8 +4,8 @@ const CartSummary = () => {
   const { tempOrder } = useSelector((state) => state.user);
   const { items, totalQuatity } = tempOrder;
   return (
-    <section className="cart-summary flex-1 space-y-4">
-      <div className="flex justify-between">
+    <section className="cart-summary flex flex-1 flex-col space-y-4">
+      <div className="flex flex-1 items-center justify-between">
         <p className="col-span-2 text-[1.15rem]">
           <strong>📦 您的商品</strong>
         </p>
@@ -13,13 +13,13 @@ const CartSummary = () => {
           <Button label={`${totalQuatity} 件商品`} variant="success" />
         </div>
       </div>
-      <div className="m-auto flex grid w-full grid-cols-1 gap-4 overflow-y-auto xl:grid-cols-2">
+      <div className="grid w-full flex-10 grid-cols-1 gap-4 overflow-y-auto rounded-md bg-zinc-600 p-4 shadow-xl 2xl:grid-cols-2">
         {items &&
           items.map((i, index) => {
             return (
               <div
                 key={index}
-                className="flex w-full items-start justify-between rounded-xl border border-white/20 p-4 transition duration-300 hover:border-white hover:bg-zinc-500"
+                className="flex w-full items-start justify-between rounded-xl border border-white/20 bg-zinc-800 p-4 shadow-xl transition duration-300 hover:border-white hover:bg-zinc-500"
               >
                 <div className="flex items-center">
                   <div className="rounded-xl bg-zinc-600 p-4">
