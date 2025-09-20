@@ -1,28 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import {
-  modifyAmount,
-  removeItem,
-  cleanCart,
-} from "../../features/cart/cartSlice";
+import { cleanCart } from "../../features/cart/cartSlice";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import ShoppingCart from "./ShoppingCart";
-import SelectPay from "./SelectPay";
-import SelectDelivery from "./SelectDelivery";
+import { checkOrder } from "../../features/user/userSlice";
+import { nanoid } from "nanoid";
+import CheckoutInformation from "./CheckoutInformation";
 
 const CartPage = () => {
   const { items, totalAmount, totalQuatity } = useSelector(
     (state) => state.cart,
   );
   const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [deliveryPayment, setDeliveryPayment] = useState({
     delivery: "",
     payment: "",
   });
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const handleToCheckout = () => {
     if (items.length === 0) {
       alert("請選擇商品加入購物車內，再前往付款頁面...");
@@ -32,6 +28,19 @@ const CartPage = () => {
     ) {
       alert("請您選擇配送方式 或 付款方式");
     } else {
+      //
+      const newOrder = {
+        createDate: new Date().toLocaleString(),
+        isSend: false,
+        isArrival: false,
+        user: user,
+        orderID: nanoid(),
+        items: items,
+        totalAmount: totalAmount,
+        totalQuatity: totalQuatity,
+        deliveryPayment: deliveryPayment,
+      };
+      dispatch(checkOrder(newOrder));
       navigate("/checkout");
     }
   };
@@ -45,10 +54,16 @@ const CartPage = () => {
   }, [items, user]);
 
   return (
-    <section className="cart-page h-full w-full border-white/50 text-center text-white md:px-0 xl:border">
+    <section className="cart-page h-full w-full border-white/50 text-center text-white md:px-0">
       <div className="cart flex h-full flex-col gap-8 xl:flex-row xl:gap-0">
-        <div className="flex h-full flex-col items-center justify-between gap-4 lg:flex-2 lg:p-8">
-          <div className="flex h-full w-full flex-col items-center justify-start gap-4 overflow-y-auto">
+        <div className="flex h-full flex-col items-center justify-between gap-4 lg:flex-2">
+          <div className="w-full">
+            <h3 className="w-full text-start text-[2rem]">
+              🛒 Your Shopping Cart
+            </h3>
+          </div>
+
+          <div className="flex h-full w-full flex-col items-center justify-start gap-4 overflow-y-auto lg:max-h-[80vh]">
             {items.length === 0 ? (
               <div className="justify-cneter flex w-full flex-col items-center p-8 text-center">
                 <h1 className="flex h-[200px] items-center text-[1.25rem] font-bold sm:!text-[2rem]">
@@ -73,7 +88,7 @@ const CartPage = () => {
             )}
           </div>
 
-          <div className="flex w-full flex-col justify-between gap-4 px-4 md:flex-row lg:px-0 xl:h-[5%] xl:w-full">
+          <div className="flex w-full flex-col justify-between gap-4 px-4 md:flex-row xl:h-[5%] xl:w-full">
             <Button
               label="◀ Shopping"
               onClick={() => {
@@ -104,33 +119,13 @@ const CartPage = () => {
           </div>
         </div>
 
-        <div className="checkout flex h-full flex-col justify-between gap-2 bg-zinc-800 lg:flex-1">
-          <div className="justtify-center flex w-full flex-col items-center bg-zinc-600 py-2">
-            <h3 className="m-auto text-center text-[2rem]">結帳資訊</h3>
-            <p>請選擇您的結帳方式</p>
-          </div>
-
-          <SelectDelivery
-            deliveryPayment={deliveryPayment}
-            setDeliveryPayment={setDeliveryPayment}
-          />
-
-          <SelectPay
-            deliveryPayment={deliveryPayment}
-            setDeliveryPayment={setDeliveryPayment}
-          />
-
-          <Button
-            label={`CheckOut 金額  
-                ${totalAmount + (deliveryPayment.delivery === "超商配送" ? 60 : 0)} $ 
-                ${deliveryPayment.delivery === "超商配送" ? "(+60 $)" : ""}`}
-            variant="success"
-            size="lg"
-            onClick={handleToCheckout}
-          />
-        </div>
+        <CheckoutInformation
+          deliveryPayment={deliveryPayment}
+          setDeliveryPayment={setDeliveryPayment}
+          totalAmount={totalAmount}
+          handleToCheckout={handleToCheckout}
+        />
       </div>
-      {/* )} */}
     </section>
   );
 };

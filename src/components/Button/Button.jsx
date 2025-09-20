@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 function buttonClass(variant, size) {
   const base =
-    "flex items-ceneter justify-center rounded font-mueium transition duration-200 w-full";
+    "flex items-ceneter justify-center rounded font-mueium transition duration-200 w-full ";
 
   const variants = {
     variant: {
-      primary: "bg-blue-300 text-white hover:bg-blue-400",
+      primary: "bg-blue-500 text-white hover:bg-blue-900",
       secondary: "bg-gray-600 text-white hover:bg-gray-700",
       danger: "bg-red-600 text-white hover:bg-red-700",
       danger_ghost:
@@ -15,9 +15,9 @@ function buttonClass(variant, size) {
       success: "bg-green-600 text-white hover:bg-green-700",
       success_ghost:
         "bg-gray-600/50 font-bold text-green-600 ring-1 hover:text-green-300",
-      info: "bg-slate-600 text-white hover:bg-slate-700e",
+      info: "bg-sky-600 text-white hover:bg-sky-700",
       ghost:
-        "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500",
+        "bg-transparent text-zinc-900 hover:text-white hover:bg-zinc-900 focus:ring-gray-500 cursor-not-allowed border",
     },
     size: {
       sm: "px-3 py-2 text-sm",

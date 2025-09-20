@@ -1,37 +1,19 @@
-import React from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
-
-const motion_btn = {
-  initial: { backgroundColor: "rgba(51, 53, 51, 0)", color: "#333533" },
-  whileHover: {
-    backgroundColor: "rgba(51, 53, 51, 1)",
-    color: "#FFD700",
-    borderColor: "rgba(51, 53, 51, 0)",
-  },
-  transition: { duration: 0.5 },
-};
-
-const btn_style =
-  "w-full border-2 uppercase tracking-wider font-bold text-center py-4 cursor-pointer";
-
-const link_style = "block text-[1.25rem] bg-[#e8eddf] h-full w-full";
 
 const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <section className="dashboard relative flex h-full w-full flex-col items-center justify-start gap-4 sm:items-start xl:grid xl:grid-cols-4">
+    <section className="dashboard relative flex h-full min-h-[90vh] w-full flex-col gap-4 rounded-md bg-zinc-800 p-8 lg:flex-row">
       {/* Dashboard Nav */}
-      <nav className="dashboard-nav flex w-[90%] flex-col items-center justify-center gap-6 sm:w-full xl:col-span-1 xl:col-start-1 xl:pt-12">
-        <ul className="flex flex-col gap-4">
+      <nav className="dashboard-nav flex flex-col lg:flex-1">
+        <ul className="flex w-full flex-wrap gap-4 lg:flex-col lg:justify-start">
           <li>
             <Button
               label="Staff List"
-              variant="primary"
               size="lg"
               onClick={() => navigate("stafflist")}
             />
@@ -40,14 +22,12 @@ const DashBoard = () => {
             {user?.role === "admin" ? (
               <Button
                 label="Admin Profile"
-                variant="primary"
                 size="lg"
                 onClick={() => navigate("admin")}
               />
             ) : (
               <Button
                 label="Staff Profile"
-                variant="primary"
                 size="lg"
                 onClick={() => navigate("staff")}
               />
@@ -56,7 +36,6 @@ const DashBoard = () => {
           <li>
             <Button
               label="Products List"
-              variant="primary"
               size="lg"
               onClick={() => navigate("productslist")}
             />
@@ -64,7 +43,6 @@ const DashBoard = () => {
           <li>
             <Button
               label="Menber List"
-              variant="primary"
               size="lg"
               onClick={() => navigate("menberlist")}
             />
@@ -72,51 +50,15 @@ const DashBoard = () => {
           <li>
             <Button
               label="Order List"
-              variant="primary"
               size="lg"
               onClick={() => navigate("orderlist")}
             />
           </li>
         </ul>
-
-        {/* <Link to="stafflist" className={link_style}>
-          <motion.button {...motion_btn} className={btn_style}>
-            Staff List
-          </motion.button>
-        </Link> */}
-        {/* {user?.role === "admin" ? (
-          <Link to="admin" className={link_style}>
-            <motion.button {...motion_btn} className={btn_style}>
-              Admin Profile
-            </motion.button>
-          </Link>
-        ) : (
-          <Link to="staff" className={link_style}>
-            <motion.button {...motion_btn} className={btn_style}>
-              Staff Profile
-            </motion.button>
-          </Link>
-        )} */}
-
-        {/* <Link to="productslist" className={link_style}>
-          <motion.button {...motion_btn} className={btn_style}>
-            Products List
-          </motion.button>
-        </Link>
-        <Link to="menberlist" className={link_style}>
-          <motion.button {...motion_btn} className={btn_style}>
-            Menber
-          </motion.button>
-        </Link>
-        <Link to="orderlist" className={link_style}>
-          <motion.button {...motion_btn} className={btn_style}>
-            Order List
-          </motion.button>
-        </Link> */}
       </nav>
-      {/* Dashboard Container */}
 
-      <div className="dashboard-container flex w-full overflow-auto px-4 pb-8 xl:col-span-3 xl:col-start-2">
+      {/* Dashboard Container */}
+      <div className="dashboard-container flex h-full w-full flex-4 overflow-auto text-white">
         {location.pathname === "/dashboard" ? (
           <div className="dashboard-bg relative h-full w-full">
             <img

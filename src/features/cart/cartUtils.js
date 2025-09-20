@@ -1,7 +1,5 @@
 // Tool
 
-import { table } from "framer-motion/client";
-
 // 計算總金額
 export const calculateTotalAmount = (items) => {
   return items.reduce((total, item) => total + item.price * item.quantity, 0);

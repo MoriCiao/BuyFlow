@@ -13,17 +13,9 @@ const AdminProfile = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="profile relative z-5 w-full items-center justify-center gap-4 sm:flex md:grid md:grid-cols-2"
+        className="profile relative h-full w-full"
       >
-        <Profile title="Admin Profile" userRole={"admin"} />
-
-        <div className="flex hidden h-full w-full items-center justify-center opacity-50 md:relative md:block">
-          <img
-            src={"/BuyFlow/user/user-bg-2.svg"}
-            alt="user-bg"
-            className="md:abosolute -buttom-10 w-full"
-          />
-        </div>
+        <Profile />
       </motion.section>
     </AnimatePresence>
   );

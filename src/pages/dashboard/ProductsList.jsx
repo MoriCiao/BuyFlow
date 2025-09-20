@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { modify } from "../../features/products/productsSlice";
-import Modify from "../../components/Modify";
+import Modify from "../../components/Modify/Modify";
 const opt = ["All", "ID", "Rating", "Price >", "Price <", "Stock"];
 
 const ProductsList = () => {
@@ -49,13 +49,13 @@ const ProductsList = () => {
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="products-list relative mt-2 flex h-full w-full flex-col gap-4 overflow-x-auto text-center sm:mt-8"
+        className="products-list relative flex h-full w-full flex-col gap-4 overflow-x-auto text-center"
       >
-        <div className="m-auto flex w-full items-center justify-center rounded-full border sm:absolute sm:top-0 sm:left-0">
+        <div className="m-auto flex w-full items-center justify-center rounded-full border">
           <select
             name=""
             id=""
-            className="h-[2rem] min-w-30 rounded-l-full px-2 text-center font-bold tracking-widest text-[#333533]"
+            className="h-[2rem] min-w-30 rounded-l-full px-2 text-center font-bold tracking-widest"
             onChange={handleChange}
           >
             {opt &&
@@ -79,7 +79,8 @@ const ProductsList = () => {
             onChange={(e) => setKeyWord(e.target.value)}
           />
         </div>
-        <div className="min-w-[1000px] overflow-x-auto backdrop-blur-sm sm:mt-12 xl:max-h-[450px]">
+
+        <div className="min-w-[1000px] overflow-x-auto backdrop-blur-sm">
           <table className="w-[100%] w-full border-collapse border">
             <thead>
               <tr className="border">
@@ -104,7 +105,7 @@ const ProductsList = () => {
                       }}
                       transition={{ duration: 0.5 }}
                       key={p.id}
-                      className="h-[2rem] border"
+                      className="border lg:h-[2rem]"
                     >
                       <td className="border">
                         <span

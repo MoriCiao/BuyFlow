@@ -10,16 +10,16 @@ import NotFoundPage from "../pages/NotFoundPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import AdminProfile from "../pages/profile/AdminProfile.jsx";
 import StaffProfile from "../pages/profile/StaffProfile.jsx";
-import MenberProfile from "../pages/profile/MenberProfile.jsx";
+import MemberProfile from "../pages/profile/MemberProfile.jsx";
 import DashBoard from "../pages/dashboard/DashBoard.jsx";
 import StaffList from "../pages/Dashboard/StaffList.jsx";
 import ProductsList from "../pages/Dashboard/ProductsList.jsx";
 import Register from "../pages/Register/Register.jsx";
-import MenberList from "../pages/Dashboard/MenberList.jsx";
+import MemberList from "../pages/Dashboard/MemberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
-import OrderTracking from "../components/OrderTracking.jsx";
-import OrderList from "../pages/Dashboard/OrderList.jsx";
+import OrderTracking from "../components/OrderTracking/OrderTracking.jsx";
+import OrderList from "../pages/Dashboard/OrderList/OrderList.jsx";
 import About from "../pages/About.jsx";
 const AppRoutes = () => {
   return (
@@ -40,7 +40,7 @@ const AppRoutes = () => {
           element={
             // 使用 RequireAuth 驗證，符合 isAuthenticated 時才會顯示<MenberProfile />
             <RequireAuth>
-              <MenberProfile />
+              <MemberProfile />
             </RequireAuth>
           }
         />
@@ -67,7 +67,7 @@ const AppRoutes = () => {
             path="menberlist"
             element={
               <RequireRole allowRoles={["staff", "admin"]}>
-                <MenberList />
+                <MemberList />
               </RequireRole>
             }
           />

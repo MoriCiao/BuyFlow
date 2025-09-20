@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { newDate } from "../cart/cartUtils";
+import { u } from "framer-motion/client";
 // 此 Slice 為dashboard 的資料
 const initialState = {
   order: [],
@@ -13,7 +14,7 @@ const orderSlice = createSlice({
     addOrderToDashBoard(state, action) {
       const newOrder = action.payload;
       state.order = [...state.order, newOrder];
-
+      console.warn("已將訂單新增至dashboard", newOrder);
       //  更新資料至 Storage
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));
     },
@@ -41,8 +42,9 @@ const orderSlice = createSlice({
         ...target,
         sendDate: newDate(),
         isSend: true,
+        isArrival: false,
       };
-      const index = state.order.findIndex((o) => o.id === target.id);
+      const index = state.order.findIndex((o) => o.orderID === target.orderID);
       //更新對應INDEX的訂單
       if (index !== -1) {
         // 更新廠商的訂單
@@ -51,9 +53,29 @@ const orderSlice = createSlice({
         const userKey = `order-${target.user.email}`;
         const prevOrder = localStorage.getItem(userKey);
         const data = JSON.parse(prevOrder);
-        const dataIndex = data.findIndex((d) => d.id === target.id);
+        const dataIndex = data.findIndex((d) => d.orderID === target.orderID);
         data[dataIndex] = updatedOrder;
         localStorage.setItem(userKey, JSON.stringify(data));
+      }
+    },
+    arrivalOrder(state, action) {
+      const target = action.payload;
+      const upDatedTarget = { ...target, isArrival: true };
+
+      const index = state.order.findIndex((o) => o.orderID === target.orderID);
+
+      if (index !== -1) {
+        // 更新電商端
+        state.order[index] = upDatedTarget;
+        // 更新客戶端
+        const orderUser = `order-${target.user.email}`;
+        const userData = JSON.parse(localStorage.getItem(orderUser));
+        console.log(userData);
+        const dataIndex = userData.findIndex(
+          (d) => d.orderID === target.orderID,
+        );
+        userData[dataIndex] = upDatedTarget;
+        localStorage.setItem(orderUser, JSON.stringify(userData));
       }
     },
   },
@@ -64,5 +86,6 @@ export const {
   cancelOrderFormDashBoard,
   reloadOrderFromStorage,
   sendOrder,
+  arrivalOrder,
 } = orderSlice.actions;
 export default orderSlice.reducer;

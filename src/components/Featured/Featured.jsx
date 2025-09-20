@@ -18,7 +18,7 @@ const Featured = () => {
       <div>
         <h1 className="text-center text-[3rem] font-bold">精選商品</h1>
       </div>
-      <div className="grid w-full grid-cols-1 flex-wrap gap-8 p-8 text-white md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid w-full grid-cols-1 flex-wrap gap-8 p-8 text-white sm:grid-cols-2 lg:grid-cols-4">
         {featured_items &&
           featured_items.map((f, index) => (
             <FeaturedCard
@@ -30,7 +30,6 @@ const Featured = () => {
               <Button
                 label="瞭解詳情"
                 onClick={() => setIsFeaturedModal({ open: true, product: f })}
-                // onClick={() => dispatch(addItem({ product: f, quantity: 1 }))}
               />
             </FeaturedCard>
           ))}

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
-const img = {
-  staff: "/BuyFlow/user/user-staff.svg",
-  admin: "/BuyFlow/user/user-admin.svg",
-};
+import StaffListCard from "./StaffListCard";
 
 const StaffList = () => {
   const { userList } = useSelector((state) => state.user);
@@ -20,18 +17,13 @@ const StaffList = () => {
       return p.role === "admin";
     }
   });
-
-  const handleChange = (e) => {
-    setSelectedRole(e.target.value);
-  };
-
   return (
-    <section className="staff-list w-full">
+    <section className="staff-list flex h-full w-full flex-col gap-4 px-4">
       <select
-        className="mb-2 w-full rounded-sm bg-[#333533] px-2 py-1 text-[#e8eddf] sm:w-auto"
+        className="w-full rounded-sm bg-[#333533] px-4 py-2 sm:w-20"
         name=""
         id=""
-        onChange={handleChange}
+        onChange={(e) => setSelectedRole(e.target.value)}
       >
         <option value="all">ALL</option>
         <option value="staff">Staff</option>
@@ -41,29 +33,11 @@ const StaffList = () => {
         <motion.div
           key={selectedRole}
           {...animate_I}
-          className="staffs grid w-full grid-cols-2 flex-wrap items-center justify-center gap-2 sm:flex sm:items-start sm:justify-start sm:gap-8"
+          className="staff-list grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5"
         >
           {staffFiltered &&
             staffFiltered.map((user, index) => {
-              return (
-                <div
-                  key={index}
-                  className="user-card min-w-[100px] border bg-gradient-to-br from-white/20 via-white/20 to-black/10 p-4 shadow-xl backdrop-blur-sm transition duration-500 sm:max-h-[250px] sm:w-[200px] sm:hover:-translate-x-2 sm:hover:-translate-y-2"
-                >
-                  <div className="flex w-full p-4 sm:h-[150px]">
-                    <img
-                      src={user.role === "staff" ? img.staff : img.admin}
-                      alt="userImg"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="user-data text-center">
-                    <p className="font-bold">{user.role.toUpperCase()}</p>
-                    <p>{user.name}</p>
-                    <p className="w-full break-all">{user.email}</p>
-                  </div>
-                </div>
-              );
+              return <StaffListCard key={index} user={user} />;
             })}
         </motion.div>
       </AnimatePresence>

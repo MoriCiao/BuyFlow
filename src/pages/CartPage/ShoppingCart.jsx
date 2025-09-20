@@ -11,7 +11,7 @@ const ShoppingCart = ({ i }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`item-${i.id} flex w-full items-center justify-around px-4 lg:px-0`}
+      className={`item-${i.id} flex w-full items-center justify-around px-4 sm:px-0`}
     >
       <div className="relative flex w-full items-center justify-around bg-white/20 py-4">
         <div className="flex flex-1 items-center overflow-hidden">
@@ -21,7 +21,7 @@ const ShoppingCart = ({ i }) => {
             className="m-auto h-25 w-25 rounded-full border bg-white object-contain"
           />
         </div>
-        <div className="flex flex-1 flex-col items-center justify-between gap-4 xl:flex-3 xl:flex-row">
+        <div className="flex flex-1 flex-col items-center justify-between gap-4 sm:flex-2 lg:flex-row xl:flex-1 xl:flex-3">
           <h3 className="flex-1">
             <strong>{i.name}</strong>
           </h3>
@@ -62,7 +62,7 @@ const ShoppingCart = ({ i }) => {
         </div>
       </div>
       <motion.button
-        className="px-5 lg:pl-10"
+        className="px-8"
         onClick={() => {
           dispatch(removeItem(i));
         }}

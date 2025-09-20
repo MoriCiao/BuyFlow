@@ -26,7 +26,7 @@ const CartIcon = () => {
   };
 
   return (
-    <section className="cartIcon fixed top-0 right-5 z-100 block select-none sm:top-30">
+    <section className="cart-Icon fixed top-0 right-5 z-100 block select-none lg:top-30">
       <div className="flex justify-end select-none">
         <motion.button
           initial={{ fontSize: "1.5rem" }}

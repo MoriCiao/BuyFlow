@@ -30,17 +30,15 @@ const SelectDelivery = ({ deliveryPayment, setDeliveryPayment }) => {
           activeDelivery={activeDelivery}
         />
       </div>
-      {/* $
-      {activeDelivery === null
-        ? "bg-zinc-600"
-        : "border bg-zinc-600/50 text-green-600"} */}
       <div className={`w-full px-4`}>
         <Button
           label={`✓您選擇配送方式為： 
           ${
             deliveryPayment.delivery === "廠商宅配"
               ? `${deliveryPayment.delivery} (免運費)`
-              : `${deliveryPayment.delivery} (運費60$)` || "尚未選擇"
+              : deliveryPayment.delivery === "超商配送"
+                ? `${deliveryPayment.delivery} (運費60$)`
+                : "尚未選擇"
           }`}
           variant="success_ghost"
           disabled={true}

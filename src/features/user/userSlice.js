@@ -8,6 +8,7 @@ const initialState = {
   isAuthenticated: false,
   profile_bg: "/BuyFlow/user/user-bg-2.svg",
   userList: users,
+  tempOrder: {},
   allOrders: [],
 };
 
@@ -36,19 +37,26 @@ const userSlice = createSlice({
         image: "/BuyFlow/user/user-menber.svg",
       });
     },
+    checkOrder(state, action) {
+      state.tempOrder = action.payload;
+    },
     // 創建訂單
     createOrder(state, action) {
       const newOrder = action.payload;
 
       // 新增訂單
-      state.allOrders = [
-        ...state.allOrders,
-        { orderNo: state.allOrders.length + 1, ...newOrder },
-      ];
+      state.allOrders = [...state.allOrders, newOrder];
       // 確認訂單新增後，將購物車內資訊清除
+      localStorage.setItem(
+        `order-${state.user.email}`,
+        JSON.stringify(state.allOrders),
+      );
+
       state.items = [];
       state.totalAmount = 0;
       state.totalQuatity = 0;
+      state.tempOrder = {};
+      console.warn("已將訂單新增至使用者allOrders", newOrder);
     },
     // 取消訂單
     cancelOrder(state, action) {
@@ -65,6 +73,7 @@ export const {
   login,
   loginout,
   addNewMenber,
+  checkOrder,
   createOrder,
   cancelOrder,
   addAllOrder,

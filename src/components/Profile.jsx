@@ -1,71 +1,68 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-const Profile = ({ title, userRole, children }) => {
+import { useDispatch, useSelector } from "react-redux";
+import Button from "./Button/Button";
+import { useNavigate } from "react-router-dom";
+import { loginout } from "../features/user/userSlice";
+const Profile = () => {
   const { user } = useSelector((state) => state.user);
-  const ProfileSVG = () => {
-    const imgData = {
-      menber: "/BuyFlow/user/user-menber.svg",
-      staff: "/BuyFlow/user/user-staff.svg",
-      admin: "/BuyFlow/user/user-admin.svg",
-    };
-
-    return (
-      <div className="user-photo relative flex w-full items-center justify-center border py-4 sm:h-[200px]">
-        <img
-          className="w-[150px]"
-          src={imgData[userRole]}
-          alt="profile_photo"
-        />
-      </div>
-    );
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <div
-      className={
-        userRole !== "menber"
-          ? "relative z-5 mx-auto flex flex-col items-center justify-center gap-2"
-          : "col-span-1 col-start-2 flex h-full w-full flex-col items-center justify-start gap-2"
-      }
-    >
-      <h1 className="w-[350px] indent-[1rem] text-[1.5rem]">{title} </h1>
-      <div className="to-whtie/20 container flex min-h-[200px] w-full flex-col items-center justify-center bg-gradient-to-br from-white/20 via-white/50">
-        <ProfileSVG />
-        <div className="user-detail w-full">
-          <table className="w-full">
-            <thead>
-              <tr className="border border-t-0">
-                <th className="p-2 text-end">Name : </th>
-                <td className="px-4 text-start">
-                  {user.name.toLocaleUpperCase()}
-                </td>
-              </tr>
-              {user.role === "menber" ? null : (
-                <tr className="border">
-                  <th className="p-2 text-end">Staff ID :</th>
-                  <td className="px-4 text-start">{user.staff_id}</td>
-                </tr>
-              )}
-
-              <tr className="border">
-                <th className="p-2 text-end">Email :</th>
-                <td className="px-4 text-start">{user.email}</td>
-              </tr>
-              <tr className="border">
-                <th className="p-2 text-end">Role :</th>
-                <td className="px-4 text-start">
-                  {user.role.toLocaleUpperCase()}
-                </td>
-              </tr>
-              <tr className="border">
-                <th className="p-2 text-end">Token :</th>
-                <td className="px-4 text-start">{user.token}</td>
-              </tr>
-            </thead>
-          </table>
+    <div className={"profile flex w-full flex-col gap-4 bg-zinc-600 p-4"}>
+      <h1 className="border-b border-white/50 text-[1.5rem]">👤 基本資料 </h1>
+      <div className="flex flex-col gap-8 lg:flex-row">
+        <div className="flex flex-1 flex-col rounded-md bg-zinc-800 p-4 shadow-lg">
+          <div className="user-detail w-full md:text-[1.25rem]">
+            <div className="flex w-full justify-between border-b border-white/50 py-2">
+              <p>姓名：</p>
+              <p>{user.name.toLocaleUpperCase()}</p>
+            </div>
+            {user.role === "member" ? null : (
+              <div className="flex w-full justify-between border-b border-white/50 py-2">
+                <p>ID</p>
+                <p>{user.staff_id}</p>
+              </div>
+            )}
+            <div className="flex w-full justify-between border-b border-white/50 py-2">
+              <p>Email：</p>
+              <p>{user.email}</p>
+            </div>
+            <div className="flex w-full justify-between border-b border-white/50 py-2">
+              <p>Role：</p>
+              <p>{user.role}</p>
+            </div>
+            <div className="flex w-full justify-between border-b border-white/50 py-2">
+              <p>Token：</p>
+              <p>{user.token}</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col justify-between gap-4 rounded-md bg-zinc-800 p-4 shadow-lg sm:flex-row lg:flex-col">
+          {/* 導向訂單追蹤 */}
+          <Button
+            label="🚚 Tracking"
+            size="lg"
+            variant="success"
+            onClick={() => {
+              navigate("/menber/ordertracking");
+            }}
+          />
+          <Button
+            label="🛒 Cart"
+            size="lg"
+            className=""
+            onClick={() => {
+              navigate("/cart");
+            }}
+          />
+          <Button
+            label="Logout"
+            variant="danger"
+            size="lg"
+            onClick={() => dispatch(loginout())}
+          />
         </div>
       </div>
-      {children}
     </div>
   );
 };

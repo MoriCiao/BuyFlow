@@ -20,9 +20,9 @@ const CategoryBtn = () => {
   return (
     <ul className="flex w-full flex-wrap gap-4 px-8 lg:flex-col">
       {categoryList &&
-        categoryList.map((cate) => {
+        categoryList.map((cate, index) => {
           return (
-            <li className="min-w-[150px] flex-1">
+            <li key={index} className="min-w-[150px] flex-1">
               <Button
                 label={cate}
                 size="lg"

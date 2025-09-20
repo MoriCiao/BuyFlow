@@ -10,7 +10,10 @@ const initialState = {
   items: [], // <<< 每個商品的細項 {id, name... }
   totalAmount: 0, // <<< 所有商品總金額
   totalQuatity: 0, // <<< 所有商品總件數
-  deliveryMethod: "",
+  deliveryPayment: {
+    delivery: "",
+    payment: "",
+  },
 };
 
 const cartSlice = createSlice({
@@ -38,7 +41,6 @@ const cartSlice = createSlice({
       const item = isItemInCart(state.items, id);
 
       if (!item) return;
-
       item.quantity =
         type === "increment"
           ? Math.min(item.quantity + 1, item.stock)
@@ -62,6 +64,11 @@ const cartSlice = createSlice({
       state.items = [];
       state.totalAmount = 0;
       state.totalQuatity = 0;
+      state.deliveryPayment = {
+        delivery: "",
+        payment: "",
+      };
+      console.warn("購物車已清空!");
     },
     // 將選取的商品導入購物車
     setCartItems(state, action) {
@@ -77,9 +84,9 @@ const cartSlice = createSlice({
       state.totalAmount = amount;
     },
     // 設定配送方式
-    setDelivery(state, action) {
-      const { deliveryMethod } = action.payload;
-      state.deliveryMethod = deliveryMethod;
+    setDeliveryPayment(state, action) {
+      const { deliveryPayment } = action.payload;
+      state.deliveryPayment = deliveryPayment;
     },
   },
 });
@@ -90,6 +97,6 @@ export const {
   cleanCart,
   modifyAmount,
   setCartItem,
-  setDelivery,
+  setDeliveryPayment,
 } = cartSlice.actions;
 export default cartSlice.reducer;
