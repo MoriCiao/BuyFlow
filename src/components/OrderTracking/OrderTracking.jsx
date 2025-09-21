@@ -14,6 +14,31 @@ const OrderTracking = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const STYLE = {
+    orderTracking: `order-tracking min-h-[90vh] w-full space-y-4 px-4 md:px-0`,
+
+    noOrder: `noOrder-container flex h-[80vh] w-full items-center justify-center rounded-md border border-white/50 bg-zinc-800 text-white shadow-lg]`,
+  };
+
+  const OrderTrackingOperator = () => (
+    <div className="flex justify-between">
+      <div>
+        <Button
+          label="會員資料"
+          variant="info"
+          onClick={() => navigate("/menber")}
+        />
+      </div>
+      <div>
+        <Button
+          label="前往商城"
+          variant="success"
+          onClick={() => navigate("/products")}
+        />
+      </div>
+    </div>
+  );
+
   // 訂單刪除
   const handleCancel = (order) => {
     // localStorage 刪除
@@ -60,9 +85,9 @@ const OrderTracking = () => {
   }, [user]);
 
   return (
-    <section className="order-tracking min-h-[90vh] w-full space-y-4 px-4 md:px-0">
+    <section className={STYLE.orderTracking}>
       {savedOrder.length === 0 ? (
-        <div className="flex h-[80vh] w-full items-center justify-center rounded-md border border-white/50 bg-zinc-800 text-white shadow-lg">
+        <div className={STYLE.noOrder}>
           <h1 className="text-[1.5rem] font-bold lg:text-[2rem]">
             您目前沒有訂單...
           </h1>
@@ -81,22 +106,8 @@ const OrderTracking = () => {
             })}
         </div>
       )}
-      <div className="flex justify-between">
-        <div>
-          <Button
-            label="會員資料"
-            variant="info"
-            onClick={() => navigate("/menber")}
-          />
-        </div>
-        <div>
-          <Button
-            label="前往商城"
-            variant="success"
-            onClick={() => navigate("/products")}
-          />
-        </div>
-      </div>
+      {/* 操作區 */}
+      <OrderTrackingOperator />
     </section>
   );
 };

@@ -16,13 +16,15 @@ function isPass(title, isSend, isArrival) {
 }
 
 const TrackingStatusIcon = ({ icon, title, isSend, isArrival }) => {
+  const STYLE = {
+    container: `flex flex-col items-center justify-center gap-4 p-1 md:p-4 lg:w-30 ${isPass(title, isSend, isArrival)}`,
+
+    iconConitainer: `flex items-center justify-center rounded-full border bg-white/50 p-2 lg:h-20 lg:w-20 lg:text-[1.5rem]`,
+  };
+
   return (
-    <div
-      className={`flex flex-col items-center justify-center gap-4 p-1 md:p-4 lg:w-30 ${isPass(title, isSend, isArrival)}`}
-    >
-      <div className="flex items-center justify-center rounded-full border bg-white/50 p-2 lg:h-20 lg:w-20 lg:text-[1.5rem]">
-        {icon}
-      </div>
+    <div className={STYLE.container}>
+      <div className={STYLE.iconConitainer}>{icon}</div>
       <h3>{title}</h3>
     </div>
   );

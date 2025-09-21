@@ -1,19 +1,25 @@
 import Button from "../Button/Button";
 
 const DeliveryInformation = ({ totalAmount, deliveryPayment }) => {
+  const STYLE = {
+    deliveryInfo: `delivery-information flex flex-col gap-4`,
+    delivery_content: `delivery-content flex justify-between border-b border-white/50`,
+  };
+
+  const DeliveryContent = ({ title, text }) => (
+    <div className={STYLE.delivery_content}>
+      <p>{title}</p>
+      <p>{text}</p>
+    </div>
+  );
+
   return (
-    <div className="delivery-information flex flex-col gap-4">
+    <div className={STYLE.deliveryInfo}>
       <p>🚚 配送資訊</p>
       <div className="flex flex-col gap-2">
         <div className="flex h-1/2 flex-col gap-2">
-          <div className="flex justify-between border-b border-white/50">
-            <p>配送方式</p>
-            <p>{deliveryPayment.delivery}</p>
-          </div>
-          <div className="flex justify-between border-b border-white/50">
-            <p>付款方式</p>
-            <p>{deliveryPayment.payment}</p>
-          </div>
+          <DeliveryContent title={`配送方式`} text={deliveryPayment.delivery} />
+          <DeliveryContent title={`付款方式`} text={deliveryPayment.payment} />
         </div>
         <div>
           <Button

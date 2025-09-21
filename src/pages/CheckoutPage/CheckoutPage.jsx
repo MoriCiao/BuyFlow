@@ -56,7 +56,7 @@ const CheckoutPage = () => {
           <BillingInfo emoji={"📑"} title="配送資訊" info={deliveryInfo} />
         </div>
 
-        <div className="flex flex-1 flex-col gap-8 py-4 lg:max-h-[50vh] lg:flex-row">
+        <div className="flex flex-1 flex-col gap-8 py-4 lg:flex-row">
           {/* 商品明細 */}
           <CartSummary />
 

@@ -56,7 +56,13 @@ const Register = () => {
     role: "menber",
   });
 
-  const [isOpen, setIsOpen] = useState(false);
+  const STYLE = {
+    container: `register-page relative flex h-full w-full flex-col items-center rounded-md p-4 text-white lg:p-10`,
+
+    header: `flex h-full w-full flex-col items-center justify-center bg-zinc-500 px-8 py-4 shadow-lg`,
+
+    form: `register-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800  shadow-lg backdrop-blur-md lg:w-[50%]`,
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,115 +80,102 @@ const Register = () => {
     }
     dispatch(addNewMenber(addMenber));
   };
+
+  const RegisterHeader = () => (
+    <div className={STYLE.header}>
+      <img
+        draggable="false"
+        src="/BuyFlow/logo_w.svg"
+        alt="logo_w.svg"
+        loading="lazy"
+        className="w-50"
+      />
+    </div>
+  );
+
+  const RegisterItemContainer = () => (
+    <div className="flex flex-col gap-2">
+      <RegisterItem
+        label="Name"
+        name="Name..."
+        type="text"
+        required={true}
+        value={addMenber.name}
+        onChange={(e) => setAddMenber({ ...addMenber, name: e.target.value })}
+        ref={inputRef}
+      />
+      <RegisterItem
+        label="Age"
+        name="Age..."
+        type="number"
+        required={true}
+        value={addMenber.age}
+        onChange={(e) => setAddMenber({ ...addMenber, age: e.target.value })}
+      />
+      <RegisterItem
+        label="Email"
+        name="Email..."
+        type="email"
+        required={true}
+        value={addMenber.email}
+        onChange={(e) => setAddMenber({ ...addMenber, email: e.target.value })}
+      />
+      <RegisterItem
+        label="Phone"
+        name="Phone..."
+        type="tel"
+        required={true}
+        value={addMenber.phone}
+        onChange={(e) => setAddMenber({ ...addMenber, phone: e.target.value })}
+        pattern="^09\d{8}$"
+        title="請輸入正確的台灣手機號碼（例如：0912345678）"
+      />
+      <RegisterItem
+        label="Password"
+        name="Password..."
+        type="password"
+        required={true}
+        value={addMenber.password}
+        onChange={(e) =>
+          setAddMenber({ ...addMenber, password: e.target.value })
+        }
+      />
+      <RegisterItem
+        label="Check Password"
+        name="Check Password..."
+        type="password"
+        required={true}
+        value={addMenber.checkpassword}
+        onChange={(e) =>
+          setAddMenber({ ...addMenber, checkpassword: e.target.value })
+        }
+      />
+    </div>
+  );
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
   return (
     <AnimatePresence>
       <motion.section
         key={location.pathname}
         {...animate_I}
-        className="register-page"
+        className={STYLE.container}
       >
-        <button
-          className="member-list"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          Code
-        </button>
-        {isOpen && <UserList />}
+        <form onSubmit={handleSubmit} className={STYLE.form}>
+          <RegisterHeader />
 
-        {/* 背景圖片 */}
-        <div className="register-img">
-          <img
-            draggable="false"
-            className="hidden w-[100%] 2xl:block"
-            src="/BuyFlow/register.svg"
-            alt="register.svg"
-          />
-        </div>
+          <RegisterItemContainer />
 
-        <div className="register-form border-2 border-white shadow-xl backdrop-blur-sm">
-          <img
-            draggable="false"
-            src="/BuyFlow/logo_w.svg"
-            alt="logo_w.svg"
-            loading="lazy"
-          />
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <RegisterItem
-              label="Name"
-              name="Name..."
-              type="text"
-              required={true}
-              value={addMenber.name}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, name: e.target.value })
-              }
-              ref={inputRef}
-            />
-            <RegisterItem
-              label="Age"
-              name="Age..."
-              type="number"
-              required={true}
-              value={addMenber.age}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, age: e.target.value })
-              }
-            />
-            <RegisterItem
-              label="Email"
-              name="Email..."
-              type="email"
-              required={true}
-              value={addMenber.email}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, email: e.target.value })
-              }
-            />
-            <RegisterItem
-              label="Phone"
-              name="Phone..."
-              type="tel"
-              required={true}
-              value={addMenber.phone}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, phone: e.target.value })
-              }
-              pattern="^09\d{8}$"
-              title="請輸入正確的台灣手機號碼（例如：0912345678）"
-            />
-            <RegisterItem
-              label="Password"
-              name="Password..."
-              type="password"
-              required={true}
-              value={addMenber.password}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, password: e.target.value })
-              }
-            />
-            <RegisterItem
-              label="Check Password"
-              name="Check Password..."
-              type="password"
-              required={true}
-              value={addMenber.checkpassword}
-              onChange={(e) =>
-                setAddMenber({ ...addMenber, checkpassword: e.target.value })
-              }
-            />
-
-            <button
-              type="submit"
-              className="border2 mx-auto my-4 w-50 cursor-pointer rounded-sm border border-[#e8eddf] bg-gradient-to-br from-[#e8eddf]/50 via-[#333533]/80 to-[#e8eddf]/100 px-2 text-[1.5rem] font-bold tracking-widest text-[#e8eddf] transition duration-500 hover:scale-110 hover:from-[#e8eddf] hover:via-yellow-200 hover:to-[#e8eddf] hover:text-[#333533]"
+          <div className="w-25 py-4">
+            <Button
+              label="提交"
               onClick={() => dispatch(addNewMenber(addMenber))}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+            />
+          </div>
+        </form>
       </motion.section>
     </AnimatePresence>
   );
