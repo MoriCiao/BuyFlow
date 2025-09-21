@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import LoginForm from "../components/LoginForm/LoginForm";
 import { motion, easeIn } from "framer-motion";
 import TestAccount from "../components/TestAccount";
-const img = "/BuyFlow/login.svg";
+
+const STYLE = {
+  container: `login-page flex h-full w-full flex-col items-center rounded-md p-10 text-white`,
+};
 const LoginPage = () => {
   const [account, setAccount] = useState(false);
-
-  const STYLE = {
-    container: `login-page flex h-full w-full flex-col items-center rounded-md p-10 text-white`,
-  };
 
   return (
     <motion.section

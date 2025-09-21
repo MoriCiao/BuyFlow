@@ -6,18 +6,18 @@ import { setLoading } from "../../features/ui/uiSlice";
 import Button from "../Button/Button";
 import TrackingCard from "./TrackingCard";
 
+const STYLE = {
+  orderTracking: `order-tracking min-h-[90vh] w-full space-y-4 px-4 md:px-0`,
+
+  noOrder: `noOrder-container flex h-[80vh] w-full items-center justify-center rounded-md border border-white/50 bg-zinc-800 text-white shadow-lg]`,
+};
+
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
   const [savedOrder, setSavedOrder] = useState([]);
   const { allOrders, user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const STYLE = {
-    orderTracking: `order-tracking min-h-[90vh] w-full space-y-4 px-4 md:px-0`,
-
-    noOrder: `noOrder-container flex h-[80vh] w-full items-center justify-center rounded-md border border-white/50 bg-zinc-800 text-white shadow-lg]`,
-  };
 
   const OrderTrackingOperator = () => (
     <div className="flex justify-between">

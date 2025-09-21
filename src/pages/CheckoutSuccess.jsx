@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button/Button";
+const STYLE = {
+  section: `checkout-success flex w-full flex-col items-center justify-center gap-8 p-4 text-white `,
+
+  container: `flex min-h-[60vh] flex-col justify-between overflow-hidden rounded-xl bg-zinc-800 shadow-lg`,
+
+  header: `flex h-[10vh] w-full items-center justify-center bg-zinc-600`,
+
+  content: `flex h-full flex-col items-center gap-4 lg:flex-row`,
+};
 const CheckoutSuccess = () => {
   const navigate = useNavigate();
-
-  const STYLE = {
-    section: `checkout-success flex w-full flex-col items-center justify-center gap-8 p-4 text-white `,
-
-    container: `flex min-h-[60vh] flex-col justify-between overflow-hidden rounded-xl bg-zinc-800 shadow-lg`,
-
-    header: `flex h-[10vh] w-full items-center justify-center bg-zinc-600`,
-
-    content: `flex h-full flex-col items-center gap-4 lg:flex-row`,
-  };
 
   const CheckoutSuccessContent = () => (
     <div className={STYLE.content}>

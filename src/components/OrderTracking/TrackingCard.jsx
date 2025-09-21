@@ -7,6 +7,16 @@ import OrderItems from "./OrderItems";
 import TrackingOperate from "./TrackingOperate";
 import TrackingStatus from "./TrackingStatus";
 
+const STYLE = {
+  card: `tracking-card relative flex flex-col rounded-md border border-white/50 bg-zinc-800 text-white shadow-xl transition duration-300 hover:-translate-y-2`,
+
+  header: `flex flex-col items-center justify-between gap-4 p-4 sm:flex-row`,
+
+  buttonContainer: `w-full min-w-30 sm:w-auto`,
+
+  contents: `grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4`,
+};
+
 const TrackingCard = ({ order, handleCancel }) => {
   const [trackingStatus, setTrackingStatus] = useState(false);
   const {
@@ -20,16 +30,6 @@ const TrackingCard = ({ order, handleCancel }) => {
     isSend,
     isArrival,
   } = order;
-
-  const STYLE = {
-    card: `tracking-card relative flex flex-col rounded-md border border-white/50 bg-zinc-800 text-white shadow-xl transition duration-300 hover:-translate-y-2`,
-
-    header: `flex flex-col items-center justify-between gap-4 p-4 sm:flex-row`,
-
-    buttonContainer: `w-full min-w-30 sm:w-auto`,
-
-    contents: `grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4`,
-  };
 
   const ShippingButton = () => (
     <div

@@ -1,3 +1,9 @@
+const STYLE = {
+  container: `register-form-item flex w-full items-center justify-between gap-2 border-white/50 px-4 py-2 lg:border-b`,
+
+  input: `register-input w-full flex-2 rounded-md bg-zinc-500 py-2 indent-4`,
+};
+
 const RegisterItem = ({
   label,
   name,
@@ -9,12 +15,6 @@ const RegisterItem = ({
   title,
   ref,
 }) => {
-  const STYLE = {
-    container: `register-form-item flex w-full items-center justify-between gap-2 border-white/50 px-4 py-2 lg:border-b`,
-
-    input: `register-input w-full flex-2 rounded-md bg-zinc-500 py-2 indent-4`,
-  };
-
   return (
     <div className={STYLE.container}>
       <label htmlFor="" className="register-label flex-1 text-center font-bold">

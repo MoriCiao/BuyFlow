@@ -2,22 +2,21 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 
+const STYLE = {
+  dashboard: `dashboard relative flex h-full min-h-[90vh] w-full flex-col gap-4 rounded-md bg-zinc-800 p-8 lg:flex-row`,
+
+  dashboard_ul: `flex w-full flex-wrap gap-4 lg:flex-col lg:justify-start`,
+
+  dashboard_container: `dashboard-container flex h-auto w-full flex-4 overflow-auto text-white`,
+
+  dashboard_bg_container: `dashboard-bg-container flex h-full w-full items-center`,
+
+  dashboard_bg: `dashboard-bg objcet-cover w-full opacity-30 select-none`,
+};
 const DashBoard = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const STYLE = {
-    dashboard: `dashboard relative flex h-full min-h-[90vh] w-full flex-col gap-4 rounded-md bg-zinc-800 p-8 lg:flex-row`,
-
-    dashboard_ul: `flex w-full flex-wrap gap-4 lg:flex-col lg:justify-start`,
-
-    dashboard_container: `dashboard-container flex h-auto w-full flex-4 overflow-auto text-white`,
-
-    dashboard_bg_container: `dashboard-bg-container flex h-full w-full items-center`,
-
-    dashboard_bg: `dashboard-bg objcet-cover w-full opacity-30 select-none`,
-  };
 
   const DashboardNav = () => (
     <nav className="dashboard-nav flex flex-col lg:flex-1">

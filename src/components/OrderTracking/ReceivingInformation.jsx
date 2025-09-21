@@ -1,8 +1,8 @@
-const ReceivingInformation = ({ user }) => {
-  const STYLE = {
-    contect: `flex justify-between border-b border-white/50`,
-  };
+const STYLE = {
+  contect: `flex justify-between border-b border-white/50`,
+};
 
+const ReceivingInformation = ({ user }) => {
   const ReceivingContent = ({ label, text }) => (
     <div className={STYLE.contect}>
       <p>{label}</p>

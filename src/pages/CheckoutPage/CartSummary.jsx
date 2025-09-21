@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
+const STYLE = {
+  cartSummaryContainer: `grid flex-1 grid-cols-1 gap-4 overflow-y-auto rounded-xl border border-white/50 bg-zinc-600 p-4 shadow-xl lg:max-h-[50vh] xl:grid-cols-2`,
+
+  card: `flex w-full items-center justify-between rounded-xl border border-white/50 bg-zinc-800 p-4 shadow-xl transition duration-300 hover:border-white hover:bg-zinc-900`,
+};
 const CartSummary = () => {
   const { tempOrder } = useSelector((state) => state.user);
   const { items, totalQuatity } = tempOrder;
-
-  const STYLE = {
-    cartSummaryContainer: `grid flex-1 grid-cols-1 gap-4 overflow-y-auto rounded-xl border border-white/50 bg-zinc-600 p-4 shadow-xl lg:max-h-[50vh] xl:grid-cols-2`,
-
-    card: `flex w-full items-center justify-between rounded-xl border border-white/50 bg-zinc-800 p-4 shadow-xl transition duration-300 hover:border-white hover:bg-zinc-900`,
-  };
 
   const CartSummaryContainer = () => (
     <div className={STYLE.cartSummaryContainer}>

@@ -1,11 +1,10 @@
 import Button from "../Button/Button";
+const STYLE = {
+  deliveryInfo: `delivery-information flex flex-col gap-4`,
+  delivery_content: `delivery-content flex justify-between border-b border-white/50`,
+};
 
 const DeliveryInformation = ({ totalAmount, deliveryPayment }) => {
-  const STYLE = {
-    deliveryInfo: `delivery-information flex flex-col gap-4`,
-    delivery_content: `delivery-content flex justify-between border-b border-white/50`,
-  };
-
   const DeliveryContent = ({ title, text }) => (
     <div className={STYLE.delivery_content}>
       <p>{title}</p>

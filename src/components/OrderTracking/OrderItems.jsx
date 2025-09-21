@@ -1,14 +1,14 @@
 import React from "react";
 
+const STYLE = {
+  title: `flex flex-none items-center justify-between`,
+
+  itemsContent: `order-items-contents flex w-full flex-col gap-2 overflow-y-auto rounded-md bg-zinc-600 p-2 lg:max-h-30`,
+
+  itemCard: `flex w-full items-start justify-between border-b border-white/50 shadow-xl transition duration-300 hover:border-white hover:bg-zinc-500`,
+};
+
 const OrderItems = ({ items, totalQuatity }) => {
-  const STYLE = {
-    title: `flex flex-none items-center justify-between`,
-
-    itemsContent: `order-items-contents flex w-full flex-col gap-2 overflow-y-auto rounded-md bg-zinc-600 p-2 lg:max-h-30`,
-
-    itemCard: `flex w-full items-start justify-between border-b border-white/50 shadow-xl transition duration-300 hover:border-white hover:bg-zinc-500`,
-  };
-
   return (
     <div className="flex flex-col gap-2">
       <div className={STYLE.title}>
