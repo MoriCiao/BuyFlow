@@ -98,6 +98,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className={STYLE.form}>
       <Logo />
+
       <FormInputContainer
         email={email}
         setEmail={setEmail}

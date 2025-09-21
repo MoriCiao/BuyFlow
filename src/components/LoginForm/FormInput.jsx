@@ -27,6 +27,6 @@ const FormInput = memo(({ label, name, type, value, onChange }) => {
       </label>
     </div>
   );
-};
+});
 
 export default FormInput;
