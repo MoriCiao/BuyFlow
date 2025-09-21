@@ -5,18 +5,28 @@ import { setCartItem } from "../../features/cart/cartSlice.js";
 import { useNavigate } from "react-router-dom";
 import { mockLoginAPI } from "../../features/user/mockAuthAPI.js";
 import Button from "../Button/Button.jsx";
-import FormInput from "./FormInput.jsx";
-// 登入表單
+import FormInputContainer from "./FormInputContainer.jsx";
+
+const STYLE = {
+  form: `login-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800 py-8 shadow-lg backdrop-blur-md lg:w-[50%]`,
+};
+
+const Logo = memo(() => (
+  <div className="w-full">
+    <img
+      src="/BuyFlow/logo_w.svg"
+      alt="logo.svg"
+      className="m-auto w-45 sm:w-60"
+    />
+  </div>
+));
+
 const LoginForm = () => {
   // input輸入的值存儲起來，供 userReducer使用
-  const [email, setEmail] = useState("admin@example.com");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("staff@example.com");
+  const [password, setPassword] = useState("staff321");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const STYLE = {
-    form: `login-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800 py-8 shadow-lg backdrop-blur-md lg:w-[50%]`,
-  };
 
   const handleSubmit = useCallback(
     async (e) => {
@@ -49,50 +59,6 @@ const LoginForm = () => {
     },
     [dispatch, navigate],
   );
-
-  const Logo = () => (
-    <div className="w-full">
-      <img
-        src="/BuyFlow/logo_w.svg"
-        alt="logo.svg"
-        className="m-auto w-45 sm:w-60"
-      />
-    </div>
-  );
-
-  const FormInputContainer = ({ email, setEmail, password, setPassword }) => {
-    const handleEamil = useCallback(
-      (e) => {
-        setEmail(e.target.value);
-      },
-      [setEmail],
-    );
-    const handlePassword = useCallback(
-      (e) => {
-        setPassword(e.target.value);
-      },
-      [setPassword],
-    );
-    return (
-      <div className="flex w-full flex-col gap-8">
-        <FormInput
-          label="Email"
-          name="email"
-          type="email"
-          value={email}
-          onChange={handleEamil}
-        />
-
-        <FormInput
-          label="Password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={handlePassword}
-        />
-      </div>
-    );
-  };
 
   const OperateBtn = () => (
     <div className="flex w-[80%] justify-between gap-4">

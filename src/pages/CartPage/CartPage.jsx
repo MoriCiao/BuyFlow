@@ -1,12 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { cleanCart } from "../../features/cart/cartSlice";
 import { useEffect, useState } from "react";
-import Button from "../../components/Button/Button";
-import ShoppingCart from "./ShoppingCart";
+import { useNavigate } from "react-router-dom";
 import { checkOrder } from "../../features/user/userSlice";
 import { nanoid } from "nanoid";
+import ShoppingCart from "./ShoppingCart";
 import CheckoutInformation from "./CheckoutInformation";
+import NoItems from "./Noitmes";
+import CartFooter from "./CartFooter";
+
+const STYLE = {
+  section: `cart-page h-full w-full border-white/50 text-center text-white md:px-0`,
+
+  cart_container: `cart-container flex h-full flex-col gap-8 xl:flex-row xl:gap-0`,
+
+  cart_content_header: `cart-content-header flex h-full flex-col items-center justify-between gap-4 lg:flex-2`,
+
+  cart_content: `cart-content flex h-full w-full flex-col items-center justify-start overflow-y-auto`,
+};
 
 const CartPage = () => {
   const { items, totalAmount, totalQuatity } = useSelector(
@@ -54,69 +64,24 @@ const CartPage = () => {
   }, [items, user]);
 
   return (
-    <section className="cart-page h-full w-full border-white/50 text-center text-white md:px-0">
-      <div className="cart flex h-full flex-col gap-8 xl:flex-row xl:gap-0">
-        <div className="flex h-full flex-col items-center justify-between gap-4 lg:flex-2">
+    <section className={STYLE.section}>
+      <div className={STYLE.cart_container}>
+        <div className={STYLE.cart_content_header}>
           <div className="w-full">
             <h3 className="w-full text-start text-[2rem]">
               🛒 Your Shopping Cart
             </h3>
           </div>
-
-          <div className="flex h-full w-full flex-col items-center justify-start gap-4 overflow-y-auto lg:max-h-[80vh]">
+          <div className={STYLE.cart_content}>
             {items.length === 0 ? (
-              <div className="justify-cneter flex w-full flex-col items-center p-8 text-center">
-                <h1 className="flex h-[200px] items-center text-[1.25rem] font-bold sm:!text-[2rem]">
-                  There are currently no items{" "}
-                  <br className="hidden sm:block" />
-                  in your shopping cart...
-                </h1>
-                <div>
-                  <Button
-                    label="Go Shopping"
-                    size="lg"
-                    onClick={() => {
-                      navigate("/products");
-                    }}
-                  />
-                </div>
-              </div>
+              <NoItems />
             ) : (
               items.map((i, index) => {
                 return <ShoppingCart i={i} key={index} />;
               })
             )}
           </div>
-
-          <div className="flex w-full flex-col justify-between gap-4 px-4 md:flex-row xl:h-[5%] xl:w-full">
-            <Button
-              label="◀ Shopping"
-              onClick={() => {
-                navigate("/products");
-              }}
-            />
-
-            <Button
-              label="CleanCart"
-              variant="danger"
-              onClick={() => {
-                if (confirm("確定要刪除購物車內所有商品?")) {
-                  dispatch(cleanCart());
-                }
-              }}
-            />
-
-            <Button
-              label={`${totalQuatity ?? 0} 件`}
-              variant="success_ghost"
-              disabled={true}
-            />
-            <Button
-              label={` ${totalAmount ?? 0} $`}
-              variant="success_ghost"
-              disabled={true}
-            />
-          </div>
+          <CartFooter totalAmount={totalAmount} totalQuatity={totalQuatity} />
         </div>
 
         <CheckoutInformation

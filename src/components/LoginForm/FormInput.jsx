@@ -1,17 +1,16 @@
-import React from "react";
+import React, { memo } from "react";
 
-const FormInput = ({ label, name, type, value, onChange }) => {
-  console.log(`${name} 執行中`);
-  const STYLE = {
-    formInput: `formInput flex w-full flex-col items-center justify-center`,
+const STYLE = {
+  formInput: `formInput flex w-full flex-col items-center justify-center`,
 
-    label: `login-label relative flex w-[80%] items-center justify-center`,
+  label: `login-label relative flex w-[80%] items-center justify-center`,
 
-    input: `peer h-[2.5rem] w-full border-b-2 indent-[0.5rem] text-white`,
+  input: `peer h-[2.5rem] w-full border-b-2 indent-[0.5rem] text-white`,
 
-    title: `absolute -top-4 left-3 bg-zinc-800 px-2 font-bold text-white transition-all duration-500 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white`,
-  };
+  title: `absolute -top-4 left-3 bg-zinc-800 px-2 font-bold text-white transition-all duration-500 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white`,
+};
 
+const FormInput = memo(({ label, name, type, value, onChange }) => {
   return (
     <div className={STYLE.formInput}>
       <label htmlFor={name} className={STYLE.label}>
