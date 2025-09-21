@@ -8,9 +8,8 @@ import ProductDetilPage from "../pages/ProductDetilPage/ProductDetilPage.jsx";
 import CartPage from "../pages/CartPage/CartPage.jsx";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
-import AdminProfile from "../pages/profile/AdminProfile.jsx";
-import StaffProfile from "../pages/profile/StaffProfile.jsx";
-import MemberProfile from "../pages/profile/MemberProfile.jsx";
+import StaffProfile from "../pages/Profile/StaffProfile.jsx";
+import MemberProfile from "../pages/Profile/MemberProfile.jsx";
 import DashBoard from "../pages/dashboard/DashBoard.jsx";
 import StaffList from "../pages/Dashboard/StaffList.jsx";
 import ProductsList from "../pages/Dashboard/ProductsList.jsx";
@@ -71,15 +70,7 @@ const AppRoutes = () => {
               </RequireRole>
             }
           />
-          <Route
-            path="admin"
-            element={
-              // 使用 RequireRole 驗證，符合 role 為 admin 時才會顯示<AdminProfile />
-              <RequireRole allowRoles={["admin"]}>
-                <AdminProfile />
-              </RequireRole>
-            }
-          />
+
           <Route
             path="stafflist"
             element={

@@ -30,19 +30,19 @@ const DashBoard = () => {
           />
         </li>
         <li>
-          {user?.role === "admin" ? (
+          {/* {user?.role === "admin" ? (
             <Button
               label="Admin Profile"
               size="lg"
               onClick={() => navigate("admin")}
             />
-          ) : (
-            <Button
-              label="Staff Profile"
-              size="lg"
-              onClick={() => navigate("staff")}
-            />
-          )}
+          ) : ( */}
+          <Button
+            label="Staff Profile"
+            size="lg"
+            onClick={() => navigate("staff")}
+          />
+          {/* )} */}
         </li>
         <li>
           <Button
