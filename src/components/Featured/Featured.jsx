@@ -4,6 +4,11 @@ import FeaturedCard from "./FeaturedCard";
 import Button from "../Button/Button";
 import { addItem } from "../../features/cart/cartSlice";
 import FeaturedModal from "./FeaturedModal";
+
+const STYLE = {
+  featured_content: `featured-content grid w-full grid-cols-1 flex-wrap gap-8 p-8 text-white sm:grid-cols-2 lg:grid-cols-4`,
+};
+
 const Featured = () => {
   const [isFeaturedModal, setIsFeaturedModal] = useState({
     open: false,
@@ -14,11 +19,11 @@ const Featured = () => {
   const rating_items = products.filter((item) => item.rating >= 4.8);
   const featured_items = rating_items.slice(0, 4);
   return (
-    <div className="text-white">
+    <div className="Featured text-white">
       <div>
         <h1 className="text-center text-[3rem] font-bold">精選商品</h1>
       </div>
-      <div className="grid w-full grid-cols-1 flex-wrap gap-8 p-8 text-white sm:grid-cols-2 lg:grid-cols-4">
+      <div className={STYLE.featured_content}>
         {featured_items &&
           featured_items.map((f, index) => (
             <FeaturedCard

@@ -8,6 +8,14 @@ import { Zoom } from "react-awesome-reveal";
 import Button from "../Button/Button";
 import ModifyItem from "./ModifyItem";
 
+const STYLE = {
+  modify_mask: `modify-mask fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm`,
+
+  modify_container: `modify-container flex flex-col border border-white/50 bg-zinc-800 p-4`,
+
+  modify_content: `modify-content flex flex-col gap-4 p-2 text-start text-white`,
+};
+
 // dashboard 商品修改頁面
 
 const Modify = () => {
@@ -36,9 +44,9 @@ const Modify = () => {
   }, [modify_list]);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+    <div className={STYLE.modify_mask}>
       <Zoom className="w-full md:w-auto">
-        <section className="modify flex flex-col border border-white/50 bg-zinc-800 p-4">
+        <section className={STYLE.modify_container}>
           <div className="mb-2 text-end">
             <span
               className="cursor-pointer select-none"
@@ -47,7 +55,7 @@ const Modify = () => {
               ❌
             </span>
           </div>
-          <div className="flex flex-col gap-4 p-2 text-start text-white">
+          <div className={STYLE.modify_content}>
             <p className="border-b border-white/50 py-2 md:text-[1.5rem]">
               目前正在修正商品 ID : {modify_list.id}
             </p>
