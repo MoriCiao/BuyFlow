@@ -1,7 +1,5 @@
 import "./_ProductCard.scss";
-import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const ProdouctCard = ({ name, price, image, rating, product }) => {
   return (

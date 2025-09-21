@@ -1,4 +1,3 @@
-import React from "react";
 function isPass(title, isSend, isArrival) {
   switch (title) {
     case "未出貨": {

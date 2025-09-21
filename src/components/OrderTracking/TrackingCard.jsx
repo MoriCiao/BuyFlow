@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
-import TrackingContent from "./TrackingContent";
+import TrackingContainer from "./TrackingContainer";
 import ReceivingInformation from "./ReceivingInformation";
 import DeliveryInformation from "./DeliveryInformation";
 import OrderItems from "./OrderItems";
@@ -85,7 +85,7 @@ const TrackingCard = ({ order, handleCancel }) => {
           setTrackingStatus={setTrackingStatus}
         />
       )}
-    </div>
+    </article>
   );
 };
 

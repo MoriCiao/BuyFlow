@@ -3,43 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { addNewMenber } from "../../features/user/userSlice";
-import UserList from "../../components/UserList";
-import "./_Register.scss";
-// tel email name  password
-// role
-const RegisterItem = ({
-  label,
-  name,
-  type,
-  required,
-  onChange,
-  value,
-  pattern,
-  title,
-  ref,
-}) => {
-  return (
-    <div className="register-form-item">
-      <label htmlFor="" className="register-label">
-        {label} :
-      </label>
-      <input
-        className="register-input"
-        type={type}
-        placeholder={name}
-        step={type === "number" ? "1" : undefined}
-        min={type === "number" ? "1" : undefined}
-        max={type === "number" ? "100" : undefined}
-        required={required}
-        onChange={onChange}
-        value={value}
-        pattern={type === "tel" ? pattern : undefined}
-        title={type === "tel" ? title : undefined}
-        ref={name === "Name..." ? ref : undefined}
-      />
-    </div>
-  );
-};
+import Button from "../../components/Button/Button";
+import RegisterItem from "./RegisterItem";
 
 const Register = () => {
   const { animate_I } = useSelector((state) => state.ui);

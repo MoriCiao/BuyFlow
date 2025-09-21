@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { memo, useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
 import { login } from "../../features/user/userSlice.js";
 import { setCartItem } from "../../features/cart/cartSlice.js";
 import { useNavigate } from "react-router-dom";

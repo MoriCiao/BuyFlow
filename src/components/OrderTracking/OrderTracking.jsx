@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { cancelOrderFormDashBoard } from "../../features/order/orderSlice";
 import { setLoading } from "../../features/ui/uiSlice";
 import Button from "../Button/Button";
