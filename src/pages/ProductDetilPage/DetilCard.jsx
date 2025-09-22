@@ -3,6 +3,15 @@ import { addItem } from "../../features/cart/cartSlice";
 import Button from "../../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+const STYLE = {
+  detil_card_img: `detil-card-img m-auto max-w-[50%] rounded-xl border border-white/50 bg-zinc-800 p-10 lg:max-w-[80%]`,
+
+  detil_card_content: `detil-card-content flex flex-2 flex-col justify-between text-end xl:flex-1`,
+
+  detil_card_title: `detil-card-title w-full text-[1.25rem] font-bold md:text-[2rem] md:text-[3rem]`,
+
+  detil_card_input: `detil-card-input min-w-20 border bg-black/20 py-1 text-center text-white`,
+};
 
 const DetilCard = ({ product }) => {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -10,35 +19,33 @@ const DetilCard = ({ product }) => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   return (
-    <div className="flex flex-col items-center justify-center gap-4 overflow-y-auto p-4 md:flex-row md:gap-10 md:p-8">
-      {/* img */}
-      <div className="min-w-50 flex-1 rounded-md border bg-white/50 p-10">
-        <img className="" src={product.image} alt="product_img" />
+    <div className="detil-card-container flex flex-col gap-4 lg:flex-row">
+      <div className="flex-1">
+        <img
+          src={product.image}
+          alt="product_img"
+          className={STYLE.detil_card_img}
+        />
       </div>
-      {/* context */}
-      <div className="mt-0 flex flex-2 flex-col items-end justify-between gap-4 text-end lg:mt-0">
-        <div className="flex flex-1 flex-col items-end gap-4">
+      <div className={STYLE.detil_card_content}>
+        <div className="flex flex-col gap-4">
           {/* product name */}
-          <h3 className="product_name text-[1.25rem] font-bold md:text-[2rem] md:text-[3rem]">
+          <h3 className={STYLE.detil_card_title}>
             {product.category} - {product.name}
           </h3>
 
           {/* description */}
-          <div className="product_desctipt flex flex-col gap-2">
-            <p>
+          <div className="detil-card-desctipt flex justify-end gap-2">
+            <p className="max-w-100">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
               fugiat dolorem fuga porro quos. Distinctio excepturi dolorem optio
               dolor maiores. Atque dolorum blanditiis optio exercitationem nulla
               nesciunt itaque incidunt non!
             </p>
-            {/* {descriptions &&
-              descriptions.map((d, index) => {
-                return <p key={index}>{d}</p>;
-              })} */}
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-8">
+        <div className="flex flex-col items-end gap-4">
           <div className="flex items-center gap-4">
             <div className="product_stcok">
               {product.stock <= 0 ? (
@@ -69,7 +76,7 @@ const DetilCard = ({ product }) => {
               step={"1"}
               min={1}
               max={product.stock}
-              className="min-w-20 border bg-black/20 py-1 text-center text-white"
+              className={STYLE.detil_card_input}
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
             />

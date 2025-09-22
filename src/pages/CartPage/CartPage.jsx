@@ -15,7 +15,7 @@ const STYLE = {
 
   cart_content_header: `cart-content-header flex h-full flex-col items-center justify-between gap-4 lg:flex-2`,
 
-  cart_content: `cart-content flex h-full w-full flex-col items-center justify-start overflow-y-auto`,
+  cart_content: `cart-content flex h-150 w-full flex-col items-center justify-start gap-4 overflow-y-auto`,
 };
 
 const CartPage = () => {

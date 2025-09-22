@@ -2,6 +2,11 @@ import React from "react";
 import SelectDelivery from "./SelectDelivery";
 import SelectPay from "./SelectPay";
 import Button from "../../components/Button/Button";
+const STYLE = {
+  checkout_information: `checkout-information flex h-full flex-col justify-between gap-2 bg-zinc-800 lg:flex-1`,
+
+  checkout_title: `checkout-title justtify-center flex w-full flex-col items-center bg-zinc-600 py-2`,
+};
 
 const CheckoutInformation = ({
   deliveryPayment,
@@ -10,8 +15,8 @@ const CheckoutInformation = ({
   handleToCheckout,
 }) => {
   return (
-    <div className="checkout flex h-full flex-col justify-between gap-2 bg-zinc-800 lg:flex-1">
-      <div className="justtify-center flex w-full flex-col items-center bg-zinc-600 py-2">
+    <div className={STYLE.checkout_information}>
+      <div className={STYLE.checkout_title}>
         <h3 className="m-auto text-center text-[2rem]">結帳資訊</h3>
         <p>請選擇您的結帳方式</p>
       </div>

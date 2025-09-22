@@ -1,16 +1,22 @@
 import Button from "../../components/Button/Button";
 import DeliveryCard from "./DeliveryCard";
 
+const STYLE = {
+  select_delivery_container: `selec--deliver--container flex w-full flex-col items-center justify-start gap-2`,
+
+  select_delivery_content: `delivery-content flex w-full gap-2 px-4 md:gap-8 lg:justify-between`,
+};
+
 const SelectDelivery = ({ deliveryPayment, setDeliveryPayment }) => {
   const activeDelivery = deliveryPayment.delivery;
   return (
-    <div className="flex w-full flex-col items-center justify-start gap-2">
+    <div className={STYLE.select_delivery_container}>
       <div className="flex w-full px-4">
         <h3 className="text-[1rem] font-bold">
           <span>🚚</span> 配送方式
         </h3>
       </div>
-      <div className="flex w-full gap-2 px-4 md:gap-8 lg:justify-between">
+      <div className={STYLE.select_delivery_content}>
         <DeliveryCard
           emoji={"⚡"}
           delivery={"超商配送"}

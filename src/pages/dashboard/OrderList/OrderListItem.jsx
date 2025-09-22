@@ -1,17 +1,22 @@
 import Button from "../../../components/Button/Button";
+import ReceivingContent from "../../../components/OrderTracking/ReceivingContent";
+
+const STYLE = {
+  order_ID: `order-id flex w-full flex-col items-center justify-between gap-4 sm:flex-row`,
+};
 
 const OrderListItem = ({ order }) => {
   const { orderID, items, user, totalAmount, totalQuatity, deliveryPayment } =
     order;
   return (
     <div className="order-list-item flex flex-col gap-4">
-      <div className="flex w-full flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className={STYLE.order_ID}>
         <p className="w-full border-b border-white/50 text-[1.25rem]">
           📋 {orderID}
         </p>
       </div>
-      <div className="flex flex-col gap-4 2xl:flex-row">
-        <div className="flex flex-1 flex-col gap-4 rounded-md bg-zinc-800 p-4">
+      <div className="order-content flex flex-col gap-4 2xl:flex-row">
+        <div className="order-items flex flex-1 flex-col gap-4 rounded-md bg-zinc-800 p-4">
           <div>
             {items &&
               items.map((i) => {
