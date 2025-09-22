@@ -40,25 +40,13 @@ const OrderListItem = ({ order }) => {
             />
           </div>
         </div>
-        <div className="flex flex-1 flex-col gap-4 rounded-md bg-zinc-800 p-4">
-          <div className="flex justify-between border-b border-white/50">
-            <p>訂購人：</p>
-            <p>{user.name}</p>
-          </div>
-          <div className="flex justify-between border-b border-white/50">
-            <p>電話：</p>
-            <p>{user.phone}</p>
-          </div>
-          <div className="flex justify-between border-b border-white/50">
-            <p>郵件：</p>
-            <p>{user.email}</p>
-          </div>
-          <div className="flex justify-between border-b border-white/50">
-            <p>地址：</p>
-            <p>{user.address}</p>
-          </div>
+        <div className="order-user-info flex flex-1 flex-col gap-4 rounded-md bg-zinc-800 p-4">
+          <ReceivingContent label="訂購人" text={user.name} />
+          <ReceivingContent label="電話" text={user.phone} />
+          <ReceivingContent label="郵件" text={user.email} />
+          <ReceivingContent label="地址" text={user.address} />
         </div>
-        <div className="flex flex-1 flex-col justify-items-stretch rounded-md bg-zinc-800 p-4">
+        <div className="order-delivery-info flex flex-1 flex-col justify-items-stretch rounded-md bg-zinc-800 p-4">
           <div className="flex flex-1 items-center">
             <Button
               label={deliveryPayment.delivery}
