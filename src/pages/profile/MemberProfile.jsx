@@ -1,4 +1,4 @@
-import Profile from "../../components/Profile";
+import Profile from "../../components/Profile/Profile";
 import { useSelector } from "react-redux";
 
 // 會員資料瀏覽

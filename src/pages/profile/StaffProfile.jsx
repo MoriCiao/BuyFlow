@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import Profile from "../../components/Profile";
+import Profile from "../../components/Profile/Profile";
 // 員工資料瀏覽
 
 const StaffProfile = () => {
