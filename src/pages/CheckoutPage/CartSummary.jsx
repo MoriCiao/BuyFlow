@@ -42,7 +42,7 @@ const CartSummary = () => {
           <Button label={`${totalQuatity} 件商品`} variant="success" />
         </div>
       </div>
-      <CartSummaryContainer />
+      <CartSummaryContainer items={items} />
     </section>
   );
 };

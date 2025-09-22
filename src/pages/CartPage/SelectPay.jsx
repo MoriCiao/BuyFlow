@@ -1,6 +1,6 @@
 import React from "react";
 import PaymentMethod from "../../components/PaymentMethod";
-const payment = [
+const paymentMap = [
   "信用卡",
   "無卡分期",
   "貨到付款",
@@ -9,6 +9,24 @@ const payment = [
   "ATM轉帳",
 ];
 
+function SelectEmoji(text) {
+  switch (text) {
+    case "信用卡":
+      return "💳";
+    case "無卡分期":
+      return "💲";
+    case "貨到付款":
+      return "💰";
+    case "行動支付":
+      return "📲";
+    case "超商付款":
+      return "🏪";
+    case "ATM轉帳":
+      return "🏧";
+    default:
+      return "💳";
+  }
+}
 const SelectPay = ({ deliveryPayment, setDeliveryPayment }) => {
   const activePayment = deliveryPayment.payment;
   return (
@@ -19,20 +37,12 @@ const SelectPay = ({ deliveryPayment, setDeliveryPayment }) => {
         </h3>
       </div>
       <div className="grid grid-cols-3 place-items-center gap-2 p-4">
-        {payment &&
-          payment.map((p, index) => {
-            const paymentEmoji = () => {
-              if (p === "信用卡") return "💳";
-              if (p === "無卡分期") return "💲";
-              if (p === "貨到付款") return "💰";
-              if (p === "行動支付") return "📲";
-              if (p === "超商付款") return "🏪";
-              if (p === "ATM轉帳") return "🏧";
-            };
+        {paymentMap &&
+          paymentMap.map((p, index) => {
             return (
               <PaymentMethod
                 key={index}
-                emoji={paymentEmoji()}
+                emoji={SelectEmoji(p)}
                 label={p}
                 onClick={() =>
                   setDeliveryPayment((prev) => ({
