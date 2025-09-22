@@ -1,10 +1,9 @@
 import "./_categoryFilter.scss";
-import React, { Fragment, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
-import ProductCard from "../productCard/ProductCard";
-
 import { setLoading } from "../../features/ui/uiSlice";
+import ProductCard from "../productCard/ProductCard";
 const CategoryFilter = () => {
   const { products, isFiltered, filtered } = useSelector(
     (state) => state.products,

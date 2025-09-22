@@ -1,7 +1,4 @@
 import React from "react";
-
-//
-
 function ChoiceImg(sortKey) {
   switch (sortKey) {
     case "服飾":
