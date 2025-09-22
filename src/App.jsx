@@ -4,7 +4,7 @@ import Loading from "./components/loading";
 import Header from "./components/Header/Header";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer/Footer";
-import CartIcon from "./components/CartIcon";
+import CartIcon from "./components/CartIcon/CartIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "./features/ui/uiSlice";
 import { useEffect } from "react";
