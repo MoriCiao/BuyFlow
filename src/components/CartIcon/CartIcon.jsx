@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import CartIconBtn from "./CartIconBtn";
@@ -8,9 +7,9 @@ import CartIconContent from "./CartIconContent";
 import CartIconOperate from "./CartIconOperate";
 
 const STYLE = {
-  cart_icon_container: `cart-Icon fixed top-0 right-5 z-100 block select-none lg:top-30`,
+  cart_icon_container: `cart-Icon fixed top-10 right-5 z-100 block select-none `,
 
-  cart_icon_content: `cart-icon-container flex min-h-100 flex-col justify-between gap-4 rounded-xl border border-white/50 bg-zinc-800 p-4 text-white shadow-xl`,
+  cart_icon_content: `cart-icon-content flex max-h-150 flex-col justify-between gap-4 overflow-y-auto rounded-xl border border-white/50 bg-zinc-800 p-4 text-white shadow-xl`,
 };
 
 const CartIcon = () => {
@@ -31,11 +30,11 @@ const CartIcon = () => {
     }
   };
 
-  const headnleToCheckout = () => {
+  const headnleToCheckout = useCallback(() => {
     if (items.length === 0) return;
     navigate("/cart");
     setOpen(!isOpen);
-  };
+  }, [navigate, items.length, isOpen]);
 
   return (
     <section className={STYLE.cart_icon_container}>
