@@ -28,10 +28,7 @@ const CartSummaryContainer = ({ items }) => (
   </div>
 );
 
-const CartSummary = () => {
-  const { tempOrder } = useSelector((state) => state.user);
-  const { items, totalQuatity } = tempOrder;
-
+const CartSummary = ({ items, totalQuatity }) => {
   return (
     <section className="cart-summary flex flex-1 flex-col space-y-4">
       <div className="flex items-center justify-between">
