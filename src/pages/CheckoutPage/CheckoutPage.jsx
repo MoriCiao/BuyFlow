@@ -1,12 +1,18 @@
-import React from "react";
-import BillingInfo from "./BillingInfo";
-import CartSummary from "./CartSummary";
-import Button from "../../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addOrderToDashBoard } from "../../features/order/orderSlice";
 import { createOrder } from "../../features/user/userSlice";
 import { cleanCart } from "../../features/cart/cartSlice";
+import Button from "../../components/Button/Button";
+import BillingInfo from "./BillingInfo";
+import CartSummary from "./CartSummary";
+
+const STYLE = {
+  checkout_page_header: `checkout-page-header flex w-full flex-col items-center justify-center gap-4 bg-zinc-800 py-4`,
+
+  checkout_page_info_conatainer: `checkout-page-info-container flex flex-1 flex-col gap-8 py-4 xl:flex-row"`,
+};
+
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +44,7 @@ const CheckoutPage = () => {
 
   return (
     <section className="checkout-page flex w-full flex-col gap-4 text-white">
-      <div className="flex w-full flex-col items-center justify-center gap-4 bg-zinc-800 py-4">
+      <div className={STYLE.checkout_page_header}>
         <h3 className="text-[3rem]">訂單確認</h3>
         <p className="text-[1.15rem]">請確認您的訂單資訊無誤後送出</p>
         <div>
