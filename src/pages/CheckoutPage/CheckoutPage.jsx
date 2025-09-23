@@ -18,10 +18,10 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { tempOrder } = useSelector((state) => state.user);
-  console.log(tempOrder);
+
   const { user, orderID, items, deliveryPayment, totalAmount, totalQuatity } =
     tempOrder;
-  console.log();
+
   const deliveryInfo = {
     delivery: deliveryPayment.delivery,
     estimated: deliveryPayment.delivery === "超商配送" ? "1-2天" : "3-4天",
@@ -44,9 +44,6 @@ const CheckoutPage = () => {
       navigate("/checkout/success");
     }, 500);
   };
-  useEffect(() => {
-    console.log(tempOrder);
-  }, [tempOrder]);
   return (
     <section className="checkout-page flex w-full flex-col gap-4 text-white">
       <div className={STYLE.checkout_page_header}>
