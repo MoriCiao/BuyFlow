@@ -55,7 +55,6 @@ const userSlice = createSlice({
       state.items = [];
       state.totalAmount = 0;
       state.totalQuatity = 0;
-      state.tempOrder = {};
       console.warn("已將訂單新增至使用者allOrders", newOrder);
     },
     // 取消訂單
