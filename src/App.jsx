@@ -1,15 +1,14 @@
 import "./style/tailwindcss.css";
 import "./style/index.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setLoading } from "./features/ui/uiSlice";
 import Loading from "./components/loading";
 import Header from "./components/Header/Header";
 import AppRoutes from "./routes/AppRoutes";
 import Footer from "./components/Footer/Footer";
 import CartIcon from "./components/CartIcon/CartIcon";
-import { useSelector, useDispatch } from "react-redux";
-import { setLoading } from "./features/ui/uiSlice";
-import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop";
-import BgImg from "./components/BgImg/BgImg";
 
 function App() {
   const isLoading = useSelector((state) => state.ui.isLoading);
@@ -30,7 +29,6 @@ function App() {
       {isLoading && <Loading />}
       <Header />
       <main className="main">
-        <BgImg />
         <AppRoutes />
       </main>
       <Footer />
