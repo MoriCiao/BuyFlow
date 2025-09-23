@@ -21,7 +21,7 @@ const STYLE = {
 
 const BillingInfo = ({ emoji, title, info = {} }) => {
   return (
-    <section className={STYLE.billing_info}>
+    <section className={STYLE.billing_info_container}>
       <div className="flex items-center gap-4">
         <span className="rounded bg-zinc-500 p-1">{emoji}</span>
         <p className="col-span-2 text-[1.15rem]">{title}</p>
