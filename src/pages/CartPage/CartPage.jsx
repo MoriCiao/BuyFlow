@@ -74,7 +74,7 @@ const CartPage = () => {
           </div>
           <div className={STYLE.cart_content}>
             {items.length === 0 ? (
-              <NoItems />
+              <NoItems navigate={navigate} />
             ) : (
               items.map((i, index) => {
                 return <ShoppingCart i={i} key={index} />;

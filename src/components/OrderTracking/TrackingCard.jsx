@@ -36,7 +36,9 @@ const TrackingCard = ({ order, handleCancel }) => {
       className={STYLE.buttonContainer}
       onClick={() => setTrackingStatus((prev) => !prev)}
     >
-      {isSend ? (
+      {isSend && isArrival ? (
+        <Button label={"已抵達"} variant="info" />
+      ) : isSend ? (
         <Button label={"已出貨"} variant="success" />
       ) : (
         <Button label={"未出貨"} variant="danger" />

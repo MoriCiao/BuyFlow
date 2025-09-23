@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { cancelOrderFormDashBoard } from "../../features/order/orderSlice";
 import { setLoading } from "../../features/ui/uiSlice";
+import { setOrder } from "../../features/user/userSlice";
 import Button from "../Button/Button";
 import TrackingCard from "./TrackingCard";
 
@@ -14,7 +15,6 @@ const STYLE = {
 
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
-  const [savedOrder, setSavedOrder] = useState([]);
   const { allOrders, user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -52,7 +52,6 @@ const OrderTracking = () => {
     );
     // 將訂單再上傳 Storage
     localStorage.setItem(UserKey, JSON.stringify(updatedOrderData));
-    setSavedOrder(updatedOrderData);
 
     // dashboard 刪除(刪除後會將資料上傳至 Storage)
     dispatch(cancelOrderFormDashBoard(order));
@@ -63,29 +62,13 @@ const OrderTracking = () => {
     }, 1000);
     return () => clearTimeout(timer);
   };
-
   useEffect(() => {
-    if (!user) return;
-    // 要抓取之前已儲存至 localStorage的對應資料
-    const userKey = `order-${user.email}`;
-    const saved = localStorage.getItem(userKey);
-    const savedData = JSON.parse(saved);
-    if (saved) {
-      setSavedOrder(savedData);
-    } else {
-      setSavedOrder([]);
-    }
-
-    dispatch(setLoading(true));
-    const timer = setTimeout(() => {
-      dispatch(setLoading(false));
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [user]);
+    dispatch(setOrder());
+  }, []);
 
   return (
     <section className={STYLE.orderTracking}>
-      {savedOrder.length === 0 ? (
+      {allOrders.length === 0 ? (
         <div className={STYLE.noOrder}>
           <h1 className="text-[1.5rem] font-bold lg:text-[2rem]">
             您目前沒有訂單...
@@ -93,8 +76,8 @@ const OrderTracking = () => {
         </div>
       ) : (
         <div className="flex w-full flex-col gap-4">
-          {savedOrder &&
-            savedOrder.map((o, index) => {
+          {allOrders &&
+            allOrders.map((o, index) => {
               return (
                 <TrackingCard
                   key={index}

@@ -4,39 +4,6 @@ import Contact from "./Contact";
 import AboutUs from "./AboutUs";
 // Footer
 const logo = "/BuyFlow/logo_w.svg";
-const word = "/BuyFlow/footer-2.svg";
-
-const about_items = [
-  {
-    name: "關於我們",
-    icon: "/BuyFlow/icon/information.png",
-    link: "/BuyFlow/about",
-  },
-  {
-    name: "購物資訊",
-    icon: "/BuyFlow/icon/buy-button.png",
-    link: "#",
-  },
-  {
-    name: "顧客服務",
-    icon: "/BuyFlow/icon/customer-service.png",
-    link: "#",
-  },
-  {
-    name: "會員資料",
-    icon: "/BuyFlow/icon/user.png",
-    link: "/BuyFlow/menber",
-  },
-];
-
-const ContactItem = ({ name, icon, link }) => {
-  return (
-    <li className="">
-      <img className="h-5 w-5" src={icon} alt={`${name}_img`} />
-      <a href={link}>{name}</a>
-    </li>
-  );
-};
 
 const Footer = () => {
   return (

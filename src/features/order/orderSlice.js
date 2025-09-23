@@ -70,7 +70,6 @@ const orderSlice = createSlice({
         // 更新客戶端
         const orderUser = `order-${target.user.email}`;
         const userData = JSON.parse(localStorage.getItem(orderUser));
-        console.log(userData);
         const dataIndex = userData.findIndex(
           (d) => d.orderID === target.orderID,
         );
