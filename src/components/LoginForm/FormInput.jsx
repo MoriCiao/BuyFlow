@@ -10,7 +10,7 @@ const STYLE = {
   title: `absolute -top-4 left-3 bg-zinc-800 px-2 font-bold text-white transition-all duration-500 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white`,
 };
 
-const FormInput = memo(({ label, name, type, value, onChange }) => {
+const FormInput = ({ label, name, type, value, onChange }) => {
   return (
     <div className={STYLE.formInput}>
       <label htmlFor={name} className={STYLE.label}>
@@ -27,6 +27,6 @@ const FormInput = memo(({ label, name, type, value, onChange }) => {
       </label>
     </div>
   );
-});
+};
 
 export default FormInput;

@@ -1,21 +1,7 @@
 import { useCallback } from "react";
 import FormInput from "./FormInput.jsx";
 
-const FormInputContainer = ({ email, setEmail, password, setPassword }) => {
-  const handleEamil = useCallback(
-    (e) => {
-      console.log("setEmail 執行中");
-      setEmail(e.target.value);
-    },
-    [setEmail],
-  );
-  const handlePassword = useCallback(
-    (e) => {
-      console.log("setPassword 執行中");
-      setPassword(e.target.value);
-    },
-    [setPassword],
-  );
+const FormInputContainer = ({ email, onEmail, password, onPassword }) => {
   return (
     <div className="flex w-full flex-col gap-8">
       <FormInput
@@ -23,7 +9,7 @@ const FormInputContainer = ({ email, setEmail, password, setPassword }) => {
         name="email"
         type="email"
         value={email}
-        onChange={handleEamil}
+        onChange={onEmail}
       />
 
       <FormInput
@@ -31,7 +17,7 @@ const FormInputContainer = ({ email, setEmail, password, setPassword }) => {
         name="password"
         type="password"
         value={password}
-        onChange={handlePassword}
+        onChange={onPassword}
       />
     </div>
   );

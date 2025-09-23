@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/user/userSlice.js";
 import { setCartItem } from "../../features/cart/cartSlice.js";
@@ -28,14 +28,21 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleEamil = useCallback((e) => {
+    setEmail(e.target.value);
+  }, []);
+  const handlePassword = useCallback((e) => {
+    setPassword(e.target.value);
+  }, []);
+
   const handleSubmit = useCallback(
     async (e) => {
       console.log("handleSubmit 執行中");
+      console.log(email, password);
       e.preventDefault();
       try {
         const userData = await mockLoginAPI({ email, password });
         // 確認回傳資料沒有password
-
         dispatch(login(userData)); // 將資料存入 Redux
         localStorage.setItem("buyflow_user", userData.email);
 
@@ -57,7 +64,7 @@ const LoginForm = () => {
         alert(err);
       }
     },
-    [dispatch, navigate],
+    [email, password, dispatch, navigate],
   );
 
   const OperateBtn = () => (
@@ -94,6 +101,10 @@ const LoginForm = () => {
       </div>
     </div>
   );
+  useEffect(() => {
+    console.log(email);
+    console.warn(password);
+  }, [email, password]);
 
   return (
     <form onSubmit={handleSubmit} className={STYLE.form}>
@@ -101,9 +112,9 @@ const LoginForm = () => {
 
       <FormInputContainer
         email={email}
-        setEmail={setEmail}
+        onEmail={handleEamil}
         password={password}
-        setPassword={setPassword}
+        onPassword={handlePassword}
       />
 
       <OperateBtn />
