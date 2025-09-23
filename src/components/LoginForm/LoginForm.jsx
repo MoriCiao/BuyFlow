@@ -1,9 +1,8 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/user/userSlice.js";
-import { setCartItem } from "../../features/cart/cartSlice.js";
+import React, { memo, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { mockLoginAPI } from "../../features/user/mockAuthAPI.js";
+import { login } from "../../features/user/userSlice.js";
 import Button from "../Button/Button.jsx";
 import FormInputContainer from "./FormInputContainer.jsx";
 
@@ -35,35 +34,23 @@ const LoginForm = () => {
     setPassword(e.target.value);
   }, []);
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
-      try {
-        const userData = await mockLoginAPI({ email, password });
-        // 確認回傳資料沒有password
-        dispatch(login(userData)); // 將資料存入 Redux
-        localStorage.setItem("buyflow_user", userData.email);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = await mockLoginAPI({ email, password });
+      // 確認回傳資料沒有password
+      dispatch(login(userData)); // 將資料存入 Redux
 
-        // 登入後獲取此帳戶的購物車
-        const savedCart = localStorage.getItem(
-          `buyflow_cart-${userData.email}`,
-        );
-        if (savedCart) {
-          dispatch(setCartItem(JSON.parse(savedCart)));
-        }
-
+      if (userData.role === "menber") {
         // 根據取得的 userDate身分去做個別的導入頁面
-        if (userData.role === "menber") {
-          navigate("/");
-        } else if (userData.role === "staff" || userData.role === "admin") {
-          navigate("/dashboard");
-        }
-      } catch (err) {
-        alert(err);
+        navigate("/products");
+      } else if (userData.role === "staff" || userData.role === "admin") {
+        navigate("/products");
       }
-    },
-    [email, password, dispatch, navigate],
-  );
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   const OperateBtn = () => (
     <div className="flex w-[80%] justify-between gap-4">

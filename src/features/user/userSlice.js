@@ -20,8 +20,26 @@ const userSlice = createSlice({
     // 登入成功，將state變成user資料
     login(state, action) {
       state.user = action.payload;
-
       state.isAuthenticated = true;
+      try {
+        if (state.user && state.isAuthenticated) {
+          const userKey = state.user.email;
+          // 設定目前使用者
+          localStorage.setItem("buyflow_user", userKey);
+          // 設定此為使用者的訂單
+          const savedOrder = localStorage.getItem(`order-${userKey}`);
+          if (!savedOrder) {
+            localStorage.setItem(`order-${userKey}`, JSON.stringify([]));
+            state.allOrders = [];
+          } else {
+            state.allOrders = JSON.parse(savedOrder);
+          }
+        }
+      } catch (err) {
+        console.warn("使用者資料有誤", err);
+      } finally {
+        console.log(state.allOrders);
+      }
     },
     // 登出
     loginout(state, action) {
@@ -40,10 +58,27 @@ const userSlice = createSlice({
     checkOrder(state, action) {
       state.tempOrder = action.payload;
     },
+    // 將先前訂單載入
+    setOrder(state, action) {
+      console.log(state.user.email);
+      const saved = localStorage.getItem(`order-${state.user.email}`);
+      if (saved) {
+        state.allOrders = JSON.parse(saved);
+
+        console.log("目前使用者為", state.user.email);
+        console.log("先前訂單有", JSON.parse(saved));
+      } else {
+        state.allOrders = [];
+      }
+    },
     // 創建訂單
     createOrder(state, action) {
       const newOrder = action.payload;
-
+      const saved = localStorage.getItem(`order-${state.user.email}`);
+      if (saved) {
+        state.allOrders = JSON.parse(saved);
+        console.log(JSON.parse(saved));
+      }
       // 新增訂單
       state.allOrders = [...state.allOrders, newOrder];
       // 確認訂單新增後，將購物車內資訊清除
@@ -56,6 +91,7 @@ const userSlice = createSlice({
       state.totalAmount = 0;
       state.totalQuatity = 0;
       console.warn("已將訂單新增至使用者allOrders", newOrder);
+      console.warn("AllOrders", state.allOrders);
     },
     // 取消訂單
     cancelOrder(state, action) {
@@ -73,6 +109,7 @@ export const {
   loginout,
   addNewMenber,
   checkOrder,
+  setOrder,
   createOrder,
   cancelOrder,
   addAllOrder,
