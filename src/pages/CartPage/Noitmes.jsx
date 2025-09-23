@@ -6,7 +6,7 @@ const STYLE = {
   header: `flex h-[200px] items-center text-[1.25rem] font-bold sm:!text-[2rem]`,
 };
 
-const NoItems = () => {
+const NoItems = ({ navigate }) => {
   return (
     <div className={STYLE.container}>
       <h1 className={STYLE.header}>
