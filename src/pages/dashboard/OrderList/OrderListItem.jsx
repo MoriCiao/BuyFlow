@@ -10,7 +10,7 @@ const STYLE = {
 
   order_user_info: `order-user-info flex flex-1 flex-col gap-4 rounded-md bg-zinc-800 p-4`,
 
-  order_delivery_info: `order-delivery-info flex flex-1 flex-col justify-items-stretch rounded-md bg-zinc-800 p-4`,
+  order_delivery_info: `order-delivery-info flex flex-1 flex-col gap-4 justify-items-stretch rounded-md bg-zinc-800 p-4`,
 };
 
 const OrderListItem = ({ order }) => {
