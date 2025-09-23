@@ -6,6 +6,7 @@ import { cleanCart } from "../../features/cart/cartSlice";
 import Button from "../../components/Button/Button";
 import BillingInfo from "./BillingInfo";
 import CartSummary from "./CartSummary";
+import { useEffect } from "react";
 
 const STYLE = {
   checkout_page_header: `checkout-page-header flex w-full flex-col items-center justify-center gap-4 bg-zinc-800 py-4`,
@@ -17,15 +18,14 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { tempOrder } = useSelector((state) => state.user);
-
-  const { user, deliveryPayment, orderID, items, totalAmount } = tempOrder;
-  const { name, email, phone, address, ...rest } = user;
+  console.log(tempOrder);
+  const { user, orderID, items, deliveryPayment, totalAmount, totalQuatity } =
+    tempOrder;
+  console.log();
   const deliveryInfo = {
     delivery: deliveryPayment.delivery,
     estimated: deliveryPayment.delivery === "超商配送" ? "1-2天" : "3-4天",
-    // 如果是超商配送則選區則地址
-    // 如果是廠商配送使用預設地址
-    toAddress: address,
+    toAddress: user.address,
     freight: deliveryPayment.delivery === "超商配送" ? "60 $" : "免運費",
   };
   const feeDetails = {
@@ -38,10 +38,15 @@ const CheckoutPage = () => {
   const handleOrder = () => {
     dispatch(createOrder(tempOrder));
     dispatch(addOrderToDashBoard(tempOrder));
-    dispatch(cleanCart());
-    navigate("/checkout/success");
-  };
 
+    setTimeout(() => {
+      dispatch(cleanCart());
+      navigate("/checkout/success");
+    }, 500);
+  };
+  useEffect(() => {
+    console.log(tempOrder);
+  }, [tempOrder]);
   return (
     <section className="checkout-page flex w-full flex-col gap-4 text-white">
       <div className={STYLE.checkout_page_header}>
@@ -57,14 +62,19 @@ const CheckoutPage = () => {
           <BillingInfo
             emoji={"👤"}
             title="訂購人資訊"
-            info={{ name, email, phone, address }}
+            info={{
+              name: user.name,
+              email: user.email,
+              phone: user.phone,
+              address: user.address,
+            }}
           />
           <BillingInfo emoji={"📑"} title="配送資訊" info={deliveryInfo} />
         </div>
 
         <div className="flex flex-1 flex-col gap-8 py-4 lg:flex-row">
           {/* 商品明細 */}
-          <CartSummary />
+          <CartSummary items={items} totalQuatity={totalQuatity} />
 
           <div className="flex flex-1 flex-col gap-4">
             <BillingInfo emoji={"💰"} title="費用明細" info={feeDetails} />

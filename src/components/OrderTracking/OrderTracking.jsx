@@ -68,6 +68,7 @@ const OrderTracking = () => {
     if (!user) return;
     // 要抓取之前已儲存至 localStorage的對應資料
     const userKey = `order-${user.email}`;
+    console.log(userKey);
     const saved = localStorage.getItem(userKey);
     const savedData = JSON.parse(saved);
     if (saved) {

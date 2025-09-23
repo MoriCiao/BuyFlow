@@ -37,8 +37,6 @@ const LoginForm = () => {
 
   const handleSubmit = useCallback(
     async (e) => {
-      console.log("handleSubmit 執行中");
-      console.log(email, password);
       e.preventDefault();
       try {
         const userData = await mockLoginAPI({ email, password });
@@ -101,10 +99,6 @@ const LoginForm = () => {
       </div>
     </div>
   );
-  useEffect(() => {
-    console.log(email);
-    console.warn(password);
-  }, [email, password]);
 
   return (
     <form onSubmit={handleSubmit} className={STYLE.form}>
