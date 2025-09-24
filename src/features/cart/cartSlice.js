@@ -26,8 +26,14 @@ const cartSlice = createSlice({
       const savedItems = localStorage.getItem(`Cart_${userEmail}`);
       if (savedItems) {
         state.items = JSON.parse(savedItems);
+        state.items.map((i) => {
+          state.totalQuatity += i.quantity;
+          state.totalAmount += i.price * i.quantity;
+        });
       } else {
         state.items = [];
+        state.totalQuatity = 0;
+        state.totalAmount = 0;
       }
     },
     // 新增商品
@@ -82,12 +88,10 @@ const cartSlice = createSlice({
         delivery: "",
         payment: "",
       };
-      console.warn("購物車已清空!");
     },
     // 將選取的商品導入購物車
     setCartItems(state, action) {
       state.items = action.payload;
-      console.log(action.payload);
       let quantity = 0;
       let amount = 0;
       state.items.forEach((i) => {

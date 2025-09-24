@@ -62,6 +62,7 @@ const TrackingCard = ({ order, handleCancel }) => {
       </TrackingContainer>
       <TrackingContainer>
         <TrackingOperate
+          isSend={isSend}
           createDate={createDate}
           handleCancel={() => handleCancel(order)}
         />

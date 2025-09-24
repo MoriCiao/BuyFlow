@@ -8,11 +8,11 @@ import Button from "../Button/Button.jsx";
 import FormInputContainer from "./FormInputContainer.jsx";
 
 const STYLE = {
-  form: `login-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800 py-8 shadow-lg backdrop-blur-md lg:w-[50%]`,
+  form: `login-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-4 rounded-md border border-white/50 bg-zinc-800 py-8 shadow-lg backdrop-blur-md lg:w-[50%] overflow-hidden`,
 };
 
 const Logo = memo(() => (
-  <div className="w-full">
+  <div className="mb-4 w-full p-4">
     <img
       src="/BuyFlow/logo_w.svg"
       alt="logo.svg"

@@ -14,7 +14,6 @@ const orderSlice = createSlice({
     addOrderToDashBoard(state, action) {
       const newOrder = action.payload;
       state.order = [...state.order, newOrder];
-      console.warn("已將訂單新增至dashboard", newOrder);
       //  更新資料至 Storage
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));
     },
@@ -22,7 +21,7 @@ const orderSlice = createSlice({
       const cancelOrder = action.payload;
       // 篩選出不是該訂單的新list
       const updatedOrderList = state.order.filter(
-        (o) => o.id !== cancelOrder.id,
+        (o) => o.orderID !== cancelOrder.orderID,
       );
       state.order = updatedOrderList;
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));

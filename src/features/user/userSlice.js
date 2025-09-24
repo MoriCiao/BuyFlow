@@ -37,8 +37,6 @@ const userSlice = createSlice({
         }
       } catch (err) {
         console.warn("使用者資料有誤", err);
-      } finally {
-        console.log(state.allOrders);
       }
     },
     // 登出
@@ -60,13 +58,9 @@ const userSlice = createSlice({
     },
     // 將先前訂單載入
     setOrder(state, action) {
-      console.log(state.user.email);
       const saved = localStorage.getItem(`order-${state.user.email}`);
       if (saved) {
         state.allOrders = JSON.parse(saved);
-
-        console.log("目前使用者為", state.user.email);
-        console.log("先前訂單有", JSON.parse(saved));
       } else {
         state.allOrders = [];
       }
@@ -77,7 +71,6 @@ const userSlice = createSlice({
       const saved = localStorage.getItem(`order-${state.user.email}`);
       if (saved) {
         state.allOrders = JSON.parse(saved);
-        console.log(JSON.parse(saved));
       }
       // 新增訂單
       state.allOrders = [...state.allOrders, newOrder];
@@ -90,15 +83,19 @@ const userSlice = createSlice({
       state.items = [];
       state.totalAmount = 0;
       state.totalQuatity = 0;
-      console.warn("已將訂單新增至使用者allOrders", newOrder);
-      console.warn("AllOrders", state.allOrders);
     },
     // 取消訂單
     cancelOrder(state, action) {
       const select_order = action.payload;
       const updateOrderList = state.allOrders.filter(
-        (o) => o.No !== select_order.No,
+        (o) => o.orderID !== select_order.orderID,
       );
+      // 將取消後的資料上傳
+      localStorage.setItem(
+        `order-${state.user.email}`,
+        JSON.stringify(updateOrderList),
+      );
+      // 更新目前的資料
       state.allOrders = updateOrderList;
     },
   },
