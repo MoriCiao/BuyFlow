@@ -1,8 +1,9 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 
 const Breadcrumb = ({ product }) => {
+  const navigate = useNavigate();
   return (
     <div className="breadcrumb flex items-center justify-between gap-2 text-white">
       <div className="flex items-center gap-4">
