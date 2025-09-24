@@ -80,17 +80,6 @@ const HeaderPin = ({ handleToggle }) => {
               <li>
                 <Button label="Cart" onClick={() => navigate("/cart")} />
               </li>
-
-              {!isAuthenticated && (
-                <>
-                  <li>
-                    <Button
-                      label="Register"
-                      onClick={() => navigate("/register")}
-                    />
-                  </li>
-                </>
-              )}
             </>
           </ul>
         </div>

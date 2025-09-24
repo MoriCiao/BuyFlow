@@ -11,7 +11,7 @@ const STYLE = {
 
   header: `flex h-full w-full flex-col items-center justify-center bg-zinc-500 px-8 py-4 shadow-lg`,
 
-  form: `register-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800  shadow-lg backdrop-blur-md lg:w-[50%]`,
+  form: `register-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800  shadow-lg backdrop-blur-md lg:w-[80%]`,
 };
 
 const Register = () => {
@@ -123,26 +123,18 @@ const Register = () => {
   }, []);
 
   return (
-    <AnimatePresence>
-      <motion.section
-        key={location.pathname}
-        {...animate_I}
-        className={STYLE.container}
-      >
-        <form onSubmit={handleSubmit} className={STYLE.form}>
-          <RegisterHeader />
+    <form onSubmit={handleSubmit} className={STYLE.form}>
+      <RegisterHeader />
 
-          <RegisterItemContainer />
+      <RegisterItemContainer />
 
-          <div className="w-25 py-4">
-            <Button
-              label="提交"
-              onClick={() => dispatch(addNewMenber(addMenber))}
-            />
-          </div>
-        </form>
-      </motion.section>
-    </AnimatePresence>
+      <div className="w-25 py-4">
+        <Button
+          label="提交"
+          onClick={() => dispatch(addNewMenber(addMenber))}
+        />
+      </div>
+    </form>
   );
 };
 

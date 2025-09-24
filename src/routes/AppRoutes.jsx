@@ -12,7 +12,6 @@ import MemberProfile from "../pages/Profile/MemberProfile.jsx";
 import DashBoard from "../pages/dashboard/DashBoard.jsx";
 import StaffList from "../pages/Dashboard/StaffList.jsx";
 import ProductsList from "../pages/Dashboard/ProductsList.jsx";
-import Register from "../pages/Register/Register.jsx";
 import MemberList from "../pages/Dashboard/MemberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
@@ -28,7 +27,6 @@ const AppRoutes = () => {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductDetilPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
