@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LoginForm from "../components/LoginForm/LoginForm";
 import { motion, easeIn } from "framer-motion";
 import TestAccount from "../components/TestAccount";
@@ -18,9 +18,15 @@ const LoginPage = () => {
 
   const handleScrolltoRegister = () => {
     if (registerRef.current) {
+      setIsSide("right");
       registerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setIsSide("left");
+  }, []);
 
   return (
     <motion.section
