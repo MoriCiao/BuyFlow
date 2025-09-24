@@ -20,6 +20,15 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    setSavedItems(state, action) {
+      const userEmail = action.payload;
+      const savedItems = localStorage.getItem(`Cart_${userEmail}`);
+      if (savedItems) {
+        state.items = JSON.parse(savedItems);
+      } else {
+        state.items = [];
+      }
+    },
     // 新增商品
     addItem(state, action) {
       const { product, quantity, deliveryMethod } = action.payload;
@@ -92,6 +101,7 @@ const cartSlice = createSlice({
 });
 
 export const {
+  setSavedItems,
   addItem,
   removeItem,
   cleanCart,
