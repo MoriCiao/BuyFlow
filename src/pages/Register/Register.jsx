@@ -7,8 +7,6 @@ import Button from "../../components/Button/Button";
 import RegisterItem from "./RegisterItem";
 
 const STYLE = {
-  container: `register-page relative flex h-full w-full flex-col items-center rounded-md p-4 text-white lg:p-10`,
-
   header: `flex h-full w-full flex-col items-center justify-center bg-zinc-500 px-8 py-4 shadow-lg`,
 
   form: `register-from flex w-full max-w-[25rem] flex-col items-center justify-start gap-6 rounded-md border border-white/50 bg-zinc-800  shadow-lg backdrop-blur-md lg:w-[80%]`,
