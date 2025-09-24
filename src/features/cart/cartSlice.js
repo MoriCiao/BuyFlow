@@ -26,8 +26,14 @@ const cartSlice = createSlice({
       const savedItems = localStorage.getItem(`Cart_${userEmail}`);
       if (savedItems) {
         state.items = JSON.parse(savedItems);
+        state.items.map((i) => {
+          state.totalQuatity += i.quantity;
+          state.totalAmount += i.price * i.quantity;
+        });
       } else {
         state.items = [];
+        state.totalQuatity = 0;
+        state.totalAmount = 0;
       }
     },
     // 新增商品
