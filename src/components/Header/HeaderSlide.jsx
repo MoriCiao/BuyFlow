@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { loginout } from "../../features/user/userSlice";
+import { logout } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import SearchBar from "./SearchBar";
@@ -76,7 +76,7 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
                 label="Logout"
                 variant="danger"
                 onClick={() => {
-                  dispatch(loginout());
+                  dispatch(logout());
                   navigate("/");
                   handleToggle();
                 }}

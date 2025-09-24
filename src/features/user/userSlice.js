@@ -42,7 +42,7 @@ const userSlice = createSlice({
       }
     },
     // 登出
-    loginout(state, action) {
+    logout(state, action) {
       state.user = null;
       state.isAuthenticated = false;
     },
@@ -106,7 +106,7 @@ const userSlice = createSlice({
 
 export const {
   login,
-  loginout,
+  logout,
   addNewMenber,
   checkOrder,
   setOrder,
