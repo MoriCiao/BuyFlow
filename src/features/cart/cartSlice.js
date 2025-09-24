@@ -6,6 +6,7 @@ import {
   isItemInCart,
   deleteItem,
 } from "./cartUtils";
+
 const initialState = {
   items: [], // <<< 每個商品的細項 {id, name... }
   totalAmount: 0, // <<< 所有商品總金額
@@ -31,19 +32,23 @@ const cartSlice = createSlice({
     },
     // 新增商品
     addItem(state, action) {
-      const { product, quantity, deliveryMethod } = action.payload;
-      const updateItem = {
-        ...product,
-        quantity: quantity,
-        deliveryMethod: deliveryMethod,
-      };
-      const itemPrice = product.price * quantity;
+      const { product, quantity } = action.payload;
 
-      state.totalAmount += itemPrice;
-      state.totalQuatity += Number(quantity);
+      const existingIndex = state.items.findIndex((i) => i.id === product.id);
+      if (existingIndex !== -1) {
+        // 找到相同商品時
+        state.items[existingIndex].quantity += quantity;
+      } else {
+        // 未找到相同商品時
+        const newItem = { ...product, quantity };
+        state.items.push(newItem);
+      }
 
-      state.items = [...state.items, updateItem];
+      // 更新總售價及數量
+      state.totalAmount += product.price * quantity;
+      state.totalQuatity += quantity;
     },
+
     // CartPage修正數量
     modifyAmount(state, action) {
       const { id, type } = action.payload;
