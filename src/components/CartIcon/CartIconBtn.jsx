@@ -9,23 +9,8 @@ const STYLE = {
 };
 
 const CartIconBtn = ({ handleOpen }) => {
-  const { items } = useSelector((state) => state.cart);
-  const [update, setUpdate] = useState(false);
-  useEffect(() => {
-    setUpdate(true);
-    const timer = setTimeout(() => {
-      setUpdate(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [items]);
   return (
     <div className={STYLE.cart_icon_btn_container}>
-      <div
-        className={`overflow-hidden rounded-md ${update ? "translate-x-0" : "translate-x-100"}`}
-      >
-        <Button label="購物車已更新" variant="info" />
-      </div>
       <motion.button
         initial={{ fontSize: "1.5rem" }}
         animate={{ rotate: ["0deg", "20deg", "0deg"] }}

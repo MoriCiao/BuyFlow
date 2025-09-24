@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 import TrackingCard from "./TrackingCard";
 
 const STYLE = {
-  orderTracking: `order-tracking min-h-[90vh] w-full space-y-4 px-4 md:px-0`,
+  orderTracking: `order-tracking min-h-[90vh] w-full space-y-4 px-4 py-2 md:px-0 `,
 
   noOrder: `noOrder-container flex h-[80vh] w-full items-center justify-center rounded-md border border-white/50 bg-zinc-800 text-white shadow-lg]`,
 };
