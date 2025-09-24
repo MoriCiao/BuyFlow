@@ -1,5 +1,5 @@
 const STYLE = {
-  item_container: `item-container flex min-h-80 flex-col gap-2 overflow-y-auto`,
+  item_container: `item-container flex max-h-50 flex-col gap-2 overflow-y-auto`,
 
   item_card: `flex w-full items-start justify-between shadow-sm rounded-md border border-white/20 gap-4 transition duration-300 hover:bg-zinc-700 p-2`,
 };

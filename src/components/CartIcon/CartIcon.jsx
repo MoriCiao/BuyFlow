@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import CartIconBtn from "./CartIconBtn";
 import CartIconContent from "./CartIconContent";
 import CartIconOperate from "./CartIconOperate";
+import CartUpdateTips from "./CartUpdateTips";
 
 const STYLE = {
   cart_icon_container: `cart-Icon fixed top-10 right-5 z-100 block select-none `,
@@ -15,6 +16,7 @@ const STYLE = {
 const CartIcon = () => {
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
+  const [update, setUpdate] = useState(false);
   const { user } = useSelector((state) => state.user);
   const { items, totalAmount, totalQuatity } = useSelector(
     (state) => state.cart,
@@ -36,11 +38,23 @@ const CartIcon = () => {
     setOpen(!isOpen);
   }, [navigate, items.length, isOpen]);
 
+  useEffect(() => {
+    setUpdate(true);
+
+    const timer = setTimeout(() => {
+      setUpdate(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [items]);
+
   return (
     <section className={STYLE.cart_icon_container}>
       {/* Icon Btn */}
       <CartIconBtn handleOpen={handleOpen} />
+      {/* 購物車更新提示 */}
 
+      {update && <CartUpdateTips items={items} />}
       {isOpen && user && (
         <AnimatePresence>
           <motion.div
