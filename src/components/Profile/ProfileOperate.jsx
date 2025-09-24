@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginout } from "../../features/user/userSlice";
+import { logout } from "../../features/user/userSlice";
 import Button from "../Button/Button";
 
 const STYLE = {
@@ -34,7 +34,7 @@ const ProfileOperate = () => {
         label="Logout"
         variant="danger"
         size="lg"
-        onClick={() => dispatch(loginout())}
+        onClick={() => dispatch(logout())}
       />
     </div>
   );

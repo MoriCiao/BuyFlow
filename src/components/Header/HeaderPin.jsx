@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
-import { loginout } from "../../features/user/userSlice";
+import { logout } from "../../features/user/userSlice";
 import { isSearch } from "../../features/ui/uiSlice";
 import { cleanCart } from "../../features/cart/cartSlice";
-import { search } from "../../features/products/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
@@ -64,8 +63,9 @@ const HeaderPin = ({ handleToggle }) => {
                 <li>
                   <Button
                     label="Logout"
+                    variant="danger"
                     onClick={() => {
-                      dispatch(loginout());
+                      dispatch(logout());
                       dispatch(cleanCart());
                       navigate("/");
                     }}
