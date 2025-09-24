@@ -10,8 +10,7 @@ function buttonClass(variant, size) {
       primary: "bg-blue-500 text-white hover:bg-blue-900",
       secondary: "bg-gray-600 text-white hover:bg-gray-700",
       danger: "bg-red-600 text-white hover:bg-red-700",
-      danger_ghost:
-        "bg-gray-700 text-white hover:bg-white hover:text-red-600 hover:ring-1 hover:ring-red-600",
+      danger_ghost: "bg-red-900 text-white",
       success: "bg-green-600 text-white hover:bg-green-700",
       success_ghost:
         "bg-gray-600/50 font-bold text-green-600 ring-1 hover:text-green-300",
