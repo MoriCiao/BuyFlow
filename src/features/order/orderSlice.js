@@ -14,7 +14,6 @@ const orderSlice = createSlice({
     addOrderToDashBoard(state, action) {
       const newOrder = action.payload;
       state.order = [...state.order, newOrder];
-      console.warn("已將訂單新增至dashboard", newOrder);
       //  更新資料至 Storage
       localStorage.setItem("dashboard-store", JSON.stringify(state.order));
     },

@@ -17,7 +17,7 @@ const STYLE = {
 const OrderTracking = () => {
   // 用useState 將 localStorage資料儲存來使用
   const { allOrders, user } = useSelector((state) => state.user);
-  // console.log(allOrders);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
