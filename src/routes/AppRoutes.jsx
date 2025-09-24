@@ -6,7 +6,6 @@ import HomePage from "../pages/Homepage/HomePage.jsx";
 import ProductListPage from "../pages/ProductListPage/ProductListPage.jsx";
 import ProductDetilPage from "../pages/ProductDetilPage/ProductDetilPage.jsx";
 import CartPage from "../pages/CartPage/CartPage.jsx";
-import NotFoundPage from "../pages/NotFoundPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import StaffProfile from "../pages/Profile/StaffProfile.jsx";
 import MemberProfile from "../pages/Profile/MemberProfile.jsx";
@@ -20,6 +19,7 @@ import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 import OrderTracking from "../components/OrderTracking/OrderTracking.jsx";
 import OrderList from "../pages/Dashboard/OrderList/OrderList.jsx";
 import About from "../pages/About.jsx";
+import Page404 from "../pages/Page404/Page404.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes justity-center relative z-10 mt-[10vh] flex min-h-[70vh] w-[100%] items-start overflow-y-auto sm:w-[80%]">
@@ -110,7 +110,7 @@ const AppRoutes = () => {
           />
         </Route>
         {/* 404 */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );
