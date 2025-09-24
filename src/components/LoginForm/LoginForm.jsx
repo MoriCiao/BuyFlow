@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { mockLoginAPI } from "../../features/user/mockAuthAPI.js";
 import { login } from "../../features/user/userSlice.js";
+import { setSavedItems } from "../../features/cart/cartSlice.js";
 import Button from "../Button/Button.jsx";
 import FormInputContainer from "./FormInputContainer.jsx";
 
@@ -40,7 +41,7 @@ const LoginForm = () => {
       const userData = await mockLoginAPI({ email, password });
       // 確認回傳資料沒有password
       dispatch(login(userData)); // 將資料存入 Redux
-
+      dispatch(setSavedItems(userData.email)); // 將購物車資料存入 Redux
       if (userData.role === "menber") {
         // 根據取得的 userDate身分去做個別的導入頁面
         navigate("/products");
