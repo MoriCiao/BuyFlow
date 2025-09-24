@@ -83,17 +83,6 @@ const HeaderSlide = ({ isOpen, isAuthenticated, user, handleToggle }) => {
               />
             </li>
           )}
-          {!isAuthenticated && (
-            <li className="w-full px-4">
-              <Button
-                label="Register"
-                onClick={() => {
-                  navigate("/register");
-                  handleToggle();
-                }}
-              />
-            </li>
-          )}
         </>
       </ul>
     </div>

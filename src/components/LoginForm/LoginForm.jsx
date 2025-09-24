@@ -21,7 +21,7 @@ const Logo = memo(() => (
   </div>
 ));
 
-const LoginForm = () => {
+const LoginForm = ({ handleScrolltoRegister }) => {
   // input輸入的值存儲起來，供 userReducer使用
   const [email, setEmail] = useState("staff@example.com");
   const [password, setPassword] = useState("staff321");
@@ -60,7 +60,7 @@ const LoginForm = () => {
           label="Register"
           size="sm"
           type="button"
-          onClick={() => navigate("/register")}
+          onClick={handleScrolltoRegister}
           className="relative z-10"
         />
       </div>
@@ -81,9 +81,13 @@ const LoginForm = () => {
     <div className="flex w-[80%] flex-col gap-4">
       <p className="border-b text-center">或者使用社交帳號登入</p>
 
-      <div className="flex w-full justify-between gap-8">
-        <Button label="Google" variant="danger" />
-        <Button label="Facebook" variant="info" />
+      <div className="flex justify-between">
+        <div className="">
+          <Button label="Google" variant="danger" />
+        </div>
+        <div className="">
+          <Button label="Facebook" variant="info" />
+        </div>
       </div>
     </div>
   );

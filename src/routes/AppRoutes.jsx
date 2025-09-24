@@ -6,20 +6,19 @@ import HomePage from "../pages/Homepage/HomePage.jsx";
 import ProductListPage from "../pages/ProductListPage/ProductListPage.jsx";
 import ProductDetilPage from "../pages/ProductDetilPage/ProductDetilPage.jsx";
 import CartPage from "../pages/CartPage/CartPage.jsx";
-import NotFoundPage from "../pages/NotFoundPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import StaffProfile from "../pages/Profile/StaffProfile.jsx";
 import MemberProfile from "../pages/Profile/MemberProfile.jsx";
 import DashBoard from "../pages/dashboard/DashBoard.jsx";
 import StaffList from "../pages/Dashboard/StaffList.jsx";
 import ProductsList from "../pages/Dashboard/ProductsList.jsx";
-import Register from "../pages/Register/Register.jsx";
 import MemberList from "../pages/Dashboard/MemberList.jsx";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 import OrderTracking from "../components/OrderTracking/OrderTracking.jsx";
 import OrderList from "../pages/Dashboard/OrderList/OrderList.jsx";
 import About from "../pages/About.jsx";
+import Page404 from "../pages/Page404/Page404.jsx";
 const AppRoutes = () => {
   return (
     <div className="AppRoutes justity-center relative z-10 mt-[10vh] flex min-h-[70vh] w-[100%] items-start overflow-y-auto sm:w-[80%]">
@@ -28,16 +27,28 @@ const AppRoutes = () => {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductDetilPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/checkout/success" element={<CheckoutSuccess />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckoutPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/checkout/success"
+          element={
+            <RequireAuth>
+              <CheckoutSuccess />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/menber"
           element={
-            // 使用 RequireAuth 驗證，符合 isAuthenticated 時才會顯示<MenberProfile />
             <RequireAuth>
               <MemberProfile />
             </RequireAuth>
@@ -97,7 +108,7 @@ const AppRoutes = () => {
           />
         </Route>
         {/* 404 */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );
