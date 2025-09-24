@@ -97,8 +97,14 @@ const userSlice = createSlice({
     cancelOrder(state, action) {
       const select_order = action.payload;
       const updateOrderList = state.allOrders.filter(
-        (o) => o.No !== select_order.No,
+        (o) => o.orderID !== select_order.orderID,
       );
+      // 將取消後的資料上傳
+      localStorage.setItem(
+        `order-${state.user.email}`,
+        JSON.stringify(updateOrderList),
+      );
+      // 更新目前的資料
       state.allOrders = updateOrderList;
     },
   },
