@@ -29,15 +29,28 @@ const AppRoutes = () => {
         <Route path="/products/:id" element={<ProductDetilPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/checkout/success" element={<CheckoutSuccess />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckoutPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/checkout/success"
+          element={
+            <RequireAuth>
+              <CheckoutSuccess />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/menber"
           element={
-            // 使用 RequireAuth 驗證，符合 isAuthenticated 時才會顯示<MenberProfile />
             <RequireAuth>
               <MemberProfile />
             </RequireAuth>
