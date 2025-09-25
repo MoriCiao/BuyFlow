@@ -8,7 +8,7 @@ import CartIconOperate from "./CartIconOperate";
 import CartUpdateTips from "./CartUpdateTips";
 
 const STYLE = {
-  cart_icon_container: `cart-Icon fixed top-10 right-5 z-100 block select-none `,
+  cart_icon_container: `cart-Icon fixed top-10 right-5 z-100 block select-none lg:top-20 `,
 
   cart_icon_content: `cart-icon-content flex max-h-150 flex-col justify-between gap-4 overflow-y-auto rounded-xl border border-white/50 bg-zinc-800 p-4 text-white shadow-xl`,
 };
