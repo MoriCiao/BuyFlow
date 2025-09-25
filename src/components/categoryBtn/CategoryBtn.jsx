@@ -26,7 +26,7 @@ const CategoryBtn = () => {
               <Button
                 label={cate}
                 size="lg"
-                className={`flex items-center ${activeBtn === cate ? "border border-white/50 bg-zinc-800" : ""}`}
+                className={`transtion flex items-center duration-800 ${activeBtn === cate ? "border border-white/50 bg-zinc-800" : ""}`}
                 onClick={() => {
                   dispatch(active(cate));
                   dispatch(keywordChange(cate));
