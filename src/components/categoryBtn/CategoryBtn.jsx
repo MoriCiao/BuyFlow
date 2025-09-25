@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { active } from "../../features/products/productsSlice";
+import { active, keywordChange } from "../../features/products/productsSlice";
 import Button from "../Button/Button";
-import { li } from "framer-motion/client";
+
 const CategoryBtn = () => {
-  const { products } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const sort = products.reduce((acc, product) => {
+  const { products } = useSelector((state) => state.products);
+  const [activeBtn, setActiveBtn] = useState("");
+
+  const sort = [...products].reduce((acc, product) => {
     const category = product.category;
     acc[category] = (acc[category] || 0) + 1;
     return acc;
@@ -14,8 +16,6 @@ const CategoryBtn = () => {
 
   // 按鈕點擊後，會依照 category 篩選
   const categoryList = ["所有商品", "熱銷商品", ...Object.keys(sort)];
-
-  const [activeBtn, setActiveBtn] = useState("");
 
   return (
     <ul className="flex w-full flex-wrap gap-4 px-8 lg:flex-col">
@@ -26,9 +26,11 @@ const CategoryBtn = () => {
               <Button
                 label={cate}
                 size="lg"
-                className="flex items-center"
+                className={`flex items-center ${activeBtn === cate ? "border border-white/50 bg-zinc-800" : ""}`}
                 onClick={() => {
-                  (dispatch(active(cate)), setActiveBtn(cate));
+                  dispatch(active(cate));
+                  dispatch(keywordChange(cate));
+                  setActiveBtn(cate);
                 }}
               />
             </li>

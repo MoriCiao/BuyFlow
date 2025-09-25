@@ -4,6 +4,8 @@ import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoading } from "../../features/ui/uiSlice";
 import ProductCard from "../productCard/ProductCard";
+import Button from "../Button/Button";
+
 const CategoryFilter = () => {
   const { products, isFiltered, filtered } = useSelector(
     (state) => state.products,
@@ -11,6 +13,18 @@ const CategoryFilter = () => {
   const dispatch = useDispatch();
 
   const currentData = isFiltered ? filtered : products;
+  console.warn(products);
+  console.warn(filtered);
+
+  const NotFoundProuduct = () => {
+    return (
+      <div className="category_filter">
+        <div>
+          <Button label="查無任何符合資料" variant="info" size="lg" />
+        </div>
+      </div>
+    );
+  };
 
   // 每一次資料轉換時要 Loading
   useEffect(() => {
@@ -20,6 +34,9 @@ const CategoryFilter = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, [currentData]);
+
+  if (currentData.length === 0) return <NotFoundProuduct />;
+
   return (
     <AnimatePresence mode="wait">
       <motion.section

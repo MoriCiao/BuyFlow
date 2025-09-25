@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { search } from "../../features/products/productsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { search, keywordChange } from "../../features/products/productsSlice";
 import Button from "../Button/Button";
 
 const SearchBar = () => {
+  const { keyword } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [keyword, setKeyWord] = useState("");
 
   return (
     <div className="flex w-full items-center">
@@ -15,14 +14,13 @@ const SearchBar = () => {
         <input
           type="text"
           placeholder="搜尋商品..."
-          className="w-full bg-white px-4 py-2 indent-[1rem]"
+          className="w-full bg-white px-4 py-2 text-black"
           value={keyword}
-          onChange={(e) => setKeyWord(e.target.value)}
+          onChange={(e) => dispatch(keywordChange(e.target.value))}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              (dispatch(search(keyword)),
-                setKeyWord(""),
-                navigate("/products"));
+              dispatch(search(keyword));
+              navigate("/products");
             }
           }}
         />
@@ -31,7 +29,8 @@ const SearchBar = () => {
         <Button
           label="Search"
           onClick={() => {
-            (dispatch(search(keyword)), setKeyWord(""), navigate("/products"));
+            dispatch(search(keyword));
+            navigate("/products");
           }}
         />
       </div>

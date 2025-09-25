@@ -1,4 +1,7 @@
 import React from "react";
+import { keywordChange, search } from "../../features/products/productsSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function ChoiceImg(sortKey) {
   switch (sortKey) {
     case "服飾":
@@ -25,8 +28,17 @@ const STYLE = {
 };
 
 const SortProductCard = ({ sortkey, value }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <div className={STYLE.sort_product_card}>
+    <div
+      className={STYLE.sort_product_card}
+      onClick={() => {
+        dispatch(keywordChange(sortkey));
+        dispatch(search(sortkey));
+        navigate("/products");
+      }}
+    >
       <div className={STYLE.sort_product_icon_container}>
         {ChoiceImg(sortkey)}
       </div>

@@ -6,17 +6,23 @@ const initialState = {
   filtered: [],
   isModify: false,
   modify_list: {},
+  keyword: "",
 };
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    keywordChange(state, action) {
+      console.log(action.payload);
+      state.keyword = action.payload;
+    },
     // 搜尋商品
     search(state, action) {
       const keyword = action.payload.toLowerCase();
       if (keyword.length !== 0) {
         state.isFiltered = true;
+        state.title = keyword;
         state.filtered = state.products.filter((i) => {
           const itemName = i.name.toLowerCase();
           const itemDes = i.description.toLowerCase();
@@ -29,6 +35,7 @@ const productsSlice = createSlice({
         });
       } else {
         state.isFiltered = false;
+        state.title = null;
       }
     },
 
@@ -74,6 +81,12 @@ const productsSlice = createSlice({
   },
 });
 
-export const { search, active, modify, updateProduct, closeView } =
-  productsSlice.actions;
+export const {
+  keywordChange,
+  search,
+  active,
+  modify,
+  updateProduct,
+  closeView,
+} = productsSlice.actions;
 export default productsSlice.reducer;
