@@ -1,6 +1,6 @@
 # BuyFlow 電商平台（React + Redux）
 
-BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux Toolkit 進行狀態管理，涵蓋商品瀏覽、分類篩選、購物車管理與訂單流程等功能，並具備登入驗證與基礎權限控制。
+BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux Toolkit 進行狀態管理，涵蓋商品瀏覽、分類篩選、購物車管理與訂單流程等功能。
 
 ---
 
@@ -10,19 +10,17 @@ BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux T
 - 商品詳情支援圖片切換、加入購物車
 - 使用者可登入、檢視訂單並結帳
 
-| 頁面功能    | 畫面截圖                                       |
-| ----------- | ---------------------------------------------- |
-| 首頁        | ![首頁](./readme/HomePage.png)                 |
-| 登入頁面    | ![登入](/readme/LoginPage.png)                 |
-| 會員中心    | ![會員](./readme/MenberProfile.png)            |
-| 商城商品頁  | ![商城](./readme/ProductsPage.png)             |
-| 商品詳情頁  | ![商品細節](./readme/ProductDetailPage.png)    |
-| 結帳流程 -1 | ![結帳1](./readme/CheckoutPage-1.png)          |
-| 結帳流程 -2 | ![結帳2](./readme/CheckoutPage-2.png)          |
-| 訂單追蹤    | ![訂單](./readme/OrderTrackingPage.png)        |
-| 後台頁面-1  | ![後台1](./readme/Dashboard-1.png)             |
-| 後台頁面-2  | ![後台2](./readme/Dashboard-2_productList.png) |
-| 後台頁面-3  | ![後台3](./readme/Dashboard-3_OrderList.png)   |
+| 頁面功能      | 畫面截圖                                    |
+| ------------- | ------------------------------------------- |
+| 首頁          | ![首頁](./readme/HomePage.png)              |
+| 登入頁面      | ![登入](/readme/LoginPage.png)              |
+| 會員中心      | ![會員](./readme/MenberProfile.png)         |
+| 商城商品頁    | ![商城](./readme/ProductsPage.png)          |
+| 商品詳情頁    | ![商品細節](./readme/ProductDetailPage.png) |
+| 購物車        | ![結帳1](./readme/CartPage.png)             |
+| 結帳流程      | ![結帳1](./readme/CheckoutPage.png)         |
+| 訂單追蹤      | ![訂單](./readme/OrderTrackingPage.png)     |
+| 後台頁面-訂單 | ![後台3](./readme/Dashboard-OrderList.png)  |
 
 ---
 
@@ -59,7 +57,7 @@ BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux T
 
 ### 結帳流程
 
-- 填寫訂購人資訊（含表單驗證）
+- 訂購人資訊
 - 確認購物清單與金額
 - 模擬送出訂單與成功頁面
 
@@ -69,10 +67,9 @@ BuyFlow 是一個模擬的電商前端專案，使用 React 框架搭配 Redux T
 
 src/
 │
-├── components/ # 共用元件（Header, Footer, ProductCard 等）
+├── components/ # 共用元件（Header, Footer, ProductCard,Button 等）
 ├── features/ # Redux slices 模組化（cart, products, ui, user）
 ├── pages/ # 各主要頁面（Home, ProductList, Login, Cart 等）
 ├── router/ # 路由設定
-├── assets/ # 圖片與 SVG
 ├── App.jsx # 主頁框架
 └── main.jsx # 入口點
