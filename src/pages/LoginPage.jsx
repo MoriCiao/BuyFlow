@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import LoginForm from "../components/LoginForm/LoginForm";
 import { motion, easeIn } from "framer-motion";
-import TestAccount from "../components/TestAccount";
 import Register from "./Register/Register";
 
 const STYLE = {
@@ -51,8 +50,6 @@ const LoginPage = () => {
         <h3 className="border-b p-2 text-5xl">註冊</h3>
         <Register />
       </div>
-
-      {/* <TestAccount account={account} /> */}
     </motion.section>
   );
 };
