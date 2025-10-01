@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { active, keywordChange } from "../../features/products/productsSlice";
 import Button from "../Button/Button";
 
-const CategoryBtn = () => {
+const CategoryBtn = ({ activeBtn, setActiveBtn }) => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  const [activeBtn, setActiveBtn] = useState("");
-
   const sort = [...products].reduce((acc, product) => {
     const category = product.category;
     acc[category] = (acc[category] || 0) + 1;
