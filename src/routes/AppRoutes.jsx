@@ -17,7 +17,6 @@ import CheckoutPage from "../pages/CheckoutPage/CheckoutPage.jsx";
 import CheckoutSuccess from "../pages/CheckoutSuccess.jsx";
 import OrderTracking from "../components/OrderTracking/OrderTracking.jsx";
 import OrderList from "../pages/Dashboard/OrderList/OrderList.jsx";
-import About from "../pages/About.jsx";
 import Page404 from "../pages/Page404/Page404.jsx";
 const AppRoutes = () => {
   return (
@@ -27,7 +26,6 @@ const AppRoutes = () => {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductDetilPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage />} />
         {/* login 才能進入頁面 */}
         <Route

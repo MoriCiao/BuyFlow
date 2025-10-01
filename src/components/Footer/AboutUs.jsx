@@ -3,7 +3,7 @@ const about_items = [
   {
     name: "關於我們",
     icon: "/BuyFlow/icon/information.png",
-    link: "/BuyFlow/about",
+    link: "#",
   },
   {
     name: "購物資訊",
