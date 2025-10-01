@@ -13,14 +13,12 @@ const CategoryFilter = () => {
   const dispatch = useDispatch();
 
   const currentData = isFiltered ? filtered : products;
-  console.warn(products);
-  console.warn(filtered);
 
   const NotFoundProuduct = () => {
     return (
       <div className="category_filter">
         <div>
-          <Button label="查無任何符合資料" variant="info" size="lg" />
+          <Button label="查無符合資料" variant="info" size="lg" />
         </div>
       </div>
     );
