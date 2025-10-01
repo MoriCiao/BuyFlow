@@ -14,7 +14,6 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     keywordChange(state, action) {
-      console.log(action.payload);
       state.keyword = action.payload;
     },
     // 搜尋商品
@@ -22,7 +21,6 @@ const productsSlice = createSlice({
       const keyword = action.payload.toLowerCase();
       if (keyword.length !== 0) {
         state.isFiltered = true;
-        state.title = keyword;
         state.filtered = state.products.filter((i) => {
           const itemName = i.name.toLowerCase();
           const itemDes = i.description.toLowerCase();
@@ -33,9 +31,8 @@ const productsSlice = createSlice({
             itemCate.includes(keyword)
           );
         });
-      } else {
+      } else if (keyword.trim().length === 0) {
         state.isFiltered = false;
-        state.title = null;
       }
     },
 
