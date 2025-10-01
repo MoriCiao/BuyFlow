@@ -12,7 +12,9 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
 body {
+  background: var(--text-color);
   padding: 0;
   margin: 0;
   width: 100vw;
