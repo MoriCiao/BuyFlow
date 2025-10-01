@@ -43,7 +43,7 @@ const SortProductCard = ({ sortkey, value }) => {
         {ChoiceImg(sortkey)}
       </div>
       <div className={STYLE.sort_product_content}>
-        <h3 className="text-[1.5rem] font-bold lg:text-[2rem]">{sortkey}</h3>
+        <h3 className="text-[1.25rem] font-bold lg:text-[1.5rem]">{sortkey}</h3>
         <p>{value} 件商品</p>
       </div>
     </div>
