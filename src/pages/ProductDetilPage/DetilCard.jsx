@@ -86,8 +86,12 @@ const DetilCard = ({ product }) => {
                 size="sm"
                 onClick={() => {
                   if (isAuthenticated) {
-                    (dispatch(addItem({ product, quantity })),
-                      navigate("/cart"));
+                    if (quantity <= product.stock) {
+                      (dispatch(addItem({ product, quantity })),
+                        navigate("/cart"));
+                    } else {
+                      alert("商品數量大於庫存數量");
+                    }
                   } else {
                     alert("請先登入再繼續購物...");
                     navigate("/login");
